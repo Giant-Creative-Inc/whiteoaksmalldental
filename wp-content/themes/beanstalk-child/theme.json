@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "black",     "color": "#000000", "name": "Neutral-PureBlack" },
+        { "slug": "white",     "color": "#FFFFFF", "name": "Neutral-PureWhite" },
+        { "slug": "dark",      "color": "#2C2E2B", "name": "Neutral-Offblack" },
+        { "slug": "light",     "color": "#F5F5F5", "name": "Neutral-Offwhite" },
+        { "slug": "primary",   "color": "#00FF7F", "name": "Primary (Green)" },
+        { "slug": "secondary", "color": "#008080", "name": "Secondary (Teal)" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "'Poppins', sans-serif",
+          "name": "Poppins",
+          "slug": "heading"
+        },
+        {
+          "fontFamily": "'Poppins', sans-serif",
+          "name": "Poppins",
+          "slug": "body"
+        },
+        {
+          "fontFamily": "'Poppins', sans-serif",
+          "name": "Poppins",
+          "slug": "button"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "h-1", "size": "clamp(40px, 6vw, 64px)", "name": "H1" },
+        { "slug": "h-2", "size": "clamp(34px, 5vw, 48px)", "name": "H2" },
+        { "slug": "h-3", "size": "clamp(28px, 3.5vw, 32px)", "name": "H3" },
+        { "slug": "h-4", "size": "clamp(24px, 3vw, 28px)", "name": "H4" },
+        { "slug": "h-5", "size": "20px", "name": "H5" },
+        { "slug": "h-6", "size": "18px", "name": "H6" },
+        { "slug": "b-1", "size": "22px", "name": "B1" },
+        { "slug": "b-2", "size": "20px", "name": "B2" },
+        { "slug": "b-3", "size": "18px", "name": "B3" },
+        { "slug": "b-4", "size": "16px", "name": "B4" },
+        { "slug": "b-5", "size": "14px", "name": "B5" },
+        { "slug": "b-6", "size": "12px", "name": "B6" }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        { "slug": "0", "size": "0", "name": "Space 0 — 0px" },
+        { "slug": "4", "size": "0.25rem", "name": "Space 4 — 4px" },
+        { "slug": "8", "size": "0.5rem", "name": "Space 8 — 8px" },
+        { "slug": "12", "size": "0.75rem", "name": "Space 12 — 12px" },
+        { "slug": "16", "size": "1rem", "name": "Space 16 — 16px" },
+        { "slug": "20", "size": "1.25rem", "name": "Space 20 — 20px" },
+        { "slug": "24", "size": "1.5rem", "name": "Space 24 — 24px" },
+        { "slug": "32", "size": "2rem", "name": "Space 32 — 32px" },
+        { "slug": "40", "size": "2.5rem", "name": "Space 40 — 40px" },
+        { "slug": "48", "size": "3rem", "name": "Space 48 — 48px" },
+        { "slug": "64", "size": "4rem", "name": "Space 64 — 64px" },
+        { "slug": "80", "size": "5rem", "name": "Space 80 — 80px" },
+        { "slug": "96", "size": "6rem", "name": "Space 96 — 96px" },
+        { "slug": "112", "size": "7rem", "name": "Space 112 — 112px" },
+        { "slug": "120", "size": "7.5rem", "name": "Space 120 — 120px" },
+        { "slug": "128", "size": "8rem", "name": "Space 128 — 128px" },
+        { "slug": "160", "size": "10rem", "name": "Space 160 — 160px" },
+        { "slug": "192", "size": "12rem", "name": "Space 192 — 192px" },
+        { "slug": "256", "size": "16rem", "name": "Space 256 — 256px" },
+        { "slug": "320", "size": "20rem", "name": "Space 320 — 320px" },
+        { "slug": "384", "size": "24rem", "name": "Space 384 — 384px" },
+        { "slug": "512", "size": "32rem", "name": "Space 512 — 512px" },
+        { "slug": "640", "size": "40rem", "name": "Space 640 — 640px" },
+        { "slug": "768", "size": "48rem", "name": "Space 768 — 768px" },
+        { "slug": "960", "size": "60rem", "name": "Space 960 — 960px" },
+        { "slug": "1280", "size": "80rem", "name": "Space 1280 — 1280px" },
+        { "slug": "1536", "size": "96rem", "name": "Space 1536 — 1536px" },
+        { "slug": "2048", "size": "128rem", "name": "Space 2048 — 2048px" },
+        { "slug": "2560", "size": "160rem", "name": "Space 2560 — 2560px" },
+        { "slug": "2880", "size": "180rem", "name": "Space 2880 — 2880px" },
+        { "slug": "3840", "size": "240rem", "name": "Space 3840 — 3840px" }
+      ]
+    },
+    "custom": {
+      "lineHeight": {
+        "h-1": "1.2",
+        "h-2": "1.2",
+        "h-3": "1.2",
+        "h-4": "1.2",
+        "h-5": "1.2",
+        "h-6": "1.2",
+        "b-1": "1.2",
+        "b-2": "1.3",
+        "b-3": "1.4",
+        "b-4": "1.5",
+        "b-5": "1.6",
+        "b-6": "1.7",
+        "button": "1.16"
+      }
+    }
+  }
+}

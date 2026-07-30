@@ -1,0 +1,12 @@
+{
+  "core": null,
+  "themes": [
+    "./beanstalk",
+    "./beanstalk-child"
+  ],
+  "testsEnvironment": false,
+  "config": {
+    "WP_DEBUG": true,
+    "WP_ENVIRONMENT_TYPE": "development"
+  }
+}

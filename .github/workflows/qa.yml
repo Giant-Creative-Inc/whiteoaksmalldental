@@ -1,0 +1,297 @@
+name: Beanstalk QA (warning only)
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+  standards:
+    name: WordPress standards & block markup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: shivammathur/setup-php@v2
+        continue-on-error: true
+        with:
+          php-version: '8.2'
+          tools: composer
+      - uses: actions/setup-node@v4
+        continue-on-error: true
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install open-source standards tools
+        continue-on-error: true
+        run: |
+          composer install --working-dir=beanstalk --no-interaction --prefer-dist > phpcs-install.log 2>&1 || true
+          npm install --no-save --no-package-lock ajv-cli ajv-formats > ajv-install.log 2>&1 || true
+      - name: Run the production theme build
+        continue-on-error: true
+        run: |
+          npm ci --prefix beanstalk > qa-build.log 2>&1 || true
+          npm run build --prefix beanstalk >> qa-build.log 2>&1 || true
+      - name: Run PHPCS without annotations
+        continue-on-error: true
+        run: |
+          mkdir -p qa-results
+          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --extensions=php beanstalk beanstalk-child --report=full > qa-results/phpcs.log 2>&1 || true
+          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --extensions=php beanstalk beanstalk-child --report=json > qa-results/phpcs.json 2>/dev/null || true
+      - name: Validate all theme.json files
+        continue-on-error: true
+        run: |
+          curl -fsSL https://schemas.wp.org/trunk/theme.json -o qa-results/theme.schema.json || true
+          : > qa-results/theme-json.log
+          while IFS= read -r file; do
+            echo "### $file" >> qa-results/theme-json.log
+            npx ajv validate --spec=draft7 --strict=false -s qa-results/theme.schema.json -d "$file" >> qa-results/theme-json.log 2>&1 || true
+          done < <(find beanstalk beanstalk-* -path '*/vendor/*' -prune -o -name theme.json -type f -print)
+      - name: Write standards summary
+        if: always()
+        continue-on-error: true
+        run: |
+          node .github/qa/log-summary.mjs "WordPress coding standards" qa-results/phpcs.log qa-results/standards.md || true
+          node .github/qa/log-summary.mjs "theme.json schema validation" qa-results/theme-json.log qa-results/theme-json.md || true
+          node .github/qa/log-summary.mjs "Production theme build" qa-build.log qa-results/build.md || true
+          cat qa-results/standards.md qa-results/theme-json.md qa-results/build.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-standards
+          path: qa-results/
+
+  patterns:
+    name: Pattern reusability & editor experience
+    runs-on: ubuntu-latest
+    env:
+      WP_ADMIN_USER: ${{ secrets.WP_ADMIN_USER }}
+      WP_ADMIN_PASSWORD: ${{ secrets.WP_ADMIN_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: actions/setup-node@v4
+        continue-on-error: true
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Audit pattern headers and editability
+        continue-on-error: true
+        run: node .github/qa/pattern-audit.mjs qa-results/patterns-static.md || true
+      - name: Install wp-env and visual-diff tools
+        continue-on-error: true
+        run: |
+          npm install --no-save --no-package-lock @wordpress/env playwright pixelmatch pngjs > qa-results/pattern-install.log 2>&1 || true
+          npx playwright install --with-deps chromium >> qa-results/pattern-install.log 2>&1 || true
+      - name: Start disposable WordPress and create hero pages
+        continue-on-error: true
+        run: |
+          npx wp-env start > qa-results/wp-env.log 2>&1 || true
+          node .github/qa/prepare-wp-env.mjs >> qa-results/wp-env.log 2>&1 || true
+      - name: Compare hero editor and front-end renders
+        continue-on-error: true
+        run: node .github/qa/visual-qa.mjs parity > qa-results/parity.log 2>&1 || true
+      - name: Write pattern summary
+        if: always()
+        continue-on-error: true
+        run: |
+          test -f qa-results/patterns-visual.md || node .github/qa/log-summary.mjs "Pattern editor/front-end parity" qa-results/parity.log qa-results/patterns-visual.md || true
+          cat qa-results/patterns-static.md qa-results/patterns-visual.md >> "$GITHUB_STEP_SUMMARY" || true
+          echo "CI credentials should be configured as WP_ADMIN_USER and WP_ADMIN_PASSWORD repository secrets." >> "$GITHUB_STEP_SUMMARY"
+      - name: Stop disposable WordPress
+        if: always()
+        continue-on-error: true
+        run: npx wp-env stop >> qa-results/wp-env.log 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-patterns
+          path: qa-results/
+
+  accessibility:
+    name: Accessibility (WCAG/AODA)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: actions/setup-node@v4
+        continue-on-error: true
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install free accessibility test stack
+        continue-on-error: true
+        run: |
+          mkdir -p qa-results
+          npm install --no-save --no-package-lock @wordpress/env playwright @axe-core/playwright > qa-results/accessibility-install.log 2>&1 || true
+          npx playwright install --with-deps chromium >> qa-results/accessibility-install.log 2>&1 || true
+      - name: Start WordPress and run axe
+        continue-on-error: true
+        run: |
+          npx wp-env start > qa-results/wp-env.log 2>&1 || true
+          node .github/qa/prepare-wp-env.mjs >> qa-results/wp-env.log 2>&1 || true
+          node .github/qa/accessibility.mjs > qa-results/accessibility.log 2>&1 || true
+      - name: Write accessibility summary
+        if: always()
+        continue-on-error: true
+        run: |
+          test -f qa-results/accessibility.md || node .github/qa/log-summary.mjs "Accessibility (WCAG/AODA)" qa-results/accessibility.log qa-results/accessibility.md || true
+          cat qa-results/accessibility.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Stop disposable WordPress
+        if: always()
+        continue-on-error: true
+        run: npx wp-env stop >> qa-results/wp-env.log 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-accessibility
+          path: qa-results/
+
+  semantic:
+    name: Semantic HTML & heading structure
+    runs-on: ubuntu-latest
+    needs: accessibility
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: qa-accessibility
+          path: qa-results/accessibility-source
+      - name: Audit schema-relevant patterns
+        continue-on-error: true
+        run: node .github/qa/schema-audit.mjs qa-results/semantic.md qa-results/semantic.json || true
+      - name: Reuse heading and landmark results
+        continue-on-error: true
+        run: |
+          if test -f qa-results/accessibility-source/accessibility.md; then
+            echo "" >> qa-results/semantic.md
+            echo "### Reused accessibility heading/landmark results" >> qa-results/semantic.md
+            grep -E 'Heading structure|Landmarks' qa-results/accessibility-source/accessibility.md >> qa-results/semantic.md || true
+          fi
+          cat qa-results/semantic.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-semantic
+          path: qa-results/
+
+  performance:
+    name: Performance (Core Web Vitals)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: actions/setup-node@v4
+        continue-on-error: true
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install wp-env and Lighthouse CI
+        continue-on-error: true
+        run: |
+          mkdir -p qa-results
+          npm install --no-save --no-package-lock @wordpress/env @lhci/cli > qa-results/performance-install.log 2>&1 || true
+      - name: Start WordPress and collect Lighthouse reports
+        continue-on-error: true
+        run: |
+          npx wp-env start > qa-results/wp-env.log 2>&1 || true
+          node .github/qa/prepare-wp-env.mjs >> qa-results/wp-env.log 2>&1 || true
+          node .github/qa/lighthouse.mjs > qa-results/lighthouse-run.log 2>&1 || true
+          cp -R .lighthouseci qa-results/lighthouse-reports 2>/dev/null || true
+      - name: Write performance summary
+        if: always()
+        continue-on-error: true
+        run: |
+          test -f qa-results/performance.md || node .github/qa/log-summary.mjs "Performance (Core Web Vitals)" qa-results/lighthouse-run.log qa-results/performance.md || true
+          cat qa-results/performance.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Stop disposable WordPress
+        if: always()
+        continue-on-error: true
+        run: npx wp-env stop >> qa-results/wp-env.log 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-performance
+          path: qa-results/
+
+  responsive:
+    name: Responsive & cross-browser
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+      - uses: actions/setup-node@v4
+        continue-on-error: true
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install wp-env and local browser engines
+        continue-on-error: true
+        run: |
+          mkdir -p qa-results
+          npm install --no-save --no-package-lock @wordpress/env playwright pixelmatch pngjs > qa-results/responsive-install.log 2>&1 || true
+          npx playwright install --with-deps chromium firefox webkit >> qa-results/responsive-install.log 2>&1 || true
+      - name: Capture breakpoint screenshots
+        continue-on-error: true
+        run: |
+          npx wp-env start > qa-results/wp-env.log 2>&1 || true
+          node .github/qa/prepare-wp-env.mjs >> qa-results/wp-env.log 2>&1 || true
+          node .github/qa/visual-qa.mjs responsive > qa-results/responsive.log 2>&1 || true
+      - name: Write responsive summary
+        if: always()
+        continue-on-error: true
+        run: |
+          test -f qa-results/responsive.md || node .github/qa/log-summary.mjs "Responsive and cross-browser" qa-results/responsive.log qa-results/responsive.md || true
+          cat qa-results/responsive.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Stop disposable WordPress
+        if: always()
+        continue-on-error: true
+        run: npx wp-env stop >> qa-results/wp-env.log 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-responsive
+          path: qa-results/
+
+  final-summary:
+    name: Final regression / build summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [standards, patterns, accessibility, semantic, performance, responsive]
+    steps:
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: qa-*
+          path: all-results
+      - name: Consolidate every warning
+        if: always()
+        continue-on-error: true
+        run: |
+          {
+            echo "# Beanstalk QA — warning-only report"
+            echo
+            echo "All checks are informational. This workflow never blocks merge."
+            echo
+            find all-results -name '*.md' -type f -print0 2>/dev/null | sort -z | xargs -0 -r cat
+            echo
+            echo "## Artifacts"
+            echo
+            echo "Screenshots, pixel diffs, Lighthouse reports, and raw logs are attached to the [workflow run](https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})."
+          } > all-results/qa-summary.md || true
+          cat all-results/qa-summary.md >> "$GITHUB_STEP_SUMMARY" || true
+          exit 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: qa-summary
+          path: all-results/qa-summary.md

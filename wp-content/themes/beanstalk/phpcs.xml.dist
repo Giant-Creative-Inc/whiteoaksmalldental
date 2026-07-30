@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ruleset name="Beanstalk WordPress Theme">
+	<description>WordPress coding standards for the Beanstalk parent theme.</description>
+
+	<file>functions.php</file>
+	<file>inc</file>
+	<file>patterns</file>
+
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="extensions" value="php"/>
+	<arg value="ps"/>
+
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs">
+		<!-- Native pattern headers are metadata comments, not PHP docblocks. -->
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+		<exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
+	</rule>
+	<rule ref="Squiz.Commenting.FileComment.Missing">
+		<!-- The bootstrap contains only require statements; its docblock is valid. -->
+		<exclude-pattern>functions.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="beanstalk"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

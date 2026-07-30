@@ -1,0 +1,96 @@
+/*
+ * Shared above-the-fold CSS.
+ *
+ * This file is imported by the full Vite bundle and generated into
+ * template-specific inline files by scripts/generate-critical-css.js.
+ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .site-header {
+    z-index: 10;
+    padding-block: var(--wp--preset--spacing--24);
+    background-color: color-mix(in srgb, var(--wp--preset--color--dark) 65%, transparent);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .site-header__inner {
+    width: 100%;
+  }
+
+  .site-header .wp-block-navigation {
+    color: color-mix(in srgb, var(--wp--preset--color--white) 85%, transparent);
+  }
+
+  .site-header .wp-block-navigation a {
+    text-decoration: none;
+  }
+
+  .site-header .wp-block-navigation a:where(:hover, :focus-visible) {
+    color: var(--wp--preset--color--primary);
+  }
+
+  .site-header .wp-block-navigation a:focus-visible {
+    outline: 2px solid var(--wp--preset--color--primary);
+    outline-offset: 4px;
+  }
+
+  .site-footer {
+    padding-inline: var(--wp--preset--spacing--48);
+  }
+
+  .site-header.is-scrolled {
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--wp--preset--color--black) 8%, transparent);
+  }
+
+  @media (max-width: 767px) {
+    .site-footer {
+      padding-inline: var(--wp--preset--spacing--24);
+    }
+
+    .site-header__actions {
+      gap: var(--wp--preset--spacing--16);
+    }
+
+  }
+}
+
+/*
+ * Keep the site gutters and navigation breakpoint unlayered so WordPress's
+ * unlayered block-layout rules cannot override them.
+ */
+.site-header {
+  padding-inline: var(--wp--preset--spacing--48);
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    padding-inline: var(--wp--preset--spacing--24);
+  }
+
+  .site-header .site-header__cta {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-header .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: none;
+  }
+
+  .site-header .wp-block-navigation__responsive-container-open {
+    display: flex;
+  }
+}

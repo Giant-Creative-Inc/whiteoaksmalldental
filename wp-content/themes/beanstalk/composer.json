@@ -1,0 +1,23 @@
+{
+  "name": "giant-creative-inc/beanstalk",
+  "description": "Development tooling for the Beanstalk WordPress block theme.",
+  "type": "wordpress-theme",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "enshrined/svg-sanitize": "^0.22"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "wp-coding-standards/wpcs": "^3.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "lint:php": "phpcs",
+    "fix:php": "phpcbf"
+  }
+}

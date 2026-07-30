@@ -1,0 +1,37 @@
+# GridPane hybrid client repository allowlist.
+#
+# Ignore everything at the WordPress root unless explicitly included.
+/*
+
+# Repository rules.
+!/.gitignore
+
+# GridPane deployment configuration.
+!/.gpconfig/
+!/.gpconfig/**
+
+# Beanstalk QA.
+!/.github/
+!/.github/**
+!/.wp-env.json
+
+# Enter wp-content but ignore its contents by default.
+!/wp-content/
+/wp-content/*
+
+# Track only the Beanstalk themes.
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/beanstalk/
+!/wp-content/themes/beanstalk/**
+!/wp-content/themes/beanstalk-child/
+!/wp-content/themes/beanstalk-child/**
+
+# Generated dependencies and artifacts.
+**/node_modules/
+**/vendor/
+**/.DS_Store
+**/Thumbs.db
+qa-results/
+qa-artifacts/
+.lighthouseci/

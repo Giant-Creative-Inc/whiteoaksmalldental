@@ -1,0 +1,17 @@
+/* Generated from theme.json. Must precede any manual @theme overrides. */
+@import "./theme-tokens.css";
+@import "./critical.css";
+
+/* Import Tailwind v4 without preflight.css to preserve WordPress defaults. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+
+/* Explicitly scan only developer-authored theme markup for utilities. */
+@source "../../patterns";
+@source "../../templates";
+@source "../../parts";
+@source "../../functions.php";
+@source not inline("block border flex");
+
+/* Add manual @theme overrides below this comment when needed. */

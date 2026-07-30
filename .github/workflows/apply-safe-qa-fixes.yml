@@ -1,0 +1,138 @@
+name: Apply safe QA fixes
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull request number whose latest QA artifacts should be used
+        required: true
+        type: number
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: apply-safe-qa-fixes-${{ inputs.pr_number }}
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve the PR head and its latest completed QA run
+        id: resolve
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const pull_number = Number(process.env.PR_NUMBER);
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number,
+            });
+            if (pr.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`) {
+              core.setFailed('Safe fixes only push to branches in this repository; fork PRs are not supported.');
+              return;
+            }
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'qa.yml',
+              branch: pr.head.ref,
+              event: 'pull_request',
+              status: 'completed',
+              per_page: 100,
+            });
+            const run = runs.find((candidate) =>
+              candidate.head_sha === pr.head.sha &&
+              candidate.pull_requests?.some((pull) => pull.number === pull_number)
+            );
+            if (!run) {
+              core.setFailed('No completed QA run matches the current PR head. Re-run QA first.');
+              return;
+            }
+            core.setOutput('head_ref', pr.head.ref);
+            core.setOutput('head_sha', pr.head.sha);
+            core.setOutput('run_id', String(run.id));
+
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ steps.resolve.outputs.head_sha }}
+          fetch-depth: 0
+
+      - name: Download the matching QA artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ steps.resolve.outputs.run_id }}
+          github-token: ${{ github.token }}
+          pattern: qa-*
+          path: qa-artifacts
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deterministic safe-fix tools
+        run: |
+          composer config --global --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+          composer require --dev --no-interaction squizlabs/php_codesniffer wp-coding-standards/wpcs dealerdirect/phpcodesniffer-composer-installer
+          vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/phpcsstandards/phpcsutils,vendor/phpcsstandards/phpcsextra
+          npm install --no-save --no-package-lock jsonrepair
+
+      - name: Select and apply PHPCBF formatting fixes only
+        run: |
+          node .github/qa/select-safe-phpcbf.mjs qa-artifacts/qa-standards/phpcs.json qa-safe-fixes
+          if test -s qa-safe-fixes/phpcbf-files.txt && test -s qa-safe-fixes/phpcbf-sniffs.txt; then
+            mapfile -t files < qa-safe-fixes/phpcbf-files.txt
+            sniffs="$(tr -d '\n' < qa-safe-fixes/phpcbf-sniffs.txt)"
+            vendor/bin/phpcbf --standard=WordPress --sniffs="$sniffs" "${files[@]}" || true
+          else
+            echo "No PHPCBF formatting-only warnings were present."
+          fi
+
+      - name: Repair flagged JSON-LD syntax only
+        run: node .github/qa/fix-jsonld-syntax.mjs qa-artifacts/qa-semantic/semantic.json qa-safe-fixes/jsonld-files.txt
+
+      - name: Enforce the safe-fix boundary
+        run: |
+          cat qa-safe-fixes/phpcbf-files.txt qa-safe-fixes/jsonld-files.txt 2>/dev/null | sort -u > qa-safe-fixes/allowed-files.txt
+          git diff --name-only > qa-safe-fixes/changed-files.txt
+          while IFS= read -r file; do
+            test -z "$file" && continue
+            if ! grep -Fxq "$file" qa-safe-fixes/allowed-files.txt; then
+              echo "Refusing out-of-scope change: $file"
+              exit 1
+            fi
+          done < qa-safe-fixes/changed-files.txt
+
+      - name: Commit safe fixes directly to the PR branch
+        env:
+          HEAD_REF: ${{ steps.resolve.outputs.head_ref }}
+        run: |
+          if git diff --quiet; then
+            echo "No PHPCBF formatting or JSON-LD syntax fixes were needed." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          while IFS= read -r file; do
+            test -n "$file" && git add -- "$file"
+          done < qa-safe-fixes/allowed-files.txt
+          git commit -m "Apply safe QA formatting and schema syntax fixes"
+          git push origin "HEAD:${HEAD_REF}"
+          {
+            echo "Committed only the approved safe-fix files:"
+            sed 's/^/- `/' qa-safe-fixes/changed-files.txt | sed 's/$/`/'
+            echo
+            echo "Accessibility, pattern headers, schema content, layout, visual parity, and performance were not modified."
+          } >> "$GITHUB_STEP_SUMMARY"
