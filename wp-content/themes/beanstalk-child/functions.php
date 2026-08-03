@@ -114,30 +114,95 @@ function white_oaks_font_resource_hints( $urls, $relation_type ) {
 add_filter( 'wp_resource_hints', 'white_oaks_font_resource_hints', 10, 2 );
 
 /**
- * Supplies intrinsic dimensions for the shared SVG logo attachment.
+ * Supplies explicit loading attributes for selected Image blocks.
  *
  * WordPress cannot derive raster metadata from this sanitized SVG upload, so
  * add its approved 150:56 aspect ratio at render time without changing saved
- * block markup or Media Library data.
+ * block markup or Media Library data. Reception variants are deliberately
+ * lazy because CSS chooses the appropriate one below the fold.
  *
  * @param string $block_content Rendered Image block markup.
  * @param array  $block         Parsed Image block.
  * @return string
  */
-function white_oaks_add_logo_dimensions( $block_content, $block ) {
-	if ( 9 !== (int) ( $block['attrs']['id'] ?? 0 ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+function white_oaks_image_loading_attributes( $block_content, $block ) {
+	$attachment_id = (int) ( $block['attrs']['id'] ?? 0 );
+	$class_name    = $block['attrs']['className'] ?? '';
+
+	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $block_content;
+	}
+
+	$processor = new WP_HTML_Tag_Processor( $block_content );
+	if ( ! $processor->next_tag( 'img' ) ) {
+		return $block_content;
+	}
+
+	if ( 9 === $attachment_id ) {
+		$processor->set_attribute( 'width', '150' );
+		$processor->set_attribute( 'height', '56' );
+		$processor->set_attribute( 'loading', str_contains( $class_name, 'site-footer__logo' ) ? 'lazy' : 'eager' );
+	}
+
+	if ( in_array( $attachment_id, array( 31, 32 ), true ) ) {
+		$processor->set_attribute( 'loading', 'lazy' );
+	}
+
+	return $processor->get_updated_html();
+}
+add_filter( 'render_block_core/image', 'white_oaks_image_loading_attributes', 10, 2 );
+
+/**
+ * Makes the homepage hero image's above-the-fold priority explicit.
+ *
+ * @param string $block_content Rendered Cover block markup.
+ * @param array  $block         Parsed Cover block.
+ * @return string
+ */
+function white_oaks_hero_cover_image_attributes( $block_content, $block ) {
+	if ( 12 !== (int) ( $block['attrs']['id'] ?? 0 ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 		return $block_content;
 	}
 
 	$processor = new WP_HTML_Tag_Processor( $block_content );
 	if ( $processor->next_tag( 'img' ) ) {
-		$processor->set_attribute( 'width', '150' );
-		$processor->set_attribute( 'height', '56' );
+		$processor->set_attribute( 'loading', 'eager' );
+		$processor->set_attribute( 'fetchpriority', 'high' );
 	}
 
 	return $processor->get_updated_html();
 }
-add_filter( 'render_block_core/image', 'white_oaks_add_logo_dimensions', 10, 2 );
+add_filter( 'render_block_core/cover', 'white_oaks_hero_cover_image_attributes', 9, 2 );
+
+/**
+ * Preloads the responsive homepage hero image selected by the browser.
+ *
+ * @param array $resources Resources WordPress will preload.
+ * @return array
+ */
+function white_oaks_preload_homepage_hero( $resources ) {
+	if ( ! is_front_page() ) {
+		return $resources;
+	}
+
+	$image_url    = wp_get_attachment_image_url( 12, 'full' );
+	$image_srcset = wp_get_attachment_image_srcset( 12, 'full' );
+
+	if ( ! $image_url || ! $image_srcset ) {
+		return $resources;
+	}
+
+	$resources[] = array(
+		'href'          => $image_url,
+		'as'            => 'image',
+		'imagesrcset'   => $image_srcset,
+		'imagesizes'    => '(max-width: 2560px) 100vw, 2560px',
+		'fetchpriority' => 'high',
+	);
+
+	return $resources;
+}
+add_filter( 'wp_preload_resources', 'white_oaks_preload_homepage_hero' );
 
 /**
  * Suppresses the parent's unused Poppins request while preserving its handle
