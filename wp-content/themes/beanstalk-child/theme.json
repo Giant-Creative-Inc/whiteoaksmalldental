@@ -2,39 +2,91 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1224px",
+      "wideSize": "1224px"
+    },
     "color": {
+      "custom": true,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "gradients": [
+        {
+          "slug": "hero-desktop-overlay",
+          "name": "Hero Desktop Overlay",
+          "gradient": "linear-gradient(270deg, rgba(255, 255, 255, 0) 36.947%, rgba(255, 255, 255, 0.6) 72.386%)"
+        },
+        {
+          "slug": "hero-mobile-overlay",
+          "name": "Hero Mobile Overlay",
+          "gradient": "linear-gradient(180deg, rgba(255, 255, 255, 0) 15%, #FFFFFF 52.7%)"
+        }
+      ],
       "palette": [
-        { "slug": "black",     "color": "#000000", "name": "Neutral-PureBlack" },
-        { "slug": "white",     "color": "#FFFFFF", "name": "Neutral-PureWhite" },
-        { "slug": "dark",      "color": "#2C2E2B", "name": "Neutral-Offblack" },
-        { "slug": "light",     "color": "#F5F5F5", "name": "Neutral-Offwhite" },
-        { "slug": "primary",   "color": "#00FF7F", "name": "Primary (Green)" },
-        { "slug": "secondary", "color": "#008080", "name": "Secondary (Teal)" }
+        { "slug": "black", "color": "#000000", "name": "Neutral-PureBlack" },
+        { "slug": "white", "color": "#FFFFFF", "name": "Neutral-PureWhite" },
+        { "slug": "dark", "color": "#2C2E2B", "name": "Neutral-Offblack" },
+        { "slug": "light", "color": "#F5F5F5", "name": "Neutral-Offwhite" },
+        { "slug": "neutral-grey-200", "color": "#333333", "name": "Neutral Grey 200" },
+        { "slug": "neutral-grey-400", "color": "#666666", "name": "Neutral Grey 400" },
+        { "slug": "neutral-grey-600", "color": "#999999", "name": "Neutral Grey 600" },
+        { "slug": "neutral-grey-850", "color": "#D9D9D9", "name": "Neutral Grey 850" },
+        { "slug": "neutral-grey-950", "color": "#F2F2F2", "name": "Neutral Grey 950" },
+        { "slug": "primary-shade-900", "color": "#030C0D", "name": "Primary Shade 900" },
+        { "slug": "primary-shade-600", "color": "#0C3035", "name": "Primary Shade 600" },
+        { "slug": "primary-shade-300", "color": "#16545C", "name": "Primary Shade 300" },
+        { "slug": "primary", "color": "#1F7884", "name": "Primary" },
+        { "slug": "primary-tint-300", "color": "#62A0A9", "name": "Primary Tint 300" },
+        { "slug": "primary-tint-600", "color": "#A5C9CE", "name": "Primary Tint 600" },
+        { "slug": "primary-tint-900", "color": "#E9F1F3", "name": "Primary Tint 900" },
+        { "slug": "secondary-shade-900", "color": "#0A1116", "name": "Secondary Shade 900" },
+        { "slug": "secondary-shade-600", "color": "#284357", "name": "Secondary Shade 600" },
+        { "slug": "secondary-shade-300", "color": "#477599", "name": "Secondary Shade 300" },
+        { "slug": "secondary", "color": "#65A7DA", "name": "Secondary" },
+        { "slug": "secondary-tint-300", "color": "#93C1E5", "name": "Secondary Tint 300" },
+        { "slug": "secondary-tint-600", "color": "#C1DCF0", "name": "Secondary Tint 600" },
+        { "slug": "secondary-tint-900", "color": "#F0F6FB", "name": "Secondary Tint 900" },
+        { "slug": "primary-hover", "color": "#165E69", "name": "Primary Hover" },
+        { "slug": "primary-subtle", "color": "#1F788412", "name": "Primary Subtle" },
+        { "slug": "button-text", "color": "#2B3839", "name": "Button Text" },
+        { "slug": "header-border", "color": "#DFE1E6", "name": "Header Border" },
+        { "slug": "experience-background", "color": "#F3F7F8", "name": "Experience Section Background" },
+        { "slug": "service-tabs-border", "color": "#C4DFE3", "name": "Service Tabs Border" },
+        { "slug": "service-tabs-muted-text", "color": "#667085", "name": "Service Tabs Muted Text" },
+        { "slug": "practice-divider", "color": "rgba(27, 46, 51, 0.1)", "name": "Practice Highlight Divider" },
+        { "slug": "why-oaks-divider", "color": "rgba(31, 120, 132, 0.2)", "name": "Why Oaks Divider" },
+        { "slug": "oak-orange-shade-900", "color": "#160F07", "name": "Oak Orange Shade 900" }
       ]
     },
     "typography": {
+      "customFontSize": true,
       "fontFamilies": [
         {
-          "fontFamily": "'Poppins', sans-serif",
-          "name": "Poppins",
+          "fontFamily": "\"iowan-old-style-bt\", Georgia, serif",
+          "name": "Iowan Old Style BT",
           "slug": "heading"
         },
         {
-          "fontFamily": "'Poppins', sans-serif",
-          "name": "Poppins",
+          "fontFamily": "\"iowan-old-style-bt\", Georgia, serif",
+          "name": "Iowan Old Style BT",
           "slug": "body"
         },
         {
-          "fontFamily": "'Poppins', sans-serif",
-          "name": "Poppins",
+          "fontFamily": "Inter, Arial, sans-serif",
+          "name": "Inter",
           "slug": "button"
         }
       ],
       "fontSizes": [
-        { "slug": "h-1", "size": "clamp(40px, 6vw, 64px)", "name": "H1" },
+        { "slug": "h-1", "size": "clamp(40px, 7.5vw, 64px)", "name": "H1" },
         { "slug": "h-2", "size": "clamp(34px, 5vw, 48px)", "name": "H2" },
-        { "slug": "h-3", "size": "clamp(28px, 3.5vw, 32px)", "name": "H3" },
-        { "slug": "h-4", "size": "clamp(24px, 3vw, 28px)", "name": "H4" },
+        { "slug": "h-3", "size": "clamp(28px, 3vw, 32px)", "name": "H3" },
+        { "slug": "h-4", "size": "clamp(24px, 2.5vw, 28px)", "name": "H4" },
         { "slug": "h-5", "size": "20px", "name": "H5" },
         { "slug": "h-6", "size": "18px", "name": "H6" },
         { "slug": "b-1", "size": "22px", "name": "B1" },
@@ -42,45 +94,98 @@
         { "slug": "b-3", "size": "18px", "name": "B3" },
         { "slug": "b-4", "size": "16px", "name": "B4" },
         { "slug": "b-5", "size": "14px", "name": "B5" },
-        { "slug": "b-6", "size": "12px", "name": "B6" }
+        { "slug": "b-6", "size": "12px", "name": "B6" },
+        { "slug": "practice-stat", "size": "36px", "name": "Practice Highlight Stat" },
+        { "slug": "experience-heading", "size": "clamp(28px, 5.2vw, 74.88px)", "name": "Experience Heading" },
+        { "slug": "experience-card-heading", "size": "clamp(22px, 3.1vw, 44.64px)", "name": "Experience Card Heading" },
+        { "slug": "experience-card-copy", "size": "clamp(14px, 1.18vw, 17px)", "name": "Experience Card Copy" },
+        { "slug": "service-panel-heading", "size": "clamp(20px, 3.3vw, 47.52px)", "name": "Service Panel Heading" },
+        { "slug": "hero-heading", "size": "clamp(36px, calc(14.197183px + 5.814085cqw), 97.92px)", "name": "Hero Heading" },
+        { "slug": "hero-lead", "size": "clamp(18px, 1.95vw, 28px)", "name": "Hero Lead" },
+        { "slug": "emergency-heading", "size": "clamp(32px, calc(5.11vw + 12.84px), 86.4px)", "name": "Emergency CTA Heading" },
+        { "slug": "emergency-copy", "size": "clamp(15px, calc(0.47vw + 13.24px), 20px)", "name": "Emergency CTA Copy" },
+        { "slug": "emergency-phone", "size": "clamp(22px, calc(1.88vw + 14.96px), 42px)", "name": "Emergency CTA Phone" },
+        { "slug": "emergency-caption", "size": "clamp(11px, calc(0.094vw + 10.65px), 12px)", "name": "Emergency CTA Caption" },
+        { "slug": "footer-caption", "size": "11px", "name": "Footer Caption" },
+        { "slug": "footer-link-mobile", "size": "13px", "name": "Footer Link Mobile" },
+        { "slug": "patient-stories-heading", "size": "clamp(28px, 4.5vw, 64.8px)", "name": "Patient Stories Heading" },
+        { "slug": "patient-stories-rating", "size": "clamp(32px, 3.125vw, 45px)", "name": "Patient Stories Rating" },
+        { "slug": "patient-stories-quote", "size": "clamp(18px, 2.5vw, 36px)", "name": "Patient Stories Quote" },
+        { "slug": "patient-stories-source", "size": "clamp(11px, 0.84vw, 12px)", "name": "Patient Stories Source" },
+        { "slug": "team-heading", "size": "clamp(38px, 5.2vw, 74.88px)", "name": "Meet the Team Heading" },
+        { "slug": "team-card-heading", "size": "clamp(21px, 2.342vw, 24px)", "name": "Meet the Team Card Heading" }
       ]
     },
     "spacing": {
+      "customSpacingSize": true,
       "spacingSizes": [
         { "slug": "0", "size": "0", "name": "Space 0 — 0px" },
-        { "slug": "4", "size": "0.25rem", "name": "Space 4 — 4px" },
-        { "slug": "8", "size": "0.5rem", "name": "Space 8 — 8px" },
-        { "slug": "12", "size": "0.75rem", "name": "Space 12 — 12px" },
-        { "slug": "16", "size": "1rem", "name": "Space 16 — 16px" },
-        { "slug": "20", "size": "1.25rem", "name": "Space 20 — 20px" },
-        { "slug": "24", "size": "1.5rem", "name": "Space 24 — 24px" },
-        { "slug": "32", "size": "2rem", "name": "Space 32 — 32px" },
-        { "slug": "40", "size": "2.5rem", "name": "Space 40 — 40px" },
-        { "slug": "48", "size": "3rem", "name": "Space 48 — 48px" },
-        { "slug": "64", "size": "4rem", "name": "Space 64 — 64px" },
-        { "slug": "80", "size": "5rem", "name": "Space 80 — 80px" },
-        { "slug": "96", "size": "6rem", "name": "Space 96 — 96px" },
-        { "slug": "112", "size": "7rem", "name": "Space 112 — 112px" },
-        { "slug": "120", "size": "7.5rem", "name": "Space 120 — 120px" },
-        { "slug": "128", "size": "8rem", "name": "Space 128 — 128px" },
-        { "slug": "160", "size": "10rem", "name": "Space 160 — 160px" },
-        { "slug": "192", "size": "12rem", "name": "Space 192 — 192px" },
-        { "slug": "256", "size": "16rem", "name": "Space 256 — 256px" },
-        { "slug": "320", "size": "20rem", "name": "Space 320 — 320px" },
-        { "slug": "384", "size": "24rem", "name": "Space 384 — 384px" },
-        { "slug": "512", "size": "32rem", "name": "Space 512 — 512px" },
-        { "slug": "640", "size": "40rem", "name": "Space 640 — 640px" },
-        { "slug": "768", "size": "48rem", "name": "Space 768 — 768px" },
-        { "slug": "960", "size": "60rem", "name": "Space 960 — 960px" },
-        { "slug": "1280", "size": "80rem", "name": "Space 1280 — 1280px" },
-        { "slug": "1536", "size": "96rem", "name": "Space 1536 — 1536px" },
-        { "slug": "2048", "size": "128rem", "name": "Space 2048 — 2048px" },
-        { "slug": "2560", "size": "160rem", "name": "Space 2560 — 2560px" },
-        { "slug": "2880", "size": "180rem", "name": "Space 2880 — 2880px" },
-        { "slug": "3840", "size": "240rem", "name": "Space 3840 — 3840px" }
-      ]
+        { "slug": "4", "size": "4px", "name": "Space 4 — 4px" },
+        { "slug": "8", "size": "8px", "name": "Space 8 — 8px" },
+        { "slug": "12", "size": "12px", "name": "Space 12 — 12px" },
+        { "slug": "16", "size": "16px", "name": "Space 16 — 16px" },
+        { "slug": "20", "size": "20px", "name": "Space 20 — 20px" },
+        { "slug": "24", "size": "24px", "name": "Space 24 — 24px" },
+        { "slug": "32", "size": "32px", "name": "Space 32 — 32px" },
+        { "slug": "40", "size": "40px", "name": "Space 40 — 40px" },
+        { "slug": "48", "size": "48px", "name": "Space 48 — 48px" },
+        { "slug": "64", "size": "64px", "name": "Space 64 — 64px" },
+        { "slug": "80", "size": "80px", "name": "Space 80 — 80px" },
+        { "slug": "96", "size": "96px", "name": "Space 96 — 96px" },
+        { "slug": "112", "size": "112px", "name": "Space 112 — 112px" },
+        { "slug": "120", "size": "120px", "name": "Space 120 — Beanstalk compatibility" },
+        { "slug": "128", "size": "128px", "name": "Space 128 — 128px" },
+        { "slug": "160", "size": "160px", "name": "Space 160 — 160px" },
+        { "slug": "192", "size": "192px", "name": "Space 192 — 192px" },
+        { "slug": "256", "size": "256px", "name": "Space 256 — 256px" },
+        { "slug": "320", "size": "320px", "name": "Space 320 — 320px" },
+        { "slug": "384", "size": "384px", "name": "Space 384 — 384px" },
+        { "slug": "512", "size": "512px", "name": "Space 512 — 512px" },
+        { "slug": "640", "size": "640px", "name": "Space 640 — 640px" },
+        { "slug": "768", "size": "768px", "name": "Space 768 — 768px" },
+        { "slug": "960", "size": "960px", "name": "Space 960 — 960px" },
+        { "slug": "1280", "size": "1280px", "name": "Space 1280 — 1280px" },
+        { "slug": "1536", "size": "1536px", "name": "Space 1536 — 1536px" },
+        { "slug": "2048", "size": "2048px", "name": "Space 2048 — 2048px" },
+        { "slug": "2560", "size": "2560px", "name": "Space 2560 — 2560px" },
+        { "slug": "2880", "size": "2880px", "name": "Space 2880 — 2880px" },
+        { "slug": "3840", "size": "3840px", "name": "Space 3840 — 3840px" }
+      ],
+      "units": [ "%", "px", "em", "rem", "vh", "vw" ]
+    },
+    "blocks": {
+      "core/button": {
+        "color": {
+          "background": true,
+          "text": true
+        }
+      }
     },
     "custom": {
+      "fontWeight": {
+        "navigation": "600",
+        "practice-stat": "700",
+        "footer-heading-desktop": "800",
+        "footer-heading-mobile": "700",
+        "footer-legal-desktop": "650"
+      },
+      "letterSpacing": {
+        "navigation": "0.08em",
+        "practice-label": "0.96px",
+        "footer-heading-desktop": "2.16px",
+        "footer-heading-mobile": "1.5px",
+        "footer-legal-desktop": "1.44px",
+        "footer-legal-mobile": "1px",
+        "patient-stories-eyebrow": "clamp(1.5px, 0.183vw, 2.64px)",
+        "patient-stories-heading": "clamp(-2.916px, -0.203vw, 0px)",
+        "patient-stories-quote": "clamp(-0.72px, -0.05vw, 0px)",
+        "patient-stories-source": "clamp(1px, 0.133vw, 1.92px)",
+        "team-heading": "clamp(-3.3696px, -0.234vw, -1.5px)",
+        "team-card-role": "clamp(1.2px, 0.1522vw, 1.56px)",
+        "team-card-heading": "clamp(-0.48px, -0.0468vw, -0.3px)",
+        "team-card-specialty": "clamp(0.3px, 0.0468vw, 0.48px)",
+        "team-cta": "0.96px"
+      },
       "lineHeight": {
         "h-1": "1.2",
         "h-2": "1.2",
@@ -88,13 +193,298 @@
         "h-4": "1.2",
         "h-5": "1.2",
         "h-6": "1.2",
-        "b-1": "1.2",
-        "b-2": "1.3",
-        "b-3": "1.4",
-        "b-4": "1.5",
-        "b-5": "1.6",
-        "b-6": "1.7",
-        "button": "1.16"
+        "b-1": "30px",
+        "b-2": "30px",
+        "b-3": "30px",
+        "b-4": "30px",
+        "b-5": "30px",
+        "b-6": "26px",
+        "button": "18px",
+        "practice-stat": "54px",
+        "practice-label": "18px",
+        "experience-heading": "clamp(34px, 4.94vw, 71.136px)",
+        "experience-card-heading": "clamp(27px, 3.1vw, 44.64px)",
+        "experience-card-copy": "clamp(22px, 1.95vw, 28.05px)",
+        "experience-meta": "clamp(16px, 1.42vw, 20.4px)",
+        "service-panel-heading": "clamp(26px, 3.465vw, 49.896px)",
+        "emergency-heading": "clamp(38px, calc(4.14vw + 22.48px), 82.08px)",
+        "emergency-copy": "clamp(24px, calc(0.66vw + 21.52px), 31px)",
+        "footer-intro-desktop": "27.2px",
+        "footer-intro-mobile": "22px",
+        "footer-link-desktop": "21px",
+        "footer-link-mobile": "20px",
+        "patient-stories-heading": "clamp(34px, 4.275vw, 61.56px)",
+        "patient-stories-rating": "clamp(38.4px, 4.69vw, 67.5px)",
+        "patient-stories-quote": "clamp(26px, 3.3vw, 47.52px)",
+        "patient-stories-reviewer": "clamp(24px, 1.77vw, 25.5px)",
+        "team-heading": "clamp(44px, 4.94vw, 71.136px)",
+        "team-card-heading": "clamp(28px, 3.512vw, 36px)"
+      },
+      "emergency": {
+        "heading-mobile-size": "32px",
+        "heading-mobile-line-height": "38px",
+        "copy-mobile-size": "15px",
+        "copy-mobile-line-height": "24px",
+        "phone-mobile-size": "22px",
+        "caption-mobile-size": "11px",
+        "gap-mobile": "20px"
+      },
+      "whyOaks": {
+        "desktop-section-padding-block": "150px",
+        "desktop-inner-min-height": "867px",
+        "desktop-media-offset": "-42px",
+        "desktop-media-margin-top": "96px",
+        "desktop-media-width": "548px",
+        "desktop-media-height": "670px",
+        "desktop-intro-size": "20px",
+        "desktop-intro-line-height": "31px",
+        "desktop-number-size": "13px",
+        "desktop-number-line-height": "19.5px",
+        "desktop-title-size": "21px",
+        "desktop-title-line-height": "31.5px",
+        "desktop-copy-size": "12px",
+        "desktop-copy-line-height": "20.4px",
+        "desktop-copy-gap": "7px",
+        "desktop-values-margin-top": "40px",
+        "mobile-intro-size": "16px",
+        "mobile-intro-line-height": "24px",
+        "mobile-heading-size": "28px",
+        "mobile-heading-line-height": "34px",
+        "mobile-number-size": "18px",
+        "mobile-title-size": "16px",
+        "mobile-copy-size": "13px",
+        "mobile-copy-line-height": "18px",
+        "mobile-gap": "20px"
+      },
+      "hero": {
+        "desktop-height": "937px",
+        "mobile-height": "576px",
+        "desktop-content-width": "734px",
+        "desktop-copy-width": "562px",
+        "desktop-padding-left": "100.8px",
+        "desktop-padding-right": "72px",
+        "desktop-padding-bottom": "159px",
+        "heading-line-height-desktop": "clamp(44px, calc(26.738028px + 4.603192cqw), 93.024px)",
+        "heading-line-height-mobile": "44px",
+        "heading-letter-spacing-desktop": "clamp(-4px, calc(-0.619718px - 0.234742cqw), -1.5px)",
+        "heading-letter-spacing-mobile": "-1.5px",
+        "lead-line-height-desktop": "clamp(26px, 2.325vw, 33.48px)",
+        "lead-line-height-mobile": "26px",
+        "content-gap-mobile": "20px",
+        "copy-gap-desktop": "36px",
+        "buttons-gap-desktop": "34px",
+        "buttons-margin-desktop": "38px"
+      },
+      "practice-highlights": {
+        "mobile-padding-block": "40px"
+      },
+      "experience": {
+        "desktop-padding-block": "130px",
+        "desktop-padding-inline": "100.8px",
+        "desktop-header-gap": "70px",
+        "desktop-card-gap": "25.55px",
+        "desktop-image-height": "390px",
+        "desktop-card-padding": "44px",
+        "mobile-image-height": "180px"
+      },
+      "team": {
+        "image-height-mobile": "300px",
+        "image-height-desktop": "375px",
+        "grid-gap-desktop": "18.53px",
+        "grid-margin-desktop": "75px",
+        "card-stagger": "54px",
+        "cta-margin-desktop": "35px"
+      },
+      "faq": {
+        "desktop-column-width": "372px"
+      },
+      "footer-cta": {
+        "content-width": "960px",
+        "copy-width": "640px",
+        "button-width-mobile": "256px",
+        "content-gap-mobile": "20px",
+        "content-gap-desktop": "40px"
+      },
+      "footer": {
+        "content-width": "1223.406px",
+        "desktop-padding-top": "85px",
+        "desktop-padding-inline": "100.8px",
+        "desktop-padding-bottom": "34px",
+        "brand-column-width": "453.328px",
+        "standard-column-width": "184.695px",
+        "column-gap": "72px",
+        "description-width": "360px",
+        "description-gap": "28px",
+        "legal-margin-top": "117px",
+        "legal-padding-top": "23px",
+        "mobile-legal-padding-top": "20px",
+        "mobile-padding-block": "40px"
+      }
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "var(--wp--preset--font-size--b-4)",
+      "fontWeight": "400",
+      "lineHeight": "var(--wp--custom--line-height--b-4)"
+    },
+    "elements": {
+      "h1": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-1)",
+          "fontWeight": "400",
+          "letterSpacing": "-4px",
+          "lineHeight": "var(--wp--custom--line-height--h-1)",
+          "textTransform": "none"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-2)",
+          "fontWeight": "400",
+          "letterSpacing": "-0.03em",
+          "lineHeight": "var(--wp--custom--line-height--h-2)",
+          "textTransform": "none"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-3)",
+          "fontWeight": "400",
+          "letterSpacing": "-1px",
+          "lineHeight": "var(--wp--custom--line-height--h-3)",
+          "textTransform": "none"
+        }
+      },
+      "h4": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-4)",
+          "fontWeight": "400",
+          "letterSpacing": "0",
+          "lineHeight": "var(--wp--custom--line-height--h-4)",
+          "textTransform": "none"
+        }
+      },
+      "h5": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-5)",
+          "fontWeight": "400",
+          "letterSpacing": "0",
+          "lineHeight": "var(--wp--custom--line-height--h-5)",
+          "textTransform": "none"
+        }
+      },
+      "h6": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)",
+          "fontSize": "var(--wp--preset--font-size--h-6)",
+          "fontWeight": "400",
+          "letterSpacing": "0",
+          "lineHeight": "var(--wp--custom--line-height--h-6)",
+          "textTransform": "none"
+        }
+      },
+      "button": {
+        "border": {
+          "color": "transparent",
+          "radius": "0",
+          "style": "solid",
+          "width": "0"
+        },
+        "color": {
+          "background": "var(--wp--preset--color--primary)",
+          "text": "var(--wp--preset--color--white)"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0",
+            "right": "var(--wp--preset--spacing--24)",
+            "bottom": "0",
+            "left": "var(--wp--preset--spacing--24)"
+          }
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--button)",
+          "fontSize": "var(--wp--preset--font-size--b-5)",
+          "fontWeight": "400",
+          "letterSpacing": "1.44px",
+          "lineHeight": "var(--wp--custom--line-height--button)",
+          "textTransform": "uppercase"
+        },
+        ":hover": {
+          "color": {
+            "background": "var(--wp--preset--color--primary-hover)",
+            "text": "var(--wp--preset--color--white)"
+          }
+        },
+        ":focus": {
+          "outline": {
+            "color": "var(--wp--preset--color--primary)",
+            "offset": "0",
+            "style": "solid",
+            "width": "2px"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/button": {
+        "css": "& { align-items: center; box-sizing: border-box; display: inline-flex; gap: var(--wp--preset--spacing--32); justify-content: center; min-height: 54px; position: relative; } &:focus-visible { outline: 2px solid var(--wp--preset--color--primary); outline-offset: 0; } &:where([aria-disabled='true'], .is-disabled) { cursor: not-allowed; opacity: 0.45; pointer-events: none; }",
+        "variations": {
+          "primary": {
+            "border": {
+              "color": "transparent",
+              "radius": "0",
+              "style": "solid",
+              "width": "0"
+            },
+            "color": {
+              "background": "var(--wp--preset--color--primary)",
+              "text": "var(--wp--preset--color--white)"
+            },
+            "css": "&:hover { background: var(--wp--preset--color--primary-hover); color: var(--wp--preset--color--white); } &:where([aria-disabled='true'], .is-disabled) { opacity: 0.45; }"
+          },
+          "outline": {
+            "border": {
+              "color": "var(--wp--preset--color--primary)",
+              "radius": "0",
+              "style": "solid",
+              "width": "2px"
+            },
+            "color": {
+              "background": "transparent",
+              "text": "var(--wp--preset--color--primary)"
+            },
+            "css": "&:hover { background: var(--wp--preset--color--primary-subtle); border-color: var(--wp--preset--color--primary-hover); color: var(--wp--preset--color--primary-hover); } &:where([aria-disabled='true'], .is-disabled) { opacity: 0.4; }"
+          },
+          "text": {
+            "border": {
+              "color": "transparent",
+              "radius": "0",
+              "style": "solid",
+              "width": "0"
+            },
+            "color": {
+              "background": "transparent",
+              "text": "var(--wp--preset--color--button-text)"
+            },
+            "spacing": {
+              "padding": {
+                "top": "var(--wp--preset--spacing--8)",
+                "right": "0",
+                "bottom": "var(--wp--preset--spacing--8)",
+                "left": "0"
+              }
+            },
+            "css": "& { gap: var(--wp--preset--spacing--16); min-height: 34px; } &:hover { background: transparent; color: var(--wp--preset--color--primary); text-decoration: none; } &:where([aria-disabled='true'], .is-disabled) { opacity: 0.35; }"
+          }
+        }
       }
     }
   }

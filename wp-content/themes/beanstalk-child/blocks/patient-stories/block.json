@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "white-oaks/patient-stories",
+  "version": "1.0.0",
+  "title": "Patient Stories",
+  "category": "design",
+  "icon": "format-quote",
+  "description": "An accessible carousel of editable testimonials.",
+  "keywords": ["quote", "review", "testimonials"],
+  "textdomain": "beanstalk-child",
+  "attributes": {
+    "eyebrow": {"type": "string", "default": "Your Eyebrow Here"},
+    "heading": {"type": "string", "default": "Your Headline Here Across Generations"},
+    "rating": {"type": "string", "default": "4.9"},
+    "reviewSummary": {"type": "string", "default": "Add review summary."},
+    "backgroundColorSlug": {"type": "string", "default": "light"},
+    "textColorSlug": {"type": "string", "default": "dark"},
+    "testimonials": {
+      "type": "array",
+      "default": [
+        {"quote": "Add a customer story that explains the experience, describes the thoughtful details that mattered, and communicates a meaningful outcome in approximately this amount of editable text.", "reviewer": "Reviewer Name", "source": "Review Source"},
+        {"quote": "Add another customer story that gives visitors a useful perspective, highlights the quality of the experience, and uses clear language that feels specific, credible, and personal.", "reviewer": "Reviewer Name", "source": "Review Source"},
+        {"quote": "Add a final customer story that describes what stood out, how the experience made a difference, and why the reviewer would confidently recommend it to someone else.", "reviewer": "Reviewer Name", "source": "Review Source"}
+      ]
+    }
+  },
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./build/editor.min.css",
+  "style": "file:./build/style.min.css",
+  "viewScript": "file:./build/view.min.js",
+  "render": "file:./render.php"
+}

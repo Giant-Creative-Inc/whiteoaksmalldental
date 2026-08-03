@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "white-oaks/service-tabs",
+  "version": "1.0.0",
+  "title": "Service Tabs",
+  "category": "design",
+  "icon": "index-card",
+  "description": "Accessible, editable dental-service tabs.",
+  "keywords": ["services", "tabs", "dental"],
+  "textdomain": "beanstalk-child",
+  "attributes": {
+    "initialActive": {
+      "type": "number",
+      "default": 0
+    },
+    "headingLevel": {
+      "type": "number",
+      "default": 3
+    },
+    "instanceId": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "html": false
+  },
+  "providesContext": {
+    "white-oaks/headingLevel": "headingLevel"
+  },
+  "allowedBlocks": ["white-oaks/service-tab"],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./build/editor.min.css",
+  "viewScriptModule": "file:./build/view.min.js",
+  "render": "file:./render.php"
+}

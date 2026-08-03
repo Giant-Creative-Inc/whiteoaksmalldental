@@ -39,8 +39,8 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p qa-results
-          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --extensions=php beanstalk beanstalk-child --report=full > qa-results/phpcs.log 2>&1 || true
-          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --extensions=php beanstalk beanstalk-child --report=json > qa-results/phpcs.json 2>/dev/null || true
+          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --runtime-set text_domain 'beanstalk,beanstalk-child' --ignore='*/index.asset.php' --extensions=php beanstalk beanstalk-child --report=full > qa-results/phpcs.log 2>&1 || true
+          beanstalk/vendor/bin/phpcs --standard=beanstalk/phpcs.xml.dist --runtime-set text_domain 'beanstalk,beanstalk-child' --ignore='*/index.asset.php' --extensions=php beanstalk beanstalk-child --report=json > qa-results/phpcs.json 2>/dev/null || true
       - name: Validate all theme.json files
         continue-on-error: true
         run: |

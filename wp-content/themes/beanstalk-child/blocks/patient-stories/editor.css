@@ -1,0 +1,32 @@
+.patient-stories-editor {
+	display: grid;
+	gap: var(--wp--preset--spacing--32);
+	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	padding: var(--wp--preset--spacing--48);
+}
+
+.patient-stories-editor__summary,
+.patient-stories-editor__stories,
+.patient-stories-editor__story {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--16);
+}
+
+.patient-stories-editor__story {
+	background: var(--wp--preset--color--white);
+	padding: var(--wp--preset--spacing--20);
+}
+
+.patient-stories-editor__label {
+	font-family: var(--wp--preset--font-family--button);
+	font-size: var(--wp--preset--font-size--b-6);
+	text-transform: uppercase;
+}
+
+@media (max-width: 782px) {
+	.patient-stories-editor {
+		grid-template-columns: 1fr;
+		padding: var(--wp--preset--spacing--16);
+	}
+}

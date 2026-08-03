@@ -1,0 +1,72 @@
+.service-tabs-editor {
+	border: 1px solid var(--wp--preset--color--service-tabs-border);
+	padding: 16px;
+}
+
+.service-tabs-editor__selector {
+	display: grid;
+	gap: 8px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	margin-bottom: 20px;
+}
+
+.service-tabs-editor__selector button {
+	background: var(--wp--preset--color--white);
+	border: 1px solid var(--wp--preset--color--header-border);
+	color: var(--wp--preset--color--primary-shade-600);
+	cursor: pointer;
+	padding: 12px;
+}
+
+.service-tabs-editor__selector button.is-active {
+	background: var(--wp--preset--color--experience-background);
+	border-color: var(--wp--preset--color--primary);
+}
+
+.service-tabs-editor__selector button:focus-visible {
+	outline: 2px solid var(--wp--preset--color--primary);
+	outline-offset: 2px;
+}
+
+.service-tabs-editor__empty {
+	background: var(--wp--preset--color--experience-background);
+	padding: 24px;
+}
+
+.service-tab-editor {
+	background: var(--wp--preset--color--experience-background);
+	display: none;
+	padding: 24px;
+}
+
+.service-tab-editor.is-selected,
+.service-tab-editor.has-child-selected {
+	display: block;
+}
+
+.service-tab-editor__label {
+	color: var(--wp--preset--color--primary);
+	font-family: var(--wp--preset--font-family--button);
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.service-tab-editor__heading {
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.service-tab-editor__treatment,
+.service-tab-editor__appointment {
+	border-top: 1px solid var(--wp--preset--color--header-border);
+	display: grid;
+	gap: 12px;
+	grid-template-columns: 1fr 1fr auto;
+	padding-block: 12px;
+}
+
+.service-tab-editor__appointment {
+	grid-template-columns: 1fr 1fr;
+	margin-top: 20px;
+}

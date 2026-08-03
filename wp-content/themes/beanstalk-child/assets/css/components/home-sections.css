@@ -1,0 +1,257 @@
+@reference "../tailwind-theme.css";
+
+.meet-dentists {
+  @apply px-wp-24 py-wp-48;
+  background: var(--wp--preset--color--experience-background);
+}
+
+.meet-dentists__header {
+  @apply flex flex-col gap-wp-12;
+}
+
+.meet-dentists__heading-group {
+  @apply flex w-full flex-col gap-wp-12;
+}
+
+.meet-dentists__eyebrow,
+.meet-dentists__title,
+.meet-dentists__intro,
+.meet-dentists__role,
+.meet-dentists__name,
+.meet-dentists__specialty,
+.meet-dentists__number {
+  @apply m-0;
+}
+
+.meet-dentists__eyebrow { font-weight: 750; }
+
+.meet-dentists__title {
+  letter-spacing: var(--wp--custom--letter-spacing--team-heading);
+  line-height: var(--wp--custom--line-height--team-heading);
+}
+
+.meet-dentists__intro { @apply w-full; }
+
+.meet-dentists__grid {
+  @apply mt-wp-32 grid grid-cols-1 gap-wp-16;
+}
+
+.meet-dentists__grid > * { margin-block-start: 0; }
+
+.meet-dentists__card {
+  @apply flex min-w-0 flex-col overflow-hidden;
+}
+
+.meet-dentists__card > * { margin-block-start: 0; }
+
+.meet-dentists__media {
+  height: var(--wp--custom--team--image-height-mobile);
+  min-height: 0;
+}
+
+.meet-dentists__media .wp-block-cover__inner-container {
+  @apply absolute inset-0;
+}
+
+.meet-dentists__number {
+  @apply absolute bottom-wp-12 right-wp-12;
+}
+
+.meet-dentists__card-content {
+  @apply flex flex-col gap-wp-8 border-b border-why-oaks-divider p-wp-16;
+}
+
+.meet-dentists__card-content > * { margin-block-start: 0; }
+
+.meet-dentists__role { letter-spacing: var(--wp--custom--letter-spacing--team-card-role); }
+
+.meet-dentists__name {
+  letter-spacing: var(--wp--custom--letter-spacing--team-card-heading);
+  line-height: var(--wp--custom--line-height--team-card-heading);
+}
+
+.meet-dentists__specialty {
+  letter-spacing: var(--wp--custom--letter-spacing--team-card-specialty);
+  line-height: var(--wp--custom--line-height--button);
+}
+
+.meet-dentists__cta {
+  @apply mt-wp-32 flex w-full items-center justify-between gap-wp-16 border-0 p-0;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.meet-dentists__cta > * { margin-block-start: 0; }
+.meet-dentists__cta-button { @apply whitespace-nowrap; }
+
+.meet-dentists__cta-button .wp-block-button__link {
+  @apply text-b-6 font-bold tracking-[0.96px];
+}
+
+.home-faqs { @apply px-wp-24 py-wp-48; }
+
+.home-faqs__inner {
+  @apply grid grid-cols-1 gap-wp-32;
+}
+
+.home-faqs__intro {
+  @apply flex flex-col gap-wp-12;
+}
+
+.home-faqs__intro > * { margin-block-start: 0; }
+.home-faqs__eyebrow,
+.home-faqs__heading,
+.home-faqs__copy { @apply m-0; }
+.home-faqs__eyebrow { font-weight: 750; }
+
+.home-faqs__copy {
+  @apply font-body text-b-5;
+}
+
+.home-faqs__copy a {
+  @apply font-button font-[650];
+}
+
+.home-faqs__list { @apply border-t border-service-tabs-border; }
+
+.home-faqs__item {
+  @apply border-b border-service-tabs-border;
+}
+
+.home-faqs__item summary {
+  @apply flex cursor-pointer list-none items-center gap-wp-12 py-wp-24;
+}
+
+.home-faqs__item summary em {
+  @apply shrink-0 font-heading text-b-5 font-normal text-primary;
+}
+
+.home-faqs__item summary span {
+  @apply min-w-0 flex-1 font-heading text-b-4 font-bold leading-none;
+}
+
+.home-faqs__item summary strong {
+  @apply flex size-wp-32 shrink-0 items-center justify-center font-heading text-h-6 font-normal transition-transform duration-150;
+}
+
+.home-faqs__item[open] summary strong { @apply rotate-45; }
+.home-faqs__item[open] .home-faqs__answer { animation: faq-open 200ms ease-out; }
+
+.home-faqs__answer {
+  @apply m-0 pb-wp-24 pl-wp-32 pr-wp-32;
+}
+
+.footer-cta {
+  @apply px-wp-24 py-wp-24;
+}
+
+.footer-cta .footer-cta__content {
+  @apply flex flex-col gap-footer-cta-content-mobile!;
+  max-width: var(--wp--custom--footer-cta--content-width);
+}
+
+.footer-cta__heading,
+.footer-cta__copy { @apply m-0; }
+
+.footer-cta__copy { max-width: var(--wp--custom--footer-cta--copy-width); }
+
+.footer-cta .footer-cta__buttons {
+  @apply flex w-full flex-col items-start gap-wp-24;
+  gap: var(--wp--preset--spacing--24);
+  max-width: var(--wp--custom--footer-cta--button-width-mobile);
+}
+
+.footer-cta__primary {
+  @apply w-full;
+  max-width: var(--wp--custom--footer-cta--button-width-mobile);
+}
+
+.footer-cta__primary .wp-block-button__link { @apply w-full; }
+.footer-cta__phone { margin-left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-faqs__item[open] .home-faqs__answer { animation: none; }
+}
+
+@media (min-width: 768px) {
+  .meet-dentists__grid { @apply grid-cols-2; }
+}
+
+@media (min-width: 1025px) {
+  .meet-dentists {
+    @apply py-wp-128;
+    background: var(--wp--preset--color--white);
+  }
+
+  .meet-dentists__header {
+    @apply flex-row items-end justify-between gap-wp-48;
+  }
+
+  .meet-dentists__heading-group {
+    @apply gap-wp-24;
+    max-width: 684px;
+  }
+
+  .meet-dentists__intro { max-width: 410px; }
+
+  .meet-dentists__grid {
+    @apply grid-cols-4;
+    gap: var(--wp--custom--team--grid-gap-desktop);
+    margin-top: var(--wp--custom--team--grid-margin-desktop);
+    padding-bottom: var(--wp--custom--team--card-stagger);
+  }
+
+  .meet-dentists__card--staggered { transform: translateY(var(--wp--custom--team--card-stagger)); }
+  .meet-dentists__media { height: var(--wp--custom--team--image-height-desktop); }
+  .meet-dentists__card-content { @apply px-wp-4 py-wp-24; }
+
+  .meet-dentists__cta {
+    @apply w-fit justify-start;
+    margin-left: max(0px, calc((100vw - var(--wp--style--global--wide-size)) / 2 - var(--wp--preset--spacing--16)));
+    margin-top: var(--wp--custom--team--cta-margin-desktop);
+  }
+
+  .home-faqs {
+    padding-block: var(--wp--preset--spacing--120);
+    padding-inline: max(var(--wp--preset--spacing--24), calc((100vw - var(--wp--style--global--wide-size)) / 2));
+  }
+
+  .home-faqs__inner {
+    grid-template-columns: var(--wp--custom--faq--desktop-column-width) minmax(0, 1fr);
+    gap: var(--wp--preset--spacing--128);
+  }
+
+  .home-faqs__copy {
+    @apply mt-wp-32 font-button text-b-6;
+  }
+
+  .home-faqs__item summary { @apply py-wp-32; }
+  .home-faqs__item summary em { @apply text-b-6; }
+
+  .home-faqs__item summary span {
+    @apply text-h-3 font-normal;
+    line-height: var(--wp--custom--line-height--h-3);
+  }
+
+  .home-faqs__item summary strong {
+    @apply size-wp-48 rounded-full border border-service-tabs-border;
+  }
+
+  .home-faqs__answer { @apply pb-wp-32 pl-wp-64 pr-wp-64; }
+
+  .footer-cta {
+    @apply py-wp-128;
+    padding-inline: max(var(--wp--preset--spacing--24), calc((100vw - var(--wp--style--global--wide-size)) / 2));
+  }
+  .footer-cta .footer-cta__content {
+    @apply gap-footer-cta-content-desktop!;
+  }
+  .footer-cta__heading { line-height: var(--wp--custom--hero--heading-line-height-desktop); }
+
+  .footer-cta .footer-cta__buttons {
+    @apply max-w-none flex-row items-center gap-wp-32;
+    gap: var(--wp--preset--spacing--32);
+  }
+
+  .footer-cta__primary { @apply w-auto max-w-none; }
+}

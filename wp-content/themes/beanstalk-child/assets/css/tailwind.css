@@ -1,0 +1,11 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@import "./tailwind-theme.css" layer(theme);
+@import "./components/home-sections.css";
+
+@source "../../parts";
+@source "../../patterns";
+@source "../../templates";
+@source "../../functions.php";
+@source "../../blocks";
