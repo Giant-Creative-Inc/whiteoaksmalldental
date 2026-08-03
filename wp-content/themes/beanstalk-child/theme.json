@@ -79,7 +79,16 @@
         {
           "fontFamily": "Inter, Arial, sans-serif",
           "name": "Inter",
-          "slug": "button"
+          "slug": "button",
+          "fontFace": [
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "400 900",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/inter-variable-latin.woff2"]
+            }
+          ]
         }
       ],
       "fontSizes": [

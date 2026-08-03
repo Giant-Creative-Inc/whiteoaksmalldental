@@ -313,6 +313,10 @@
   gap: var(--wp--preset--spacing--12);
 }
 
+.site-footer__navigation .wp-block-navigation-item__content {
+  @apply inline-flex min-h-6 items-center;
+}
+
 .site-footer a {
   @apply no-underline;
   color: inherit;

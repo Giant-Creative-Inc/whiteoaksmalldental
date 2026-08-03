@@ -64,18 +64,10 @@ function beanstalk_child_enqueue_styles() {
 		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Versioned by the external provider.
 	);
 
-	// Google controls the hosted font stylesheet version.
-	wp_enqueue_style(
-		'white-oaks-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap',
-		array(),
-		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Versioned by the external provider.
-	);
-
 	wp_enqueue_style(
 		'beanstalk-child',
 		get_stylesheet_directory_uri() . '/assets/css/build/custom.min.css',
-		array( 'beanstalk-custom', 'white-oaks-adobe-fonts', 'white-oaks-google-fonts' ),
+		array( 'beanstalk-custom', 'white-oaks-adobe-fonts' ),
 		beanstalk_child_asset_version( '/assets/css/build/custom.min.css' )
 	);
 
@@ -96,6 +88,56 @@ function beanstalk_child_enqueue_styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'beanstalk_child_enqueue_styles', 20 );
+
+/**
+ * Adds early connection hints for the approved external font provider.
+ *
+ * @param array  $urls          URLs queued for the relationship type.
+ * @param string $relation_type Resource-hint relationship type.
+ * @return array
+ */
+function white_oaks_font_resource_hints( $urls, $relation_type ) {
+	if ( 'preconnect' !== $relation_type ) {
+		return $urls;
+	}
+
+	$urls[] = array(
+		'href'        => 'https://use.typekit.net',
+		'crossorigin' => 'anonymous',
+	);
+	$urls[] = array(
+		'href'        => 'https://p.typekit.net',
+		'crossorigin' => 'anonymous',
+	);
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'white_oaks_font_resource_hints', 10, 2 );
+
+/**
+ * Supplies intrinsic dimensions for the shared SVG logo attachment.
+ *
+ * WordPress cannot derive raster metadata from this sanitized SVG upload, so
+ * add its approved 150:56 aspect ratio at render time without changing saved
+ * block markup or Media Library data.
+ *
+ * @param string $block_content Rendered Image block markup.
+ * @param array  $block         Parsed Image block.
+ * @return string
+ */
+function white_oaks_add_logo_dimensions( $block_content, $block ) {
+	if ( 9 !== (int) ( $block['attrs']['id'] ?? 0 ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $block_content;
+	}
+
+	$processor = new WP_HTML_Tag_Processor( $block_content );
+	if ( $processor->next_tag( 'img' ) ) {
+		$processor->set_attribute( 'width', '150' );
+		$processor->set_attribute( 'height', '56' );
+	}
+
+	return $processor->get_updated_html();
+}
+add_filter( 'render_block_core/image', 'white_oaks_add_logo_dimensions', 10, 2 );
 
 /**
  * Suppresses the parent's unused Poppins request while preserving its handle
@@ -127,7 +169,6 @@ function white_oaks_child_editor_styles() {
 		array_merge(
 			array(
 				'https://use.typekit.net/pnx3ojj.css',
-				'https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap',
 				get_parent_theme_file_uri( 'assets/css/custom.css' ),
 			),
 			array_map(

@@ -74,7 +74,6 @@ $wrapper_attributes = get_block_wrapper_attributes(
 				type="button"
 				id="<?php echo esc_attr( $tab_id ); ?>"
 				role="tab"
-				aria-label="<?php echo esc_attr( $item['desktopLabel'] ); ?>"
 				aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 				aria-controls="<?php echo esc_attr( $panel_id ); ?>"
 				tabindex="<?php echo $is_active ? '0' : '-1'; ?>"

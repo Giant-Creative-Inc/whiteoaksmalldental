@@ -109,7 +109,12 @@
 }
 
 .home-faqs__copy a {
-  @apply font-button font-[650];
+  @apply font-button font-[650] text-primary-shade-300;
+}
+
+.home-faqs__eyebrow,
+.patient-stories__eyebrow {
+  @apply text-primary-shade-300;
 }
 
 .home-faqs__list { @apply border-t border-service-tabs-border; }
@@ -123,7 +128,7 @@
 }
 
 .home-faqs__item summary em {
-  @apply shrink-0 font-heading text-b-5 font-normal text-primary;
+  @apply shrink-0 font-heading text-b-5 font-normal text-primary-shade-300;
 }
 
 .home-faqs__item summary span {

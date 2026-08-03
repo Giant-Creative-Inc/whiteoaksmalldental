@@ -398,6 +398,10 @@
   line-height: 33px;
 }
 
+.experience-card--wellness :where(.experience-card__eyebrow, .experience-card__number) {
+  @apply text-primary-shade-300;
+}
+
 .experience-card__title {
   @apply m-0;
   color: var(--wp--preset--color--primary-shade-600);
@@ -742,7 +746,7 @@
 }
 
 .emergency-cta__copy {
-  color: var(--wp--preset--color--primary-tint-900);
+  @apply text-wp-white;
   font-family: var(--wp--preset--font-family--body);
   font-size: var(--wp--preset--font-size--emergency-copy);
   line-height: var(--wp--custom--line-height--emergency-copy);
