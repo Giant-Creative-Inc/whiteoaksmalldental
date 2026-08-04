@@ -119,7 +119,7 @@ function beanstalk_child_enqueue_styles() {
 	wp_enqueue_style(
 		'beanstalk-child',
 		get_stylesheet_directory_uri() . '/assets/css/build/custom.min.css',
-		array( 'beanstalk-custom', 'white-oaks-adobe-fonts' ),
+		array( 'beanstalk-custom' ),
 		beanstalk_child_asset_version( '/assets/css/build/custom.min.css' )
 	);
 
@@ -140,6 +140,28 @@ function beanstalk_child_enqueue_styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'beanstalk_child_enqueue_styles', 20 );
+
+/**
+ * Loads Adobe Fonts CSS without blocking the initial render.
+ *
+ * @param string $html   Stylesheet HTML.
+ * @param string $handle Stylesheet handle.
+ * @return string
+ */
+function white_oaks_async_adobe_fonts( $html, $handle ) {
+	if ( 'white-oaks-adobe-fonts' !== $handle ) {
+		return $html;
+	}
+
+	$href = 'https://use.typekit.net/bax3ecf.css';
+
+	return sprintf(
+		'<link rel="preload" href="%1$s" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n" .
+		'<noscript><link rel="stylesheet" href="%1$s"></noscript>' . "\n",
+		esc_url( $href )
+	);
+}
+add_filter( 'style_loader_tag', 'white_oaks_async_adobe_fonts', 10, 2 );
 
 /**
  * Adds early connection hints for the approved external font provider.
