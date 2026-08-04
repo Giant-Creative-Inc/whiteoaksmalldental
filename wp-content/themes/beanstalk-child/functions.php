@@ -111,7 +111,7 @@ function beanstalk_child_enqueue_styles() {
 	// The external provider controls the Typekit stylesheet version.
 	wp_enqueue_style(
 		'white-oaks-adobe-fonts',
-		'https://use.typekit.net/pnx3ojj.css',
+		'https://use.typekit.net/bax3ecf.css',
 		array(),
 		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Versioned by the external provider.
 	);
@@ -285,7 +285,7 @@ function white_oaks_child_editor_styles() {
 	add_editor_style(
 		array_merge(
 			array(
-				'https://use.typekit.net/pnx3ojj.css',
+				'https://use.typekit.net/bax3ecf.css',
 				get_parent_theme_file_uri( 'assets/css/custom.css' ),
 			),
 			array_map(
