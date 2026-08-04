@@ -20,6 +20,58 @@ function beanstalk_child_asset_version( $relative_path ) {
 }
 
 /**
+ * Returns the decorative diagonal arrow used by actionable buttons.
+ *
+ * The path uses currentColor so every button style controls the icon colour.
+ *
+ * @return string Trusted inline SVG markup.
+ */
+function white_oaks_button_arrow_svg() {
+	return '<svg class="button-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3.335 9.789 2.29 8.74l4.76-4.764H3.455l.009-1.432h6.061v6.067H8.09l.009-3.592z"/></svg>';
+}
+
+/**
+ * Replaces diagonal-arrow text in core Button output with the shared SVG.
+ *
+ * Saved block markup remains unchanged so Gutenberg validation is unaffected.
+ *
+ * @param string $block_content Rendered Button block markup.
+ * @return string
+ */
+function white_oaks_render_button_arrow( $block_content ) {
+	if ( ! str_contains( $block_content, '↗' ) ) {
+		return $block_content;
+	}
+
+	$svg = white_oaks_button_arrow_svg();
+
+	$block_content = str_replace( '<span aria-hidden="true">↗</span>', $svg, $block_content );
+
+	return str_replace( '↗', $svg, $block_content );
+}
+add_filter( 'render_block_core/button', 'white_oaks_render_button_arrow' );
+
+/**
+ * Replaces the emergency phone link's diagonal-arrow text with the shared SVG.
+ *
+ * @param string $block_content Rendered Paragraph block markup.
+ * @param array  $block         Parsed Paragraph block.
+ * @return string
+ */
+function white_oaks_render_emergency_phone_arrow( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if ( ! str_contains( $class_name, 'emergency-cta__phone' ) || ! str_contains( $block_content, '↗' ) ) {
+		return $block_content;
+	}
+
+	$arrow_markup = '<span class="emergency-cta__phone-arrow" aria-hidden="true">' . white_oaks_button_arrow_svg() . '</span>';
+
+	return str_replace( '<span class="emergency-cta__phone-arrow" aria-hidden="true">↗</span>', $arrow_markup, $block_content );
+}
+add_filter( 'render_block_core/paragraph', 'white_oaks_render_emergency_phone_arrow', 10, 2 );
+
+/**
  * Versions child-theme CSS and JavaScript URLs using each file's edit time.
  *
  * This also covers assets registered from block.json, whose metadata version

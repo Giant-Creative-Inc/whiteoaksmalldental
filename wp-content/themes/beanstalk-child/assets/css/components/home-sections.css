@@ -77,8 +77,6 @@
 
 .meet-dentists__cta {
   @apply mt-wp-32 flex w-full items-center justify-between gap-wp-16 border-0 p-0;
-  margin-left: 0;
-  margin-right: auto;
 }
 
 .meet-dentists__cta > * { margin-block-start: 0; }
@@ -211,8 +209,7 @@
   .meet-dentists__card-content { @apply px-wp-4 py-wp-24; }
 
   .meet-dentists__cta {
-    @apply w-fit justify-start;
-    margin-left: max(0px, calc((100vw - var(--wp--style--global--wide-size)) / 2 - var(--wp--preset--spacing--16)));
+    @apply w-full justify-start;
     margin-top: var(--wp--custom--team--cta-margin-desktop);
   }
 

@@ -1,36 +1,26 @@
+@reference "../../assets/css/tailwind.css";
+
 .wp-block-white-oaks-service-tabs {
+	@apply my-0 grid w-full;
 	border-block: 1px solid var(--wp--preset--color--service-tabs-border);
-	display: grid;
 	grid-template-columns: minmax(280px, 40%) minmax(0, 60%);
-	margin-block: 0;
-	width: 100%;
 }
 
 .white-oaks-service-tabs__tablist {
+	@apply flex flex-col;
 	border-inline: 1px solid var(--wp--preset--color--service-tabs-border);
-	display: flex;
-	flex-direction: column;
 }
 
 .white-oaks-service-tabs__tab {
-	align-items: center;
-	background: transparent;
-	border: 0;
+	@apply grid w-full cursor-pointer items-center border-0 bg-transparent text-left font-button text-b-4 font-normal;
 	border-bottom: 1px solid var(--wp--preset--color--service-tabs-border);
 	color: var(--wp--preset--color--primary-shade-600);
-	cursor: pointer;
-	display: grid;
-	font-family: var(--wp--preset--font-family--button);
-	font-size: var(--wp--preset--font-size--b-4);
-	font-weight: 400;
 	gap: 10px;
 	grid-template-columns: 44px minmax(0, 1fr) 14px;
 	letter-spacing: -0.3125px;
 	line-height: 24px;
 	min-height: 91px;
 	padding: 0 26px 0 12px;
-	text-align: left;
-	width: 100%;
 }
 
 .white-oaks-service-tabs__tab[aria-selected="true"] {
@@ -39,44 +29,41 @@
 }
 
 .white-oaks-service-tabs__tab:focus-visible {
+	@apply relative;
 	outline: 2px solid var(--wp--preset--color--primary);
 	outline-offset: -2px;
-	position: relative;
 	z-index: 2;
 }
 
 .white-oaks-service-tabs__tab-number {
+	@apply font-heading text-b-5 italic tracking-normal;
 	color: var(--wp--preset--color--primary);
-	font-family: var(--wp--preset--font-family--heading);
-	font-size: var(--wp--preset--font-size--b-5);
-	font-style: italic;
-	letter-spacing: 0;
 	line-height: 21px;
 }
 
 .white-oaks-service-tabs__tab-label--mobile {
-	display: none;
+	@apply hidden;
 }
 
 .white-oaks-service-tabs__tab-indicator {
+	@apply opacity-0;
 	color: var(--wp--preset--color--primary);
 	font-size: 17px;
 	letter-spacing: -0.4316px;
 	line-height: 25.5px;
-	opacity: 0;
 }
 
 .white-oaks-service-tabs__tab[aria-selected="true"] .white-oaks-service-tabs__tab-indicator {
-	opacity: 1;
+	@apply opacity-100;
 }
 
 .white-oaks-service-tabs__panels {
+	@apply min-w-0;
 	border-right: 1px solid var(--wp--preset--color--service-tabs-border);
-	min-width: 0;
 }
 
 .white-oaks-service-tabs.is-enhanced .white-oaks-service-tabs__panel[hidden] {
-	display: none;
+	@apply hidden;
 }
 
 .white-oaks-service-tabs__panel.is-entering {
@@ -96,14 +83,11 @@
 }
 
 .white-oaks-service-tabs__panel {
-	box-sizing: border-box;
-	display: grid;
+	@apply relative grid box-border overflow-hidden;
 	gap: 54px;
 	grid-template-columns: minmax(230px, 1fr) minmax(220px, 256px);
 	min-height: 463px;
-	overflow: hidden;
 	padding: 50px 60px;
-	position: relative;
 }
 
 .white-oaks-service-tabs__panel + .white-oaks-service-tabs__panel {
@@ -111,33 +95,22 @@
 }
 
 .white-oaks-service-tabs__panel-main {
-	display: flex;
-	flex-direction: column;
-	min-width: 0;
-	position: relative;
+	@apply relative flex min-w-0 flex-col;
 	z-index: 1;
 }
 
 .white-oaks-service-tabs__heading {
+	@apply m-0 font-heading font-normal;
 	color: var(--wp--preset--color--primary-shade-600);
-	font-family: var(--wp--preset--font-family--heading);
 	font-size: var(--wp--preset--font-size--service-panel-heading);
-	font-weight: 400;
 	letter-spacing: -1.4256px;
 	line-height: var(--wp--custom--line-height--service-panel-heading);
-	margin: 0;
 	max-width: 470px;
 }
 
 .white-oaks-service-tabs__appointment {
-	align-items: center;
-	align-self: flex-start;
-	display: flex;
-	gap: var(--wp--preset--spacing--32);
-	justify-content: center;
-	margin-top: auto;
+	@apply mt-auto flex items-center justify-center self-start gap-wp-32 no-underline;
 	min-height: 54px;
-	text-decoration: none;
 }
 
 .white-oaks-service-tabs__appointment:focus-visible,
@@ -147,126 +120,95 @@
 }
 
 .white-oaks-service-tabs__treatments {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: relative;
+	@apply relative m-0 list-none p-0;
 	z-index: 1;
 }
 
 .white-oaks-service-tabs__treatments li {
+	@apply m-0;
 	border-bottom: 1px solid color-mix(in srgb, var(--wp--preset--color--primary) 22%, transparent);
-	margin: 0;
 }
 
 .white-oaks-service-tabs__treatments a {
-	align-items: center;
+	@apply flex items-center gap-wp-12 font-button text-b-6 no-underline;
 	color: var(--wp--preset--color--oak-orange-shade-900);
-	display: grid;
-	font-family: var(--wp--preset--font-family--button);
-	font-size: var(--wp--preset--font-size--b-6);
-	gap: 13px;
-	grid-template-columns: auto auto auto;
-	justify-content: start;
 	line-height: var(--wp--custom--line-height--button);
 	padding-block: 11px 12px;
-	text-decoration: none;
 }
 
 .white-oaks-service-tabs__star {
-	font-size: var(--wp--preset--font-size--b-6);
+	@apply text-b-6;
 	line-height: var(--wp--custom--line-height--button);
 }
 
 .white-oaks-service-tabs__link-arrow {
-	font-size: 15px;
-	line-height: 22.5px;
-	margin-left: -3px;
+  @apply ml-auto;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22.5px; /* 150% */
+  letter-spacing: -0.234px;
 }
 
 .white-oaks-service-tabs__decorative-number {
+	@apply pointer-events-none absolute font-heading italic leading-none;
 	bottom: -21px;
 	color: color-mix(in srgb, var(--wp--preset--color--primary) 7%, transparent);
-	font-family: var(--wp--preset--font-family--heading);
 	font-size: 163.422px;
-	font-style: italic;
-	line-height: 1;
-	pointer-events: none;
-	position: absolute;
 	right: 54px;
 }
 
 @media (max-width: 1024px) {
 	.wp-block-white-oaks-service-tabs {
-		border: 0;
-		display: block;
+		@apply block border-0;
 	}
 
 	.white-oaks-service-tabs__tablist {
-		border: 0;
-		display: grid;
-		gap: var(--wp--preset--spacing--8);
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		margin-bottom: var(--wp--preset--spacing--24);
+		@apply mb-wp-24 grid grid-cols-2 gap-wp-8 border-0;
 	}
 
 	.white-oaks-service-tabs__tab,
 	.white-oaks-service-tabs__tab[aria-selected="true"] {
-		background: var(--wp--preset--color--white);
+		@apply block min-h-0 bg-wp-white px-wp-16 py-wp-8 font-body text-b-6 leading-normal tracking-normal;
 		border: 1px solid var(--wp--preset--color--header-border);
 		color: var(--wp--preset--color--service-tabs-muted-text);
-		display: block;
-		font-family: var(--wp--preset--font-family--body);
-		font-size: var(--wp--preset--font-size--b-6);
-		letter-spacing: 0;
-		line-height: normal;
-		min-height: 0;
-		padding: var(--wp--preset--spacing--8) var(--wp--preset--spacing--16);
 	}
 
 	.white-oaks-service-tabs__tab[aria-selected="true"] {
-		background: var(--wp--preset--color--experience-background);
-		border-color: var(--wp--preset--color--primary);
-		color: var(--wp--preset--color--primary);
+		@apply border-primary bg-experience-background text-primary;
 	}
 
 	.white-oaks-service-tabs__tab-number,
 	.white-oaks-service-tabs__tab-label--desktop,
 	.white-oaks-service-tabs__tab-indicator {
-		display: none;
+		@apply hidden;
 	}
 
 	.white-oaks-service-tabs__tab-label--mobile {
-		display: inline;
+		@apply inline;
 	}
 
 	.white-oaks-service-tabs__panels {
-		border: 0;
+		@apply border-0;
 	}
 
 	.white-oaks-service-tabs__panel {
-		background: var(--wp--preset--color--experience-background);
-		display: flex;
-		flex-direction: column;
-		gap: var(--wp--preset--spacing--20);
-		min-height: 0;
-		padding: var(--wp--preset--spacing--16);
+		@apply flex min-h-0 flex-col gap-wp-20 bg-experience-background p-wp-16;
 	}
 
 	.white-oaks-service-tabs__panel-main {
-		display: contents;
+		@apply contents;
 	}
 
 	.white-oaks-service-tabs__heading {
+		@apply order-first tracking-normal;
 		font-size: 20px;
-		letter-spacing: 0;
 		line-height: 26px;
-		order: 0;
 	}
 
 	.white-oaks-service-tabs__treatments {
-		order: 1;
-		width: 100%;
+		@apply order-1 w-full;
 	}
 
 	.white-oaks-service-tabs__treatments li {
@@ -274,38 +216,25 @@
 	}
 
 	.white-oaks-service-tabs__treatments a {
+		@apply justify-start gap-wp-12 py-wp-12 font-body text-b-5 leading-normal;
 		color: var(--wp--preset--color--primary-shade-600);
-		font-family: var(--wp--preset--font-family--body);
-		font-size: var(--wp--preset--font-size--b-5);
-		gap: var(--wp--preset--spacing--12);
-		grid-template-columns: auto auto auto;
-		justify-content: start;
-		line-height: normal;
-		padding-block: var(--wp--preset--spacing--12);
 	}
 
 	.white-oaks-service-tabs__star {
-		color: var(--wp--preset--color--primary);
-		font-family: var(--wp--preset--font-family--body);
+		@apply font-body text-primary;
 	}
 
 	.white-oaks-service-tabs__appointment {
-		align-self: stretch;
-		justify-content: space-between;
-		margin-top: 0;
-		order: 2;
-		width: 100%;
+		@apply order-2 mt-0 w-full justify-between self-stretch;
 	}
 
 	.white-oaks-service-tabs__decorative-number {
-		display: none;
+		@apply hidden;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
 	.white-oaks-service-tabs * {
-		animation: none;
-		scroll-behavior: auto;
-		transition: none;
+		@apply animate-none scroll-auto transition-none;
 	}
 }

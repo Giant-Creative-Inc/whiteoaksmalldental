@@ -298,7 +298,7 @@
 .services-section__intro {
   @apply m-0;
   color: var(--wp--preset--color--primary-shade-600);
-  flex: 0 1 360px;
+  flex: 0 1 410px;
 }
 
 .services-section__inner > .white-oaks-service-tabs {
@@ -380,7 +380,7 @@
 }
 
 .experience-card__content {
-  @apply flex flex-1 flex-col;
+  @apply flex flex-1 flex-col mt-0;
   gap: var(--wp--preset--spacing--24);
   padding: 42px var(--wp--custom--experience--desktop-card-padding) 46px;
 }
@@ -452,6 +452,12 @@
 }
 
 @media (max-width: 1024px) {
+  .experience-card__cta .wp-block-button {
+    @apply flex-grow;
+  }
+  .experience-card__cta .wp-block-button__link {
+    @apply justify-between;
+  }
   .experience-section {
     padding: var(--wp--preset--spacing--48) var(--wp--preset--spacing--24);
   }
@@ -527,6 +533,8 @@
   max-width: var(--wp--custom--hero--desktop-copy-width);
 }
 
+.homepage-hero__heading-keep { @apply whitespace-nowrap; }
+
 .homepage-hero__lead {
   color: var(--wp--preset--color--primary-shade-600);
   font-family: var(--wp--preset--font-family--heading);
@@ -553,15 +561,11 @@
 
 @media (max-width: 1024px) {
   .homepage-hero {
-    min-height: var(--wp--custom--hero--mobile-height);
+    min-height: 420px;
   }
 
   .homepage-hero .wp-block-cover__image-background {
-    @apply top-0;
-    height: 54.8%;
-    left: -24.43%;
-    object-position: center;
-    width: 148.86%;
+    @apply top-0 w-full h-auto;
   }
 
   .homepage-hero .wp-block-cover__background {
@@ -571,13 +575,15 @@
   .homepage-hero__content {
     @apply w-full max-w-none justify-end;
     gap: var(--wp--custom--hero--content-gap-mobile);
-    height: var(--wp--custom--hero--mobile-height);
+    height: 720px;
     padding: var(--wp--preset--spacing--24);
   }
 
   .homepage-hero__heading {
     @apply max-w-none;
   }
+
+  .homepage-hero__heading-keep { @apply whitespace-normal; }
 
   .homepage-hero__lead {
     @apply mt-0 max-w-none;
@@ -597,6 +603,12 @@
   .homepage-hero__primary,
   .homepage-hero__primary .wp-block-button__link {
     @apply w-full;
+  }
+}
+
+@media (max-width: 767px) {
+  .homepage-hero__content {
+    height: 547px;
   }
 }
 

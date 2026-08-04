@@ -6,14 +6,21 @@
  */
 
 $items = array();
+$service_tab_type = WP_Block_Type_Registry::get_instance()->get_registered( 'white-oaks/service-tab' );
 
 foreach ( $block->parsed_block['innerBlocks'] ?? array() as $inner_block ) {
 	if ( 'white-oaks/service-tab' !== ( $inner_block['blockName'] ?? '' ) ) {
 		continue;
 	}
 
+	$item_attributes = $inner_block['attrs'] ?? array();
+
+	if ( $service_tab_type ) {
+		$item_attributes = $service_tab_type->prepare_attributes_for_render( $item_attributes );
+	}
+
 	$items[] = wp_parse_args(
-		$inner_block['attrs'] ?? array(),
+		$item_attributes,
 		array(
 			'number'       => '',
 			'mobileLabel'  => '',
@@ -84,7 +91,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 				<span class="white-oaks-service-tabs__tab-number" aria-hidden="true"><?php echo esc_html( $item['number'] ); ?></span>
 				<span class="white-oaks-service-tabs__tab-label white-oaks-service-tabs__tab-label--desktop"><?php echo esc_html( $item['desktopLabel'] ); ?></span>
 				<span class="white-oaks-service-tabs__tab-label white-oaks-service-tabs__tab-label--mobile"><?php echo esc_html( $item['mobileLabel'] ); ?></span>
-				<span class="white-oaks-service-tabs__tab-indicator" aria-hidden="true">↗</span>
+				<span class="white-oaks-service-tabs__tab-indicator" aria-hidden="true"><?php echo white_oaks_button_arrow_svg(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static trusted SVG. ?></span>
 			</button>
 		<?php endforeach; ?>
 	</div>
@@ -109,7 +116,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 
 					<a href="<?php echo esc_url( $item['buttonUrl'] ); ?>" class="wp-element-button white-oaks-service-tabs__appointment">
 						<span><?php echo esc_html( $item['buttonLabel'] ); ?></span>
-						<span aria-hidden="true">↗</span>
+						<?php echo white_oaks_button_arrow_svg(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static trusted SVG. ?>
 					</a>
 				</div>
 
@@ -119,7 +126,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 							<a href="<?php echo esc_url( $treatment['url'] ?? '' ); ?>" class="white-oaks-service-tabs__treatment-link">
 								<span class="white-oaks-service-tabs__star" aria-hidden="true">✦</span>
 								<span><?php echo esc_html( $treatment['label'] ?? '' ); ?></span>
-								<span class="white-oaks-service-tabs__link-arrow" aria-hidden="true">→</span>
+								<span class="white-oaks-service-tabs__link-arrow" aria-hidden="true"><svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.18963 9.54541L5.36932 8.73575L8.74645 5.35862H0V4.18675H8.74645L5.36932 0.820268L6.18963 -4.42266e-05L10.9624 4.77268L6.18963 9.54541Z" fill="#160F07"/></svg></span>
 							</a>
 						</li>
 					<?php endforeach; ?>
