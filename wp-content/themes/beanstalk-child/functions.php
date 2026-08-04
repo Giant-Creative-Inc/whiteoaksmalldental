@@ -249,36 +249,6 @@ function white_oaks_hero_cover_image_attributes( $block_content, $block ) {
 add_filter( 'render_block_core/cover', 'white_oaks_hero_cover_image_attributes', 9, 2 );
 
 /**
- * Preloads the responsive homepage hero image selected by the browser.
- *
- * @param array $resources Resources WordPress will preload.
- * @return array
- */
-function white_oaks_preload_homepage_hero( $resources ) {
-	if ( ! is_front_page() ) {
-		return $resources;
-	}
-
-	$image_url    = wp_get_attachment_image_url( 12, 'full' );
-	$image_srcset = wp_get_attachment_image_srcset( 12, 'full' );
-
-	if ( ! $image_url || ! $image_srcset ) {
-		return $resources;
-	}
-
-	$resources[] = array(
-		'href'          => $image_url,
-		'as'            => 'image',
-		'imagesrcset'   => $image_srcset,
-		'imagesizes'    => '(max-width: 2560px) 100vw, 2560px',
-		'fetchpriority' => 'high',
-	);
-
-	return $resources;
-}
-add_filter( 'wp_preload_resources', 'white_oaks_preload_homepage_hero' );
-
-/**
  * Suppresses the parent's unused Poppins request while preserving its handle
  * for dependency resolution.
  *
