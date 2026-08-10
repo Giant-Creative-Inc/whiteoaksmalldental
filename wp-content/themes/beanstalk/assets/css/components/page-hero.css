@@ -1,0 +1,29 @@
+/*
+ * Page Hero pattern (beanstalk/page-hero).
+ *
+ * core/media-text applies a default `padding: 0 8%` to its content cell.
+ * The pattern nests an `is-style-section` group inside that cell to own the
+ * section's responsive gutters, so the built-in 8% must be removed to avoid a
+ * doubled horizontal gutter. Kept unlayered — matching the unlayered gutter
+ * rules in critical.css — so it wins over WordPress's unlayered media-text
+ * default without raising specificity elsewhere.
+ */
+.page-hero > .wp-block-media-text__content {
+  padding: 0;
+}
+
+/*
+ * Core Media & Text always stacks the media above the content on mobile. The
+ * mobile design places the content first and the image below it, so swap the
+ * two grid rows while stacked. The extra class raises specificity above core's
+ * own stacked rule.
+ */
+@media (max-width: 600px) {
+  .page-hero.wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__content {
+    grid-row: 1;
+  }
+
+  .page-hero.wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__media {
+    grid-row: 2;
+  }
+}

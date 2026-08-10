@@ -1,7 +1,7 @@
-@reference "../tailwind-theme.css";
+@reference "../tailwind.css";
 
 .meet-dentists {
-  @apply px-wp-24 py-wp-48;
+  @apply py-wp-48;
   background: var(--wp--preset--color--experience-background);
 }
 
@@ -86,7 +86,7 @@
   @apply text-b-6 font-bold tracking-[0.96px];
 }
 
-.home-faqs { @apply px-wp-24 py-wp-48; }
+.home-faqs { @apply py-wp-48; }
 
 .home-faqs__inner {
   @apply grid grid-cols-1 gap-wp-32;
@@ -145,7 +145,7 @@
 }
 
 .footer-cta {
-  @apply px-wp-24 py-wp-24;
+  @apply py-wp-24;
 }
 
 .footer-cta .footer-cta__content {
@@ -215,7 +215,6 @@
 
   .home-faqs {
     padding-block: var(--wp--preset--spacing--120);
-    padding-inline: max(var(--wp--preset--spacing--24), calc((100vw - var(--wp--style--global--wide-size)) / 2));
   }
 
   .home-faqs__inner {
@@ -243,7 +242,6 @@
 
   .footer-cta {
     @apply py-wp-128;
-    padding-inline: max(var(--wp--preset--spacing--24), calc((100vw - var(--wp--style--global--wide-size)) / 2));
   }
   .footer-cta .footer-cta__content {
     @apply gap-footer-cta-content-desktop!;

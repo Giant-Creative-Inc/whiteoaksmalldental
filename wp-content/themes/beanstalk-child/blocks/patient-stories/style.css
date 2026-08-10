@@ -1,18 +1,17 @@
 @reference "../../assets/css/tailwind.css";
 
 .wp-block-white-oaks-patient-stories {
-	@apply relative left-1/2 w-screen -translate-x-1/2 box-border;
+	@apply box-border;
 
 	padding-block: var(--wp--preset--spacing--128);
 }
 
 .patient-stories__inner {
-	@apply mx-auto grid items-center;
+	@apply mx-auto grid w-full items-center;
 
 	gap: var(--wp--preset--spacing--112);
 	grid-template-columns: minmax(0, 2fr) minmax(0, 3.55fr);
 	max-width: var(--wp--style--global--wide-size);
-	width: calc(100% - (2 * var(--wp--preset--spacing--24)));
 }
 
 .patient-stories__summary,

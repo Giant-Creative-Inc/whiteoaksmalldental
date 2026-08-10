@@ -1,0 +1,194 @@
+@reference "../tailwind.css";
+
+.experience-section {
+  background: var(--wp--preset--color--experience-background);
+  padding-block: var(--wp--custom--experience--desktop-padding-block);
+}
+
+.experience-section__inner {
+  @apply mx-auto flex w-full flex-col;
+  gap: var(--wp--custom--experience--desktop-header-gap);
+  max-width: var(--wp--style--global--wide-size);
+}
+
+.experience-section__header {
+  @apply grid items-end justify-between;
+  gap: var(--wp--preset--spacing--48);
+  grid-template-columns: minmax(0, 579px) minmax(260px, 360px);
+}
+
+.experience-section__eyebrow,
+.experience-card__eyebrow {
+  @apply m-0 uppercase;
+  color: var(--wp--preset--color--primary);
+  font-family: var(--wp--preset--font-family--button);
+  font-size: var(--wp--preset--font-size--b-6);
+  font-weight: 700;
+  letter-spacing: 2.64px;
+  line-height: var(--wp--custom--line-height--button);
+}
+
+.experience-section__title {
+  @apply mx-0 mb-0;
+  color: var(--wp--preset--color--primary-shade-600);
+  font-size: var(--wp--preset--font-size--experience-heading);
+  letter-spacing: -3.3696px;
+  line-height: var(--wp--custom--line-height--experience-heading);
+  margin-top: var(--wp--preset--spacing--12);
+}
+
+.experience-section__title em {
+  color: var(--wp--preset--color--primary);
+  font-weight: 400;
+}
+
+.experience-section__intro {
+  @apply m-0;
+  color: var(--wp--preset--color--primary-shade-600);
+  font-size: var(--wp--preset--font-size--b-3);
+  line-height: 29.7px;
+}
+
+.experience-section__cards {
+  @apply grid;
+  gap: var(--wp--custom--experience--desktop-card-gap);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.experience-card {
+  @apply flex h-full min-w-0 flex-col overflow-hidden;
+  background: var(--wp--preset--color--white);
+  margin-block-start: 0 !important;
+}
+
+.experience-card--wellness {
+  background: var(--wp--preset--color--primary-tint-900);
+  border: 1px solid var(--wp--preset--color--header-border);
+}
+
+.experience-card__media {
+  @apply relative m-0;
+  height: var(--wp--custom--experience--desktop-image-height);
+  min-height: 0 !important;
+}
+
+.experience-card__media img {
+  @apply h-full w-full;
+  object-fit: cover;
+}
+
+.experience-card__media .wp-block-cover__inner-container { @apply static; }
+
+.experience-card__status {
+  @apply absolute m-0 flex items-center uppercase;
+  background: var(--wp--preset--color--primary-tint-900);
+  color: var(--wp--preset--color--primary-shade-600);
+  font-family: var(--wp--preset--font-family--button);
+  font-size: var(--wp--preset--font-size--b-6);
+  font-weight: 750;
+  gap: 9px;
+  left: 22px;
+  letter-spacing: 1.44px;
+  line-height: var(--wp--custom--line-height--button);
+  padding: 10px 13px;
+  top: 22px;
+}
+
+.experience-card__status::before {
+  @apply size-1.5 rounded-full;
+  background: var(--wp--preset--color--primary-shade-300);
+  content: "";
+}
+
+.experience-card__content {
+  @apply mt-0 flex flex-1 flex-col;
+  gap: var(--wp--preset--spacing--24);
+  padding: 42px var(--wp--custom--experience--desktop-card-padding) 46px;
+}
+
+.experience-card__topline,
+.experience-card__cta { @apply flex items-center justify-between; }
+
+.experience-card__number {
+  @apply m-0 italic;
+  color: var(--wp--preset--color--primary);
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: var(--wp--preset--font-size--b-1);
+  line-height: 33px;
+}
+
+.experience-card--wellness :where(.experience-card__eyebrow, .experience-card__number) {
+  @apply text-primary-shade-300;
+}
+
+.experience-card__title {
+  @apply m-0;
+  color: var(--wp--preset--color--primary-shade-600);
+  font-size: var(--wp--preset--font-size--experience-card-heading);
+  letter-spacing: -1.5624px;
+  line-height: var(--wp--custom--line-height--experience-card-heading);
+}
+
+.experience-card__copy {
+  @apply m-0;
+  color: var(--wp--preset--color--primary-shade-600);
+  font-size: var(--wp--preset--font-size--experience-card-copy);
+  line-height: var(--wp--custom--line-height--experience-card-copy);
+}
+
+.experience-card__meta {
+  @apply mt-auto grid;
+  border-block: 1px solid var(--wp--preset--color--header-border);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.experience-card__meta > * {
+  @apply m-0;
+  padding-block: var(--wp--preset--spacing--24);
+}
+
+.experience-card__meta > :last-child {
+  border-left: 1px solid var(--wp--preset--color--header-border);
+  padding-left: var(--wp--preset--spacing--24);
+}
+
+.experience-card__meta p {
+  font-family: var(--wp--preset--font-family--button) !important;
+  font-size: var(--wp--preset--font-size--b-6);
+  font-weight: 550;
+  letter-spacing: 0.48px;
+  line-height: var(--wp--custom--line-height--experience-meta);
+}
+
+.experience-card__meta-secondary { color: var(--wp--preset--color--neutral-grey-400); }
+.experience-card__cta { @apply m-0 w-full; }
+.experience-card__cta .wp-block-button__link { @apply text-b-6 font-[750] tracking-[1.68px]; }
+
+@media (max-width: 1024px) {
+  .experience-card__cta .wp-block-button { @apply flex-grow; }
+  .experience-card__cta .wp-block-button__link { @apply justify-between; }
+  .experience-section { padding-block: var(--wp--preset--spacing--48); }
+  .experience-section__inner { gap: var(--wp--preset--spacing--24); }
+  .experience-section__header { @apply block; }
+  .experience-section__intro { font-size: var(--wp--preset--font-size--b-4); line-height: 24px; margin-top: var(--wp--preset--spacing--12); }
+  .experience-section__eyebrow,
+  .experience-card__eyebrow { letter-spacing: 1.5px; }
+  .experience-section__title { font-size: 28px; letter-spacing: 0; line-height: 34px; margin-top: var(--wp--preset--spacing--12); max-width: 297px; }
+  .experience-section__cards { gap: var(--wp--preset--spacing--20); grid-template-columns: 1fr; }
+  .experience-card__media { height: var(--wp--custom--experience--mobile-image-height); }
+  .experience-card__status { @apply hidden; }
+  .experience-card__content { gap: var(--wp--preset--spacing--16); padding: var(--wp--preset--spacing--16); }
+  .experience-card__eyebrow { font-size: 11px; letter-spacing: 1px; }
+  .experience-card__number { @apply not-italic; font-size: var(--wp--preset--font-size--b-4); line-height: normal; }
+  .experience-card__title { font-size: 22px; letter-spacing: 0; line-height: normal; }
+  .experience-card__copy { font-size: var(--wp--preset--font-size--b-5); line-height: 22px; }
+  .experience-card__meta { @apply flex flex-col; gap: var(--wp--preset--spacing--8); padding-block: var(--wp--preset--spacing--12); }
+  .experience-card__meta > * { @apply p-0; }
+  .experience-card__meta > :last-child { @apply border-l-0 pl-0; }
+  .experience-card__meta p {
+    font-family: var(--wp--preset--font-family--body) !important;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+}

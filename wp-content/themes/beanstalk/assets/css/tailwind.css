@@ -2,6 +2,9 @@
 @import "./theme-tokens.css";
 @import "./critical.css";
 
+/* Focused pattern/component stylesheets. */
+@import "./components/page-hero.css";
+
 /* Import Tailwind v4 without preflight.css to preserve WordPress defaults. */
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);

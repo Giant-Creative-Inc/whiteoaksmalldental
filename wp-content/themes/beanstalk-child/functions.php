@@ -102,7 +102,98 @@ add_filter( 'script_loader_src', 'white_oaks_version_child_asset_url', 20 );
 add_filter( 'script_module_loader_src', 'white_oaks_version_child_asset_url', 20 );
 
 /**
- * Enqueues global child assets and homepage-only component styles.
+ * Returns compiled component styles and the semantic classes that activate them.
+ *
+ * A component stylesheet is discovered automatically when its compiled filename
+ * matches the component's root class. The compatibility map covers established
+ * grouped stylesheets whose filename predates that convention.
+ *
+ * @return array<string, array{path:string, markers:array<int, string>}>
+ */
+function white_oaks_component_styles() {
+	$build_directory  = get_stylesheet_directory() . '/assets/css/build/components';
+	$styles           = array();
+	$compatibility    = array(
+		'home-sections' => array( 'meet-dentists', 'home-faqs', 'footer-cta' ),
+	);
+	$component_assets = glob( $build_directory . '/*.min.css' );
+
+	if ( false === $component_assets ) {
+		$component_assets = array();
+	}
+
+	foreach ( $component_assets as $asset_path ) {
+		$slug            = basename( $asset_path, '.min.css' );
+		$styles[ $slug ] = array(
+			'path'    => '/assets/css/build/components/' . basename( $asset_path ),
+			'markers' => $compatibility[ $slug ] ?? array( $slug ),
+		);
+	}
+
+	return $styles;
+}
+
+/**
+ * Returns the saved block markup for the current frontend or editor page.
+ *
+ * @return string
+ */
+function white_oaks_current_page_content() {
+	if ( is_admin() ) {
+		$post_id = isset( $_GET['post'] ) ? absint( wp_unslash( $_GET['post'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$post    = $post_id ? get_post( $post_id ) : null;
+
+		return $post instanceof WP_Post ? $post->post_content : '';
+	}
+
+	$queried_object = get_queried_object();
+
+	return $queried_object instanceof WP_Post ? $queried_object->post_content : '';
+}
+
+/**
+ * Enqueues only the component styles represented in the current page markup.
+ *
+ * @param string $content      Saved block markup to inspect.
+ * @param array  $dependencies Style handles that must load first.
+ * @return array<int, string> Enqueued component handles.
+ */
+function white_oaks_enqueue_component_styles( $content, $dependencies = array() ) {
+	$handles = array();
+
+	if ( '' === $content ) {
+		return $handles;
+	}
+
+	foreach ( white_oaks_component_styles() as $slug => $component ) {
+		$required = false;
+
+		foreach ( $component['markers'] as $marker ) {
+			if ( str_contains( $content, $marker ) ) {
+				$required = true;
+				break;
+			}
+		}
+
+		if ( ! $required ) {
+			continue;
+		}
+
+		$handle = 'white-oaks-component-' . sanitize_key( $slug );
+		wp_enqueue_style(
+			$handle,
+			get_stylesheet_directory_uri() . $component['path'],
+			$dependencies,
+			beanstalk_child_asset_version( $component['path'] )
+		);
+		$handles[] = $handle;
+	}
+
+	return $handles;
+}
+
+/**
+ * Enqueues global child assets and content-aware component styles.
  *
  * @return void
  */
@@ -128,6 +219,11 @@ function beanstalk_child_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/assets/css/build/shared.min.css',
 		array( 'beanstalk-child' ),
 		beanstalk_child_asset_version( '/assets/css/build/shared.min.css' )
+	);
+
+	white_oaks_enqueue_component_styles(
+		white_oaks_current_page_content(),
+		array( 'white-oaks-shared' )
 	);
 
 	if ( is_front_page() ) {
@@ -296,30 +392,35 @@ function white_oaks_child_editor_styles() {
 add_action( 'after_setup_theme', 'white_oaks_child_editor_styles', 20 );
 
 /**
- * Loads homepage component styles only in the designated front-page editor.
+ * Loads content-aware component styles and homepage styles in the editor.
  *
  * @return void
  */
-function white_oaks_home_editor_styles() {
+function white_oaks_editor_component_styles() {
 	if ( ! is_admin() ) {
 		return;
 	}
 
 	$post_id       = isset( $_GET['post'] ) ? absint( wp_unslash( $_GET['post'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$front_page_id = (int) get_option( 'page_on_front' );
+	$content       = white_oaks_current_page_content();
 
-	if ( ! $post_id || $post_id !== $front_page_id ) {
+	if ( ! $post_id ) {
 		return;
 	}
 
-	wp_enqueue_style(
-		'white-oaks-home-editor',
-		get_stylesheet_directory_uri() . '/assets/css/build/home.min.css',
-		array( 'wp-edit-blocks' ),
-		beanstalk_child_asset_version( '/assets/css/build/home.min.css' )
-	);
+	white_oaks_enqueue_component_styles( $content, array( 'wp-edit-blocks' ) );
+
+	if ( $post_id === $front_page_id ) {
+		wp_enqueue_style(
+			'white-oaks-home-editor',
+			get_stylesheet_directory_uri() . '/assets/css/build/home.min.css',
+			array( 'wp-edit-blocks' ),
+			beanstalk_child_asset_version( '/assets/css/build/home.min.css' )
+		);
+	}
 }
-add_action( 'enqueue_block_assets', 'white_oaks_home_editor_styles' );
+add_action( 'enqueue_block_assets', 'white_oaks_editor_component_styles' );
 
 /**
  * Adds accurate responsive-image hints to the homepage experience cards.

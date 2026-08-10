@@ -1,0 +1,113 @@
+@reference "../tailwind.css";
+
+.first-visit__steps,
+.first-visit__content {
+  @apply flex flex-col;
+}
+
+.first-visit {
+  @apply py-wp-48;
+}
+
+.first-visit__header {
+  @apply mb-wp-32;
+}
+
+.first-visit__steps {
+  @apply gap-wp-24;
+}
+
+.first-visit__heading {
+  @apply font-heading text-first-visit-heading leading-first-visit-heading tracking-first-visit-heading;
+}
+
+.first-visit__heading em {
+  @apply text-primary;
+}
+
+.first-visit__step {
+  @apply grid grid-cols-1 mt-0;
+}
+
+.first-visit__media {
+  @apply order-1 mt-0 h-[200px] overflow-hidden;
+}
+
+.first-visit__media img {
+  @apply size-full object-cover;
+}
+
+.first-visit__content {
+  @apply order-2 mt-0 gap-wp-12 bg-wp-white p-wp-24;
+}
+
+.first-visit__card-heading {
+  @apply mt-0 font-heading text-first-visit-card-heading leading-first-visit-card-heading tracking-first-visit-card-heading;
+}
+
+.first-visit__copy {
+  @apply leading-first-visit-copy mt-0 flex gap-wp-24;
+}
+
+.first-visit__copy:before {
+  content: '↳';
+  margin-top: 5px;
+  display: inline-block;
+  color: var(--wp--preset--color--primary);
+  font-size: var(--wp--preset--font-size--b-3);
+}
+
+.first-visit__footer {
+  @apply mt-auto border-t border-primary/20 pt-wp-12;
+}
+
+.first-visit__content .is-style-eyebrow {
+  @apply font-bold leading-[1.5];
+  font-family: var(--wp--preset--font-family--button) !important;
+
+}
+
+.first-visit__header .wp-block-button__link {
+  @apply justify-start pb-wp-12;
+}
+
+@media (min-width: 1025px) {
+  .first-visit {
+    @apply py-wp-128;
+  }
+
+  .first-visit__header {
+    @apply mb-wp-80;
+  }
+
+  .first-visit__steps {
+    @apply gap-wp-32;
+  }
+
+  .first-visit__step {
+    @apply grid-cols-[minmax(0,1.176fr)_minmax(0,1fr)];
+  }
+
+  .first-visit__step--reverse {
+    @apply grid-cols-[minmax(0,1fr)_minmax(0,1.176fr)];
+  }
+
+  .first-visit__media,
+  .first-visit__content {
+    @apply h-[570px];
+  }
+
+  .first-visit__content {
+    @apply gap-wp-24 px-wp-64;
+    padding-top: 66px;
+    padding-bottom: 42px;
+  }
+
+  .first-visit__step--reverse .first-visit__content {
+    @apply order-1;
+  }
+
+  .first-visit__step--reverse .first-visit__media {
+    @apply order-2;
+  }
+}

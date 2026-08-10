@@ -122,7 +122,9 @@
         { "slug": "patient-stories-quote", "size": "clamp(18px, 2.5vw, 36px)", "name": "Patient Stories Quote" },
         { "slug": "patient-stories-source", "size": "clamp(11px, 0.84vw, 12px)", "name": "Patient Stories Source" },
         { "slug": "team-heading", "size": "clamp(38px, 5.2vw, 74.88px)", "name": "Meet the Team Heading" },
-        { "slug": "team-card-heading", "size": "clamp(21px, 2.342vw, 24px)", "name": "Meet the Team Card Heading" }
+        { "slug": "team-card-heading", "size": "clamp(21px, 2.342vw, 24px)", "name": "Meet the Team Card Heading" },
+        { "slug": "first-visit-heading", "size": "clamp(32px, 4.8vw, 69.12px)", "name": "First Visit Heading" },
+        { "slug": "first-visit-card-heading", "size": "clamp(22px, 2.6vw, 37.44px)", "name": "First Visit Card Heading" }
       ]
     },
     "spacing": {
@@ -171,6 +173,9 @@
       }
     },
     "custom": {
+      "layout": {
+        "gutter": "max(24px, calc((100vw - var(--wp--style--global--wide-size)) / 2))"
+      },
       "fontWeight": {
         "navigation": "600",
         "practice-stat": "700",
@@ -193,7 +198,9 @@
         "team-card-role": "clamp(1.2px, 0.1522vw, 1.56px)",
         "team-card-heading": "clamp(-0.48px, -0.0468vw, -0.3px)",
         "team-card-specialty": "clamp(0.3px, 0.0468vw, 0.48px)",
-        "team-cta": "0.96px"
+        "team-cta": "0.96px",
+        "first-visit-heading": "clamp(0px, -0.216vw, -3.1104px)",
+        "first-visit-card-heading": "clamp(0px, -0.065vw, -0.936px)"
       },
       "lineHeight": {
         "h-1": "1.2",
@@ -227,7 +234,10 @@
         "patient-stories-quote": "clamp(26px, 3.3vw, 47.52px)",
         "patient-stories-reviewer": "clamp(24px, 1.77vw, 25.5px)",
         "team-heading": "clamp(44px, 4.94vw, 71.136px)",
-        "team-card-heading": "clamp(28px, 3.512vw, 36px)"
+        "team-card-heading": "clamp(28px, 3.512vw, 36px)",
+        "first-visit-heading": "clamp(36px, 4.61vw, 66.355px)",
+        "first-visit-card-heading": "clamp(26px, 2.99vw, 43.056px)",
+        "first-visit-copy": "clamp(20px, 1.5vw, 21.6px)"
       },
       "emergency": {
         "heading-mobile-size": "32px",
@@ -284,6 +294,10 @@
         "buttons-gap-desktop": "34px",
         "buttons-margin-desktop": "38px"
       },
+      "pageHero": {
+        "desktop-min-height": "700px",
+        "desktop-max-height": "844px"
+      },
       "practice-highlights": {
         "mobile-padding-block": "40px"
       },
@@ -308,7 +322,7 @@
         "desktop-column-width": "372px"
       },
       "footer-cta": {
-        "content-width": "960px",
+        "content-width": "1100px",
         "copy-width": "640px",
         "button-width-mobile": "256px",
         "content-gap-mobile": "20px",
@@ -337,6 +351,14 @@
       "fontSize": "var(--wp--preset--font-size--b-4)",
       "fontWeight": "400",
       "lineHeight": "var(--wp--custom--line-height--b-4)"
+    },
+    "spacing": {
+      "padding": {
+        "top": "0",
+        "bottom": "0",
+        "left": "var(--wp--custom--layout--gutter)",
+        "right": "var(--wp--custom--layout--gutter)"
+      }
     },
     "elements": {
       "h1": {

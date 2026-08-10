@@ -1,21 +1,31 @@
 @theme {
   --breakpoint-tablet: 48rem;
   --breakpoint-desktop: 64.0625rem;
+  --container-site-wide: var(--wp--style--global--wide-size);
   --color-experience-background: var(--wp--preset--color--experience-background);
   --color-service-tabs-border: var(--wp--preset--color--service-tabs-border);
   --color-why-oaks-divider: var(--wp--preset--color--why-oaks-divider);
   --color-wp-white: var(--wp--preset--color--white);
   --color-primary: var(--wp--preset--color--primary);
   --color-primary-shade-300: var(--wp--preset--color--primary-shade-300);
+  --color-primary-shade-600: var(--wp--preset--color--primary-shade-600);
   --font-heading: var(--wp--preset--font-family--heading);
   --font-body: var(--wp--preset--font-family--body);
   --font-button: var(--wp--preset--font-family--button);
   --text-h-3: var(--wp--preset--font-size--h-3);
   --text-h-6: var(--wp--preset--font-size--h-6);
+  --text-first-visit-heading: var(--wp--preset--font-size--first-visit-heading);
+  --text-first-visit-card-heading: var(--wp--preset--font-size--first-visit-card-heading);
+  --text-b-3: var(--wp--preset--font-size--b-3);
   --text-b-4: var(--wp--preset--font-size--b-4);
   --text-b-5: var(--wp--preset--font-size--b-5);
   --text-b-6: var(--wp--preset--font-size--b-6);
   --leading-h-3: var(--wp--custom--line-height--h-3);
+  --leading-first-visit-heading: var(--wp--custom--line-height--first-visit-heading);
+  --leading-first-visit-card-heading: var(--wp--custom--line-height--first-visit-card-heading);
+  --leading-first-visit-copy: var(--wp--custom--line-height--first-visit-copy);
+  --tracking-first-visit-heading: var(--wp--custom--letter-spacing--first-visit-heading);
+  --tracking-first-visit-card-heading: var(--wp--custom--letter-spacing--first-visit-card-heading);
   --spacing-wp-4: var(--wp--preset--spacing--4);
   --spacing-wp-8: var(--wp--preset--spacing--8);
   --spacing-wp-12: var(--wp--preset--spacing--12);
@@ -26,6 +36,7 @@
   --spacing-wp-40: var(--wp--preset--spacing--40);
   --spacing-wp-48: var(--wp--preset--spacing--48);
   --spacing-wp-64: var(--wp--preset--spacing--64);
+  --spacing-wp-80: var(--wp--preset--spacing--80);
   --spacing-wp-96: var(--wp--preset--spacing--96);
   --spacing-wp-120: var(--wp--preset--spacing--120);
   --spacing-wp-128: var(--wp--preset--spacing--128);
@@ -35,4 +46,7 @@
   --spacing-wp-960: var(--wp--preset--spacing--960);
   --spacing-footer-cta-content-mobile: var(--wp--custom--footer-cta--content-gap-mobile);
   --spacing-footer-cta-content-desktop: var(--wp--custom--footer-cta--content-gap-desktop);
+  --spacing-site-gutter: var(--wp--custom--layout--gutter);
+  --spacing-page-hero-min-height: var(--wp--custom--page-hero--desktop-min-height);
+  --spacing-page-hero-max-height: var(--wp--custom--page-hero--desktop-max-height);
 }

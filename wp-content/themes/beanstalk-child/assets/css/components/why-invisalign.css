@@ -1,0 +1,164 @@
+@reference "../tailwind.css";
+
+/*
+ * Why Patients Choose Invisalign — one-off section on the Invisalign page.
+ * Core blocks carry the content; this component provides the layout,
+ * card treatment, and the desktop/mobile differences core cannot express
+ * (icon visibility, per-breakpoint card restyle, number placement, dividers,
+ * icon circles, full-width band, and the italic teal heading accent).
+ */
+
+/* WordPress alignfull handles the full-width band and shared horizontal gutters. */
+.why-invisalign {
+  @apply py-wp-64;
+}
+
+/* Layout comes from the grid/flex gaps below, so drop core flow-layout margins. */
+.why-invisalign__header > *,
+.why-invisalign__header-main > *,
+.why-invisalign__cards > *,
+.why-invisalign__card > *,
+.why-invisalign__head > * {
+  margin-block: 0;
+}
+
+/* Heading accent: "your life." is emphasised (core <em>) and tinted here. */
+.why-invisalign__heading {
+  line-height: var(--wp--custom--line-height--experience-heading);
+}
+
+.why-invisalign__heading em {
+  color: var(--wp--preset--color--primary);
+  font-style: italic;
+}
+
+/* Header stacks on mobile. */
+.why-invisalign__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--12);
+}
+
+.why-invisalign__header-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--16);
+}
+
+/* Cards: stacked white cards on mobile. */
+.why-invisalign__cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--wp--preset--spacing--24);
+  margin-top: var(--wp--preset--spacing--32);
+}
+
+.why-invisalign__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--12);
+  background: var(--wp--preset--color--white);
+  padding: 16px;
+}
+
+/* Icon is desktop-only. */
+.why-invisalign__icon {
+  display: none;
+  margin: 0;
+}
+
+/* Number sits inline before the title on mobile. */
+.why-invisalign__head {
+  display: flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--8);
+}
+
+.why-invisalign__number {
+  flex: none;
+}
+
+.why-invisalign__title {
+  flex: 1 1 0;
+  min-width: 0;
+  font-weight: 700;
+  font-size: var(--wp--preset--font-size--b-3);
+}
+
+.why-invisalign__copy {
+  font-size: var(--wp--preset--font-size--b-5);
+}
+
+/* Tablet: two cards per row. */
+@media (min-width: 768px) {
+  .why-invisalign__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: header row + a single bordered 4-up row with icons and dividers. */
+@media (min-width: 1025px) {
+  .why-invisalign {
+    @apply py-wp-120;
+  }
+
+  .why-invisalign__header {
+    display: grid;
+    grid-template-columns: minmax(0, 570fr) minmax(0, 443fr);
+    align-items: end;
+    gap: clamp(var(--wp--preset--spacing--48), 8vw, var(--wp--preset--spacing--160));
+  }
+
+  .why-invisalign__header-main {
+    gap: var(--wp--preset--spacing--24);
+  }
+
+  .why-invisalign__cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: var(--wp--preset--spacing--64);
+    border: 1px solid var(--wp--preset--color--practice-divider);
+  }
+
+  .why-invisalign__card {
+    background: transparent;
+    gap: 0;
+    padding: 38px 30px;
+  }
+
+  .why-invisalign__icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border: 1px solid var(--wp--preset--color--practice-divider);
+    border-radius: 999px;
+    margin-bottom: var(--wp--preset--spacing--64);
+  }
+
+  .why-invisalign__icon img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .why-invisalign__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--wp--preset--spacing--16);
+  }
+
+  .why-invisalign__title {
+    font-size: var(--wp--preset--font-size--h-4);
+  }
+
+  .why-invisalign__copy {
+    font-size: var(--wp--preset--font-size--b-6);
+    padding-top: var(--wp--preset--spacing--16);
+  }
+}
+
+@media (max-width: 1024px) {
+  .why-invisalign__number {
+    font-style: italic;
+  }
+}
