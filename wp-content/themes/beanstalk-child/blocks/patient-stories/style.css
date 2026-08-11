@@ -202,7 +202,7 @@
 	opacity: 0.45;
 }
 
-@media (max-width: 1024px) {
+@variant max-desktop {
 	.wp-block-white-oaks-patient-stories {
 		padding-block: var(--wp--preset--spacing--48);
 	}
@@ -291,7 +291,7 @@
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
+@variant motion-reduce {
 	.wp-block-white-oaks-patient-stories * {
 		scroll-behavior: auto;
 		transition: none;

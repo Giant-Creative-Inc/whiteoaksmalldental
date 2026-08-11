@@ -5,8 +5,8 @@
     "appearanceTools": true,
     "useRootPaddingAwareAlignments": true,
     "layout": {
-      "contentSize": "1224px",
-      "wideSize": "1224px"
+      "contentSize": "1440px",
+      "wideSize": "1440px"
     },
     "color": {
       "custom": true,
@@ -124,7 +124,9 @@
         { "slug": "team-heading", "size": "clamp(38px, 5.2vw, 74.88px)", "name": "Meet the Team Heading" },
         { "slug": "team-card-heading", "size": "clamp(21px, 2.342vw, 24px)", "name": "Meet the Team Card Heading" },
         { "slug": "first-visit-heading", "size": "clamp(32px, 4.8vw, 69.12px)", "name": "First Visit Heading" },
-        { "slug": "first-visit-card-heading", "size": "clamp(22px, 2.6vw, 37.44px)", "name": "First Visit Card Heading" }
+        { "slug": "first-visit-card-heading", "size": "clamp(22px, 2.6vw, 37.44px)", "name": "First Visit Card Heading" },
+        { "slug": "location-features-heading", "size": "clamp(32px, 4vw, 57.6px)", "name": "Location Features Heading" },
+        { "slug": "location-feature-card-heading", "size": "clamp(20px, 1.53vw, 22px)", "name": "Location Feature Card Heading" }
       ]
     },
     "spacing": {
@@ -174,7 +176,8 @@
     },
     "custom": {
       "layout": {
-        "gutter": "max(24px, calc((100vw - var(--wp--style--global--wide-size)) / 2))"
+        "gutter": "max(24px, calc((100vw - var(--wp--style--global--wide-size)) / 2))",
+        "contentWidth": "1224px"
       },
       "fontWeight": {
         "navigation": "600",
@@ -237,7 +240,9 @@
         "team-card-heading": "clamp(28px, 3.512vw, 36px)",
         "first-visit-heading": "clamp(36px, 4.61vw, 66.355px)",
         "first-visit-card-heading": "clamp(26px, 2.99vw, 43.056px)",
-        "first-visit-copy": "clamp(20px, 1.5vw, 21.6px)"
+        "first-visit-copy": "clamp(20px, 1.5vw, 21.6px)",
+        "location-features-heading": "clamp(38px, 4vw, 57.6px)",
+        "location-feature-card-heading": "clamp(24px, 2.292vw, 33px)"
       },
       "emergency": {
         "heading-mobile-size": "32px",

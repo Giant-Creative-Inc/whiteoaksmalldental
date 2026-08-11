@@ -3,6 +3,14 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "./tailwind-theme.css" layer(theme);
 
+@custom-variant wp-columns-up (@media (min-width: 782px));
+@custom-variant wp-admin-bar-mobile (@media (max-width: 782px));
+@custom-variant max-wp-columns (@media (max-width: 781px));
+@custom-variant tablet-only (@media (min-width: 768px) and (max-width: 1024px));
+@custom-variant desktop-compact (@media (min-width: 1025px) and (max-width: 1279px));
+@custom-variant medium-layout (@media (min-width: 782px) and (max-width: 1200px));
+@custom-variant wide (@media (min-width: 1280px));
+
 @source "../../parts";
 @source "../../patterns";
 @source "../../templates";

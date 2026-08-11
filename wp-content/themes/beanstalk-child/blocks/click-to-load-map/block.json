@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "white-oaks/click-to-load-map",
+  "version": "1.0.0",
+  "title": "Click-to-load Map",
+  "category": "design",
+  "icon": "location-alt",
+  "description": "A map preview that loads Google Maps only after visitor interaction.",
+  "keywords": ["map", "location", "google maps"],
+  "textdomain": "beanstalk-child",
+  "attributes": {
+    "locationName": {
+      "type": "string",
+      "default": "Location name"
+    },
+    "address": {
+      "type": "string",
+      "default": "Street address, city, province, postal code"
+    },
+    "mapsUrl": {
+      "type": "string",
+      "default": "https://www.google.com/maps"
+    },
+    "buttonLabel": {
+      "type": "string",
+      "default": "Use interactive map"
+    },
+    "directionsLabel": {
+      "type": "string",
+      "default": "Get directions"
+    },
+    "imageId": {
+      "type": "integer"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./build/editor.min.css",
+  "style": "file:./build/style.min.css",
+  "viewScript": "file:./build/view.min.js",
+  "render": "file:./render.php"
+}

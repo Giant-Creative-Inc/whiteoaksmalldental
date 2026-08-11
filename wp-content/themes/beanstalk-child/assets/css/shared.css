@@ -1,7 +1,7 @@
 @reference "./tailwind.css";
 
 /* Shared service-page hero layout. */
-@media (min-width: 782px) {
+@variant wp-columns-up {
   .invisalign-hero__media {
     flex-grow: 1 !important;
     flex-basis: 0 !important;
@@ -10,7 +10,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@variant max-desktop {
   .invisalign-hero {
     @apply flex-col pb-wp-24;
   }
@@ -28,13 +28,13 @@
   }
 }
 
-@media (max-width: 767px) {
+@variant max-tablet {
   .invisalign-hero__media img {
     @apply aspect-2/1!;
   }
 }
 
-@media (min-width: 1025px) {
+@variant desktop {
   .service-page-hero,
   .invisalign-hero,
   .service-page-hero__media,
@@ -186,7 +186,7 @@
     width: 164.086px;
   }
 
-  @media (min-width: 1025px) {
+  @variant desktop {
     .site-header__services::after {
       @apply absolute inset-x-0;
       content: "";
@@ -268,7 +268,7 @@
     }
   }
 
-  @media (max-width: 1024px) {
+  @variant max-desktop {
     .site-header {
       background: var(--wp--preset--color--white);
       border-bottom: 1px solid var(--wp--preset--color--header-border);
@@ -295,6 +295,10 @@
     .site-header__inner > .site-header__nav {
       @apply ml-0;
       @apply transform-none;
+    }
+
+    .site-header__cta {
+      @apply flex!;
     }
 
     .site-header__nav .wp-block-navigation__responsive-container:not(.is-menu-open) {
@@ -420,7 +424,26 @@
 
   }
 
-@media (max-width: 782px) {
+  @variant max-tablet {
+    .site-header__logo,
+    .site-header__logo img {
+      @apply h-auto! w-wp-96! max-w-wp-96!;
+    }
+
+    .site-header__cta .wp-block-button__link {
+      @apply h-auto! min-h-0! w-auto! gap-wp-4! px-wp-8! py-wp-8!;
+    }
+
+    .site-header__cta .wp-block-button__link > span:last-child {
+      @apply shrink-0;
+    }
+
+    .site-header__nav .wp-block-navigation__responsive-container-open {
+      @apply size-wp-40;
+    }
+  }
+
+  @variant wp-admin-bar-mobile {
   .admin-bar .wp-block-template-part:has(> .site-header) {
     top: 46px;
   }
@@ -540,7 +563,7 @@
   @apply h-auto w-full;
 }
 
-@media (max-width: 1024px) {
+@variant max-desktop {
   .site-footer {
     padding-block: var(--wp--custom--footer--mobile-padding-block);
   }
@@ -617,13 +640,13 @@
 
 }
 
-@media (max-width: 767px) {
+@variant max-tablet {
   .site-footer__main {
     @apply grid-cols-1;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@variant tablet-only {
   .site-footer__main {
     @apply grid-cols-2;
   }

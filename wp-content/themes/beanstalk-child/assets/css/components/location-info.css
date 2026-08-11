@@ -1,0 +1,274 @@
+@reference "../tailwind.css";
+
+/*
+ * White Oaks Mall location information.
+ * Core blocks own the content and design tokens; Tailwind supplies the
+ * responsive layout, spacing, map visibility, and equal-height card geometry.
+ */
+
+.location-hero-contact {
+  @apply max-w-lg p-0;
+}
+
+.location-hero-contact > *,
+.location-hero-contact__row > *,
+.location-hero-contact__text > * {
+  @apply my-0;
+}
+
+.location-hero-contact {
+  @apply my-[32px];
+}
+
+.location-hero-contact__row {
+  @apply flex! min-w-0 items-center gap-wp-16 border-t border-service-tabs-border px-wp-24 py-wp-24 first:border-t-0;
+}
+
+.location-hero-contact__icon {
+  @apply m-0 grid size-9 shrink-0 place-items-center overflow-hidden rounded-full border border-primary-shade-600;
+}
+
+.location-hero-contact__icon img {
+  @apply size-4.5 object-contain;
+}
+
+.location-hero-contact__text {
+  @apply flex min-w-0 flex-col gap-wp-8;
+}
+
+.location-hero-contact__text > .is-style-eyebrow {
+  @apply text-b-6 font-bold leading-button tracking-contact-label;
+}
+
+.location-hero-contact__value {
+  @apply font-button text-footer-link-mobile leading-button;
+}
+
+.location-hero-contact__value a {
+  @apply text-primary-shade-600 no-underline hover:text-primary;
+}
+
+.location-hero__mobile-map {
+  @apply m-0 block w-full mt-[24px];
+
+  @variant desktop {
+    @apply hidden;
+  }
+}
+
+.location-hero__mobile-map img {
+  @apply aspect-video w-full object-cover;
+}
+
+.location-hero__desktop-media {
+  @apply hidden;
+
+  @variant desktop {
+    @apply block;
+  }
+}
+
+.location-info--features {
+  @apply bg-wp-white;
+
+  @variant desktop {
+    @apply bg-experience-background !pt-0;
+  }
+}
+
+.location-info {
+  @apply py-wp-48;
+
+  @variant desktop {
+    @apply py-wp-128;
+  }
+}
+
+.location-info__inner > *,
+.location-info__header > *,
+.location-info__visit > *,
+.location-info__hours > *,
+.location-info__hours-row > *,
+.location-info__feature-header > *,
+.location-info__cards-row > *,
+.location-info__card > * {
+  @apply my-0;
+}
+
+.location-info__header {
+  @apply grid! items-end gap-wp-24;
+
+  @variant desktop {
+    @apply grid-cols-2 gap-wp-96;
+  }
+}
+
+.location-info__intro {
+  @apply max-w-xl;
+
+  @variant desktop {
+    @apply ml-auto;
+  }
+}
+
+.location-info__visit {
+  @apply mt-wp-48 grid! gap-wp-24;
+
+  @variant desktop {
+    @apply mt-wp-64 grid-cols-3;
+  }
+}
+
+.location-info__map {
+  @apply relative hidden min-w-0;
+
+  @variant desktop {
+    @apply col-span-2 block;
+  }
+}
+
+.location-info__map-image,
+.location-info__map-image img {
+  @apply m-0 h-full w-full;
+}
+
+.location-info__map-image img {
+  @apply object-cover;
+}
+
+.location-info__map-actions {
+  @apply absolute inset-0 flex items-center justify-center;
+}
+
+.location-info__map-actions .wp-block-button__link {
+  @apply pointer-events-auto;
+}
+
+.location-info__hours {
+  @apply col-span-1 flex min-w-0 flex-col gap-wp-12 bg-wp-white p-wp-24 justify-between;
+
+  @variant desktop {
+    @apply p-wp-32;
+  }
+}
+
+.location-info__hours-row {
+  @apply flex min-w-0 items-center justify-between gap-wp-12;
+}
+
+.location-info__hours-row > :last-child {
+  @apply shrink-0 text-right;
+}
+
+.location-info__hours-divider {
+  @apply my-0 w-full;
+  background-color: rgba(27, 46, 51, 0.10) !important;
+}
+
+.location-info__booking {
+  @apply w-full pt-wp-24;
+}
+
+.location-info__booking .wp-block-button,
+.location-info__booking .wp-block-button__link {
+  @apply w-full;
+}
+
+.location-info__booking .wp-block-button__link {
+  @apply box-border justify-between px-wp-16;
+}
+
+.location-info__section-divider {
+  @apply mx-auto hidden w-full max-w-client-wide;
+
+  @variant desktop {
+    @apply mt-20 mb-0 block;
+  }
+}
+
+.location-info__feature-header {
+  @apply mx-auto mt-0 grid! w-full max-w-client-wide gap-3;
+
+  @variant desktop {
+    @apply mt-wp-128 grid-cols-4 gap-6;
+  }
+}
+
+.location-info__feature-header .is-style-eyebrow {
+  @apply text-footer-caption;
+
+  @variant desktop {
+    @apply text-b-6;
+  }
+}
+
+.location-info__feature-heading {
+  @variant desktop {
+    @apply col-span-3;
+  }
+}
+
+.location-info__feature-heading .wp-block-heading {
+  @apply text-location-features-heading leading-location-features-heading;
+  max-width: 588px;
+}
+
+.location-info__cards-row {
+  @apply mx-auto mt-8 grid! w-full max-w-client-wide gap-4;
+
+  @variant tablet {
+    @apply grid-cols-2;
+  }
+
+  @variant desktop {
+    @apply mt-12 grid-cols-3;
+  }
+}
+
+.location-info__cards-row + .location-info__cards-row {
+  @apply mt-4;
+}
+
+.location-info__card-column {
+  @apply min-w-0;
+}
+
+.location-info__card {
+  @apply flex h-full min-w-0 flex-col gap-3 bg-experience-background p-6;
+
+  @variant desktop {
+    @apply min-h-64 gap-0 bg-wp-white p-8;
+  }
+}
+
+.location-info__icon {
+  @apply m-0 grid size-10 place-items-center overflow-hidden rounded-none bg-primary;
+
+  @variant desktop {
+    @apply size-12 rounded-full;
+  }
+}
+
+.location-info__icon img {
+  @apply size-5 object-contain;
+
+  @variant desktop {
+    @apply size-7;
+  }
+}
+
+.location-info__card > .wp-block-heading {
+  @apply text-location-feature-card-heading leading-location-feature-card-heading;
+
+  @variant desktop {
+    @apply mt-10;
+  }
+}
+
+.location-info__card > :last-child {
+  @apply text-footer-link-mobile leading-button;
+
+  @variant desktop {
+    @apply mt-3 text-b-6 leading-relaxed;
+  }
+}

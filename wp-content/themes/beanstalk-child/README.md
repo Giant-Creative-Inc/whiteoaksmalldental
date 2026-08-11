@@ -18,6 +18,22 @@ Generate the production stylesheet:
 npm run build
 ```
 
+When editing the Click-to-load Map block's CSS or frontend JavaScript, run its
+focused watcher in a second terminal:
+
+```sh
+npm run dev:map
+```
+
+## Click-to-load Map block
+
+Insert **Click-to-load Map** from the block inserter, then configure its
+location name, full address, Google Maps link, button label, and preview image
+in the block sidebar. The preview and link remain usable without JavaScript;
+on the frontend, a normal click loads the Google Maps iframe in place. The
+block's CSS and JavaScript are registered through `block.json`, so WordPress
+loads them only on pages where the block is present.
+
 ## Content-aware component CSS
 
 Place reusable section styles in `assets/css/components/<component>.css` and

@@ -172,15 +172,15 @@
 .footer-cta__primary .wp-block-button__link { @apply w-full; }
 .footer-cta__phone { margin-left: 0; }
 
-@media (prefers-reduced-motion: reduce) {
+@variant motion-reduce {
   .home-faqs__item[open] .home-faqs__answer { animation: none; }
 }
 
-@media (min-width: 768px) {
+@variant tablet {
   .meet-dentists__grid { @apply grid-cols-2; }
 }
 
-@media (min-width: 1025px) {
+@variant desktop {
   .meet-dentists {
     @apply py-wp-128;
     background: var(--wp--preset--color--white);

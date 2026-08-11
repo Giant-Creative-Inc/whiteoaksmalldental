@@ -71,7 +71,7 @@
   @apply justify-start pb-wp-12;
 }
 
-@media (min-width: 1025px) {
+@variant desktop {
   .first-visit {
     @apply py-wp-128;
   }

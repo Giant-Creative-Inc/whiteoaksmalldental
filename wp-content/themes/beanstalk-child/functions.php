@@ -198,6 +198,7 @@ function white_oaks_enqueue_component_styles( $content, $dependencies = array() 
  * @return void
  */
 function beanstalk_child_enqueue_styles() {
+	$content = white_oaks_current_page_content();
 
 	// The external provider controls the Typekit stylesheet version.
 	wp_enqueue_style(
@@ -222,7 +223,7 @@ function beanstalk_child_enqueue_styles() {
 	);
 
 	white_oaks_enqueue_component_styles(
-		white_oaks_current_page_content(),
+		$content,
 		array( 'white-oaks-shared' )
 	);
 
@@ -253,8 +254,9 @@ function white_oaks_async_adobe_fonts( $html, $handle ) {
 
 	return sprintf(
 		'<link rel="preload" href="%1$s" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n" .
-		'<noscript><link rel="stylesheet" href="%1$s"></noscript>' . "\n",
-		esc_url( $href )
+		'<noscript>%2$s</noscript>' . "\n",
+		esc_url( $href ),
+		$html
 	);
 }
 add_filter( 'style_loader_tag', 'white_oaks_async_adobe_fonts', 10, 2 );

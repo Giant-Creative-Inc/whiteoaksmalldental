@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vite build && vite build -c vite.blocks.config.mjs && vite build -c vite.patient-stories.config.mjs",
+    "dev:map": "vite build -c vite.click-to-load-map.config.mjs --watch",
+    "build": "vite build && vite build -c vite.blocks.config.mjs && vite build -c vite.patient-stories.config.mjs && vite build -c vite.click-to-load-map.config.mjs",
     "test:service-tabs": "node --test tests/service-tabs.test.mjs"
   },
   "engines": {

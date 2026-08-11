@@ -1,0 +1,17 @@
+@reference "../../assets/css/tailwind.css";
+
+.click-to-load-map-editor {
+  @apply relative min-h-wp-128 overflow-hidden bg-experience-background;
+}
+
+.click-to-load-map-editor__image {
+  @apply h-full min-h-wp-128 w-full object-cover;
+}
+
+.click-to-load-map-editor__placeholder {
+  @apply grid min-h-wp-128 place-items-center p-wp-24 text-center;
+}
+
+.click-to-load-map-editor__actions {
+  @apply absolute inset-0 flex flex-col items-center justify-center gap-wp-12;
+}

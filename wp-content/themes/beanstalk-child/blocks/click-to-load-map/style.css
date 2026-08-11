@@ -1,0 +1,78 @@
+@reference "../../assets/css/tailwind.css";
+
+.wp-block-white-oaks-click-to-load-map {
+  @apply relative min-w-0 self-start cursor-pointer overflow-visible;
+}
+
+.click-to-load-map__preview,
+.click-to-load-map__preview img {
+  @apply m-0 block h-auto w-full;
+}
+
+.click-to-load-map__preview img {
+  @apply object-contain brightness-75 transition-opacity duration-300 motion-reduce:transition-none;
+}
+
+.click-to-load-map__actions {
+  @apply absolute inset-0 flex items-center justify-center gap-wp-16;
+}
+
+.click-to-load-map__button {
+  @apply pointer-events-auto;
+}
+
+.click-to-load-map__directions {
+  @apply pointer-events-auto relative;
+}
+
+.click-to-load-map__directions-trigger.wp-block-button__link {
+  @apply flex cursor-pointer list-none items-center gap-wp-32 whitespace-nowrap border-2 border-primary-shade-600 bg-primary-shade-600 text-wp-white hover:border-primary-shade-300 hover:bg-primary-shade-300 hover:text-wp-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wp-white;
+}
+
+.click-to-load-map__directions-menu {
+  @apply absolute left-0 top-full z-10 mt-wp-8 flex min-w-full flex-col overflow-hidden border border-service-tabs-border bg-wp-white shadow-lg;
+}
+
+.click-to-load-map__directions-menu a {
+  @apply whitespace-nowrap px-wp-16 py-wp-12 font-button text-b-6 text-primary-shade-600 no-underline transition-colors duration-200 hover:bg-experience-background focus-visible:bg-experience-background;
+}
+
+.click-to-load-map__loader {
+  @apply pointer-events-none absolute inset-0 hidden items-center justify-center;
+}
+
+.click-to-load-map__spinner {
+  @apply size-wp-48 animate-spin rounded-full border-4 border-wp-white/40 border-t-wp-white motion-reduce:animate-none;
+}
+
+.wp-block-white-oaks-click-to-load-map.is-loading .click-to-load-map__actions,
+.wp-block-white-oaks-click-to-load-map.is-loaded .click-to-load-map__actions {
+  @apply hidden;
+}
+
+.wp-block-white-oaks-click-to-load-map.is-loading .click-to-load-map__loader {
+  @apply flex;
+}
+
+.wp-block-white-oaks-click-to-load-map iframe {
+  @apply pointer-events-none absolute inset-0 h-full w-full border-0 opacity-0 transition-opacity duration-300 motion-reduce:transition-none;
+}
+
+.wp-block-white-oaks-click-to-load-map.is-loaded .click-to-load-map__preview img {
+  @apply opacity-0;
+}
+
+.wp-block-white-oaks-click-to-load-map.is-loaded iframe {
+  @apply pointer-events-auto opacity-100;
+}
+
+@variant max-desktop {
+  .click-to-load-map__actions {
+    @apply inset-x-0 bottom-wp-12 top-auto flex-col gap-wp-8;
+  }
+
+  .click-to-load-map__button.wp-block-button__link,
+  .click-to-load-map__directions-trigger.wp-block-button__link {
+    @apply px-wp-16 py-wp-12 text-b-6;
+  }
+}

@@ -24,9 +24,10 @@
 	text-transform: uppercase;
 }
 
-@media (max-width: 782px) {
+@variant wp-admin-bar-mobile {
 	.patient-stories-editor {
 		grid-template-columns: 1fr;
 		padding: var(--wp--preset--spacing--16);
 	}
 }
+@reference "../../assets/css/tailwind.css";

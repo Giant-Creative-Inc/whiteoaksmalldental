@@ -164,7 +164,7 @@
 .experience-card__cta { @apply m-0 w-full; }
 .experience-card__cta .wp-block-button__link { @apply text-b-6 font-[750] tracking-[1.68px]; }
 
-@media (max-width: 1024px) {
+@variant max-desktop {
   .experience-card__cta .wp-block-button { @apply flex-grow; }
   .experience-card__cta .wp-block-button__link { @apply justify-between; }
   .experience-section { padding-block: var(--wp--preset--spacing--48); }

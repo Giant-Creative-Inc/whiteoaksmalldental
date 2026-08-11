@@ -90,14 +90,14 @@
 }
 
 /* Tablet: two cards per row. */
-@media (min-width: 768px) {
+@variant tablet {
   .why-invisalign__cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* Desktop: header row + a single bordered 4-up row with icons and dividers. */
-@media (min-width: 1025px) {
+@variant desktop {
   .why-invisalign {
     @apply py-wp-120;
   }
@@ -157,7 +157,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@variant max-desktop {
   .why-invisalign__number {
     font-style: italic;
   }

@@ -5,7 +5,7 @@
  * @package BeanstalkChild
  */
 
-$items = array();
+$items            = array();
 $service_tab_type = WP_Block_Type_Registry::get_instance()->get_registered( 'white-oaks/service-tab' );
 
 foreach ( $block->parsed_block['innerBlocks'] ?? array() as $inner_block ) {
