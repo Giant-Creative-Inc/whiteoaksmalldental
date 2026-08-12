@@ -301,7 +301,13 @@
       },
       "pageHero": {
         "desktop-min-height": "700px",
-        "desktop-max-height": "844px"
+        "desktop-max-height": "844px",
+        "heading-gap-desktop": "48px",
+        "lead-gap-desktop": "36px",
+        "buttons-gap-desktop": "38px",
+        "lead-width-desktop": "560px",
+        "location-padding-block-desktop": "105px",
+        "location-contact-gap-desktop": "34px"
       },
       "practice-highlights": {
         "mobile-padding-block": "40px"

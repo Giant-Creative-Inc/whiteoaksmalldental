@@ -35,6 +35,26 @@
 }
 
 @variant desktop {
+  .invisalign-hero > .wp-block-column:first-child > * {
+    @apply my-0;
+  }
+
+  .invisalign-hero .rank-math-breadcrumb p {
+    @apply my-0! leading-button;
+  }
+
+  .invisalign-hero > .wp-block-column:first-child > .wp-block-heading {
+    @apply mt-page-hero-heading-gap;
+  }
+
+  .invisalign-hero > .wp-block-column:first-child > .has-hero-lead-font-size {
+    @apply mt-page-hero-lead-gap max-w-page-hero-lead;
+  }
+
+  .invisalign-hero > .wp-block-column:first-child > .wp-block-buttons {
+    @apply mt-page-hero-buttons-gap!;
+  }
+
   .service-page-hero,
   .invisalign-hero,
   .service-page-hero__media,

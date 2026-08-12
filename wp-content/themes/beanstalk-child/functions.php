@@ -72,6 +72,40 @@ function white_oaks_render_emergency_phone_arrow( $block_content, $block ) {
 add_filter( 'render_block_core/paragraph', 'white_oaks_render_emergency_phone_arrow', 10, 2 );
 
 /**
+ * Makes the complete emergency call box the telephone link.
+ *
+ * The saved Group and Paragraph blocks remain unchanged so Gutenberg can keep
+ * validating and editing their native markup.
+ *
+ * @param string $block_content Rendered Group block markup.
+ * @param array  $block         Parsed Group block.
+ * @return string
+ */
+function white_oaks_render_emergency_call_box_link( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if ( ! str_contains( $class_name, 'emergency-cta__call-box' ) ) {
+		return $block_content;
+	}
+
+	if ( ! preg_match( '/<a\b[^>]*href="(tel:[^"]+)"[^>]*>/', $block_content, $phone_link ) ) {
+		return $block_content;
+	}
+
+	$block_content = preg_replace( '/<a\b[^>]*href="tel:[^"]+"[^>]*>/', '', $block_content, 1 );
+	$block_content = preg_replace( '/<\/a>/', '', $block_content, 1 );
+	$block_content = preg_replace(
+		'/^(\s*)<div\b/',
+		'$1<a href="' . esc_attr( $phone_link[1] ) . '" aria-label="Call our care team at (519) 686-6200"',
+		$block_content,
+		1
+	);
+
+	return preg_replace( '/<\/div>\s*$/', '</a>', $block_content, 1 );
+}
+add_filter( 'render_block_core/group', 'white_oaks_render_emergency_call_box_link', 10, 2 );
+
+/**
  * Versions child-theme CSS and JavaScript URLs using each file's edit time.
  *
  * This also covers assets registered from block.json, whose metadata version

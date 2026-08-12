@@ -28,6 +28,10 @@
 	padding-left: 24px;
 }
 
+.white-oaks-service-tabs__tab[aria-selected="false"] {
+	@apply hover:bg-wp-black/5;
+}
+
 .white-oaks-service-tabs__tab:focus-visible {
 	@apply relative;
 	outline: 2px solid var(--wp--preset--color--primary);
@@ -142,13 +146,17 @@
 }
 
 .white-oaks-service-tabs__link-arrow {
-  @apply ml-auto;
+	@apply ml-auto transition-transform duration-200;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 22.5px; /* 150% */
   letter-spacing: -0.234px;
+}
+
+.white-oaks-service-tabs__treatment-link:is(:hover, :focus-visible) .white-oaks-service-tabs__link-arrow {
+	@apply translate-x-wp-4;
 }
 
 .white-oaks-service-tabs__decorative-number {

@@ -63,7 +63,6 @@
 
 .experience-card--wellness {
   background: var(--wp--preset--color--primary-tint-900);
-  border: 1px solid var(--wp--preset--color--header-border);
 }
 
 .experience-card__media {

@@ -17,7 +17,7 @@
 }
 
 .location-hero-contact {
-  @apply my-[32px];
+  @apply my-wp-32;
 }
 
 .location-hero-contact__row {
@@ -46,6 +46,20 @@
 
 .location-hero-contact__value a {
   @apply text-primary-shade-600 no-underline hover:text-primary;
+}
+
+@variant desktop {
+  .location-hero {
+    @apply max-h-none;
+  }
+
+  .location-hero > .wp-block-column:first-child {
+    @apply py-location-hero-padding-block;
+  }
+
+  .location-hero > .wp-block-column:first-child > .location-hero-contact {
+    @apply mt-location-hero-contact-gap! mb-0!;
+  }
 }
 
 .location-hero__mobile-map {

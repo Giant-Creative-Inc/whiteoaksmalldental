@@ -3,10 +3,12 @@
   --breakpoint-desktop: 64.0625rem;
   --container-site-wide: var(--wp--style--global--wide-size);
   --container-client-wide: var(--wp--custom--layout--content-width);
+  --container-page-hero-lead: var(--wp--custom--page-hero--lead-width-desktop);
   --color-experience-background: var(--wp--preset--color--experience-background);
   --color-service-tabs-border: var(--wp--preset--color--service-tabs-border);
   --color-why-oaks-divider: var(--wp--preset--color--why-oaks-divider);
   --color-wp-white: var(--wp--preset--color--white);
+  --color-wp-black: var(--wp--preset--color--black);
   --color-primary: var(--wp--preset--color--primary);
   --color-primary-shade-300: var(--wp--preset--color--primary-shade-300);
   --color-primary-shade-600: var(--wp--preset--color--primary-shade-600);
@@ -58,4 +60,9 @@
   --spacing-site-gutter: var(--wp--custom--layout--gutter);
   --spacing-page-hero-min-height: var(--wp--custom--page-hero--desktop-min-height);
   --spacing-page-hero-max-height: var(--wp--custom--page-hero--desktop-max-height);
+  --spacing-page-hero-heading-gap: var(--wp--custom--page-hero--heading-gap-desktop);
+  --spacing-page-hero-lead-gap: var(--wp--custom--page-hero--lead-gap-desktop);
+  --spacing-page-hero-buttons-gap: var(--wp--custom--page-hero--buttons-gap-desktop);
+  --spacing-location-hero-padding-block: var(--wp--custom--page-hero--location-padding-block-desktop);
+  --spacing-location-hero-contact-gap: var(--wp--custom--page-hero--location-contact-gap-desktop);
 }

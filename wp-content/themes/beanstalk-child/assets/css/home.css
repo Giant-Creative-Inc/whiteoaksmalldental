@@ -560,9 +560,19 @@
 }
 
 .emergency-cta__call-box {
+  @apply block text-current no-underline transition-transform duration-200 ease-out;
   border-radius: 0;
   margin-top: var(--wp--preset--spacing--24);
   padding: var(--wp--preset--spacing--16) var(--wp--preset--spacing--24);
+}
+
+.emergency-cta__call-box:is(:hover, :focus-visible) {
+  @apply -translate-y-wp-4;
+}
+
+.emergency-cta__call-box:focus-visible {
+  outline: 2px solid var(--wp--preset--color--primary-shade-600);
+  outline-offset: 4px;
 }
 
 .emergency-cta__call-label {
@@ -578,7 +588,7 @@
   margin-top: 0;
 }
 
-.emergency-cta__phone a {
+.emergency-cta__phone {
   align-items: center;
   color: var(--wp--preset--color--primary-shade-600);
   display: flex;
@@ -590,6 +600,7 @@
 }
 
 .emergency-cta__phone-arrow {
+  @apply transition-transform duration-200 ease-out;
   align-items: center;
   border: 1px solid var(--wp--preset--color--primary-shade-600);
   border-radius: 50%;
@@ -601,9 +612,8 @@
   width: var(--wp--preset--spacing--48);
 }
 
-.emergency-cta__phone a:focus-visible {
-  outline: 2px solid var(--wp--preset--color--primary-shade-600);
-  outline-offset: 4px;
+.emergency-cta__call-box:is(:hover, :focus-visible) .emergency-cta__phone-arrow {
+  @apply translate-x-wp-4 -translate-y-wp-4;
 }
 
 .emergency-cta__location {
@@ -662,7 +672,7 @@
     letter-spacing: 1px;
   }
 
-  .emergency-cta .emergency-cta__phone a {
+  .emergency-cta .emergency-cta__phone {
     font-size: var(--wp--custom--emergency--phone-mobile-size);
   }
 

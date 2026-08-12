@@ -67,8 +67,23 @@
 }
 
 @variant max-desktop {
+  .wp-block-white-oaks-click-to-load-map,
+  .click-to-load-map__preview,
+  .click-to-load-map__preview img {
+    @apply min-h-wp-256;
+  }
+
+  .click-to-load-map__preview,
+  .click-to-load-map__preview img {
+    @apply h-full;
+  }
+
+  .click-to-load-map__preview img {
+    @apply object-cover;
+  }
+
   .click-to-load-map__actions {
-    @apply inset-x-0 bottom-wp-12 top-auto flex-col gap-wp-8;
+    @apply inset-0 flex-col gap-wp-8;
   }
 
   .click-to-load-map__button.wp-block-button__link,
