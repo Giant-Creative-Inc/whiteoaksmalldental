@@ -1,0 +1,340 @@
+@reference "../tailwind.css";
+
+.doctors-section {
+  @apply relative bg-wp-white;
+}
+
+.doctors-section__layout {
+  @apply mx-auto my-0 w-full max-w-site-wide gap-0;
+}
+
+.doctors-section__index-column {
+  @apply relative isolate p-0;
+}
+
+.doctors-section__index {
+  @apply sticky z-10 flex font-button text-primary-shade-600;
+  background: var(--wp--preset--color--primary-tint-900);
+  font-size: var(--wp--preset--font-size--doctor-index);
+  top: var(--wp--custom--doctors--sticky-offset-desktop);
+}
+
+.admin-bar .doctors-section__index {
+  top: calc(var(--wp--custom--doctors--sticky-offset-desktop) + 32px);
+}
+
+.doctors-section__index-title {
+  @apply m-0 uppercase text-primary;
+}
+
+.doctors-section__index-list {
+  @apply m-0 list-none p-0;
+}
+
+.doctors-section__index-link {
+  @apply flex no-underline text-primary-shade-600;
+}
+
+.doctors-section__index-link[aria-current="true"] {
+  @apply text-primary;
+}
+
+.doctors-section__index-number {
+  @apply font-heading italic text-primary;
+}
+
+.doctors-section__profiles {
+  @apply p-0;
+}
+
+.doctor-profile {
+  @apply box-border border-0 border-b border-solid border-why-oaks-divider;
+  scroll-margin-top: calc(var(--wp--custom--doctors--sticky-offset-desktop) + var(--wp--preset--spacing--24));
+}
+
+.doctor-profile__header,
+.doctor-profile__body,
+.doctor-profile__copy {
+  @apply m-0;
+}
+
+.doctor-profile__copy {
+  @apply flex flex-col gap-doctor-copy;
+}
+
+.doctor-profile__number {
+  @apply m-0 font-heading text-b-5 italic leading-doctor-number-desktop text-primary;
+}
+
+.doctor-profile__name {
+  @apply m-0 font-heading text-primary-shade-600;
+  font-size: var(--wp--preset--font-size--doctor-name);
+  letter-spacing: var(--wp--custom--doctors--name-letter-spacing);
+  line-height: var(--wp--custom--doctors--name-line-height);
+}
+
+.doctor-profile__name small {
+  font-size: clamp(28px, 4.44vw, 64px);
+}
+
+.doctor-profile__specialty {
+  @apply m-0 font-button text-footer-caption font-extrabold uppercase leading-doctor-specialty-desktop tracking-doctor-specialty-desktop text-primary;
+}
+
+.doctor-profile__media {
+  @apply m-0 overflow-hidden;
+}
+
+.doctor-profile__media img {
+  @apply size-full object-cover;
+  height: var(--wp--custom--doctors--portrait-height-desktop);
+}
+
+.doctors-section .doctor-profile__intro {
+  @apply m-0 font-heading text-b-4 font-normal leading-doctor-intro-mobile text-doctor-primary-text;
+}
+
+.doctor-profile__detail {
+  @apply m-0 font-button font-normal tracking-doctor-copy-desktop text-doctor-copy-muted;
+  font-size: var(--wp--preset--font-size--doctor-copy);
+  line-height: var(--wp--custom--doctors--copy-line-height-desktop);
+}
+
+.doctor-profile__cta {
+  @apply m-0;
+}
+
+.doctor-profile__cta .wp-block-button__link {
+  @apply flex w-full items-center justify-between py-wp-12;
+  font-size: var(--wp--preset--font-size--doctor-index);
+}
+
+.doctor-profile__cta .wp-block-button__link span {
+  @apply font-bold text-doctor-primary-text;
+}
+
+.doctor-profile__cta .wp-block-button__link:hover span {
+  @apply text-primary;
+}
+
+@media (min-width: 1025px) {
+  .doctors-section {
+    @apply px-wp-24;
+  }
+
+  .doctors-section__index-column::before {
+    @apply absolute inset-y-0 right-0 -z-10 w-screen;
+    background: var(--wp--preset--color--primary-tint-900);
+    content: "";
+  }
+
+  .doctors-section .doctors-section__layout > .doctors-section__index-column {
+    flex: 0 0 19.444%;
+  }
+
+  .doctors-section .doctors-section__layout > .doctors-section__profiles {
+    flex: 0 0 80.556%;
+  }
+
+  .doctors-section__index {
+    @apply flex-col py-wp-72 pr-wp-36 pl-0;
+    min-height: calc(100vh - var(--wp--custom--doctors--sticky-offset-desktop));
+  }
+
+  .doctors-section__index-title {
+    @apply text-b-6 font-extrabold;
+    letter-spacing: 1.7145px;
+  }
+
+  .doctors-section__index-list {
+    @apply mt-wp-32 w-full border-0 border-t border-solid border-why-oaks-divider;
+  }
+
+  .doctors-section__index-link {
+    @apply gap-wp-12 border-0 border-b border-solid border-why-oaks-divider py-wp-16;
+  }
+
+  .doctors-section__index-number {
+    @apply w-wp-24 text-b-6;
+  }
+
+  .doctor-profile {
+    @apply py-wp-96 pl-wp-80 pr-0;
+  }
+
+  .doctor-profile__header {
+    @apply mb-wp-48;
+  }
+
+  .doctor-profile__name {
+    @apply mt-wp-12;
+  }
+
+  .doctor-profile__specialty {
+    @apply mt-wp-12;
+  }
+
+  .doctor-profile__body {
+    @apply items-start gap-wp-48;
+  }
+
+  .doctors-section .doctor-profile__body > .doctor-profile__media {
+    flex: 0 0 calc(58.12% - var(--wp--preset--spacing--24));
+  }
+
+  .doctors-section .doctor-profile__body > .doctor-profile__copy {
+    flex: 0 0 calc(41.88% - var(--wp--preset--spacing--24));
+  }
+
+  .doctors-section .doctor-profile__intro {
+    @apply text-doctor-intro leading-doctor-intro-desktop;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .doctors-section .doctor-profile__body > .doctor-profile__media {
+    @apply basis-doctor-image-small-desktop grow-0 shrink;
+  }
+
+  .doctors-section .doctor-profile__body > .doctor-profile__copy {
+    @apply basis-doctor-copy-small-desktop grow-0 shrink;
+  }
+}
+
+@media (max-width: 1024px) {
+  .doctors-section .doctors-section__layout {
+    display: block;
+  }
+
+  .doctors-section .doctors-section__index-column {
+    display: contents;
+  }
+
+  .doctors-section__profiles {
+    @apply pt-wp-12;
+  }
+
+  .doctors-section__index {
+    @apply h-wp-48 items-center justify-between px-wp-24;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+    top: var(--wp--custom--doctors--sticky-offset-mobile);
+  }
+
+  .admin-bar .doctors-section__index {
+    top: calc(var(--wp--custom--doctors--sticky-offset-mobile) + 46px);
+  }
+
+  @media (max-width: 767px) {
+    .doctors-section__index {
+      top: var(--wp--custom--doctors--sticky-offset-phone);
+    }
+
+    .admin-bar .doctors-section__index {
+      top: calc(var(--wp--custom--doctors--sticky-offset-phone) + 46px);
+    }
+  }
+
+  .doctors-section__index-title,
+  .doctors-section__index-number {
+    @apply sr-only;
+  }
+
+  .doctors-section__index-name--desktop {
+    @apply hidden;
+  }
+
+  .doctors-section__index-list {
+    @apply flex h-full w-full items-center justify-between;
+  }
+
+  .doctors-section__index-list > li {
+    @apply h-full;
+  }
+
+  .doctors-section__index-link {
+    @apply relative h-full items-center py-0;
+  }
+
+  .doctors-section__index-link[aria-current="true"]::after {
+    @apply absolute bottom-wp-8 left-1/2 w-wp-16 -translate-x-1/2 rounded-full bg-primary;
+    content: "";
+    height: 2px;
+  }
+
+  .doctor-profile {
+    @apply mx-wp-24 gap-doctor-profile-mobile px-0 py-doctor-profile-mobile;
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: calc(var(--wp--custom--doctors--sticky-offset-mobile) + var(--wp--preset--spacing--48) + var(--wp--preset--spacing--12));
+  }
+
+  @media (max-width: 767px) {
+    .doctor-profile {
+      scroll-margin-top: calc(var(--wp--custom--doctors--sticky-offset-phone) + var(--wp--preset--spacing--48) + var(--wp--preset--spacing--12));
+    }
+  }
+
+  .doctor-profile + .doctor-profile {
+    @apply mt-wp-48;
+  }
+
+  .doctors-section .doctor-profile .doctor-profile__body {
+    display: contents;
+  }
+
+  .doctors-section .doctor-profile__body > .doctor-profile__media {
+    flex: 0 0 auto;
+    order: 1;
+    width: 100%;
+  }
+
+  .doctor-profile__header {
+    order: 2;
+  }
+
+  .doctors-section .doctor-profile__body > .doctor-profile__copy {
+    flex: 0 0 auto;
+    order: 3;
+    width: 100%;
+  }
+
+  .doctor-profile__media img {
+    height: var(--wp--custom--doctors--portrait-height-mobile);
+  }
+
+  .doctor-profile__header {
+    @apply mt-0 flex flex-col gap-wp-12;
+  }
+
+  .doctor-profile__name {
+    @apply text-doctor-name-mobile font-bold leading-doctor-name-mobile tracking-doctor-name-mobile;
+  }
+
+  .doctor-profile__name small {
+    @apply text-doctor-name-mobile;
+  }
+
+  .doctor-profile__number {
+    @apply font-button text-b-6 font-normal italic leading-doctor-number-mobile;
+  }
+
+  .doctor-profile__specialty {
+    @apply text-footer-caption leading-doctor-specialty-mobile tracking-doctor-specialty-mobile;
+  }
+
+  .doctor-profile__detail {
+    @apply tracking-doctor-copy-mobile;
+    line-height: var(--wp--custom--doctors--copy-line-height-mobile);
+  }
+
+  .doctor-profile__cta .wp-block-button__link {
+    @apply text-footer-link-mobile font-bold leading-doctor-cta-mobile tracking-doctor-cta-mobile;
+  }
+
+}
+
+@media (min-width: 1025px) {
+  .doctors-section__index-name--mobile {
+    @apply hidden;
+  }
+}

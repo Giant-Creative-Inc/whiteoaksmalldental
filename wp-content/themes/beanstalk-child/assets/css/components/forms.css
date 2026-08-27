@@ -1,0 +1,162 @@
+@reference "../tailwind.css";
+
+/*
+ * Minimal Gravity Forms presentation and compatibility layer.
+ * Gravity Forms JavaScript remains responsible for interaction and submission.
+ */
+.gform_wrapper {
+	@apply w-full;
+}
+
+.gform_wrapper form,
+.gform_wrapper fieldset,
+.gform_wrapper legend {
+	@apply m-0 border-0 p-0;
+}
+
+.gform_wrapper fieldset {
+	@apply block min-w-0;
+}
+
+.gform_wrapper .gform_fields {
+	@apply grid;
+	gap: 22px;
+}
+
+.gform_wrapper .gfield,
+.gform_wrapper .ginput_container {
+	@apply m-0 min-w-0;
+}
+
+.gform_wrapper .gform-field-label {
+	@apply block font-button font-bold uppercase text-primary-shade-600;
+	font-size: 10px;
+	line-height: 15px;
+	letter-spacing: 1.1172px;
+	margin-bottom: 9px;
+}
+
+.gform_wrapper .gfield_required {
+	@apply ml-wp-4 font-normal;
+	color: color-mix(in srgb, var(--wp--preset--color--primary-shade-600) 40%, transparent);
+}
+
+.gform_wrapper :where(input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), textarea, select) {
+	@apply box-border w-full rounded-none border border-solid border-primary/25 bg-experience-background px-wp-16 font-body font-normal text-primary-shade-600;
+	font-size: 16px;
+	letter-spacing: -0.3125px;
+}
+
+.gform_wrapper :where(input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), select) {
+	height: 52px;
+}
+
+.gform_wrapper textarea {
+	@apply py-wp-16;
+	height: 176px;
+	line-height: 24px;
+	resize: vertical;
+}
+
+.gform_wrapper :where(input, textarea, select)::placeholder {
+	color: color-mix(in srgb, var(--wp--preset--color--primary-shade-600) 40%, transparent);
+	opacity: 1;
+}
+
+.gform_wrapper :where(input, textarea, select):focus-visible,
+.gform_wrapper button:focus-visible,
+.gform_wrapper a:focus-visible {
+	outline: 2px solid var(--wp--preset--color--primary);
+	outline-offset: 2px;
+}
+
+.gform_wrapper .gfield_html {
+	@apply font-body font-normal;
+	color: color-mix(in srgb, var(--wp--preset--color--primary-shade-600) 48%, transparent);
+	font-size: 10px;
+	line-height: 15px;
+	letter-spacing: 0.1172px;
+	margin-top: 6px;
+}
+
+.gform_wrapper .gform_footer {
+	@apply mt-wp-24;
+}
+
+.gform_wrapper .gform_footer button[type="submit"],
+.gform_wrapper .gform_footer input[type="submit"] {
+	@apply flex w-full cursor-pointer items-center justify-center rounded-none border-0 bg-primary px-wp-24 font-button font-bold uppercase text-experience-background transition-colors duration-200 ease-out;
+	min-height: 54px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 1.44px;
+}
+
+.gform_wrapper .gform_footer button[type="submit"]::after,
+.gform_wrapper .gform_footer input[type="submit"]::after {
+	content: "→";
+	margin-left: var(--wp--preset--spacing--32);
+}
+
+.gform_wrapper .gform_footer button[type="submit"]:hover,
+.gform_wrapper .gform_footer input[type="submit"]:hover {
+	@apply bg-primary-hover text-white;
+}
+
+/* Figma uses one plain phone input, so the generated country picker is hidden. */
+.gform_wrapper .ginput_country-selector_container,
+.gform_wrapper .gform-phone__dropdown {
+	@apply hidden;
+}
+
+.gform_wrapper .gform-phone__input-wrapper,
+.gform_wrapper .ginput_phone_container {
+	@apply block w-full;
+}
+
+.gform_wrapper .gform-phone__input-wrapper .gform-field-label--type-sub {
+	@apply sr-only;
+}
+
+.gform_wrapper :where(.gform_hidden, .gfield--type-hidden, .gfield_visibility_hidden, .gform_validation_container),
+.gform_wrapper [hidden] {
+	@apply hidden;
+}
+
+.gform_wrapper .gform_validation_errors {
+	@apply mb-wp-24 border border-solid border-primary bg-white p-wp-16 text-primary-shade-600;
+}
+
+.gform_wrapper .gform_submission_error {
+	@apply m-0 font-button text-b-5 font-bold;
+}
+
+.gform_wrapper .gfield_validation_message {
+	@apply mt-wp-8 font-body text-b-6 text-primary-shade-600;
+}
+
+.gform_wrapper .gfield_error :where(input:not([type="hidden"]), textarea, select) {
+	@apply border-primary-shade-600;
+}
+
+.gform_wrapper .gform_ajax_spinner,
+.gform_wrapper .gform-loader {
+	@apply ml-wp-12 inline-block size-wp-16 animate-spin rounded-full border-2 border-solid border-primary/25 border-t-primary;
+}
+
+.gform_wrapper .gform_button:disabled,
+.gform_wrapper .gform_button[aria-disabled="true"] {
+	@apply cursor-wait opacity-60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gform_wrapper .gform_ajax_spinner,
+	.gform_wrapper .gform-loader {
+		@apply animate-none;
+	}
+
+	.gform_wrapper .gform_footer button[type="submit"],
+	.gform_wrapper .gform_footer input[type="submit"] {
+		@apply transition-none;
+	}
+}

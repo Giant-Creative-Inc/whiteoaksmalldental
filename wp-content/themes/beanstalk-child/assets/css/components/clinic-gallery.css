@@ -1,0 +1,260 @@
+@reference "../tailwind.css";
+
+.clinic-gallery {
+  @apply bg-wp-white py-wp-48;
+}
+
+.clinic-gallery :where(p, h2, figure) {
+  @apply m-0;
+}
+
+.clinic-gallery__inner > *,
+.clinic-gallery__header > *,
+.clinic-gallery__heading-group > *,
+.clinic-gallery__copy-group > *,
+.clinic-gallery__slider > *,
+.clinic-gallery__controls > * {
+  margin-block-start: 0;
+}
+
+.clinic-gallery__inner,
+.clinic-gallery__header,
+.clinic-gallery__heading-group,
+.clinic-gallery__copy-group,
+.clinic-gallery__slider,
+.clinic-gallery__slides,
+.clinic-gallery__controls,
+.clinic-gallery__fraction,
+.clinic-gallery__buttons {
+  @apply min-w-0;
+}
+
+.clinic-gallery__inner {
+  @apply flex max-w-none flex-col gap-wp-32;
+  width: 100%;
+}
+
+.clinic-gallery__header {
+  @apply flex flex-col gap-wp-16;
+}
+
+.clinic-gallery__heading-group,
+.clinic-gallery__copy-group {
+  @apply flex flex-col gap-wp-16;
+}
+
+.clinic-gallery__eyebrow {
+  @apply font-button text-b-6 font-bold uppercase text-primary;
+  letter-spacing: 2.64px;
+  line-height: 18px;
+}
+
+.clinic-gallery__heading {
+  @apply font-heading text-primary-shade-600;
+  font-size: clamp(38px, 5.2vw, 74.88px);
+  letter-spacing: clamp(-3.3696px, -0.234vw, -1px);
+  line-height: clamp(44px, 4.94vw, 71.136px);
+}
+
+.clinic-gallery__heading em {
+  @apply font-normal text-primary;
+}
+
+.clinic-gallery__copy {
+  @apply font-body text-b-4 text-primary-shade-600;
+  line-height: 26px;
+}
+
+.clinic-gallery__link .wp-block-button__link {
+  @apply flex w-fit items-center gap-wp-8 border-0 border-b border-solid border-primary-shade-600 bg-transparent px-0 py-wp-8 font-button text-b-5 font-bold uppercase text-primary-shade-600;
+  letter-spacing: 0.96px;
+}
+
+.clinic-gallery__link .wp-block-button__link:hover {
+  @apply border-primary text-primary;
+}
+
+.clinic-gallery__slider {
+  @apply flex flex-col gap-wp-16;
+}
+
+.clinic-gallery__slides {
+  @apply relative overflow-hidden;
+  aspect-ratio: 335 / 230;
+}
+
+.clinic-gallery__slide {
+  @apply absolute inset-0 size-full;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 360ms ease, opacity 360ms ease;
+}
+
+.clinic-gallery__slide[data-gallery-state="active"] {
+  @apply cursor-zoom-in;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.clinic-gallery__slide[data-gallery-state="enter-right"] {
+  transform: translateX(100%);
+}
+
+.clinic-gallery__slide[data-gallery-state="enter-left"] {
+  transform: translateX(-100%);
+}
+
+.clinic-gallery__slide[data-gallery-state="exit-left"] {
+  opacity: 1;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.clinic-gallery__slide[data-gallery-state="exit-right"] {
+  opacity: 1;
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.clinic-gallery__slide img {
+  @apply size-full object-cover;
+}
+
+.clinic-gallery__slide:focus-visible {
+  outline: 2px solid var(--wp--preset--color--primary);
+  outline-offset: -4px;
+}
+
+.clinic-gallery-lightbox {
+  @apply m-auto overflow-visible border-0 bg-transparent p-0;
+  width: min(1200px, calc(100vw - 48px));
+  max-width: none;
+  max-height: calc(100vh - 48px);
+}
+
+.clinic-gallery-lightbox::backdrop {
+  background: color-mix(in srgb, var(--wp--preset--color--primary-shade-900) 82%, transparent);
+}
+
+.clinic-gallery-lightbox__image {
+  @apply block h-auto w-full object-contain;
+  max-height: calc(100vh - 48px);
+}
+
+.clinic-gallery-lightbox__close {
+  @apply absolute right-wp-12 top-wp-12 flex size-wp-48 cursor-pointer items-center justify-center rounded-none border border-solid border-wp-black/20 bg-wp-white p-0 font-button text-h-3 font-normal text-wp-black;
+}
+
+.clinic-gallery-lightbox__close:hover {
+  @apply border-primary-hover bg-primary-subtle text-primary-hover;
+}
+
+.clinic-gallery-lightbox__close:focus-visible {
+  outline: 2px solid var(--wp--preset--color--primary);
+  outline-offset: 2px;
+}
+
+.clinic-gallery__controls {
+  @apply flex items-center justify-between py-wp-8;
+}
+
+.clinic-gallery__fraction {
+  @apply flex items-center gap-wp-4 font-heading text-b-3 italic text-primary-shade-600;
+}
+
+.clinic-gallery__fraction-separator {
+  @apply text-wp-black/45;
+}
+
+.clinic-gallery__buttons {
+  @apply flex items-center;
+}
+
+.clinic-gallery__buttons .wp-block-button {
+  @apply m-0;
+}
+
+.clinic-gallery__control.wp-block-button__link {
+  @apply flex size-wp-48 min-h-0 cursor-pointer items-center justify-center rounded-none border border-solid border-wp-black/20 bg-wp-white p-0 font-button text-b-3 font-normal text-wp-black;
+}
+
+@variant tablet {
+  .clinic-gallery__slides {
+    aspect-ratio: 1238 / 542;
+  }
+}
+
+.clinic-gallery__buttons .wp-block-button + .wp-block-button .clinic-gallery__control {
+  @apply border-l-0;
+}
+
+.clinic-gallery__control:hover {
+  @apply border-primary-hover bg-primary-subtle text-primary-hover;
+}
+
+.clinic-gallery__control:focus-visible {
+  outline: 2px solid var(--wp--preset--color--primary);
+  outline-offset: 2px;
+}
+
+@variant desktop {
+  .clinic-gallery {
+    padding-block: 130px;
+  }
+
+  .clinic-gallery__inner {
+    gap: 70px;
+  }
+
+  .clinic-gallery__header {
+    @apply grid items-end;
+    grid-template-columns: minmax(0, 1.565fr) minmax(320px, 1fr);
+    gap: 9%;
+  }
+
+  .clinic-gallery__heading-group {
+    @apply gap-wp-24;
+  }
+
+  .clinic-gallery__copy-group {
+    @apply items-start gap-wp-24 pb-wp-8;
+    max-width: 480px;
+  }
+
+  .clinic-gallery__copy {
+    @apply text-b-3;
+    line-height: 29.7px;
+  }
+
+  .clinic-gallery__link .wp-block-button__link {
+    @apply text-b-6;
+  }
+
+  .clinic-gallery__slider {
+    @apply gap-0;
+  }
+
+  .clinic-gallery__slides {
+    aspect-ratio: 1238 / 542;
+  }
+
+  .clinic-gallery__controls {
+    @apply min-h-wp-72 border-0 border-b border-solid border-wp-black/5 pt-wp-24;
+  }
+
+  .clinic-gallery__control.wp-block-button__link {
+    @apply size-wp-48;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@variant motion-reduce {
+  .clinic-gallery__control,
+  .clinic-gallery__slide {
+    transition: none;
+  }
+}

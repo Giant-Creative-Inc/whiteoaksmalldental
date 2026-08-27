@@ -19,6 +19,8 @@ function beanstalk_child_asset_version( $relative_path ) {
 		: wp_get_theme()->get( 'Version' );
 }
 
+require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
+
 /**
  * Returns the decorative diagonal arrow used by actionable buttons.
  *
@@ -50,6 +52,46 @@ function white_oaks_render_button_arrow( $block_content ) {
 	return str_replace( '↗', $svg, $block_content );
 }
 add_filter( 'render_block_core/button', 'white_oaks_render_button_arrow' );
+
+/**
+ * Renders the clinic-gallery core Button links as semantic slider buttons.
+ *
+ * Gutenberg continues to save and validate native core Button markup while the
+ * frontend receives the correct button semantics for an in-page interaction.
+ *
+ * @param string $block_content Rendered Button block markup.
+ * @param array  $block         Parsed Button block.
+ * @return string
+ */
+function white_oaks_render_clinic_gallery_control( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if ( ! str_contains( $class_name, 'clinic-gallery__control' ) ) {
+		return $block_content;
+	}
+
+	$direction = str_contains( $class_name, 'clinic-gallery__control--previous' ) ? 'previous' : 'next';
+	$label     = 'previous' === $direction ? 'Previous gallery image' : 'Next gallery image';
+	$symbol    = 'previous' === $direction ? '←' : '→';
+	$attribute = ' data-clinic-gallery-' . $direction;
+	$classes   = esc_attr( $class_name );
+
+	$block_content = preg_replace(
+		'/<a\b[^>]*class="([^"]*)"[^>]*>/',
+		'<button type="button" class="$1 ' . $classes . '" aria-label="' . esc_attr( $label ) . '"' . $attribute . '>',
+		$block_content,
+		1
+	);
+
+	$block_content = preg_replace( '/<\/a>/', '</button>', $block_content, 1 );
+
+	return str_replace(
+		'>' . $symbol . '</button>',
+		'><span class="clinic-gallery__control-icon" aria-hidden="true">' . $symbol . '</span></button>',
+		$block_content
+	);
+}
+add_filter( 'render_block_core/button', 'white_oaks_render_clinic_gallery_control', 20, 2 );
 
 /**
  * Replaces the emergency phone link's diagonal-arrow text with the shared SVG.
@@ -106,6 +148,34 @@ function white_oaks_render_emergency_call_box_link( $block_content, $block ) {
 add_filter( 'render_block_core/group', 'white_oaks_render_emergency_call_box_link', 10, 2 );
 
 /**
+ * Renders Gravity Form 1 inside the Contact page's editable core Group shell.
+ *
+ * @param string $block_content Rendered Group block markup.
+ * @param array  $block         Parsed Group block.
+ * @return string
+ */
+function white_oaks_render_contact_form( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if ( ! str_contains( $class_name, 'contact-section__form-embed' ) || ! function_exists( 'gravity_form' ) ) {
+		return $block_content;
+	}
+
+	ob_start();
+	gravity_form( 1, false, false, false, null, true );
+	$form = ob_get_clean();
+
+	return preg_replace( '/(<div\b[^>]*contact-section__form-embed[^>]*>).*?(<\/div>)\s*$/s', '$1' . $form . '$2', $block_content, 1 );
+}
+add_filter( 'render_block_core/group', 'white_oaks_render_contact_form', 20, 2 );
+
+/**
+ * Disables Gravity Forms' frontend CSS in favour of the child theme's
+ * content-aware forms component.
+ */
+add_filter( 'gform_disable_css', '__return_true' );
+
+/**
  * Versions child-theme CSS and JavaScript URLs using each file's edit time.
  *
  * This also covers assets registered from block.json, whose metadata version
@@ -149,6 +219,7 @@ function white_oaks_component_styles() {
 	$styles           = array();
 	$compatibility    = array(
 		'home-sections' => array( 'meet-dentists', 'home-faqs', 'footer-cta' ),
+		'forms'         => array( 'gravityforms/form', '[gravityform', 'contact-section__form-embed' ),
 	);
 	$component_assets = glob( $build_directory . '/*.min.css' );
 
@@ -260,6 +331,36 @@ function beanstalk_child_enqueue_styles() {
 		$content,
 		array( 'white-oaks-shared' )
 	);
+
+	if ( str_contains( $content, 'doctors-section' ) ) {
+		wp_enqueue_script(
+			'white-oaks-doctors-section',
+			get_stylesheet_directory_uri() . '/assets/js/doctors-section.js',
+			array(),
+			beanstalk_child_asset_version( '/assets/js/doctors-section.js' ),
+			true
+		);
+	}
+
+	if ( str_contains( $content, 'clinic-gallery' ) ) {
+		wp_enqueue_script(
+			'white-oaks-clinic-gallery',
+			get_stylesheet_directory_uri() . '/assets/js/clinic-gallery.js',
+			array(),
+			beanstalk_child_asset_version( '/assets/js/clinic-gallery.js' ),
+			true
+		);
+	}
+
+	if ( str_contains( $content, 'contact-section' ) ) {
+		wp_enqueue_script(
+			'white-oaks-contact-section',
+			get_stylesheet_directory_uri() . '/assets/js/contact-section.js',
+			array(),
+			beanstalk_child_asset_version( '/assets/js/contact-section.js' ),
+			true
+		);
+	}
 
 	if ( is_front_page() ) {
 		wp_enqueue_style(

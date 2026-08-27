@@ -1,0 +1,328 @@
+@reference "../tailwind.css";
+
+.contact-section {
+	@apply box-border w-full bg-experience-background py-wp-72;
+	max-width: none;
+	margin-inline: calc(50% - 50vw);
+	width: 100vw;
+}
+
+.contact-section.has-global-padding {
+	padding-inline: 0;
+}
+
+.contact-section__inner {
+	@apply mx-auto box-border w-full;
+	max-width: var(--wp--preset--spacing--1280);
+	width: calc(100% - (2 * var(--wp--preset--spacing--24)));
+}
+
+.contact-section :where(.contact-section__inner, .contact-section__hero, .contact-section__form-header, .contact-section__form-embed, .contact-section__clinic-panel, .contact-section__details, .contact-section__detail).has-global-padding {
+	padding-inline: 0;
+}
+
+.contact-section__hero {
+	@apply mb-wp-40 flex flex-col gap-wp-24;
+	max-width: var(--wp--preset--spacing--640);
+}
+
+.contact-section__hero h1,
+.contact-section__hero p,
+.contact-section__form-header h2,
+.contact-section__form-header p,
+.contact-section__clinic-panel h2,
+.contact-section__clinic-panel p {
+	@apply m-0;
+}
+
+.contact-section__hero h1 {
+	font-size: clamp(52px, 8.06vw, 116px);
+	line-height: 0.9;
+	letter-spacing: clamp(-2.5px, -0.524vw, -7.54px);
+}
+
+.contact-section__hero-copy {
+	@apply text-b-3;
+	max-width: var(--wp--preset--spacing--512);
+	color: color-mix(in srgb, var(--wp--preset--color--primary-shade-600) 68%, transparent);
+	line-height: 1.65;
+}
+
+.contact-section__columns {
+	@apply grid min-w-0 items-stretch gap-wp-48;
+	--contact-section-column-gap: 57.6px;
+	gap: var(--contact-section-column-gap);
+	grid-template-columns: minmax(0, 1.273fr) minmax(0, 1fr);
+}
+
+.contact-section__columns > * {
+	margin-block-start: 0;
+}
+
+.contact-section__form-card {
+	@apply box-border min-w-0 border border-solid border-primary/20 bg-white;
+	padding: 54px;
+}
+
+.contact-section__form-header {
+	@apply mb-wp-32 flex flex-col gap-wp-12;
+}
+
+.contact-section__eyebrow,
+.contact-section__detail-label {
+	@apply font-button text-b-6 font-bold uppercase text-primary;
+	letter-spacing: 0.12em;
+}
+
+.contact-section__clinic-label {
+	@apply sr-only;
+}
+
+.contact-section__form-header h2,
+.contact-section__clinic-panel h2 {
+	@apply font-heading font-normal;
+}
+
+.contact-section__form-header h2 {
+	font-size: clamp(32px, 4vw, 57.6px);
+	line-height: 1.2;
+	letter-spacing: -0.045em;
+}
+
+.contact-section__form-copy {
+	@apply font-button text-b-5;
+	color: color-mix(in srgb, var(--wp--preset--color--primary-shade-600) 62%, transparent);
+	line-height: 1.6;
+}
+
+.contact-section__form-embed {
+	@apply min-w-0;
+}
+
+.contact-section__form-placeholder {
+	@apply m-0 text-b-5;
+}
+
+.contact-section__clinic-card {
+	@apply box-border flex min-w-0 self-start flex-col bg-primary text-white;
+	padding: 55px 68px 44px;
+}
+
+.contact-section__clinic-card .contact-section__tabs {
+	@apply m-0 grid w-full grid-cols-2 gap-0 border border-solid border-white/30;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	max-width: none;
+}
+
+.contact-section__tabs .wp-block-button {
+	@apply m-0 min-w-0;
+}
+
+.contact-section__tabs .wp-block-button__link {
+	@apply flex min-h-0 w-full items-center justify-start gap-wp-8 rounded-none bg-transparent px-wp-16 py-wp-12 font-button font-bold uppercase text-white/70 no-underline transition-colors duration-200 ease-out;
+	height: 62px;
+	font-size: 10px;
+	letter-spacing: 0.06em;
+	line-height: 13px;
+	white-space: normal;
+}
+
+.contact-section__clinic-card:not(.is-enhanced) .contact-section__tabs .wp-block-button:first-child .wp-block-button__link,
+.contact-section__tabs .wp-block-button__link[aria-selected="true"] {
+	@apply bg-white text-primary;
+}
+
+.contact-section__tabs .wp-block-button__link[aria-selected="false"]:hover {
+	@apply bg-primary-hover text-white;
+}
+
+.contact-section__tabs .wp-block-button__link:focus-visible,
+.contact-section__clinic-panel a:focus-visible {
+	outline: 2px solid var(--wp--preset--color--white);
+	outline-offset: 3px;
+}
+
+.contact-section__tab-number {
+	@apply font-heading font-normal;
+	font-size: 18px;
+	line-height: 23.4px;
+	letter-spacing: 0.6px;
+}
+
+.contact-section__panels {
+	@apply mx-0 min-w-0 w-full;
+	margin-block-start: 38px;
+	max-width: none;
+}
+
+.contact-section__clinic-panel {
+	@apply mx-0 w-full;
+	max-width: none;
+}
+
+.contact-section__clinic-card.is-enhanced .contact-section__clinic-panel[hidden] {
+	@apply hidden;
+}
+
+.contact-section__clinic-panel.is-entering {
+	animation: contact-section-panel-in 240ms ease-out;
+}
+
+@keyframes contact-section-panel-in {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-section__status {
+	@apply m-0 inline-flex w-auto items-center gap-wp-8 bg-white/15 font-button font-bold uppercase text-white/80;
+	font-size: 9px;
+	line-height: 13.5px;
+	letter-spacing: 1.067px;
+	padding: 8px 11px;
+}
+
+.contact-section__status::before {
+	content: "";
+	@apply block rounded-full;
+	height: 6px;
+	width: 6px;
+	background: var(--wp--preset--color--primary-tint-600);
+}
+
+.contact-section__clinic-panel h2 {
+	@apply text-white;
+	font-size: clamp(32px, 4vw, 57.6px);
+	line-height: 1;
+	letter-spacing: -0.045em;
+	margin-block-start: 18px;
+}
+
+.contact-section__details {
+	@apply border-0 border-t border-solid border-white/25;
+	margin: 44px 0 0;
+	max-width: none;
+	width: 100%;
+}
+
+.contact-section__detail {
+	@apply m-0 w-full border-0 border-b border-solid border-white/25;
+	max-width: none;
+	padding-block: 25px;
+}
+
+.contact-section__detail .contact-section__detail-label {
+	@apply block text-white/60;
+	font-size: 10px;
+	line-height: 15px;
+	letter-spacing: 1.3172px;
+	margin-bottom: 9px;
+}
+
+.contact-section__detail a,
+.contact-section__coming-soon {
+	@apply font-heading font-normal text-white no-underline;
+	font-size: 31px;
+	line-height: 40.3px;
+	overflow-wrap: anywhere;
+}
+
+.contact-section__appointment {
+	@apply m-0;
+}
+
+.contact-section__appointment .wp-block-button,
+.contact-section__appointment .wp-block-button__link {
+	@apply w-full;
+}
+
+.contact-section__appointment .wp-block-button__link {
+	@apply flex items-center justify-center gap-wp-32 rounded-none bg-experience-background px-wp-24 py-wp-16 font-button text-b-6 font-bold uppercase text-primary-shade-600 no-underline transition-colors duration-200 ease-out;
+	min-height: 54px;
+	letter-spacing: 0.12em;
+}
+
+.contact-section__appointment .wp-block-button__link:hover {
+	@apply bg-primary-hover text-white;
+}
+
+@media (max-width: 1024px) {
+	.contact-section {
+		@apply py-wp-40;
+	}
+
+	.contact-section__columns {
+		@apply grid-cols-1 gap-wp-32;
+		gap: var(--wp--preset--spacing--32);
+	}
+
+	.contact-section__form-card,
+	.contact-section__clinic-card {
+		@apply p-wp-40;
+	}
+}
+
+@media (max-width: 767px) {
+	.contact-section {
+		@apply py-wp-24;
+	}
+
+	.contact-section__hero {
+		@apply mb-wp-24 gap-wp-12;
+	}
+
+	.contact-section__hero-copy {
+		@apply text-b-4;
+		line-height: 1.5;
+	}
+
+	.contact-section__columns {
+		@apply gap-wp-32;
+	}
+
+	.contact-section__form-card,
+	.contact-section__clinic-card {
+		@apply p-wp-24;
+	}
+
+	.contact-section__clinic-card .contact-section__tabs {
+		@apply mb-0 mt-0;
+	}
+
+	.contact-section__tabs .wp-block-button__link {
+		@apply min-h-0 gap-wp-4 p-wp-12;
+		font-size: 9px;
+	}
+
+	.contact-section__tab-number {
+		@apply text-b-4;
+	}
+
+	.contact-section__panels {
+		margin-block-start: var(--wp--preset--spacing--24);
+	}
+
+	.contact-section__details {
+		@apply my-wp-24;
+	}
+
+	.contact-section__detail {
+		@apply py-wp-16;
+	}
+
+	.contact-section__detail a,
+	.contact-section__coming-soon {
+		@apply text-b-3;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.contact-section__clinic-panel.is-entering {
+		animation: none;
+	}
+
+	.contact-section__tabs .wp-block-button__link,
+	.contact-section__appointment .wp-block-button__link {
+		@apply transition-none;
+	}
+}

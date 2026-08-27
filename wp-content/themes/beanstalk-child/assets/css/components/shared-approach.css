@@ -1,0 +1,41 @@
+@reference "../tailwind.css";
+
+.shared-approach {
+  @apply bg-primary p-0 text-wp-white;
+}
+
+.shared-approach__inner {
+  @apply mx-auto flex w-full max-w-[1094.4px] flex-col items-center gap-wp-24 px-wp-24 py-[56px] text-center;
+}
+
+.shared-approach__eyebrow,
+.shared-approach__attribution {
+  @apply m-0 font-button text-[11px] leading-[normal] font-extrabold tracking-[2px] uppercase;
+}
+
+.shared-approach .shared-approach__quote {
+  @apply m-0 w-full font-button text-[26px] leading-[34px] font-normal tracking-[-0.5px];
+}
+
+.shared-approach__attribution {
+  @apply tracking-[1.5px];
+}
+
+@media (min-width: 1025px) {
+  .shared-approach__inner {
+    @apply gap-0 px-0 py-[115px];
+  }
+
+  .shared-approach__eyebrow,
+  .shared-approach__attribution {
+    @apply text-b-6 leading-[18px] tracking-[2.64px];
+  }
+
+  .shared-approach .shared-approach__quote {
+    @apply max-w-[1020px] py-[28px] font-heading text-[60.48px] leading-[67.738px] tracking-[-1.8144px];
+  }
+
+  .shared-approach__attribution {
+    @apply tracking-[1.92px];
+  }
+}

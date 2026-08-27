@@ -480,12 +480,12 @@
 }
 
 .site-footer__main {
+  @apply max-w-none;
   column-gap: clamp(24px, 5vw, var(--wp--custom--footer--column-gap));
   grid-template-columns:
     minmax(0, var(--wp--custom--footer--brand-column-width))
     repeat(3, minmax(0, var(--wp--custom--footer--standard-column-width)));
   margin-inline: auto;
-  max-width: var(--wp--custom--footer--content-width);
 }
 
 .site-footer__logo {

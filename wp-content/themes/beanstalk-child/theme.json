@@ -60,6 +60,8 @@
         { "slug": "service-tabs-muted-text", "color": "#667085", "name": "Service Tabs Muted Text" },
         { "slug": "practice-divider", "color": "rgba(27, 46, 51, 0.1)", "name": "Practice Highlight Divider" },
         { "slug": "why-oaks-divider", "color": "rgba(31, 120, 132, 0.2)", "name": "Why Oaks Divider" },
+        { "slug": "doctor-copy-muted", "color": "rgba(22, 60, 61, 0.76)", "name": "Doctor Biography Muted" },
+        { "slug": "doctor-primary-text", "color": "#163C3D", "name": "Doctor Primary Text" },
         { "slug": "oak-orange-shade-900", "color": "#160F07", "name": "Oak Orange Shade 900" }
       ]
     },
@@ -126,7 +128,12 @@
         { "slug": "first-visit-heading", "size": "clamp(32px, 4.8vw, 69.12px)", "name": "First Visit Heading" },
         { "slug": "first-visit-card-heading", "size": "clamp(22px, 2.6vw, 37.44px)", "name": "First Visit Card Heading" },
         { "slug": "location-features-heading", "size": "clamp(32px, 4vw, 57.6px)", "name": "Location Features Heading" },
-        { "slug": "location-feature-card-heading", "size": "clamp(20px, 1.53vw, 22px)", "name": "Location Feature Card Heading" }
+        { "slug": "location-feature-card-heading", "size": "clamp(20px, 1.53vw, 22px)", "name": "Location Feature Card Heading" },
+        { "slug": "doctor-name", "size": "clamp(28px, 7vw, 100.8px)", "name": "Doctor Name" },
+        { "slug": "doctor-name-mobile", "size": "28px", "name": "Doctor Name Mobile" },
+        { "slug": "doctor-intro", "size": "21px", "name": "Doctor Introduction" },
+        { "slug": "doctor-copy", "size": "13px", "name": "Doctor Biography" },
+        { "slug": "doctor-index", "size": "13px", "name": "Doctor Index" }
       ]
     },
     "spacing": {
@@ -140,9 +147,11 @@
         { "slug": "20", "size": "20px", "name": "Space 20 — 20px" },
         { "slug": "24", "size": "24px", "name": "Space 24 — 24px" },
         { "slug": "32", "size": "32px", "name": "Space 32 — 32px" },
+        { "slug": "36", "size": "36px", "name": "Space 36 — 36px" },
         { "slug": "40", "size": "40px", "name": "Space 40 — 40px" },
         { "slug": "48", "size": "48px", "name": "Space 48 — 48px" },
         { "slug": "64", "size": "64px", "name": "Space 64 — 64px" },
+        { "slug": "72", "size": "72px", "name": "Space 72 — 72px" },
         { "slug": "80", "size": "80px", "name": "Space 80 — 80px" },
         { "slug": "96", "size": "96px", "name": "Space 96 — 96px" },
         { "slug": "112", "size": "112px", "name": "Space 112 — 112px" },
@@ -353,6 +362,35 @@
         "legal-padding-top": "23px",
         "mobile-legal-padding-top": "20px",
         "mobile-padding-block": "40px"
+      },
+      "doctors": {
+        "name-line-height": "clamp(32px, 6.3vw, 90.72px)",
+        "name-letter-spacing": "clamp(-5.544px, -0.385vw, -1px)",
+        "name-line-height-mobile": "32px",
+        "name-letter-spacing-mobile": "0",
+        "number-line-height-desktop": "21px",
+        "number-line-height-mobile": "normal",
+        "specialty-line-height-desktop": "16.5px",
+        "specialty-line-height-mobile": "normal",
+        "specialty-letter-spacing-desktop": "1.4945px",
+        "specialty-letter-spacing-mobile": "1px",
+        "intro-line-height": "32.55px",
+        "intro-line-height-mobile": "24px",
+        "copy-line-height-desktop": "23.66px",
+        "copy-line-height-mobile": "20px",
+        "copy-gap": "19px",
+        "copy-letter-spacing-desktop": "-0.076px",
+        "copy-letter-spacing-mobile": "normal",
+        "image-basis-small-desktop": "45%",
+        "copy-basis-small-desktop": "55%",
+        "cta-line-height-mobile": "normal",
+        "cta-letter-spacing-mobile": "1px",
+        "profile-padding-mobile": "20px",
+        "sticky-offset-desktop": "85.305px",
+        "sticky-offset-phone": "64.172px",
+        "sticky-offset-mobile": "73.168px",
+        "portrait-height-desktop": "580px",
+        "portrait-height-mobile": "300px"
       }
     }
   },
