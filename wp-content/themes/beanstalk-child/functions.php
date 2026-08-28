@@ -20,6 +20,7 @@ function beanstalk_child_asset_version( $relative_path ) {
 }
 
 require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
+require_once get_stylesheet_directory() . '/inc/schema.php';
 
 /**
  * Returns the decorative diagonal arrow used by actionable buttons.

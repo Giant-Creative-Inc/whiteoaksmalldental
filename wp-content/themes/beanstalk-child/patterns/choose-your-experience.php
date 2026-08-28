@@ -64,7 +64,7 @@
 
 <!-- wp:buttons {"className":"experience-card__cta"} -->
 <div class="wp-block-buttons experience-card__cta"><!-- wp:button {"className":"is-style-text"} -->
-<div class="wp-block-button is-style-text"><a class="wp-block-button__link wp-element-button" href="/locations/white-oaks-mall/"><span>Book at this clinic</span><span aria-hidden="true">↗</span></a></div>
+<div class="wp-block-button is-style-text"><a class="wp-block-button__link wp-element-button" href="/contact-us/"><span>Book at this clinic</span><span aria-hidden="true">↗</span></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
@@ -108,7 +108,7 @@
 
 <!-- wp:buttons {"className":"experience-card__cta"} -->
 <div class="wp-block-buttons experience-card__cta"><!-- wp:button {"className":"is-style-text"} -->
-<div class="wp-block-button is-style-text"><a class="wp-block-button__link wp-element-button" href="#"><span>Join the opening list</span><span aria-hidden="true">↗</span></a></div>
+<div class="wp-block-button is-style-text"><a class="wp-block-button__link wp-element-button" href="/contact-us/"><span>Join the opening list</span><span aria-hidden="true">↗</span></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

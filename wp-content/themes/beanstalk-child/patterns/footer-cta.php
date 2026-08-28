@@ -20,7 +20,7 @@
 
 <!-- wp:buttons {"className":"footer-cta__buttons is-layout-flex wp-block-buttons-is-layout-flex","layout":{"type":"flex","justifyContent":"left","orientation":"horizontal","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons footer-cta__buttons is-layout-flex wp-block-buttons-is-layout-flex"><!-- wp:button {"className":"is-style-primary footer-cta__primary"} -->
-<div class="wp-block-button is-style-primary footer-cta__primary"><a class="wp-block-button__link wp-element-button" href="#">Book Appointment ↗</a></div>
+<div class="wp-block-button is-style-primary footer-cta__primary"><a class="wp-block-button__link wp-element-button" href="/contact-us/">Book Appointment ↗</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"textColor":"button-text","className":"is-style-text footer-cta__phone"} -->

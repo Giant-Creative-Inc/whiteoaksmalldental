@@ -117,8 +117,7 @@
 	min-height: 54px;
 }
 
-.white-oaks-service-tabs__appointment:focus-visible,
-.white-oaks-service-tabs__treatments a:focus-visible {
+.white-oaks-service-tabs__appointment:focus-visible {
 	outline: 2px solid var(--wp--preset--color--primary);
 	outline-offset: 2px;
 }
@@ -133,8 +132,8 @@
 	border-bottom: 1px solid color-mix(in srgb, var(--wp--preset--color--primary) 22%, transparent);
 }
 
-.white-oaks-service-tabs__treatments a {
-	@apply flex items-center gap-wp-12 font-button text-b-6 no-underline;
+.white-oaks-service-tabs__treatment-label {
+	@apply flex items-center gap-wp-12 font-button text-b-6;
 	color: var(--wp--preset--color--oak-orange-shade-900);
 	line-height: var(--wp--custom--line-height--button);
 	padding-block: 11px 12px;
@@ -143,20 +142,6 @@
 .white-oaks-service-tabs__star {
 	@apply text-b-6;
 	line-height: var(--wp--custom--line-height--button);
-}
-
-.white-oaks-service-tabs__link-arrow {
-	@apply ml-auto transition-transform duration-200;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22.5px; /* 150% */
-  letter-spacing: -0.234px;
-}
-
-.white-oaks-service-tabs__treatment-link:is(:hover, :focus-visible) .white-oaks-service-tabs__link-arrow {
-	@apply translate-x-wp-4;
 }
 
 .white-oaks-service-tabs__decorative-number {
@@ -223,7 +208,7 @@
 		border-color: var(--wp--preset--color--header-border);
 	}
 
-	.white-oaks-service-tabs__treatments a {
+	.white-oaks-service-tabs__treatment-label {
 		@apply justify-start gap-wp-12 py-wp-12 font-body text-b-5 leading-normal;
 		color: var(--wp--preset--color--primary-shade-600);
 	}

@@ -1,0 +1,119 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.whiteoaksmalldental.com/#logo",
+      "url": "https://cdn.prod.website-files.com/6862661058d0a755211009e9/68dd413a140e0278f90114d0_ec1a5305-e726-4615-ab6b-3d0b48feebe6.webp",
+      "contentUrl": "https://cdn.prod.website-files.com/6862661058d0a755211009e9/68dd413a140e0278f90114d0_ec1a5305-e726-4615-ab6b-3d0b48feebe6.webp",
+      "caption": "Oaks Dental logo"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.whiteoaksmalldental.com/#organization",
+      "name": "Oaks Dental",
+      "url": "https://www.whiteoaksmalldental.com/",
+      "description": "A London, Ontario dental organization providing family, preventive, cosmetic, restorative, orthodontic and emergency dental care through White Oaks Mall Dental.",
+      "logo": { "@id": "https://www.whiteoaksmalldental.com/#logo" },
+      "image": { "@id": "https://www.whiteoaksmalldental.com/#logo" },
+      "telephone": "+1-519-686-6200",
+      "email": "info@whiteoaksmalldental.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1105 Wellington Rd",
+        "addressLocality": "London",
+        "addressRegion": "ON",
+        "postalCode": "N6E 1V4",
+        "addressCountry": "CA"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "appointments and patient enquiries",
+        "telephone": "+1-519-686-6200",
+        "email": "info@whiteoaksmalldental.com"
+      },
+      "location": { "@id": "https://www.whiteoaksmalldental.com/locations/white-oaks-mall/#dentist" },
+      "subOrganization": { "@id": "https://www.whiteoaksmalldental.com/locations/white-oaks-mall/#dentist" },
+      "sameAs": [
+        "https://www.facebook.com/whiteoaksmalldental/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.whiteoaksmalldental.com/#website",
+      "url": "https://www.whiteoaksmalldental.com/",
+      "name": "Oaks Dental",
+      "alternateName": ["White Oaks Mall Dental", "White Oaks Mall Dentistry"],
+      "publisher": { "@id": "https://www.whiteoaksmalldental.com/#organization" },
+      "inLanguage": "en-CA"
+    },
+    {
+      "@type": "City",
+      "@id": "https://www.whiteoaksmalldental.com/#london-ontario",
+      "name": "London",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Ontario",
+        "containedInPlace": { "@type": "Country", "name": "Canada" }
+      }
+    },
+    {
+      "@type": "Dentist",
+      "@id": "https://www.whiteoaksmalldental.com/locations/white-oaks-mall/#dentist",
+      "name": "White Oaks Mall Dental",
+      "alternateName": ["White Oaks Mall Dentistry", "White Oaks Mall Dental Clinic"],
+      "url": "https://www.whiteoaksmalldental.com/locations/white-oaks-mall/",
+      "description": "A London, Ontario dental clinic providing family, preventive, cosmetic, restorative, orthodontic, implant and emergency dental care, with evening and Saturday appointments.",
+      "telephone": "+1-519-686-6200",
+      "email": "info@whiteoaksmalldental.com",
+      "image": [
+        "https://www.whiteoaksmalldental.com/wp-content/uploads/2026/07/white-oaks-dental-hero-source-scaled.jpg",
+        "https://www.whiteoaksmalldental.com/wp-content/uploads/2026/08/White-Oaks-Mall.jpg"
+      ],
+      "logo": { "@id": "https://www.whiteoaksmalldental.com/#logo" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1105 Wellington Rd",
+        "addressLocality": "London",
+        "addressRegion": "ON",
+        "postalCode": "N6E 1V4",
+        "addressCountry": "CA"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 42.9300666, "longitude": -81.2254834 },
+      "hasMap": "https://www.google.com/maps/place/White+Oaks+Mall+Dental/@42.9300666,-81.2280583,1549m/data=!3m2!1e3!4b1!4m6!3m5!1s0x882ef3961169343d:0x89c75843f29853ce!8m2!3d42.9300666!4d-81.2254834!16s%2Fg%2F1tf87qy9",
+      "containedInPlace": { "@type": "ShoppingCenter", "name": "White Oaks Mall", "url": "https://www.whiteoaksmall.ca/" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["https://schema.org/Monday", "https://schema.org/Tuesday", "https://schema.org/Wednesday", "https://schema.org/Thursday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Friday", "opens": "08:00", "closes": "15:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Saturday", "opens": "09:00", "closes": "14:00" }
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Free mall parking", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Accessible entrance", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Evening appointments", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Saturday appointments", "value": true }
+      ],
+      "isAcceptingNewPatients": true,
+      "medicalSpecialty": "https://schema.org/Dentistry",
+      "parentOrganization": { "@id": "https://www.whiteoaksmalldental.com/#organization" },
+      "employee": [
+        { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-lalit-kapoor" },
+        { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-anu-kapoor" },
+        { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-reetish-kapoor" },
+        { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-jack-bottner" }
+      ],
+      "hasOfferCatalog": { "@id": "https://www.whiteoaksmalldental.com/#dental-services" },
+      "areaServed": { "@id": "https://www.whiteoaksmalldental.com/#london-ontario" },
+      "currenciesAccepted": "CAD",
+      "sameAs": [
+        "https://www.whiteoaksmall.ca/stores/white-oaks-dental/",
+        "https://www.facebook.com/whiteoaksmalldental/"
+      ]
+    }
+  ]
+}

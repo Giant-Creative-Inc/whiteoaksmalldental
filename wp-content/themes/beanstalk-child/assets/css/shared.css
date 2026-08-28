@@ -147,7 +147,8 @@
   }
 
   .site-header__inner {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    column-gap: 29px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     padding-block: 15.5px;
   }
 
@@ -191,7 +192,7 @@
   }
 
   .site-header__inner > .site-header__nav {
-    margin-left: -5.93px;
+    justify-self: end;
   }
 
   .site-header__cta .wp-block-button__link {
@@ -563,7 +564,6 @@
   letter-spacing: var(--wp--custom--letter-spacing--footer-legal-desktop);
   line-height: var(--wp--custom--line-height--button);
   margin: var(--wp--custom--footer--legal-margin-top) auto 0;
-  max-width: var(--wp--custom--footer--content-width);
   padding-top: var(--wp--custom--footer--legal-padding-top);
 }
 

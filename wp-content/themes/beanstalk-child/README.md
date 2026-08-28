@@ -51,6 +51,21 @@ The header, footer, global buttons, and navigation remain in `shared.css`.
 Custom blocks continue declaring their own frontend styles through `block.json`.
 WP Rocket may combine the selected stylesheets into one cached file per page.
 
+## JSON-LD schema
+
+The controlled sitewide Organization, WebSite, and Dentist foundation graph is
+stored in `schema/foundation.json`. Administrators can add one complete
+page-specific JSON-LD object through the **Custom JSON-LD Schema** panel on any
+Page or Post. The object must use `https://schema.org` as `@context` and contain
+an `@graph` array.
+
+Valid page-specific schema is rendered server-side in `wp_head`. Rank Math's
+JSON-LD is disabled only for an item with a valid managed graph; clearing the
+field restores Rank Math output. Invalid JSON is rejected without replacing
+the last valid value. Schema values participate in WordPress revisions, and the
+panel records the editor, timestamp, and before/after hashes for its latest 50
+changes.
+
 ## Global horizontal gutters
 
 The site gutter is defined once at `settings.custom.layout.gutter` in

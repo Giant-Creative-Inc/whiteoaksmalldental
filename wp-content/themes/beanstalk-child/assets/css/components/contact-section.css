@@ -12,8 +12,7 @@
 }
 
 .contact-section__inner {
-	@apply mx-auto box-border w-full;
-	max-width: var(--wp--preset--spacing--1280);
+	@apply mx-auto box-border w-full max-w-none;
 	width: calc(100% - (2 * var(--wp--preset--spacing--24)));
 }
 

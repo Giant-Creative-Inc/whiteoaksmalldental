@@ -123,11 +123,10 @@ $wrapper_attributes = get_block_wrapper_attributes(
 				<ul class="white-oaks-service-tabs__treatments">
 					<?php foreach ( $item['treatments'] as $treatment ) : ?>
 						<li>
-							<a href="<?php echo esc_url( $treatment['url'] ?? '' ); ?>" class="white-oaks-service-tabs__treatment-link">
+							<span class="white-oaks-service-tabs__treatment-label">
 								<span class="white-oaks-service-tabs__star" aria-hidden="true">✦</span>
 								<span><?php echo esc_html( $treatment['label'] ?? '' ); ?></span>
-								<span class="white-oaks-service-tabs__link-arrow" aria-hidden="true"><svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.18963 9.54541L5.36932 8.73575L8.74645 5.35862H0V4.18675H8.74645L5.36932 0.820268L6.18963 -4.42266e-05L10.9624 4.77268L6.18963 9.54541Z" fill="#160F07"/></svg></span>
-							</a>
+							</span>
 						</li>
 					<?php endforeach; ?>
 				</ul>
