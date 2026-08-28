@@ -12,11 +12,10 @@
 }
 
 .contact-section__inner {
-	@apply mx-auto box-border w-full max-w-none;
-	width: calc(100% - (2 * var(--wp--preset--spacing--24)));
+	@apply mx-auto box-border w-full max-w-none px-site-gutter;
 }
 
-.contact-section :where(.contact-section__inner, .contact-section__hero, .contact-section__form-header, .contact-section__form-embed, .contact-section__clinic-panel, .contact-section__details, .contact-section__detail).has-global-padding {
+.contact-section :where(.contact-section__hero, .contact-section__form-header, .contact-section__form-embed, .contact-section__clinic-panel, .contact-section__details, .contact-section__detail).has-global-padding {
 	padding-inline: 0;
 }
 
