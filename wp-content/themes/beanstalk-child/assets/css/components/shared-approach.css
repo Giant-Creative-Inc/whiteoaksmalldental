@@ -14,7 +14,7 @@
 }
 
 .shared-approach .shared-approach__quote {
-  @apply m-0 w-full font-button text-[26px] leading-[34px] font-normal tracking-[-0.5px];
+  @apply m-0 w-full font-heading text-[26px] leading-[34px] font-normal tracking-[-0.5px];
 }
 
 .shared-approach__attribution {
