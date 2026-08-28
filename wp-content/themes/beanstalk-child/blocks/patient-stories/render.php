@@ -65,8 +65,8 @@ $wrapper_attributes = get_block_wrapper_attributes(
 							<div class="patient-stories__controls">
 								<p class="patient-stories__counter has-primary-color has-text-color has-button-font-family has-b-6-font-size" data-patient-story-counter><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?> / <?php echo esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ); ?></p>
 								<div class="patient-stories__buttons">
-									<button type="button" class="patient-stories__button patient-stories__button--previous" aria-label="<?php esc_attr_e( 'Previous testimonial', 'beanstalk-child' ); ?>" data-patient-story-previous <?php disabled( $total < 2 ); ?>><span aria-hidden="true">→</span></button>
-									<button type="button" class="patient-stories__button patient-stories__button--next" aria-label="<?php esc_attr_e( 'Next testimonial', 'beanstalk-child' ); ?>" data-patient-story-next <?php disabled( $total < 2 ); ?>><span aria-hidden="true">→</span></button>
+									<button type="button" class="patient-stories__button patient-stories__button--previous" aria-label="<?php esc_attr_e( 'Previous testimonial', 'beanstalk-child' ); ?>" data-patient-story-previous <?php disabled( $total < 2 ); ?>><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7 7-7-7 7-7" /></svg></button>
+									<button type="button" class="patient-stories__button patient-stories__button--next" aria-label="<?php esc_attr_e( 'Next testimonial', 'beanstalk-child' ); ?>" data-patient-story-next <?php disabled( $total < 2 ); ?>><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></button>
 								</div>
 							</div>
 						</div>

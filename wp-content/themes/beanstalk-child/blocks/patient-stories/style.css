@@ -173,14 +173,8 @@
 	@apply order-1;
 }
 
-.patient-stories__button span {
-	@apply block leading-none;
-
-	font-family: Arial, sans-serif;
-}
-
-.patient-stories__button--previous span {
-	@apply rotate-180;
+.patient-stories__button svg {
+	@apply block size-5;
 }
 
 .patient-stories__counter {
