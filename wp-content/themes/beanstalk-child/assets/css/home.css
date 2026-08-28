@@ -311,8 +311,8 @@
 .homepage-hero__content {
   @apply box-border flex flex-col items-start justify-center;
   height: var(--wp--custom--hero--desktop-height);
-  max-width: var(--wp--custom--hero--desktop-content-width);
-  padding: 0 var(--wp--custom--hero--desktop-padding-right) var(--wp--custom--hero--desktop-padding-bottom) var(--wp--custom--hero--desktop-padding-left);
+  max-width: calc(var(--wp--custom--hero--desktop-copy-width) + var(--wp--custom--layout--gutter));
+  padding: 0 0 var(--wp--custom--hero--desktop-padding-bottom) var(--wp--custom--layout--gutter);
 }
 
 .homepage-hero__content > * {
