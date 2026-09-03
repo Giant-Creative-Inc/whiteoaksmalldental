@@ -123,10 +123,10 @@
 		if ( national.length ) {
 			formatted = `(${ national.slice( 0, 3 ) }`;
 		}
-		if ( national.length >= 3 ) {
+		if ( national.length > 3 ) {
 			formatted += `) ${ national.slice( 3, 6 ) }`;
 		}
-		if ( national.length >= 6 ) {
+		if ( national.length > 6 ) {
 			formatted += `-${ national.slice( 6, 10 ) }`;
 		}
 

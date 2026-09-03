@@ -518,7 +518,8 @@
 
 .site-footer__links,
 .site-footer__navigation,
-.site-footer__hours-copy {
+.site-footer__hours-copy,
+.site-footer__privacy {
   color: inherit;
   font-family: var(--wp--preset--font-family--button);
   font-size: var(--wp--preset--font-size--b-6);
@@ -622,7 +623,8 @@
 
   .site-footer__links,
   .site-footer .site-footer__navigation,
-  .site-footer .site-footer__hours-copy {
+  .site-footer .site-footer__hours-copy,
+  .site-footer .site-footer__privacy {
     font-size: var(--wp--preset--font-size--footer-link-mobile);
     line-height: var(--wp--custom--line-height--footer-link-mobile);
   }
