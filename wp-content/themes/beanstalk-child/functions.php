@@ -24,6 +24,35 @@ require_once get_stylesheet_directory() . '/inc/llms-txt.php';
 require_once get_stylesheet_directory() . '/inc/schema.php';
 
 /**
+ * Adds the Privacy Policy link when a saved footer override is stale.
+ *
+ * @param string $block_content Rendered Group block markup.
+ * @param array  $block         Parsed Group block.
+ * @return string
+ */
+function white_oaks_render_footer_privacy_link( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if (
+		! str_contains( $class_name, 'site-footer__brand' ) ||
+		str_contains( $block_content, 'href="/privacy-policy/"' )
+	) {
+		return $block_content;
+	}
+
+	$closing_position = strrpos( $block_content, '</div>' );
+
+	if ( false === $closing_position ) {
+		return $block_content;
+	}
+
+	$privacy_link = '<p class="site-footer__privacy has-button-font-family has-b-6-font-size" style="margin-top:var(--wp--preset--spacing--24)"><a href="/privacy-policy/">Privacy Policy</a></p>';
+
+	return substr_replace( $block_content, $privacy_link, $closing_position, 0 );
+}
+add_filter( 'render_block_core/group', 'white_oaks_render_footer_privacy_link', 10, 2 );
+
+/**
  * Returns the decorative diagonal arrow used by actionable buttons.
  *
  * The path uses currentColor so every button style controls the icon colour.
