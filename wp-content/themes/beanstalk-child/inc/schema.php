@@ -237,6 +237,107 @@ function white_oaks_schema_current_graph() {
 }
 
 /**
+ * Returns page-specific Speakable selectors confirmed against frontend markup.
+ *
+ * @return array
+ */
+function white_oaks_schema_speakable_selectors() {
+	if ( is_front_page() ) {
+		return array(
+			'.homepage-hero__heading',
+			'.homepage-hero__lead',
+			'.services-section__header',
+			'.white-oaks-service-tabs__treatments',
+			'.home-faqs__list',
+			'.patient-stories__heading',
+			'.patient-stories__review-summary',
+			'.patient-stories__quote',
+		);
+	}
+
+	if ( is_page( 'invisalign' ) ) {
+		return array(
+			'.invisalign-hero',
+			'.why-invisalign__header',
+			'.why-invisalign__cards',
+			'.first-visit__header',
+			'.first-visit__steps',
+			'.home-faqs__list',
+		);
+	}
+
+	if ( is_page( 'contact-us' ) ) {
+		return array(
+			'.contact-section__hero h1',
+			'.contact-section__hero-copy',
+			'.contact-section__form-header',
+			'.contact-section__clinic-card',
+		);
+	}
+
+	return array();
+}
+
+/**
+ * Adds page-specific Speakable markup using stable frontend selectors.
+ *
+ * @param array $graph Complete JSON-LD graph.
+ * @return array
+ */
+function white_oaks_schema_add_speakable( $graph ) {
+	$selectors = white_oaks_schema_speakable_selectors();
+
+	if ( ! $selectors ) {
+		return $graph;
+	}
+
+	foreach ( $graph['@graph'] as &$node ) {
+		$types = isset( $node['@type'] ) ? (array) $node['@type'] : array();
+
+		if ( in_array( 'WebPage', $types, true ) ) {
+			$node['speakable'] = array(
+				'@type'       => 'SpeakableSpecification',
+				'cssSelector' => $selectors,
+			);
+			break;
+		}
+	}
+	unset( $node );
+
+	return $graph;
+}
+
+/**
+ * Adds Speakable markup when Rank Math owns the current page graph.
+ *
+ * @param array $data Rank Math JSON-LD data.
+ * @return array
+ */
+function white_oaks_add_rank_math_speakable( $data ) {
+	$selectors = white_oaks_schema_speakable_selectors();
+
+	if ( ! $selectors ) {
+		return $data;
+	}
+
+	foreach ( $data as &$node ) {
+		$types = isset( $node['@type'] ) ? (array) $node['@type'] : array();
+
+		if ( in_array( 'WebPage', $types, true ) ) {
+			$node['speakable'] = array(
+				'@type'       => 'SpeakableSpecification',
+				'cssSelector' => $selectors,
+			);
+			break;
+		}
+	}
+	unset( $node );
+
+	return $data;
+}
+add_filter( 'rank_math/json_ld', 'white_oaks_add_rank_math_speakable', 90 );
+
+/**
  * Outputs controlled JSON-LD in server-rendered page source.
  *
  * @return void
@@ -246,7 +347,9 @@ function white_oaks_output_schema() {
 		return;
 	}
 
-	$graphs = array_filter( array( white_oaks_schema_foundation(), white_oaks_schema_current_graph() ) );
+	$current_graph = white_oaks_schema_current_graph();
+	$current_graph = $current_graph ? white_oaks_schema_add_speakable( $current_graph ) : null;
+	$graphs        = array_filter( array( white_oaks_schema_foundation(), $current_graph ) );
 
 	foreach ( $graphs as $graph ) {
 		printf(
