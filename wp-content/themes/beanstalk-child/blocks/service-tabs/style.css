@@ -152,6 +152,16 @@
 	right: 54px;
 }
 
+@media (min-width: 64.0625rem) {
+	.white-oaks-service-tabs__tablist {
+		@apply grid grid-rows-5;
+	}
+
+	.white-oaks-service-tabs__tab {
+		@apply box-border min-h-0 last:border-b-0;
+	}
+}
+
 @variant max-desktop {
 	.wp-block-white-oaks-service-tabs {
 		@apply block border-0;

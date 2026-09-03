@@ -177,6 +177,35 @@ add_filter( 'render_block_core/group', 'white_oaks_render_contact_form', 20, 2 )
 add_filter( 'gform_disable_css', '__return_true' );
 
 /**
+ * Keeps non-indexed parent landing pages as plain-text breadcrumb labels.
+ *
+ * @param array $crumbs Rank Math breadcrumb items.
+ * @return array
+ */
+function white_oaks_unlink_noindex_parent_breadcrumbs( $crumbs ) {
+	$unlinked_paths = array(
+		'/locations/',
+		'/services/',
+	);
+
+	foreach ( $crumbs as &$crumb ) {
+		if ( empty( $crumb[1] ) ) {
+			continue;
+		}
+
+		$path = wp_parse_url( $crumb[1], PHP_URL_PATH );
+
+		if ( in_array( trailingslashit( (string) $path ), $unlinked_paths, true ) ) {
+			$crumb[1] = '';
+		}
+	}
+	unset( $crumb );
+
+	return $crumbs;
+}
+add_filter( 'rank_math/frontend/breadcrumb/items', 'white_oaks_unlink_noindex_parent_breadcrumbs' );
+
+/**
  * Versions child-theme CSS and JavaScript URLs using each file's edit time.
  *
  * This also covers assets registered from block.json, whose metadata version

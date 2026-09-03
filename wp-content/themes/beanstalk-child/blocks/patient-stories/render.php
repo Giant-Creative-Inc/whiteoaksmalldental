@@ -21,6 +21,19 @@ $total       = count( $stories );
 $background  = sanitize_key( $attributes['backgroundColorSlug'] ?? 'light' );
 $text_color  = sanitize_key( $attributes['textColorSlug'] ?? 'dark' );
 
+$normalize_rich_text = static function ( $value ) {
+	return str_ireplace(
+		array(
+			'\\u003cem\\u003e',
+			'\\u003c/em\\u003e',
+			'u003cemu003e',
+			'u003c/emu003e',
+		),
+		array( '<em>', '</em>', '<em>', '</em>' ),
+		(string) $value
+	);
+};
+
 $wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => sprintf( 'alignfull has-%1$s-background-color has-background has-%2$s-color has-text-color', $background, $text_color ),
@@ -31,7 +44,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	<div class="patient-stories__inner">
 		<div class="patient-stories__summary">
 			<p class="patient-stories__eyebrow has-primary-color has-text-color has-button-font-family has-b-6-font-size is-style-eyebrow"><strong><?php echo wp_kses_post( $attributes['eyebrow'] ?? '' ); ?></strong></p>
-			<h2 class="patient-stories__heading has-heading-font-family has-patient-stories-heading-font-size"><?php echo wp_kses_post( $attributes['heading'] ?? '' ); ?></h2>
+			<h2 class="patient-stories__heading has-heading-font-family has-patient-stories-heading-font-size"><?php echo wp_kses_post( $normalize_rich_text( $attributes['heading'] ?? '' ) ); ?></h2>
 
 			<?php /* translators: 1: Numeric review rating. 2: Review summary, such as "Google reviews". */ ?>
 			<div class="patient-stories__rating" aria-label="<?php echo esc_attr( sprintf( __( 'Rated %1$s. %2$s', 'beanstalk-child' ), wp_strip_all_tags( $attributes['rating'] ?? '' ), wp_strip_all_tags( $attributes['reviewSummary'] ?? '' ) ) ); ?>">
