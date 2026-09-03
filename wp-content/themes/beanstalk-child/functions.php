@@ -154,24 +154,40 @@ function white_oaks_defer_clinic_gallery_images( $content ) {
 					continue;
 				}
 
-				$processor->set_attribute( 'data-gallery-full-src', $src );
+				$processor->set_attribute( 'data-gallery-full-url', $src );
 
 				if ( 0 === $image_index++ ) {
 					continue;
 				}
 
-				$processor->set_attribute( 'data-gallery-src', $src );
+				$processor->set_attribute( 'data-gallery-url', $src );
 
-				foreach ( array( 'srcset', 'sizes' ) as $attribute ) {
-					$value = $processor->get_attribute( $attribute );
+				$srcset = $processor->get_attribute( 'srcset' );
+				$sizes  = $processor->get_attribute( 'sizes' );
 
-					if ( is_string( $value ) && '' !== $value ) {
-						$processor->set_attribute( 'data-gallery-' . $attribute, $value );
+				if ( is_string( $srcset ) && '' !== $srcset ) {
+					$processor->set_attribute( 'data-gallery-candidates', $srcset );
 				}
 
-					$processor->remove_attribute( $attribute );
+				if ( is_string( $sizes ) && '' !== $sizes ) {
+					$processor->set_attribute( 'data-gallery-display-sizes', $sizes );
 				}
 
+				$class_name = $processor->get_attribute( 'class' );
+
+				if ( is_string( $class_name ) && preg_match( '/(?:^|\s)wp-image-\d+(?:\s|$)/', $class_name ) ) {
+					$processor->set_attribute( 'data-gallery-image-class', $class_name );
+					$class_name = trim( preg_replace( '/(?:^|\s)wp-image-\d+(?=\s|$)/', ' ', $class_name ) );
+
+					if ( '' === $class_name ) {
+						$processor->remove_attribute( 'class' );
+					} else {
+						$processor->set_attribute( 'class', $class_name );
+					}
+				}
+
+				$processor->remove_attribute( 'srcset' );
+				$processor->remove_attribute( 'sizes' );
 				$processor->remove_attribute( 'src' );
 			}
 

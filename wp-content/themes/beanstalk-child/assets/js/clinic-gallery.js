@@ -20,22 +20,28 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 	const hydrateSlide = ( slide ) => {
 		const image = slide.querySelector( 'img' );
 
-		if ( ! image?.dataset.gallerySrc ) {
+		if ( ! image?.dataset.galleryUrl ) {
 			return Promise.resolve();
 		}
 
-		const src = image.dataset.gallerySrc;
-		const srcset = image.dataset.gallerySrcset;
-		const sizes = image.dataset.gallerySizes;
+		const src = image.dataset.galleryUrl;
+		const srcset = image.dataset.galleryCandidates;
+		const sizes = image.dataset.galleryDisplaySizes;
+		const className = image.dataset.galleryImageClass;
 
-		delete image.dataset.gallerySrc;
-		delete image.dataset.gallerySrcset;
-		delete image.dataset.gallerySizes;
+		delete image.dataset.galleryUrl;
+		delete image.dataset.galleryCandidates;
+		delete image.dataset.galleryDisplaySizes;
+		delete image.dataset.galleryImageClass;
 
 		return new Promise( ( resolve ) => {
 			image.addEventListener( 'load', resolve, { once: true } );
 			image.addEventListener( 'error', resolve, { once: true } );
 			image.loading = 'eager';
+
+			if ( className ) {
+				image.className = className;
+			}
 
 			if ( sizes ) {
 				image.sizes = sizes;
@@ -71,7 +77,7 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 		}
 
 		lightboxOpener = slide;
-		lightboxImage.src = image.dataset.galleryFullSrc || image.currentSrc || image.src;
+		lightboxImage.src = image.dataset.galleryFullUrl || image.currentSrc || image.src;
 		lightboxImage.alt = image.alt;
 		lightbox.showModal();
 		lightboxClose.focus();
