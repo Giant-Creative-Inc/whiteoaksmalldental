@@ -17,6 +17,42 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 	const lightboxClose = document.createElement( 'button' );
 	let lightboxOpener = null;
 
+	const hydrateSlide = ( slide ) => {
+		const image = slide.querySelector( 'img' );
+
+		if ( ! image?.dataset.gallerySrc ) {
+			return Promise.resolve();
+		}
+
+		const src = image.dataset.gallerySrc;
+		const srcset = image.dataset.gallerySrcset;
+		const sizes = image.dataset.gallerySizes;
+
+		delete image.dataset.gallerySrc;
+		delete image.dataset.gallerySrcset;
+		delete image.dataset.gallerySizes;
+
+		return new Promise( ( resolve ) => {
+			image.addEventListener( 'load', resolve, { once: true } );
+			image.addEventListener( 'error', resolve, { once: true } );
+			image.loading = 'eager';
+
+			if ( sizes ) {
+				image.sizes = sizes;
+			}
+
+			if ( srcset ) {
+				image.srcset = srcset;
+			}
+
+			image.src = src;
+
+			if ( image.complete ) {
+				resolve();
+			}
+		} );
+	};
+
 	lightbox.className = 'clinic-gallery-lightbox';
 	lightbox.setAttribute( 'aria-label', 'Clinic gallery image preview' );
 	lightboxImage.className = 'clinic-gallery-lightbox__image';
@@ -35,7 +71,7 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 		}
 
 		lightboxOpener = slide;
-		lightboxImage.src = image.currentSrc || image.src;
+		lightboxImage.src = image.dataset.galleryFullSrc || image.currentSrc || image.src;
 		lightboxImage.alt = image.alt;
 		lightbox.showModal();
 		lightboxClose.focus();
@@ -61,7 +97,7 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 		} );
 	} );
 
-	const showSlide = ( index, direction = 'next', animate = true ) => {
+	const showSlide = async ( index, direction = 'next', animate = true ) => {
 		if ( isAnimating ) {
 			return;
 		}
@@ -70,6 +106,11 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 		const outgoingSlide = slides[ activeIndex ];
 		const incomingSlide = slides[ nextIndex ];
 		const shouldAnimate = animate && ! reducedMotion.matches && nextIndex !== activeIndex;
+
+		if ( shouldAnimate ) {
+			isAnimating = true;
+			await hydrateSlide( incomingSlide );
+		}
 
 		if ( ! shouldAnimate ) {
 			slides.forEach( ( slide, slideIndex ) => {
@@ -84,7 +125,6 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 			return;
 		}
 
-		isAnimating = true;
 		incomingSlide.hidden = false;
 		incomingSlide.tabIndex = 0;
 		outgoingSlide.tabIndex = -1;

@@ -125,6 +125,64 @@ function white_oaks_render_clinic_gallery_control( $block_content, $block ) {
 add_filter( 'render_block_core/button', 'white_oaks_render_clinic_gallery_control', 20, 2 );
 
 /**
+ * Defers inactive clinic-gallery images until a visitor requests each slide.
+ *
+ * Core Image blocks still generate the attachment dimensions and responsive
+ * sources. This late content filter moves those requestable URLs to gallery-
+ * specific data attributes after WordPress has finished enriching the image
+ * markup, preventing the absolutely positioned inactive slides from all being
+ * fetched as soon as the gallery approaches the viewport.
+ *
+ * @param string $content Filtered post content.
+ * @return string
+ */
+function white_oaks_defer_clinic_gallery_images( $content ) {
+	if ( ! str_contains( $content, 'clinic-gallery__slides' ) ) {
+		return $content;
+	}
+
+	return preg_replace_callback(
+		'/(<div\b[^>]*class="[^"]*\bclinic-gallery__slides\b[^"]*"[^>]*>)(.*?)(<\/div>)/s',
+		static function ( $matches ) {
+			$processor   = new WP_HTML_Tag_Processor( $matches[2] );
+			$image_index = 0;
+
+			while ( $processor->next_tag( 'img' ) ) {
+				$src = $processor->get_attribute( 'src' );
+
+				if ( ! is_string( $src ) || '' === $src ) {
+					continue;
+				}
+
+				$processor->set_attribute( 'data-gallery-full-src', $src );
+
+				if ( 0 === $image_index++ ) {
+					continue;
+				}
+
+				$processor->set_attribute( 'data-gallery-src', $src );
+
+				foreach ( array( 'srcset', 'sizes' ) as $attribute ) {
+					$value = $processor->get_attribute( $attribute );
+
+					if ( is_string( $value ) && '' !== $value ) {
+						$processor->set_attribute( 'data-gallery-' . $attribute, $value );
+				}
+
+					$processor->remove_attribute( $attribute );
+				}
+
+				$processor->remove_attribute( 'src' );
+			}
+
+			return $matches[1] . $processor->get_updated_html() . $matches[3];
+		},
+		$content
+	);
+}
+add_filter( 'the_content', 'white_oaks_defer_clinic_gallery_images', 20 );
+
+/**
  * Replaces the emergency phone link's diagonal-arrow text with the shared SVG.
  *
  * @param string $block_content Rendered Paragraph block markup.
