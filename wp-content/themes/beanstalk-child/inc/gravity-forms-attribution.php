@@ -59,14 +59,25 @@ add_filter( 'gform_pre_validation_1', 'white_oaks_allow_client_attribution_value
 add_filter( 'gform_pre_submission_filter_1', 'white_oaks_allow_client_attribution_values' );
 
 /**
- * Enqueues the site-wide attribution capture and configured form behaviour.
- *
- * The script runs on every frontend page so first-touch attribution is captured
- * even when the landing page does not contain a form.
+ * Enqueues attribution capture and configured form behaviour only where a
+ * configured Gravity Form is rendered.
  *
  * @return void
  */
 function white_oaks_enqueue_form_attribution() {
+	$content = white_oaks_current_page_content();
+
+	if (
+		'' === $content ||
+		(
+			! str_contains( $content, 'gravityforms/form' ) &&
+			! str_contains( $content, '[gravityform' ) &&
+			! str_contains( $content, 'contact-section__form-embed' )
+		)
+	) {
+		return;
+	}
+
 	$relative_path = '/assets/js/gravity-forms-attribution.js';
 	$handle        = 'white-oaks-form-attribution';
 	$field_map     = white_oaks_gravity_forms_field_map();

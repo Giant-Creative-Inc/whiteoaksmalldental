@@ -24,6 +24,20 @@ require_once get_stylesheet_directory() . '/inc/llms-txt.php';
 require_once get_stylesheet_directory() . '/inc/schema.php';
 
 /**
+ * Registers intermediate widths used by the site's responsive image layouts.
+ *
+ * The uncropped sizes retain each Media Library image's source aspect ratio and
+ * automatically participate in WordPress-generated srcset attributes.
+ *
+ * @return void
+ */
+function white_oaks_register_responsive_image_sizes() {
+	add_image_size( 'white-oaks-480', 480, 0, false );
+	add_image_size( 'white-oaks-640', 640, 0, false );
+}
+add_action( 'after_setup_theme', 'white_oaks_register_responsive_image_sizes' );
+
+/**
  * Adds the Privacy Policy link when a saved footer override is stale.
  *
  * @param string $block_content Rendered Group block markup.
@@ -561,6 +575,53 @@ function white_oaks_async_adobe_fonts( $html, $handle ) {
 add_filter( 'style_loader_tag', 'white_oaks_async_adobe_fonts', 10, 2 );
 
 /**
+ * Loads below-the-fold component CSS without blocking the initial render.
+ *
+ * Global, header, and homepage hero styles remain synchronous. These handles
+ * style sections that begin below the initial mobile and desktop viewport.
+ *
+ * @param string $html   Stylesheet HTML.
+ * @param string $handle Registered stylesheet handle.
+ * @return string
+ */
+function white_oaks_async_below_fold_styles( $html, $handle ) {
+	$async_handles = array(
+		'white-oaks-service-tabs',
+		'white-oaks-component-clinic-gallery',
+		'white-oaks-component-experience-section',
+		'white-oaks-component-home-sections',
+	);
+
+	if ( ! in_array( $handle, $async_handles, true ) ) {
+		return $html;
+	}
+
+	$async_html = preg_replace(
+		'/\smedia=(["\'])all\1/i',
+		' media="print" onload="this.onload=null;this.media=\'all\'"',
+		$html,
+		1,
+		$replacement_count
+	);
+
+	if ( 0 === $replacement_count ) {
+		$async_html = preg_replace(
+			'/<link\b([^>]*)>/',
+			'<link$1 media="print" onload="this.onload=null;this.media=\'all\'">',
+			$html,
+			1
+		);
+	}
+
+	if ( ! is_string( $async_html ) || $async_html === $html ) {
+		return $html;
+	}
+
+	return $async_html . '<noscript>' . $html . '</noscript>';
+}
+add_filter( 'style_loader_tag', 'white_oaks_async_below_fold_styles', 15, 2 );
+
+/**
  * Adds early connection hints for the approved external font provider.
  *
  * @param array  $urls          URLs queued for the relationship type.
@@ -617,6 +678,11 @@ function white_oaks_image_loading_attributes( $block_content, $block ) {
 
 	if ( in_array( $attachment_id, array( 31, 32 ), true ) ) {
 		$processor->set_attribute( 'loading', 'lazy' );
+		$processor->set_attribute( 'sizes', '(max-width: 1024px) calc(100vw - 32px), 688px' );
+	}
+
+	if ( str_contains( $class_name, 'clinic-gallery__slide' ) ) {
+		$processor->set_attribute( 'sizes', '(max-width: 374px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 48px), 1238px' );
 	}
 
 	return $processor->get_updated_html();
@@ -643,7 +709,7 @@ function white_oaks_hero_cover_image_attributes( $block_content, $block ) {
 
 	return $processor->get_updated_html();
 }
-add_filter( 'render_block_core/cover', 'white_oaks_hero_cover_image_attributes', 9, 2 );
+add_filter( 'render_block_core/cover', 'white_oaks_hero_cover_image_attributes', 20, 2 );
 
 /**
  * Suppresses the parent's unused Poppins request while preserving its handle
