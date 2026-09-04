@@ -53,6 +53,36 @@ function white_oaks_render_footer_privacy_link( $block_content, $block ) {
 add_filter( 'render_block_core/group', 'white_oaks_render_footer_privacy_link', 10, 2 );
 
 /**
+ * Adds the fax number when a saved footer override is stale.
+ *
+ * @param string $block_content Rendered Group block markup.
+ * @param array  $block         Parsed Group block.
+ * @return string
+ */
+function white_oaks_render_footer_fax_number( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+
+	if (
+		! str_contains( $class_name, 'site-footer__links' ) ||
+		! str_contains( $block_content, 'mailto:info@whiteoaksmalldental.com' ) ||
+		str_contains( $block_content, '(519) 686-5031' )
+	) {
+		return $block_content;
+	}
+
+	$closing_position = strrpos( $block_content, '</div>' );
+
+	if ( false === $closing_position ) {
+		return $block_content;
+	}
+
+	$fax_number = '<p>Fax: (519) 686-5031</p>';
+
+	return substr_replace( $block_content, $fax_number, $closing_position, 0 );
+}
+add_filter( 'render_block_core/group', 'white_oaks_render_footer_fax_number', 10, 2 );
+
+/**
  * Returns the decorative diagonal arrow used by actionable buttons.
  *
  * The path uses currentColor so every button style controls the icon colour.
