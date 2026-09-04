@@ -53,6 +53,20 @@
     @apply max-h-none;
   }
 
+  .location-hero__desktop-media,
+  .location-hero__desktop-media > .wp-block-image,
+  .location-hero__desktop-media img {
+    @apply h-full max-h-none;
+  }
+
+  .location-hero__desktop-media {
+    @apply self-stretch;
+  }
+
+  .location-hero__desktop-media img {
+    @apply w-full object-cover;
+  }
+
   .location-hero > .wp-block-column:first-child {
     @apply py-location-hero-padding-block;
   }
