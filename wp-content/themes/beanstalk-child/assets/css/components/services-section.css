@@ -1,0 +1,64 @@
+@reference "../tailwind.css";
+
+/* Shared page shell for the editable Service Tabs block. */
+.services-section {
+  @apply bg-experience-background py-wp-48;
+
+  @variant desktop {
+    @apply pt-wp-120 pb-wp-128;
+  }
+}
+
+.services-section :where(p, h2) {
+  @apply my-0;
+}
+
+.services-section__inner {
+  @apply mx-auto w-full max-w-site-wide;
+}
+
+.services-section__header {
+  @apply grid items-end gap-wp-24;
+
+  @variant desktop {
+    @apply grid-cols-5 gap-wp-128;
+  }
+}
+
+.services-section__heading-group {
+  @variant desktop {
+    @apply col-span-3;
+  }
+}
+
+.services-section .is-style-eyebrow {
+  @apply font-button text-b-6 font-bold leading-button tracking-patient-stories-eyebrow text-primary uppercase;
+}
+
+.services-section__title {
+  @apply mt-wp-12 font-heading text-primary-shade-600;
+
+  @variant desktop {
+    @apply mt-wp-24 tracking-location-reviews-heading;
+  }
+}
+
+.services-section__title em {
+  @apply font-normal text-primary;
+}
+
+.services-section__intro {
+  @apply text-primary-shade-600;
+
+  @variant desktop {
+    @apply col-span-2 pb-wp-8;
+  }
+}
+
+.services-section__inner > .white-oaks-service-tabs {
+  @apply mt-wp-24;
+
+  @variant desktop {
+    @apply mt-wp-72;
+  }
+}

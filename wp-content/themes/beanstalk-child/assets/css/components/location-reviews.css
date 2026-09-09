@@ -1,0 +1,138 @@
+@reference "../tailwind.css";
+
+/*
+ * Location-page Trustindex reviews.
+ * Core blocks own the editable heading and introduction; Trustindex owns the
+ * review widget markup and presentation.
+ */
+
+.location-reviews {
+  @apply bg-experience-background py-wp-48;
+
+  @variant desktop {
+    @apply pt-wp-120 pb-wp-128;
+  }
+}
+
+.location-reviews__inner > *,
+.location-reviews__header > *,
+.location-reviews__heading-group > * {
+  @apply my-0;
+}
+
+.location-reviews__inner {
+  @apply mx-auto w-full max-w-site-wide;
+}
+
+.location-reviews__header {
+  @apply grid! items-end gap-wp-16;
+
+  @variant desktop {
+    @apply grid-cols-5 gap-wp-128;
+  }
+}
+
+.location-reviews__heading-group {
+  @apply flex flex-col gap-wp-8;
+
+  @variant desktop {
+    @apply col-span-3 gap-wp-24;
+  }
+}
+
+.location-reviews__eyebrow {
+  @apply text-b-5 font-bold leading-button tracking-patient-stories-eyebrow uppercase;
+}
+
+.location-reviews__heading {
+  @apply text-location-reviews-heading leading-location-reviews-heading tracking-location-reviews-heading font-normal;
+}
+
+.location-reviews__heading em {
+  @apply text-primary font-normal;
+}
+
+.location-reviews__intro {
+  @apply text-b-4 leading-6;
+
+  @variant desktop {
+    @apply col-span-2 text-b-3 leading-b-3 pb-wp-8;
+  }
+}
+
+.location-reviews__widget {
+  @apply mt-wp-32 min-w-0;
+
+  @variant desktop {
+    @apply mt-wp-72;
+  }
+}
+
+/*
+ * Trustindex writes a zero-height inline wrapper and fixed carousel widths.
+ * These scoped overrides keep the dynamic plugin content while adapting its
+ * generated markup to the approved location-page composition.
+ */
+.location-reviews .ti-widget {
+  display: contents !important;
+  height: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  font-family: var(--wp--preset--font-family--button) !important;
+}
+
+.location-reviews .ti-widget .ti-widget-container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--wp--preset--spacing--32, 32px) !important;
+  row-gap: var(--wp--preset--spacing--32, 32px) !important;
+  column-gap: var(--wp--preset--spacing--32, 32px) !important;
+  align-items: center;
+  margin: 0 !important;
+}
+
+.location-reviews .ti-widget .ti-footer,
+.location-reviews .ti-widget .ti-reviews-container {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+  min-width: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.location-reviews .ti-widget .ti-footer .ti-row {
+  width: 100% !important;
+}
+
+.location-reviews .ti-widget .ti-footer .ti-profile-details {
+  width: auto !important;
+  min-width: 0;
+}
+
+.location-reviews .ti-widget.ti-goog .ti-widget-container .ti-review-item .ti-inner {
+  height: 100% !important;
+  padding: var(--wp--preset--spacing--24, 24px) !important;
+}
+
+.location-reviews .ti-widget .ti-name,
+.location-reviews .ti-widget .ti-rating-text,
+.location-reviews .ti-widget .ti-review-content,
+.location-reviews .ti-widget .ti-read-more,
+.location-reviews .ti-widget .ti-header-write-btn {
+  font-family: var(--wp--preset--font-family--button) !important;
+}
+
+.location-reviews .ti-widget .ti-review-content {
+  font-size: var(--wp--preset--font-size--b-5) !important;
+  line-height: 1.5 !important;
+}
+
+@media (min-width: 64.0625rem) {
+  .location-reviews .ti-widget .ti-widget-container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    gap: var(--wp--preset--spacing--24, 24px) !important;
+    row-gap: var(--wp--preset--spacing--24, 24px) !important;
+    column-gap: var(--wp--preset--spacing--24, 24px) !important;
+  }
+}

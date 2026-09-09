@@ -25,6 +25,8 @@
   --text-first-visit-card-heading: var(--wp--preset--font-size--first-visit-card-heading);
   --text-location-features-heading: var(--wp--preset--font-size--location-features-heading);
   --text-location-feature-card-heading: var(--wp--preset--font-size--location-feature-card-heading);
+  --text-location-reviews-heading: var(--wp--preset--font-size--location-reviews-heading);
+  --text-areas-served-heading: var(--wp--preset--font-size--areas-served-heading);
   --text-b-3: var(--wp--preset--font-size--b-3);
   --text-b-4: var(--wp--preset--font-size--b-4);
   --text-b-5: var(--wp--preset--font-size--b-5);
@@ -34,12 +36,15 @@
   --text-doctor-name-mobile: var(--wp--preset--font-size--doctor-name-mobile);
   --text-doctor-intro: var(--wp--preset--font-size--doctor-intro);
   --leading-h-3: var(--wp--custom--line-height--h-3);
+  --leading-b-3: var(--wp--custom--line-height--b-3);
   --leading-button: var(--wp--custom--line-height--button);
   --leading-first-visit-heading: var(--wp--custom--line-height--first-visit-heading);
   --leading-first-visit-card-heading: var(--wp--custom--line-height--first-visit-card-heading);
   --leading-first-visit-copy: var(--wp--custom--line-height--first-visit-copy);
   --leading-location-features-heading: var(--wp--custom--line-height--location-features-heading);
   --leading-location-feature-card-heading: var(--wp--custom--line-height--location-feature-card-heading);
+  --leading-location-reviews-heading: var(--wp--custom--line-height--location-reviews-heading);
+  --leading-areas-served-heading: var(--wp--custom--line-height--areas-served-heading);
   --leading-doctor-number-desktop: var(--wp--custom--doctors--number-line-height-desktop);
   --leading-doctor-number-mobile: var(--wp--custom--doctors--number-line-height-mobile);
   --leading-doctor-name-mobile: var(--wp--custom--doctors--name-line-height-mobile);
@@ -51,6 +56,9 @@
   --tracking-first-visit-heading: var(--wp--custom--letter-spacing--first-visit-heading);
   --tracking-first-visit-card-heading: var(--wp--custom--letter-spacing--first-visit-card-heading);
   --tracking-contact-label: var(--wp--custom--letter-spacing--footer-heading-mobile);
+  --tracking-patient-stories-eyebrow: var(--wp--custom--letter-spacing--patient-stories-eyebrow);
+  --tracking-location-reviews-heading: var(--wp--custom--letter-spacing--location-reviews-heading);
+  --tracking-areas-served-heading: var(--wp--custom--letter-spacing--areas-served-heading);
   --tracking-doctor-name-mobile: var(--wp--custom--doctors--name-letter-spacing-mobile);
   --tracking-doctor-specialty-desktop: var(--wp--custom--doctors--specialty-letter-spacing-desktop);
   --tracking-doctor-specialty-mobile: var(--wp--custom--doctors--specialty-letter-spacing-mobile);
@@ -80,6 +88,7 @@
   --spacing-footer-cta-content-mobile: var(--wp--custom--footer-cta--content-gap-mobile);
   --spacing-footer-cta-content-desktop: var(--wp--custom--footer-cta--content-gap-desktop);
   --spacing-site-gutter: var(--wp--custom--layout--gutter);
+  --spacing-areas-served-card-inline: var(--wp--custom--areas-served--card-padding-inline);
   --spacing-page-hero-min-height: var(--wp--custom--page-hero--desktop-min-height);
   --spacing-page-hero-max-height: var(--wp--custom--page-hero--desktop-max-height);
   --spacing-page-hero-heading-gap: var(--wp--custom--page-hero--heading-gap-desktop);
