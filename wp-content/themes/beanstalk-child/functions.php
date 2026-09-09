@@ -384,6 +384,22 @@ add_filter( 'script_loader_src', 'white_oaks_version_child_asset_url', 20 );
 add_filter( 'script_module_loader_src', 'white_oaks_version_child_asset_url', 20 );
 
 /**
+ * Keeps the Service Tabs interaction module available before user input.
+ *
+ * WP Rocket's delay loader otherwise leaves every server-rendered tab panel
+ * visible until an interaction occurs, which expands the component height.
+ *
+ * @param array<int, string> $excluded_scripts Delay JavaScript exclusions.
+ * @return array<int, string>
+ */
+function white_oaks_exclude_service_tabs_from_delayed_javascript( $excluded_scripts ) {
+	$excluded_scripts[] = '/blocks/service-tabs/build/view.min.js';
+
+	return array_values( array_unique( $excluded_scripts ) );
+}
+add_filter( 'rocket_delay_js_exclusions', 'white_oaks_exclude_service_tabs_from_delayed_javascript' );
+
+/**
  * Returns compiled component styles and the semantic classes that activate them.
  *
  * A component stylesheet is discovered automatically when its compiled filename

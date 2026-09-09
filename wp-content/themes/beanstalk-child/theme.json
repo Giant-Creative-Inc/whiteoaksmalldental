@@ -123,12 +123,14 @@
         { "slug": "patient-stories-rating", "size": "clamp(32px, 3.125vw, 45px)", "name": "Patient Stories Rating" },
         { "slug": "patient-stories-quote", "size": "clamp(18px, 2.5vw, 36px)", "name": "Patient Stories Quote" },
         { "slug": "patient-stories-source", "size": "clamp(11px, 0.84vw, 12px)", "name": "Patient Stories Source" },
+        { "slug": "location-reviews-heading", "size": "clamp(32px, 5.2vw, 74.88px)", "name": "Location Reviews Heading" },
         { "slug": "team-heading", "size": "clamp(38px, 5.2vw, 74.88px)", "name": "Meet the Team Heading" },
         { "slug": "team-card-heading", "size": "clamp(21px, 2.342vw, 24px)", "name": "Meet the Team Card Heading" },
         { "slug": "first-visit-heading", "size": "clamp(32px, 4.8vw, 69.12px)", "name": "First Visit Heading" },
         { "slug": "first-visit-card-heading", "size": "clamp(22px, 2.6vw, 37.44px)", "name": "First Visit Card Heading" },
         { "slug": "location-features-heading", "size": "clamp(32px, 4vw, 57.6px)", "name": "Location Features Heading" },
         { "slug": "location-feature-card-heading", "size": "clamp(20px, 1.53vw, 22px)", "name": "Location Feature Card Heading" },
+        { "slug": "areas-served-heading", "size": "clamp(32px, 3.96vw, 57px)", "name": "Areas Served Heading" },
         { "slug": "doctor-name", "size": "clamp(28px, 7vw, 100.8px)", "name": "Doctor Name" },
         { "slug": "doctor-name-mobile", "size": "28px", "name": "Doctor Name Mobile" },
         { "slug": "doctor-intro", "size": "21px", "name": "Doctor Introduction" },
@@ -188,6 +190,9 @@
         "gutter": "max(24px, calc((100vw - var(--wp--style--global--wide-size)) / 2))",
         "contentWidth": "1224px"
       },
+      "areasServed": {
+        "cardPaddingInline": "20px"
+      },
       "fontWeight": {
         "navigation": "600",
         "practice-stat": "700",
@@ -206,6 +211,8 @@
         "patient-stories-heading": "clamp(-2.916px, -0.203vw, 0px)",
         "patient-stories-quote": "clamp(-0.72px, -0.05vw, 0px)",
         "patient-stories-source": "clamp(1px, 0.133vw, 1.92px)",
+        "location-reviews-heading": "clamp(-3.3696px, -0.234vw, 0px)",
+        "areas-served-heading": "clamp(-1.5px, -0.238vw, -3.43px)",
         "team-heading": "clamp(-3.3696px, -0.234vw, -1.5px)",
         "team-card-role": "clamp(1.2px, 0.1522vw, 1.56px)",
         "team-card-heading": "clamp(-0.48px, -0.0468vw, -0.3px)",
@@ -245,13 +252,15 @@
         "patient-stories-rating": "clamp(38.4px, 4.69vw, 67.5px)",
         "patient-stories-quote": "clamp(26px, 3.3vw, 47.52px)",
         "patient-stories-reviewer": "clamp(24px, 1.77vw, 25.5px)",
+        "location-reviews-heading": "clamp(38px, 4.94vw, 71.136px)",
         "team-heading": "clamp(44px, 4.94vw, 71.136px)",
         "team-card-heading": "clamp(28px, 3.512vw, 36px)",
         "first-visit-heading": "clamp(36px, 4.61vw, 66.355px)",
         "first-visit-card-heading": "clamp(26px, 2.99vw, 43.056px)",
         "first-visit-copy": "clamp(20px, 1.5vw, 21.6px)",
         "location-features-heading": "clamp(38px, 4vw, 57.6px)",
-        "location-feature-card-heading": "clamp(24px, 2.292vw, 33px)"
+        "location-feature-card-heading": "clamp(24px, 2.292vw, 33px)",
+        "areas-served-heading": "clamp(38px, 5.09vw, 73.27px)"
       },
       "emergency": {
         "heading-mobile-size": "32px",

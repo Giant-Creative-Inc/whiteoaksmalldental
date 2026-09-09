@@ -1,0 +1,53 @@
+@reference "../tailwind.css";
+
+/* Editable Areas Served section nested inside the location information block. */
+.areas-served {
+  @apply w-full pt-wp-48;
+
+  @variant desktop {
+    @apply pt-wp-72;
+  }
+}
+
+.areas-served > *,
+.areas-served__header > *,
+.areas-served__grid > *,
+.areas-served__card > * {
+  @apply my-0;
+}
+
+.areas-served__header {
+  @apply flex flex-col gap-wp-12;
+}
+
+.areas-served__eyebrow {
+  @apply font-button text-b-5 font-bold leading-button tracking-contact-label text-primary uppercase;
+
+  @variant desktop {
+    @apply hidden;
+  }
+}
+
+.areas-served__heading {
+  @apply font-heading text-areas-served-heading leading-areas-served-heading tracking-areas-served-heading text-primary-shade-600;
+}
+
+.areas-served__heading em {
+  @apply font-normal text-primary;
+}
+
+.areas-served__grid {
+  @apply mt-wp-24 grid! gap-wp-12;
+
+  @variant desktop {
+    @apply grid-cols-3 gap-wp-24;
+  }
+}
+
+.areas-served__card {
+  @apply flex min-h-wp-72 flex-row! items-center justify-start! rounded-sm bg-wp-white px-areas-served-card-inline;
+}
+
+.areas-served__card p {
+  @apply font-body text-b-3 leading-b-3 text-primary-shade-600;
+}
