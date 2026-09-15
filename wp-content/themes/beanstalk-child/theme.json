@@ -201,6 +201,7 @@
         "footer-legal-desktop": "650"
       },
       "letterSpacing": {
+        "h-1-mobile": "-1px",
         "navigation": "0.08em",
         "practice-label": "0.96px",
         "footer-heading-desktop": "2.16px",

@@ -1,5 +1,11 @@
 @reference "./tailwind.css";
 
+@variant max-desktop {
+  .wp-site-blocks :where(h1) {
+    letter-spacing: var(--wp--custom--letter-spacing--h-1-mobile);
+  }
+}
+
 /* Shared service-page hero layout. */
 @variant wp-columns-up {
   .invisalign-hero__media {
