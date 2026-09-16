@@ -100,8 +100,6 @@
 			return;
 		}
 
-		bindPhone( formId, fields.phone );
-
 		Object.entries( fields ).forEach( ( [ key, fieldId ] ) => {
 			if ( 'phone' === key ) {
 				return;
@@ -149,9 +147,37 @@
 		input.addEventListener( 'input', () => syncPhone( input ) );
 	}
 
+	const prepareForm = ( formId ) => {
+		const fields = config.forms?.[ formId ];
+		if ( fields ) {
+			bindPhone( formId, fields.phone );
+		}
+	};
+
+	const prepareConfiguredForms = () => Object.keys( config.forms || {} ).forEach( prepareForm );
+	const populateConfiguredForms = () => Object.keys( config.forms || {} ).forEach( populateForm );
+	let hasInteracted = false;
+
+	const populateAfterInteraction = () => {
+		if ( hasInteracted ) {
+			return;
+		}
+
+		hasInteracted = true;
+		populateConfiguredForms();
+		document.removeEventListener( 'pointerdown', populateAfterInteraction, true );
+		document.removeEventListener( 'touchstart', populateAfterInteraction, true );
+		document.removeEventListener( 'keydown', populateAfterInteraction, true );
+	};
+
+	document.addEventListener( 'pointerdown', populateAfterInteraction, { capture: true, passive: true } );
+	document.addEventListener( 'touchstart', populateAfterInteraction, { capture: true, passive: true } );
+	document.addEventListener( 'keydown', populateAfterInteraction, true );
+
 	document.addEventListener( 'submit', ( event ) => {
 		const formId = event.target.id?.match( /^gform_(\d+)$/ )?.[ 1 ];
 		if ( formId && config.forms?.[ formId ] ) {
+			populateAfterInteraction();
 			const phoneId = config.forms[ formId ].phone;
 			const phoneInput = event.target.querySelector( `#input_${ formId }_${ phoneId }_visible, #input_${ formId }_${ phoneId }` );
 			if ( phoneInput ) {
@@ -161,14 +187,19 @@
 		}
 	}, true );
 
-	const populateConfiguredForms = () => Object.keys( config.forms || {} ).forEach( populateForm );
+	const handleFormRender = ( formId ) => {
+		prepareForm( formId );
+		if ( hasInteracted ) {
+			populateForm( formId );
+		}
+	};
 
-	document.addEventListener( 'DOMContentLoaded', populateConfiguredForms );
-	document.addEventListener( 'gform/postRender', ( event ) => populateForm( String( event.detail?.formId || '' ) ) );
+	document.addEventListener( 'DOMContentLoaded', prepareConfiguredForms );
+	document.addEventListener( 'gform/postRender', ( event ) => handleFormRender( String( event.detail?.formId || '' ) ) );
 
 	if ( window.jQuery ) {
-		window.jQuery( document ).on( 'gform_post_render', ( event, formId ) => populateForm( String( formId ) ) );
+		window.jQuery( document ).on( 'gform_post_render', ( event, formId ) => handleFormRender( String( formId ) ) );
 	}
 
-	populateConfiguredForms();
+	prepareConfiguredForms();
 } )();
