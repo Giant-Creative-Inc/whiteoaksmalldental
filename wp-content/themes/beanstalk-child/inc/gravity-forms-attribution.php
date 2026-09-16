@@ -37,14 +37,17 @@ function white_oaks_gravity_forms_field_map() {
  *
  * Gravity Forms state validation otherwise treats any JavaScript change to a
  * Hidden field as tampering. This exception is restricted to Form 1's known
- * attribution fields; all other fields retain their default state validation.
+ * current and legacy attribution fields; all other fields retain their default
+ * state validation.
  *
  * @param array $form Gravity Forms form object.
  * @return array
  */
 function white_oaks_allow_client_attribution_values( $form ) {
-	$field_map       = white_oaks_gravity_forms_field_map()[1];
-	$attribution_ids = array_map( 'intval', array_values( array_diff_key( $field_map, array( 'phone' => true ) ) ) );
+	$field_map              = white_oaks_gravity_forms_field_map()[1];
+	$current_attribution_ids = array_map( 'intval', array_values( array_diff_key( $field_map, array( 'phone' => true ) ) ) );
+	$legacy_attribution_ids  = array( 13, 16, 17, 18, 19, 20, 21, 22, 29 );
+	$attribution_ids         = array_merge( $current_attribution_ids, $legacy_attribution_ids );
 
 	foreach ( $form['fields'] as $field ) {
 		if ( in_array( (int) $field->id, $attribution_ids, true ) ) {
