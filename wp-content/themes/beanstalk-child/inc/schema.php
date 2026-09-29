@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 const WHITE_OAKS_SCHEMA_META_KEY        = '_white_oaks_schema_jsonld';
 const WHITE_OAKS_SCHEMA_LOG_META_KEY    = '_white_oaks_schema_change_log';
+const WHITE_OAKS_SCHEMA_PLACE_ID_KEY    = '_white_oaks_google_place_id';
 const WHITE_OAKS_SCHEMA_NONCE_ACTION    = 'white_oaks_save_schema';
 const WHITE_OAKS_SCHEMA_NONCE_NAME      = 'white_oaks_schema_nonce';
 const WHITE_OAKS_SCHEMA_ERROR_TRANSIENT = 'white_oaks_schema_error_';
@@ -38,6 +39,22 @@ function white_oaks_register_schema_meta() {
 	foreach ( array( 'page', 'post' ) as $post_type ) {
 		register_post_meta( $post_type, WHITE_OAKS_SCHEMA_META_KEY, $schema_args );
 	}
+
+	register_post_meta(
+		'page',
+		WHITE_OAKS_SCHEMA_PLACE_ID_KEY,
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'auth_callback'     => static function ( $allowed, $meta_key, $post_id ) {
+				return current_user_can( 'edit_post', $post_id );
+			},
+			'show_in_rest'      => true,
+			'revisions_enabled' => true,
+		)
+	);
 }
 add_action( 'init', 'white_oaks_register_schema_meta' );
 
@@ -110,15 +127,21 @@ add_action( 'add_meta_boxes', 'white_oaks_add_schema_meta_box' );
  * @return void
  */
 function white_oaks_render_schema_meta_box( $post ) {
-	$schema = (string) get_post_meta( $post->ID, WHITE_OAKS_SCHEMA_META_KEY, true );
-	$log    = get_post_meta( $post->ID, WHITE_OAKS_SCHEMA_LOG_META_KEY, true );
-	$log    = is_array( $log ) ? array_reverse( array_slice( $log, -10 ) ) : array();
+	$schema   = (string) get_post_meta( $post->ID, WHITE_OAKS_SCHEMA_META_KEY, true );
+	$place_id = (string) get_post_meta( $post->ID, WHITE_OAKS_SCHEMA_PLACE_ID_KEY, true );
+	$log      = get_post_meta( $post->ID, WHITE_OAKS_SCHEMA_LOG_META_KEY, true );
+	$log      = is_array( $log ) ? array_reverse( array_slice( $log, -10 ) ) : array();
 
 	wp_nonce_field( WHITE_OAKS_SCHEMA_NONCE_ACTION, WHITE_OAKS_SCHEMA_NONCE_NAME );
 	?>
 	<p><?php esc_html_e( 'Enter one complete JSON-LD object containing @context and @graph. Valid schema is server-rendered in wp_head; Rank Math JSON-LD is disabled on this item only.', 'beanstalk-child' ); ?></p>
 	<textarea name="white_oaks_schema_jsonld" id="white-oaks-schema-jsonld" class="widefat code" rows="24" spellcheck="false"><?php echo esc_textarea( $schema ); ?></textarea>
 	<p class="description"><?php esc_html_e( 'Deleting this value restores Rank Math schema output for the item. Previous values are retained in WordPress revisions.', 'beanstalk-child' ); ?></p>
+	<p>
+		<label for="white-oaks-google-place-id"><strong><?php esc_html_e( 'Google Place ID', 'beanstalk-child' ); ?></strong></label><br>
+		<input type="text" name="white_oaks_google_place_id" id="white-oaks-google-place-id" class="widefat code" value="<?php echo esc_attr( $place_id ); ?>">
+	</p>
+	<p class="description"><?php esc_html_e( 'For location pages, this must match the Place ID cached by Trustindex before rating and review schema is added.', 'beanstalk-child' ); ?></p>
 	<?php if ( $log ) : ?>
 		<details>
 			<summary><strong><?php esc_html_e( 'Schema change history', 'beanstalk-child' ); ?></strong></summary>
@@ -153,10 +176,17 @@ function white_oaks_save_schema_meta( $post_id ) {
 
 	$old_value = (string) get_post_meta( $post_id, WHITE_OAKS_SCHEMA_META_KEY, true );
 	$new_value = isset( $_POST['white_oaks_schema_jsonld'] ) ? trim( wp_unslash( $_POST['white_oaks_schema_jsonld'] ) ) : '';
+	$place_id  = isset( $_POST['white_oaks_google_place_id'] ) ? sanitize_text_field( wp_unslash( $_POST['white_oaks_google_place_id'] ) ) : '';
 
 	if ( '' !== $new_value && ! white_oaks_schema_decode( $new_value ) ) {
 		set_transient( WHITE_OAKS_SCHEMA_ERROR_TRANSIENT . get_current_user_id(), json_last_error_msg(), 60 );
 		return;
+	}
+
+	if ( '' === $place_id ) {
+		delete_post_meta( $post_id, WHITE_OAKS_SCHEMA_PLACE_ID_KEY );
+	} else {
+		update_post_meta( $post_id, WHITE_OAKS_SCHEMA_PLACE_ID_KEY, $place_id );
 	}
 
 	if ( $old_value === $new_value ) {
@@ -217,7 +247,47 @@ function white_oaks_schema_foundation() {
 		return null;
 	}
 
-	return white_oaks_schema_decode( (string) file_get_contents( $path ) );
+	$graph = white_oaks_schema_decode( (string) file_get_contents( $path ) );
+
+	return $graph ? white_oaks_schema_normalize_site_urls( $graph ) : null;
+}
+
+/**
+ * Normalizes project URLs to the active WordPress home URL.
+ *
+ * This keeps Local, staging, and production graphs connected without database
+ * search-and-replace operations having to update every nested schema ID.
+ *
+ * @param mixed $value Schema value.
+ * @return mixed
+ */
+function white_oaks_schema_normalize_site_urls( $value ) {
+	if ( is_array( $value ) ) {
+		foreach ( $value as $key => $item ) {
+			$value[ $key ] = white_oaks_schema_normalize_site_urls( $item );
+		}
+
+		return $value;
+	}
+
+	if ( ! is_string( $value ) ) {
+		return $value;
+	}
+
+	$active_base = untrailingslashit( home_url( '/' ) );
+	$known_bases = array(
+		'https://www.whiteoaksmalldental.com',
+		'https://whiteoaksmalldental.com',
+		'https://whiteoaksmalldental.local',
+	);
+
+	foreach ( $known_bases as $known_base ) {
+		if ( 0 === strpos( $value, $known_base ) ) {
+			return $active_base . substr( $value, strlen( $known_base ) );
+		}
+	}
+
+	return $value;
 }
 
 /**
@@ -233,7 +303,176 @@ function white_oaks_schema_current_graph() {
 	$post_id = (int) get_queried_object_id();
 	$json    = $post_id ? (string) get_post_meta( $post_id, WHITE_OAKS_SCHEMA_META_KEY, true ) : '';
 
-	return $json ? white_oaks_schema_decode( $json ) : null;
+	$graph = $json ? white_oaks_schema_decode( $json ) : null;
+
+	return $graph ? white_oaks_schema_normalize_site_urls( $graph ) : null;
+}
+
+/**
+ * Returns location-matched review data from Trustindex's local WordPress cache.
+ *
+ * No external request is made. Review filters mirror the active Trustindex
+ * widget, and the result is cached against Trustindex's download timestamp.
+ *
+ * @param string $expected_place_id Google Place ID assigned to the page.
+ * @param string $dentist_id         Canonical Dentist entity ID.
+ * @return array|null
+ */
+function white_oaks_schema_trustindex_reviews( $expected_place_id, $dentist_id ) {
+	global $trustindex_pm_google, $wpdb;
+
+	if (
+		! $expected_place_id ||
+		! is_object( $trustindex_pm_google ) ||
+		! method_exists( $trustindex_pm_google, 'getPageDetails' ) ||
+		! method_exists( $trustindex_pm_google, 'getWidgetOption' ) ||
+		! method_exists( $trustindex_pm_google, 'get_option_name' ) ||
+		! method_exists( $trustindex_pm_google, 'get_tablename' ) ||
+		! method_exists( $trustindex_pm_google, 'is_table_exists' )
+	) {
+		return null;
+	}
+
+	$page_details = $trustindex_pm_google->getPageDetails();
+	$cached_id    = is_array( $page_details ) ? (string) ( $page_details['id'] ?? '' ) : '';
+
+	if ( '' === $cached_id || ! hash_equals( $expected_place_id, $cached_id ) ) {
+		return null;
+	}
+
+	$rating_value = (float) ( $page_details['rating_score'] ?? 0 );
+	$review_count = (int) ( $page_details['rating_number'] ?? 0 );
+
+	if ( $rating_value < 1 || $rating_value > 5 || $review_count < 1 || ! $trustindex_pm_google->is_table_exists( 'reviews' ) ) {
+		return null;
+	}
+
+	$filter               = $trustindex_pm_google->getWidgetOption( 'filter' );
+	$allowed_ratings      = array_map( 'intval', (array) ( $filter['stars'] ?? array( 1, 2, 3, 4, 5 ) ) );
+	$requires_review_text = ! empty( $filter['only-ratings'] );
+	$download_timestamp   = (string) get_option( $trustindex_pm_google->get_option_name( 'download-timestamp' ), '0' );
+	$cache_key            = 'white_oaks_schema_ti_' . md5( $cached_id . '|' . $download_timestamp . '|' . wp_json_encode( $filter ) );
+	$cached               = get_transient( $cache_key );
+
+	if ( is_array( $cached ) ) {
+		return $cached;
+	}
+
+	$table_name = $trustindex_pm_google->get_tablename( 'reviews' );
+	$rows       = $wpdb->get_results(
+		$wpdb->prepare(
+			'SELECT user, text, rating, date, reviewId FROM %i WHERE hidden = 0 ORDER BY date DESC',
+			$table_name
+		),
+		ARRAY_A
+	);
+	$reviews = array();
+
+	foreach ( (array) $rows as $row ) {
+		$review_rating = (int) round( (float) ( $row['rating'] ?? 0 ) );
+		$review_text   = trim( wp_strip_all_tags( (string) ( $row['text'] ?? '' ) ) );
+
+		if ( ! in_array( $review_rating, $allowed_ratings, true ) || ( $requires_review_text && '' === $review_text ) || '' === $review_text ) {
+			continue;
+		}
+
+		$review = array(
+			'@type'         => 'Review',
+			'@id'           => $dentist_id . '#review-' . substr( hash( 'sha256', (string) ( $row['reviewId'] ?? wp_json_encode( $row ) ) ), 0, 16 ),
+			'itemReviewed'  => array( '@id' => $dentist_id ),
+			'author'        => array(
+				'@type' => 'Person',
+				'name'  => sanitize_text_field( (string) ( $row['user'] ?? '' ) ),
+			),
+			'reviewBody'    => $review_text,
+			'reviewRating'  => array(
+				'@type'       => 'Rating',
+				'ratingValue' => (float) ( $row['rating'] ?? 0 ),
+				'bestRating'  => 5,
+				'worstRating' => 1,
+			),
+		);
+
+		if ( ! empty( $row['date'] ) ) {
+			$review['datePublished'] = (string) $row['date'];
+		}
+
+		$reviews[] = $review;
+	}
+
+	$data = array(
+		'place_id'        => $cached_id,
+		'aggregateRating' => array(
+			'@type'       => 'AggregateRating',
+			'ratingValue' => $rating_value,
+			'reviewCount' => $review_count,
+			'bestRating'  => 5,
+			'worstRating' => 1,
+		),
+		'reviews'         => $reviews,
+	);
+
+	set_transient( $cache_key, $data, 15 * MINUTE_IN_SECONDS );
+
+	return $data;
+}
+
+/**
+ * Adds Trustindex's location-matched cached reviews to the Dentist entity.
+ *
+ * @param array      $foundation   Sitewide foundation graph.
+ * @param array|null $current_graph Current page graph.
+ * @return array
+ */
+function white_oaks_schema_add_location_reviews( $foundation, $current_graph ) {
+	if ( ! is_singular( 'page' ) || ! $current_graph ) {
+		return $foundation;
+	}
+
+	$post_id  = (int) get_queried_object_id();
+	$place_id = (string) get_post_meta( $post_id, WHITE_OAKS_SCHEMA_PLACE_ID_KEY, true );
+
+	if ( '' === $place_id ) {
+		return $foundation;
+	}
+
+	$dentist_id = '';
+	foreach ( $current_graph['@graph'] as $node ) {
+		$types = isset( $node['@type'] ) ? (array) $node['@type'] : array();
+		if ( in_array( 'WebPage', $types, true ) && ! empty( $node['mainEntity']['@id'] ) ) {
+			$dentist_id = (string) $node['mainEntity']['@id'];
+			break;
+		}
+	}
+
+	if ( '' === $dentist_id ) {
+		return $foundation;
+	}
+
+	$review_data = white_oaks_schema_trustindex_reviews( $place_id, $dentist_id );
+	if ( ! $review_data ) {
+		return $foundation;
+	}
+
+	foreach ( $foundation['@graph'] as &$node ) {
+		if ( $dentist_id !== ( $node['@id'] ?? '' ) ) {
+			continue;
+		}
+
+		$node['identifier']      = array(
+			'@type'      => 'PropertyValue',
+			'propertyID' => 'Google Place ID',
+			'value'      => $review_data['place_id'],
+		);
+		$node['aggregateRating'] = $review_data['aggregateRating'];
+		if ( $review_data['reviews'] ) {
+			$node['review'] = $review_data['reviews'];
+		}
+		break;
+	}
+	unset( $node );
+
+	return $foundation;
 }
 
 /**
@@ -349,7 +588,9 @@ function white_oaks_output_schema() {
 
 	$current_graph = white_oaks_schema_current_graph();
 	$current_graph = $current_graph ? white_oaks_schema_add_speakable( $current_graph ) : null;
-	$graphs        = array_filter( array( white_oaks_schema_foundation(), $current_graph ) );
+	$foundation    = white_oaks_schema_foundation();
+	$foundation    = $foundation ? white_oaks_schema_add_location_reviews( $foundation, $current_graph ) : null;
+	$graphs        = array_filter( array( $foundation, $current_graph ) );
 
 	foreach ( $graphs as $graph ) {
 		printf(
