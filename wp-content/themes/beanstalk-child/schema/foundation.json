@@ -107,7 +107,7 @@
         { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-reetish-kapoor" },
         { "@id": "https://www.whiteoaksmalldental.com/meet-our-doctors/#dr-jack-bottner" }
       ],
-      "hasOfferCatalog": { "@id": "https://www.whiteoaksmalldental.com/#dental-services" },
+      "hasOfferCatalog": { "@id": "https://www.whiteoaksmalldental.com/locations/white-oaks-mall/#dental-services" },
       "areaServed": { "@id": "https://www.whiteoaksmalldental.com/#london-ontario" },
       "currenciesAccepted": "CAD",
       "sameAs": [
