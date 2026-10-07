@@ -12,16 +12,18 @@
  * @return string
  */
 function beanstalk_child_asset_version( $relative_path ) {
-	$asset_path = get_stylesheet_directory() . $relative_path;
-
-	return file_exists( $asset_path )
-		? (string) filemtime( $asset_path )
-		: wp_get_theme()->get( 'Version' );
+	return beanstalk_child_get_asset_version( $relative_path );
 }
 
+require_once get_stylesheet_directory() . '/inc/assets.php';
 require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
 require_once get_stylesheet_directory() . '/inc/llms-txt.php';
 require_once get_stylesheet_directory() . '/inc/schema.php';
+require_once get_stylesheet_directory() . '/inc/services.php';
+require_once get_stylesheet_directory() . '/inc/related-services.php';
+require_once get_stylesheet_directory() . '/inc/service-about.php';
+require_once get_stylesheet_directory() . '/inc/service-schema.php';
+require_once get_stylesheet_directory() . '/inc/services-menu.php';
 
 /**
  * Registers intermediate widths used by the site's responsive image layouts.
@@ -354,36 +356,6 @@ function white_oaks_unlink_noindex_parent_breadcrumbs( $crumbs ) {
 add_filter( 'rank_math/frontend/breadcrumb/items', 'white_oaks_unlink_noindex_parent_breadcrumbs' );
 
 /**
- * Versions child-theme CSS and JavaScript URLs using each file's edit time.
- *
- * This also covers assets registered from block.json, whose metadata version
- * would otherwise remain fixed until it is manually updated.
- *
- * @param string $src Asset URL.
- * @return string
- */
-function white_oaks_version_child_asset_url( $src ) {
-	$theme_uri = trailingslashit( get_stylesheet_directory_uri() );
-
-	if ( ! str_starts_with( $src, $theme_uri ) ) {
-		return $src;
-	}
-
-	$url_without_query = strtok( $src, '?#' );
-	$relative_path     = rawurldecode( substr( $url_without_query, strlen( $theme_uri ) ) );
-	$asset_path        = get_stylesheet_directory() . '/' . $relative_path;
-
-	if ( ! is_file( $asset_path ) ) {
-		return $src;
-	}
-
-	return add_query_arg( 'ver', (string) filemtime( $asset_path ), remove_query_arg( 'ver', $src ) );
-}
-add_filter( 'style_loader_src', 'white_oaks_version_child_asset_url', 20 );
-add_filter( 'script_loader_src', 'white_oaks_version_child_asset_url', 20 );
-add_filter( 'script_module_loader_src', 'white_oaks_version_child_asset_url', 20 );
-
-/**
  * Keeps the Service Tabs interaction module available before user input.
  *
  * WP Rocket's delay loader otherwise leaves every server-rendered tab panel
@@ -398,174 +370,6 @@ function white_oaks_exclude_service_tabs_from_delayed_javascript( $excluded_scri
 	return array_values( array_unique( $excluded_scripts ) );
 }
 add_filter( 'rocket_delay_js_exclusions', 'white_oaks_exclude_service_tabs_from_delayed_javascript' );
-
-/**
- * Returns compiled component styles and the semantic classes that activate them.
- *
- * A component stylesheet is discovered automatically when its compiled filename
- * matches the component's root class. The compatibility map covers established
- * grouped stylesheets whose filename predates that convention.
- *
- * @return array<string, array{path:string, markers:array<int, string>}>
- */
-function white_oaks_component_styles() {
-	$build_directory  = get_stylesheet_directory() . '/assets/css/build/components';
-	$styles           = array();
-	$compatibility    = array(
-		'home-sections' => array( 'meet-dentists', 'home-faqs', 'footer-cta' ),
-		'forms'         => array( 'gravityforms/form', '[gravityform', 'contact-section__form-embed' ),
-	);
-	$component_assets = glob( $build_directory . '/*.min.css' );
-
-	if ( false === $component_assets ) {
-		$component_assets = array();
-	}
-
-	foreach ( $component_assets as $asset_path ) {
-		$slug            = basename( $asset_path, '.min.css' );
-		$styles[ $slug ] = array(
-			'path'    => '/assets/css/build/components/' . basename( $asset_path ),
-			'markers' => $compatibility[ $slug ] ?? array( $slug ),
-		);
-	}
-
-	return $styles;
-}
-
-/**
- * Returns the saved block markup for the current frontend or editor page.
- *
- * @return string
- */
-function white_oaks_current_page_content() {
-	if ( is_admin() ) {
-		$post_id = isset( $_GET['post'] ) ? absint( wp_unslash( $_GET['post'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$post    = $post_id ? get_post( $post_id ) : null;
-
-		return $post instanceof WP_Post ? $post->post_content : '';
-	}
-
-	$queried_object = get_queried_object();
-
-	return $queried_object instanceof WP_Post ? $queried_object->post_content : '';
-}
-
-/**
- * Enqueues only the component styles represented in the current page markup.
- *
- * @param string $content      Saved block markup to inspect.
- * @param array  $dependencies Style handles that must load first.
- * @return array<int, string> Enqueued component handles.
- */
-function white_oaks_enqueue_component_styles( $content, $dependencies = array() ) {
-	$handles = array();
-
-	if ( '' === $content ) {
-		return $handles;
-	}
-
-	foreach ( white_oaks_component_styles() as $slug => $component ) {
-		$required = false;
-
-		foreach ( $component['markers'] as $marker ) {
-			if ( str_contains( $content, $marker ) ) {
-				$required = true;
-				break;
-			}
-		}
-
-		if ( ! $required ) {
-			continue;
-		}
-
-		$handle = 'white-oaks-component-' . sanitize_key( $slug );
-		wp_enqueue_style(
-			$handle,
-			get_stylesheet_directory_uri() . $component['path'],
-			$dependencies,
-			beanstalk_child_asset_version( $component['path'] )
-		);
-		$handles[] = $handle;
-	}
-
-	return $handles;
-}
-
-/**
- * Enqueues global child assets and content-aware component styles.
- *
- * @return void
- */
-function beanstalk_child_enqueue_styles() {
-	$content = white_oaks_current_page_content();
-
-	// The external provider controls the Typekit stylesheet version.
-	wp_enqueue_style(
-		'white-oaks-adobe-fonts',
-		'https://use.typekit.net/bax3ecf.css',
-		array(),
-		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Versioned by the external provider.
-	);
-
-	wp_enqueue_style(
-		'beanstalk-child',
-		get_stylesheet_directory_uri() . '/assets/css/build/custom.min.css',
-		array( 'beanstalk-custom' ),
-		beanstalk_child_asset_version( '/assets/css/build/custom.min.css' )
-	);
-
-	wp_enqueue_style(
-		'white-oaks-shared',
-		get_stylesheet_directory_uri() . '/assets/css/build/shared.min.css',
-		array( 'beanstalk-child' ),
-		beanstalk_child_asset_version( '/assets/css/build/shared.min.css' )
-	);
-
-	white_oaks_enqueue_component_styles(
-		$content,
-		array( 'white-oaks-shared' )
-	);
-
-	if ( str_contains( $content, 'doctors-section' ) ) {
-		wp_enqueue_script(
-			'white-oaks-doctors-section',
-			get_stylesheet_directory_uri() . '/assets/js/doctors-section.js',
-			array(),
-			beanstalk_child_asset_version( '/assets/js/doctors-section.js' ),
-			true
-		);
-	}
-
-	if ( str_contains( $content, 'clinic-gallery' ) ) {
-		wp_enqueue_script(
-			'white-oaks-clinic-gallery',
-			get_stylesheet_directory_uri() . '/assets/js/clinic-gallery.js',
-			array(),
-			beanstalk_child_asset_version( '/assets/js/clinic-gallery.js' ),
-			true
-		);
-	}
-
-	if ( str_contains( $content, 'contact-section' ) ) {
-		wp_enqueue_script(
-			'white-oaks-contact-section',
-			get_stylesheet_directory_uri() . '/assets/js/contact-section.js',
-			array(),
-			beanstalk_child_asset_version( '/assets/js/contact-section.js' ),
-			true
-		);
-	}
-
-	if ( is_front_page() ) {
-		wp_enqueue_style(
-			'white-oaks-home',
-			get_stylesheet_directory_uri() . '/assets/css/build/home.min.css',
-			array( 'white-oaks-shared' ),
-			beanstalk_child_asset_version( '/assets/css/build/home.min.css' )
-		);
-	}
-}
-add_action( 'wp_enqueue_scripts', 'beanstalk_child_enqueue_styles', 20 );
 
 /**
  * Loads Adobe Fonts CSS without blocking the initial render.
@@ -589,53 +393,6 @@ function white_oaks_async_adobe_fonts( $html, $handle ) {
 	);
 }
 add_filter( 'style_loader_tag', 'white_oaks_async_adobe_fonts', 10, 2 );
-
-/**
- * Loads below-the-fold component CSS without blocking the initial render.
- *
- * Global, header, and homepage hero styles remain synchronous. These handles
- * style sections that begin below the initial mobile and desktop viewport.
- *
- * @param string $html   Stylesheet HTML.
- * @param string $handle Registered stylesheet handle.
- * @return string
- */
-function white_oaks_async_below_fold_styles( $html, $handle ) {
-	$async_handles = array(
-		'white-oaks-service-tabs',
-		'white-oaks-component-clinic-gallery',
-		'white-oaks-component-experience-section',
-		'white-oaks-component-home-sections',
-	);
-
-	if ( ! in_array( $handle, $async_handles, true ) ) {
-		return $html;
-	}
-
-	$async_html = preg_replace(
-		'/\smedia=(["\'])all\1/i',
-		' media="print" onload="this.onload=null;this.media=\'all\'"',
-		$html,
-		1,
-		$replacement_count
-	);
-
-	if ( 0 === $replacement_count ) {
-		$async_html = preg_replace(
-			'/<link\b([^>]*)>/',
-			'<link$1 media="print" onload="this.onload=null;this.media=\'all\'">',
-			$html,
-			1
-		);
-	}
-
-	if ( ! is_string( $async_html ) || $async_html === $html ) {
-		return $html;
-	}
-
-	return $async_html . '<noscript>' . $html . '</noscript>';
-}
-add_filter( 'style_loader_tag', 'white_oaks_async_below_fold_styles', 15, 2 );
 
 /**
  * Adds early connection hints for the approved external font provider.
@@ -775,37 +532,6 @@ function white_oaks_child_editor_styles() {
 add_action( 'after_setup_theme', 'white_oaks_child_editor_styles', 20 );
 
 /**
- * Loads content-aware component styles and homepage styles in the editor.
- *
- * @return void
- */
-function white_oaks_editor_component_styles() {
-	if ( ! is_admin() ) {
-		return;
-	}
-
-	$post_id       = isset( $_GET['post'] ) ? absint( wp_unslash( $_GET['post'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	$front_page_id = (int) get_option( 'page_on_front' );
-	$content       = white_oaks_current_page_content();
-
-	if ( ! $post_id ) {
-		return;
-	}
-
-	white_oaks_enqueue_component_styles( $content, array( 'wp-edit-blocks' ) );
-
-	if ( $post_id === $front_page_id ) {
-		wp_enqueue_style(
-			'white-oaks-home-editor',
-			get_stylesheet_directory_uri() . '/assets/css/build/home.min.css',
-			array( 'wp-edit-blocks' ),
-			beanstalk_child_asset_version( '/assets/css/build/home.min.css' )
-		);
-	}
-}
-add_action( 'enqueue_block_assets', 'white_oaks_editor_component_styles' );
-
-/**
  * Adds accurate responsive-image hints to the homepage experience cards.
  *
  * @param string $block_content Rendered Cover block markup.
@@ -880,3 +606,5 @@ function white_oaks_add_browser_favicons() {
 add_action( 'wp_head', 'white_oaks_add_browser_favicons', 100 );
 
 require_once get_stylesheet_directory() . '/inc/blocks.php';
+
+require_once get_stylesheet_directory() . '/inc/footer-services.php';

@@ -62,7 +62,8 @@
         { "slug": "why-oaks-divider", "color": "rgba(31, 120, 132, 0.2)", "name": "Why Oaks Divider" },
         { "slug": "doctor-copy-muted", "color": "rgba(22, 60, 61, 0.76)", "name": "Doctor Biography Muted" },
         { "slug": "doctor-primary-text", "color": "#163C3D", "name": "Doctor Primary Text" },
-        { "slug": "oak-orange-shade-900", "color": "#160F07", "name": "Oak Orange Shade 900" }
+        { "slug": "oak-orange-shade-900", "color": "#160F07", "name": "Oak Orange Shade 900" },
+        { "slug": "service-directory-divider", "color": "rgba(31,120,132,0.2)", "name": "Service Directory Divider" }
       ]
     },
     "typography": {
@@ -135,11 +136,17 @@
         { "slug": "doctor-name-mobile", "size": "28px", "name": "Doctor Name Mobile" },
         { "slug": "doctor-intro", "size": "21px", "name": "Doctor Introduction" },
         { "slug": "doctor-copy", "size": "13px", "name": "Doctor Biography" },
-        { "slug": "doctor-index", "size": "13px", "name": "Doctor Index" }
+        { "slug": "doctor-index", "size": "13px", "name": "Doctor Index" },
+        { "slug": "service-about-copy-mobile", "size": "15px", "name": "Service Introduction Copy Mobile" },
+        { "slug": "service-card-heading", "size": "24px", "name": "Service Card Heading" },
+        { "slug": "service-faq-heading", "size": "clamp(32px, 4.7495vw, 67.68px)", "name": "Service FAQ Heading" },
+        { "slug": "service-benefit-heading", "size": "clamp(18px, 1.895vw, 27px)", "name": "Service Benefit Heading" },
+        { "slug": "service-hero-heading", "size": "clamp(40px, calc(14.197183px + 5.814085cqw), 97.92px)", "name": "Service Hero Heading" }
       ]
     },
     "spacing": {
       "customSpacingSize": true,
+      "defaultSpacingSizes": false,
       "spacingSizes": [
         { "slug": "0", "size": "0", "name": "Space 0 — 0px" },
         { "slug": "4", "size": "4px", "name": "Space 4 — 4px" },
@@ -186,8 +193,12 @@
       }
     },
     "custom": {
+      "serviceQa": {"heroLeading": "clamp(44px, 6.528vw, 93.024px)", "heroTracking": "-0.045em", "heroCopyWidth": "min(614.04px, 43.091vw)", "eyebrowTracking": "2.5px", "benefitLeading": "21px", "faqLeading": "clamp(36px, 4.512vw, 64.296px)", "faqTracking": "-0.045em"},
+      "serviceAbout": {"headingDesktopWidth": "570.004px", "imageDesktopHeight": "734px", "imageMobileHeight": "240px", "imageScale": "111%", "imageOrigin": "50% 90%", "columns": "42.0350877193% minmax(0, 1fr)", "headingMobileSize": "32px", "headingMobileLineHeight": "36px", "copyMobileLineHeight": "22px", "eyebrowTracking": "2.64px", "eyebrowMobileTracking": "2.5px", "headingTracking": "-0.045em"},
+      "relatedServices": {"imageHeight": "260px", "copyLineHeight": "normal", "linkTracking": "1px", "eyebrowTracking": "2.64px"},
+      "footerServices": {"titleDesktop": "33.84px", "titleMobile": "26px", "categoryDesktop": "18.72px", "categoryMobile": "17px", "categoryLeading": "1.25", "titleTracking": "-0.025em", "categoryTracking": "-0.015em", "linkLeading": "17.4px"},
       "layout": {
-        "gutter": "max(24px, calc((100vw - var(--wp--style--global--wide-size)) / 2))",
+        "gutter": "max(clamp(20px, calc(100vw - 747px), 24px), calc((100vw - var(--wp--style--global--wide-size)) / 2))",
         "contentWidth": "1224px"
       },
       "areasServed": {

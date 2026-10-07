@@ -1,0 +1,79 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant wp-columns-up (@media (min-width: 782px));
+@theme inline {
+  --text-related-heading-mobile: var(--wp--custom--service-about--heading-mobile-size);
+  --text-related-heading: var(--wp--preset--font-size--experience-heading);
+  --leading-related-heading-mobile: var(--wp--custom--service-about--heading-mobile-line-height);
+  --leading-related-heading: var(--wp--custom--line-height--experience-heading);
+  --leading-related-copy: var(--wp--custom--related-services--copy-line-height);
+  --tracking-related-eyebrow: var(--wp--custom--related-services--eyebrow-tracking);
+  --tracking-related-heading: var(--wp--custom--letter-spacing--location-reviews-heading);
+  --tracking-related-link: var(--wp--custom--related-services--link-tracking);
+  --spacing-related-image: var(--wp--custom--related-services--image-height);
+  --color-related-card: var(--wp--preset--color--primary-tint-900);
+}
+/* Approved scoped CSS. Utilities are compiled here; none are stored in page content. */
+.related-services.is-style-section { @apply bg-wp-white px-site-gutter py-wp-48; }
+.related-services .related-services__container.is-style-container { @apply grid gap-wp-32 w-full max-w-site-wide px-0 mx-auto; }
+.related-services .related-services__container > *,
+.related-services :where(h2, h3, p, figure, .wp-block-buttons),
+.related-services .is-style-content-stack > *,
+.related-services .wp-block-post-excerpt,
+.related-services .wp-block-read-more { @apply m-0; }
+.related-services .related-services__header { @apply flex flex-col items-start gap-wp-12; }
+.related-services .related-services__heading-stack { @apply grid gap-wp-12; }
+.related-services .related-services__eyebrow { @apply font-button font-bold text-b-5 leading-button uppercase tracking-related-eyebrow; }
+.related-services .related-services__heading { @apply font-heading font-normal text-related-heading-mobile leading-related-heading-mobile tracking-normal; }
+.related-services .related-services__heading em { @apply not-italic; }
+.related-services .is-style-actions { @apply flex flex-wrap gap-wp-32; }
+.related-services .related-services__grid { @apply grid grid-cols-1 gap-wp-24 p-0 m-0; }
+.related-services .related-services__card { @apply flex flex-col border border-related-card bg-related-card min-w-0 overflow-hidden h-full; }
+.related-services .related-services__content { @apply flex flex-1 flex-col gap-wp-16 p-wp-32; }
+.related-services .related-services__content :where(h3, p) { @apply font-normal leading-related-copy; }
+.related-services .related-services__media { @apply h-related-image shrink-0 overflow-hidden; }
+.related-services .related-services__media img { @apply block w-full h-full object-cover; }
+.related-services .related-services__link { @apply mt-auto flex items-center gap-wp-8 pt-wp-8; }
+.related-services .related-services__link :where(p, .wp-block-read-more) { @apply font-button font-bold text-b-5 uppercase tracking-related-link text-primary no-underline; }
+.related-services .related-services__arrow { @apply size-wp-24 shrink-0; }
+.related-services .related-services__arrow img { @apply block size-full object-contain; }
+.related-services .wp-block-read-more:focus-visible { @apply outline-2 outline-primary outline-offset-0; }
+@variant wp-columns-up {
+  .related-services.is-style-section { @apply py-wp-120; }
+  .related-services .related-services__container.is-style-container { @apply gap-wp-64; }
+  .related-services .related-services__header { @apply flex-row flex-wrap items-end justify-between gap-wp-32; }
+  .related-services .related-services__heading-stack { @apply gap-wp-32; }
+  .related-services .related-services__eyebrow { @apply font-normal; }
+  .related-services .related-services__heading { @apply text-related-heading leading-related-heading tracking-related-heading; }
+  .related-services .related-services__heading em { @apply italic; }
+  .related-services .related-services__grid { @apply grid-cols-3 gap-wp-36; }
+}
+
+.related-services .related-services__container > .related-services__header { @apply w-full; }
+.related-services .related-services__card.has-background { @apply p-0; }
+.related-services .related-services__card > .related-services__content { @apply m-0; }
+.related-services .related-services__grid.is-layout-grid { @apply gap-wp-24; }
+@variant wp-columns-up {
+ .related-services .related-services__grid.is-layout-grid { @apply gap-wp-36; }
+}
+
+.related-services .related-services__link a { @apply text-primary no-underline; }
+.related-services .related-services__link a:hover { @apply underline; }
+.related-services .related-services__link a:focus-visible { @apply outline-2 outline-primary outline-offset-2; }
+
+.related-services .related-services__media a { @apply block w-full h-full overflow-hidden; }
+.related-services .related-services__media img { @apply transition-transform duration-300; }
+.related-services .related-services__media a:hover img,
+.related-services .related-services__media a:focus-visible img { @apply scale-105; }
+.related-services .related-services__media a:focus-visible { @apply outline-2 outline-primary -outline-offset-2; }
+.related-services .related-services__arrow { @apply transition-transform duration-200; }
+.related-services .related-services__link:hover .related-services__arrow,
+.related-services .related-services__link:focus-within .related-services__arrow { @apply translate-x-wp-4; }
+@media (prefers-reduced-motion: reduce) {
+ .related-services .related-services__media img,
+ .related-services .related-services__arrow { @apply transition-none scale-100 translate-x-0; }
+ .related-services .related-services__media a:hover img,
+ .related-services .related-services__media a:focus-visible img,
+ .related-services .related-services__link:hover .related-services__arrow,
+ .related-services .related-services__link:focus-within .related-services__arrow { @apply scale-100 translate-x-0; }
+}

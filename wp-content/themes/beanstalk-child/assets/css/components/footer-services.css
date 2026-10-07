@@ -1,0 +1,42 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant wp-columns-up (@media (min-width: 782px));
+@theme inline {
+ --text-footer-services-title: var(--wp--custom--footer-services--title-desktop);
+ --text-footer-services-title-mobile: var(--wp--custom--footer-services--title-mobile);
+ --text-footer-services-category: var(--wp--custom--footer-services--category-desktop);
+ --text-footer-services-category-mobile: var(--wp--custom--footer-services--category-mobile);
+ --leading-footer-services-category: var(--wp--custom--footer-services--category-leading);
+ --leading-footer-services-link: var(--wp--custom--footer-services--link-leading);
+ --tracking-footer-services-title: var(--wp--custom--footer-services--title-tracking);
+ --tracking-footer-services-category: var(--wp--custom--footer-services--category-tracking);
+ --tracking-footer-services-eyebrow: var(--wp--custom--letter-spacing--footer-heading-desktop);
+ --color-footer-services-link: var(--wp--preset--color--oak-orange-shade-900);
+ --color-footer-services-divider: var(--wp--preset--color--service-directory-divider);
+}
+.site-footer .footer-services { @apply w-full mx-auto mt-wp-64 text-primary-shade-600; }
+.site-footer .footer-services :where(h2,h3,h4,p,ul,li) { @apply m-0; }
+.site-footer .footer-services__header { @apply flex flex-col items-start gap-wp-16 w-full; }
+.site-footer .footer-services__eyebrow { @apply font-button font-extrabold text-b-5 leading-button tracking-footer-services-eyebrow uppercase text-primary; }
+.site-footer .footer-services__title { @apply font-heading font-normal text-footer-services-title-mobile leading-none tracking-footer-services-title; }
+.site-footer .footer-services__columns { @apply grid grid-cols-1 mt-wp-32 gap-0; }
+.site-footer .footer-services__column { @apply min-w-0 py-wp-32 border-b border-footer-services-divider; }
+.site-footer .footer-services__column:last-child { @apply border-b-0; }
+.site-footer .footer-services__number { @apply font-body italic text-b-5 leading-normal text-primary; }
+.site-footer .footer-services__category { @apply font-heading font-normal text-footer-services-category-mobile leading-footer-services-category tracking-footer-services-category mt-wp-16; }
+.site-footer .footer-services__query { @apply mt-wp-24; }
+.site-footer .footer-services__list { @apply list-none p-0 grid gap-wp-12; }
+.site-footer .footer-services__list :where(li,h4,a) { @apply font-button font-normal text-b-5 leading-footer-services-link text-footer-services-link; }
+.site-footer .footer-services__list a { @apply no-underline; }
+.site-footer .footer-services__list a:hover { @apply underline; }
+.site-footer .footer-services__list a:focus-visible { @apply outline-2 outline-primary outline-offset-2; }
+@variant wp-columns-up {
+ .site-footer .footer-services__header { @apply flex-row items-end justify-between; }
+ .site-footer .footer-services__title { @apply text-footer-services-title; }
+ .site-footer .footer-services__columns { @apply grid-cols-4 border-y border-footer-services-divider; }
+ .site-footer .footer-services__column { @apply px-wp-24 border-b-0; }
+ .site-footer .footer-services__column + .footer-services__column { @apply border-l border-footer-services-divider; }
+ .site-footer .footer-services__number { @apply not-italic; }
+ .site-footer .footer-services__category { @apply text-footer-services-category; }
+}
+.site-footer .footer-services__list > li { @apply opacity-70; }

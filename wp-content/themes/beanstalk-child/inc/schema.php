@@ -301,6 +301,9 @@ function white_oaks_schema_current_graph() {
 	}
 
 	$post_id = (int) get_queried_object_id();
+	if ( is_singular( 'service' ) && function_exists( 'white_oaks_service_schema' ) ) {
+		return white_oaks_service_schema( $post_id );
+	}
 	$json    = $post_id ? (string) get_post_meta( $post_id, WHITE_OAKS_SCHEMA_META_KEY, true ) : '';
 
 	$graph = $json ? white_oaks_schema_decode( $json ) : null;

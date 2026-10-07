@@ -34,22 +34,30 @@ on the frontend, a normal click loads the Google Maps iframe in place. The
 block's CSS and JavaScript are registered through `block.json`, so WordPress
 loads them only on pages where the block is present.
 
-## Content-aware component CSS
+## Conditional CSS and JavaScript
 
-Place reusable section styles in `assets/css/components/<component>.css` and
-give the section's outer block the matching semantic class `<component>`.
-Vite automatically builds every component source to
-`assets/css/build/components/<component>.min.css`. WordPress scans the current
-page's saved block markup and loads only the matching component stylesheets.
+`inc/assets.php` adapts the Beanstalk starter's filterable asset registry to this
+client's compiled files and existing handles. It matches saved page markup,
+active template parts, synced patterns, and blocks rendered before the document
+head. Frontend pages load only matching component assets. Editor component CSS
+loads synchronously so newly inserted, unsaved sections are styled immediately.
 
-`home-sections.css` predates the one-component-per-file convention and is
-activated by the `meet-dentists`, `home-faqs`, or `footer-cta` classes. New
-components should use one root class and one matching file instead of extending
-that compatibility group.
+Global parent CSS, child CSS, and `shared.css` remain synchronous. Only the
+existing homepage below-fold stylesheet allowlist uses asynchronous links, with
+`noscript` fallbacks. `home-sections.css` retains its established
+`meet-dentists`, `home-faqs`, and `footer-cta` marker aliases.
 
-The header, footer, global buttons, and navigation remain in `shared.css`.
-Custom blocks continue declaring their own frontend styles through `block.json`.
-WP Rocket may combine the selected stylesheets into one cached file per page.
+The build compiles every standalone `assets/js/*.js` file into
+`assets/js/build/*.min.js`. The component registry loads the doctors, gallery,
+and contact scripts only when their semantic markers are present. Attribution
+keeps its existing form-specific configuration and handle. Reviewed classic
+child scripts use WordPress's native `defer`; Service Tabs remains a WordPress
+Interactivity API module. Custom blocks continue owning assets in `block.json`.
+
+Watch standalone JavaScript in a second terminal with `npm run dev:scripts`.
+Commit production files under `assets/js/build/` along with the source changes.
+See [ASSET-LOADING.md](ASSET-LOADING.md) for the WP Rocket replacement boundary,
+local verification, and removal checklist.
 
 ## JSON-LD schema
 

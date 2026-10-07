@@ -78,7 +78,7 @@ function white_oaks_enqueue_form_attribution() {
 		return;
 	}
 
-	$relative_path = '/assets/js/gravity-forms-attribution.js';
+	$relative_path = '/assets/js/build/gravity-forms-attribution.min.js';
 	$handle        = 'white-oaks-form-attribution';
 	$field_map     = white_oaks_gravity_forms_field_map();
 

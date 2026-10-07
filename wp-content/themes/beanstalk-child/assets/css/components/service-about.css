@@ -1,0 +1,56 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant wp-columns-up (@media (min-width: 782px));
+@custom-variant medium-layout (@media (min-width: 782px) and (max-width: 1200px));
+/* Approved exception: every selector is scoped to the one-off introduction. */
+@theme inline {
+  --spacing-service-about-bleed: max(0px, calc((100vw - var(--wp--style--global--wide-size)) / 2));
+  --container-service-about-heading: var(--wp--custom--service-about--heading-desktop-width);
+  --text-experience-heading: var(--wp--preset--font-size--experience-heading);
+  --spacing-service-about-desktop-image: var(--wp--custom--service-about--image-desktop-height);
+  --spacing-service-about-mobile-image: var(--wp--custom--service-about--image-mobile-height);
+  --grid-template-columns-service-about: var(--wp--custom--service-about--columns);
+  --text-service-about-heading-mobile: var(--wp--custom--service-about--heading-mobile-size);
+  --text-service-about-copy-mobile: var(--wp--preset--font-size--service-about-copy-mobile);
+  --leading-service-about-heading-mobile: var(--wp--custom--service-about--heading-mobile-line-height);
+  --leading-service-about-heading: var(--wp--custom--line-height--experience-heading);
+  --leading-service-about-copy-mobile: var(--wp--custom--service-about--copy-mobile-line-height);
+  --leading-service-about-copy: var(--wp--custom--line-height--b-3);
+  --tracking-service-about-heading: var(--wp--custom--service-about--heading-tracking);
+  --tracking-service-about-eyebrow: var(--wp--custom--service-about--eyebrow-tracking);
+  --tracking-service-about-eyebrow-mobile: var(--wp--custom--service-about--eyebrow-mobile-tracking);
+  --scale-service-about: var(--wp--custom--service-about--image-scale);
+  --transform-origin-service-about: var(--wp--custom--service-about--image-origin);
+}
+.service-about.is-style-section { @apply p-0; }
+.service-about .service-about__container.is-style-container { @apply grid w-full max-w-site-wide grid-cols-1 gap-0 p-0 mx-auto; }
+.service-about .service-about__content { @apply min-w-0 m-0 py-wp-48 px-site-gutter grid gap-wp-32; }
+.service-about .service-about__intro { @apply grid min-w-0 gap-wp-12; }
+.service-about .service-about__heading-stack { @apply grid gap-wp-12; }
+.service-about .service-about__copy { @apply grid gap-wp-24; }
+.service-about :where(h2, p, figure, .wp-block-buttons),
+.service-about .is-style-content-stack > * { @apply m-0; }
+.service-about .service-about__eyebrow { @apply font-button text-b-5 leading-button font-bold uppercase tracking-service-about-eyebrow-mobile; }
+.service-about .service-about__heading { @apply font-heading font-normal text-service-about-heading-mobile leading-service-about-heading-mobile tracking-normal; }
+.service-about .service-about__heading em { @apply not-italic text-primary-shade-600; }
+.service-about .service-about__copy p { @apply font-body text-service-about-copy-mobile leading-service-about-copy-mobile; }
+.service-about .is-style-actions { @apply flex flex-wrap gap-wp-32; }
+.service-about .service-about__media { @apply m-0 w-full min-w-0 h-service-about-mobile-image overflow-hidden; }
+.service-about .service-about__media img { @apply block w-full h-full object-cover object-center; }
+@variant wp-columns-up {
+  .service-about .service-about__container.is-style-container { @apply grid-cols-service-about gap-wp-64; }
+  .service-about .service-about__content { @apply col-start-2 row-start-1 self-center py-wp-48 pl-0 pr-wp-128 gap-wp-48; }
+  .service-about .service-about__intro { @apply gap-wp-24; }
+  .service-about .service-about__heading-stack { @apply gap-wp-32 max-w-service-about-heading; }
+  .service-about .service-about__copy { @apply gap-wp-32; }
+  .service-about .service-about__eyebrow { @apply font-normal tracking-service-about-eyebrow; }
+  .service-about .service-about__heading { @apply text-experience-heading leading-service-about-heading tracking-service-about-heading; }
+  .service-about .service-about__heading em { @apply italic text-primary; }
+  .service-about .service-about__copy p { @apply text-b-3 leading-service-about-copy; }
+  .service-about .service-about__media { @apply col-start-1 row-start-1 self-stretch h-service-about-desktop-image w-auto -ml-service-about-bleed; }
+  .service-about .service-about__media img { @apply object-right origin-service-about scale-service-about; }
+}
+@variant medium-layout {
+  .service-about .service-about__container.is-style-container { @apply gap-wp-32; }
+  .service-about .service-about__content { @apply pr-site-gutter; }
+}

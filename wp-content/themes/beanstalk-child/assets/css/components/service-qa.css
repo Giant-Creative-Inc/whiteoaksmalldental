@@ -1,0 +1,59 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant service-tablet (@media (min-width: 421px) and (max-width: 1024px));
+
+/* Service audit corrections; site-wide mobile gutters remain theme.json-owned. */
+.single-service .invisalign-hero h1 { @apply leading-service-hero tracking-service-hero; }
+.single-service .why-invisalign__eyebrow,
+.single-service .first-visit__header .is-style-eyebrow { @apply font-button text-b-5 font-bold tracking-service-eyebrow; }
+.single-service .why-invisalign__title { @apply font-normal leading-normal; }
+.single-service .home-faqs__heading { @apply leading-service-faq tracking-service-faq; }
+.single-service .why-invisalign__copy { @apply text-b-5 leading-service-benefit; }
+.single-service .experience-section__cards { @apply gap-wp-20; }
+.single-service .experience-card__cta .wp-block-button,
+.single-service .experience-card__cta .wp-block-button__link { @apply w-full justify-between; }
+.single-service .service-opening-banner .wp-block-column { @apply min-w-0; }
+.single-service .service-opening-banner .wp-block-button__link { @apply whitespace-normal; }
+.single-service .footer-cta { @apply px-site-gutter; }
+.single-service .footer-cta__phone,
+.single-service .footer-cta__phone .wp-block-button__link { @apply w-full; }
+.single-service .footer-cta__buttons .wp-block-button__link { @apply transition duration-200 hover:brightness-95 focus-visible:brightness-95; }
+.single-service .footer-cta__buttons .button-arrow-icon { @apply transition-transform duration-200; }
+.single-service .footer-cta__buttons .wp-block-button__link:hover .button-arrow-icon,
+.single-service .footer-cta__buttons .wp-block-button__link:focus-visible .button-arrow-icon { @apply translate-x-wp-4; }
+@variant motion-reduce {
+  .single-service .footer-cta__buttons .wp-block-button__link,
+  .single-service .footer-cta__buttons .button-arrow-icon { @apply transition-none; }
+  .single-service .footer-cta__buttons .wp-block-button__link:hover .button-arrow-icon,
+  .single-service .footer-cta__buttons .wp-block-button__link:focus-visible .button-arrow-icon { @apply translate-x-0; }
+}
+
+@variant max-desktop {
+.site-header .site-header__nav { @apply min-w-wp-40; }
+.site-header .site-header__nav .wp-block-navigation__responsive-container-open { @apply flex size-wp-40 min-w-wp-40 shrink-0 items-center justify-center; }
+.site-header__nav .wp-block-navigation__responsive-container-open svg { @apply size-wp-24; }
+
+  .single-service .first-visit__header { @apply gap-wp-12; }
+  .single-service .first-visit__copy { @apply block before:hidden; }
+  .single-service .experience-section__title { @apply max-w-none leading-first-visit-heading; }
+  .single-service .service-opening-banner { @apply flex-col items-start; }
+  .single-service .service-opening-banner > .wp-block-column { @apply w-full basis-auto; }
+}
+@variant max-tablet {
+  .site-header .site-header__inner { @apply gap-wp-4 px-wp-16; }
+  .single-service .home-faqs__item summary { @apply py-wp-20; }
+  .single-service .home-faqs__item summary span { @apply font-normal leading-normal; }
+  .single-service .home-faqs__item summary strong { @apply size-wp-24; }
+  .single-service .invisalign-hero__media img { @apply h-service-hero-image object-cover; }
+}
+@variant service-tablet {
+  .single-service .first-visit__media { @apply h-auto aspect-3/2; }
+}
+@variant desktop {
+  .single-service .first-visit__header .wp-block-button,
+  .single-service .first-visit__header .wp-block-button__link { @apply w-auto basis-auto; }
+  .single-service .invisalign-hero h1 { @apply max-w-service-hero-copy; }
+  .single-service .footer-cta .footer-cta__buttons { @apply inline-grid grid-cols-2 w-fit; }
+  .single-service .footer-cta__primary,
+  .single-service .footer-cta__primary .wp-block-button__link { @apply w-full; }
+}

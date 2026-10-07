@@ -16,3 +16,12 @@
 @source "../../templates";
 @source "../../functions.php";
 @source "../../blocks";
+
+@import "./components/service-about.css";
+
+@import "./components/related-services.css";
+@import "./components/footer-services.css";
+
+@import "./components/service-qa.css";
+
+@import "./components/services-menu.css";

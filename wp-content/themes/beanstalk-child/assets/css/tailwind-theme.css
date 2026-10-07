@@ -1,4 +1,12 @@
 @theme {
+  --leading-service-faq: var(--wp--custom--service-qa--faq-leading);
+  --tracking-service-faq: var(--wp--custom--service-qa--faq-tracking);
+  --spacing-service-hero-image: var(--wp--custom--service-about--image-mobile-height);
+  --container-service-hero-copy: var(--wp--custom--service-qa--hero-copy-width);
+  --leading-service-hero: var(--wp--custom--service-qa--hero-leading);
+  --tracking-service-hero: var(--wp--custom--service-qa--hero-tracking);
+  --tracking-service-eyebrow: var(--wp--custom--service-qa--eyebrow-tracking);
+  --leading-service-benefit: var(--wp--custom--service-qa--benefit-leading);
   --breakpoint-tablet: 48rem;
   --breakpoint-desktop: 64.0625rem;
   --container-site-wide: var(--wp--style--global--wide-size);
