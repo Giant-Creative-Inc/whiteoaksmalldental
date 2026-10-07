@@ -25,3 +25,8 @@
 @import "./components/service-qa.css";
 
 @import "./components/services-menu.css";
+
+@theme inline {
+  --color-neutral-grey-850: var(--wp--preset--color--neutral-grey-850);
+  --color-neutral-grey-400: var(--wp--preset--color--neutral-grey-400);
+}

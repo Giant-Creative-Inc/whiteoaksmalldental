@@ -351,7 +351,7 @@ function white_oaks_component_assets( $assets ) {
 			'style_dependencies' => array( 'white-oaks-shared' ),
 		);
 	}
-	foreach ( array( 'doctors-section', 'clinic-gallery', 'contact-section' ) as $slug ) {
+	foreach ( array( 'doctors-section', 'clinic-gallery', 'contact-section', 'first-visit' ) as $slug ) {
 		$assets[ $slug ]['markers']       = array( $slug );
 		$assets[ $slug ]['script']        = 'assets/js/build/' . $slug . '.min.js';
 		$assets[ $slug ]['script_handle'] = 'white-oaks-' . $slug;
