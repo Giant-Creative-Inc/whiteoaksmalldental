@@ -9,3 +9,12 @@ add_filter( 'beanstalk_child_component_assets', static function ( $assets ) {
 	);
 	return $assets;
 } );
+
+add_filter( 'beanstalk_child_component_assets', static function ( $assets ) {
+	$assets['pillar-services'] = array(
+		'markers' => array( 'pillar-services' ),
+		'style' => 'assets/css/build/components/pillar-services.min.css',
+		'style_dependencies' => array( 'white-oaks-shared' ),
+	);
+	return $assets;
+} );

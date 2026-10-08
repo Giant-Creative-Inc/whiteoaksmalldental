@@ -43,6 +43,7 @@
         { "slug": "primary", "color": "#1F7884", "name": "Primary" },
         { "slug": "primary-tint-300", "color": "#62A0A9", "name": "Primary Tint 300" },
         { "slug": "primary-tint-600", "color": "#A5C9CE", "name": "Primary Tint 600" },
+        { "slug": "service-card-background", "color": "#E1EDF0", "name": "Service Card Background" },
         { "slug": "primary-tint-900", "color": "#E9F1F3", "name": "Primary Tint 900" },
         { "slug": "secondary-shade-900", "color": "#0A1116", "name": "Secondary Shade 900" },
         { "slug": "secondary-shade-600", "color": "#284357", "name": "Secondary Shade 600" },
@@ -193,6 +194,7 @@
       }
     },
     "custom": {
+      "servicePillar": {"headingMobileSize": "44px", "headingMobileLeading": "48px", "copyDesktopLeading": "33.48px", "copyMobileLeading": "28px", "breadcrumbDesktopTracking": "1.44px", "breadcrumbMobileTracking": "1px", "headingWidth": "785px", "copyWidth": "437px", "imageWidth": "51.9298245614%", "imageLeft": "57.2631578947%"},
       "serviceQa": {"heroLeading": "clamp(44px, 6.528vw, 93.024px)", "heroTracking": "-0.045em", "heroCopyWidth": "min(614.04px, 43.091vw)", "eyebrowTracking": "2.5px", "benefitLeading": "21px", "faqLeading": "clamp(36px, 4.512vw, 64.296px)", "faqTracking": "-0.045em"},
       "serviceAbout": {"headingDesktopWidth": "570.004px", "imageDesktopHeight": "734px", "imageMobileHeight": "240px", "imageScale": "111%", "imageOrigin": "50% 90%", "columns": "42.0350877193% minmax(0, 1fr)", "headingMobileSize": "32px", "headingMobileLineHeight": "36px", "copyMobileLineHeight": "22px", "eyebrowTracking": "2.64px", "eyebrowMobileTracking": "2.5px", "headingTracking": "-0.045em"},
       "relatedServices": {"imageHeight": "260px", "copyLineHeight": "normal", "linkTracking": "1px", "eyebrowTracking": "2.64px"},
@@ -368,6 +370,16 @@
         "button-width-mobile": "256px",
         "content-gap-mobile": "20px",
         "content-gap-desktop": "40px"
+      },
+      "footer-announcement": {
+        "copy-size": "clamp(14px, calc(100vw - 1263px), 17px)",
+        "mobile-label-leading": "normal",
+        "desktop-title-tracking": "1.92px",
+        "desktop-link-tracking": "1.44px",
+        "mobile-tracking": "1px",
+        "desktop-copy-size": "17px",
+        "desktop-copy-leading": "25.5px",
+        "mobile-copy-leading": "20px"
       },
       "footer": {
         "content-width": "1223.406px",

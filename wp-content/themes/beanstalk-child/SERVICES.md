@@ -1,5 +1,7 @@
 # Services — local foundation
 
+Current model (2026-10-08): native parent/child hierarchy only. The taxonomy-based notes below are historical; the latest section documents their replacement.
+
 Implemented on 2026-10-06. Functionality lives in the child theme at the user's explicit request; no client plugin or deployment allowlist change. No parent changes.
 
 ## Editor workflow
@@ -166,3 +168,69 @@ The three editable Explore Now placeholder paragraphs in Dental Cleaning draft 4
 ### Related image and arrow interaction
 
 Draft 423 native placeholder Image blocks now have editable custom # links; dynamic Featured Image has isLink=true for the Service permalink. Scoped related-services.css adds clipped 5% image zoom with300ms transition and a4px rightward arrow translation on action-row hover/focus-within with200ms transition. Keyboard image links have an inset2px primary focus outline. Reduced-motion removes transitions and resets scale/translation. Browser confirmed three image anchors, hover scale1.05, arrow translate4px, and reduced-motion translate0px. Native blocks/presets/classes unchanged apart from image link attributes/anchors; added named @apply utilities block/w-full/h-full/overflow-hidden, transition-transform/duration-300/duration-200, scale-105/scale-100, translate-x-wp-4/translate-x-0, transition-none and outline utilities in the existing component stylesheet. New arbitrary utilities/plain CSS declarations/close-token mappings/stylesheets: none. Child build and diff check passed; page remains draft. Backup /tmp/white-oaks-related/before-image-links.html. Screenshot qa-artifacts/related-services/image-arrow-hover.png.
+
+
+## Approved Standard Service starter — 2026-10-07
+
+Services → Add Service now inserts the complete approved Dental Cleaning layout from service 423, using the existing `beanstalk-child/service-starter` registration. It is also available as **Standard Service** in the service editor pattern inserter. The existing `single-service.html` remains the shared header/Post Content/footer template. Every new service receives independent native blocks; editing it does not change Dental Cleaning or other services. Existing services are unaffected.
+
+The starter preserves the approved hero, introduction, benefits, visit process, FAQs, clinic section, related-service Query and fallback cards, appointment Cover and closing section. Dental Cleaning copy/images are editorial samples: replace service-specific headings, copy, images/alt text, FAQs and links; set the post title, excerpt, featured image, categories and related-service settings before publishing. The hero heading remains independently editable to allow a longer marketing heading than the post title. Source 423 was verified as published at extraction time; earlier draft notes describe its previous state. No post or saved editor state was changed.
+
+Site URLs resolve from `home_url()` when the pattern is registered. Media IDs refer to this site's approved Media Library; a future subsite must import/remap its own media before using the starter. This does not provision Multisite or share primary content between sites.
+
+Presentation: all existing blocks, presets, WordPress classes and semantic classes are retained exactly from approved post content. No new presets, close-token mappings, semantic classes, Tailwind utilities, arbitrary utilities, component stylesheets or plain CSS declarations were added. No typography was inferred. No asset build is required.
+
+Reused block inventory: Columns/Column, Shortcode, Heading, Paragraph, Buttons/Button, Image, Group, Details, Cover, Query, Post Template, Post Featured Image, Post Title, Post Excerpt, Read More and Query No Results. Reused presets: 12, 24, 32, 40, 48, 64, b-3, b-5, b-6, body, button, button-text, emergency-copy, experience-background, experience-card-copy, experience-card-heading, experience-heading, first-visit-card-heading, first-visit-heading, heading, hero-heading, hero-lead, primary, primary-shade-600, primary-tint-900, service-benefit-heading, service-card-heading, service-faq-heading, service-hero-heading, white. WordPress classes retain native `wp-block-*`, alignment, preset colour/font and generated layout classes. Existing semantic class families: `invisalign-hero`, `service-about`, `why-invisalign`, `first-visit`, `home-faqs`, `experience-section`/`experience-card`, `related-services`, `footer-cta` and `service-opening-banner`; existing registered `is-style-*` classes are preserved.
+
+Validation: PHP syntax and `git diff --check` passed; WordPress registers **Standard Service** and the existing CPT default resolves its slug. Registered content matches published source 423 exactly after trimming outer whitespace. Server-rendered output matches after normalizing WordPress-generated style instance counters. The active service template resolves from the theme. Only the theme pattern metadata cache was refreshed; no content, Global Styles or saved templates were changed. No fresh responsive/browser re-audit was performed because block content and styling are unchanged.
+
+
+### Lorem ipsum editorial placeholders
+
+The Standard Service starter now uses Lorem ipsum for static headings, descriptive copy and FAQ questions/answers, including sample clinic and related-card copy. Numbered steps, functional link/button labels, links, image alt text, images and all block attributes/layouts remain unchanged. Dynamic service titles/excerpts still come from their source posts. Replace placeholder copy before publication. Existing service posts remain untouched. No blocks, presets, close-token mappings, WordPress/semantic classes, Tailwind utilities, arbitrary utilities, component stylesheets or plain CSS declarations added.
+
+
+## Gutenberg service pillars — 2026-10-08
+
+The existing Services CPT is now hierarchical, using native WordPress parent/child permalinks. Categories remain non-public and retain their existing slugs and IDs for footer and related-service filtering. A service's Parent determines its URL; its category determines filtering. This remains local child-theme functionality under the existing explicit user instruction, not a Multisite conversion.
+
+Four local Gutenberg pillar drafts were created:
+
+- 499: General & Family Dentistry — `/services/general-and-family-dentistry/`
+- 500: Cosmetic Dentistry — `/services/cosmetic-dentistry/`
+- 501: Restorative & Implant Dentistry — `/services/restorative-and-implant-dentistry/`
+- 502: Emergency & Surgical Dentistry — `/services/emergency-and-surgical-dentistry/`
+
+Open each under Services and replace its editorial prompt with approved pillar content. Leave pillars without service categories so they do not enter treatment lists. Their native Query Loop automatically renders published direct children; it uses the scoped `white-oaks/pillar-services` query context. Pillars use CollectionPage schema; treatments keep Service schema. Both visible and schema breadcrumbs include published ancestors.
+
+For a treatment, choose its pillar in the native Parent setting and retain its existing service category. For example, Dental Cleaning under General & Family Dentistry becomes `/services/general-and-family-dentistry/dental-cleaning/`. Existing treatment content and metadata remain independent. The Standard Service starter is unchanged; it is intended for treatments, not pillar content.
+
+Published Dental Cleaning 423 remains at its existing flat URL until pillar content is ready. No existing post was reparented, renamed or published. The new pillar drafts have explicit post slugs; their draft preview URLs can use IDs until publication. No category slug migration is required to use `and` in public URLs.
+
+Old flat service requests that would otherwise be 404 redirect with 301 to a unique matching published child. Existing Page routes win, and ambiguous service slugs are not redirected. This fallback covers original flat URLs, not every later parent/slug change; inventory and add explicit redirects before subsequent reorganizations. Update any manually entered navigation/content links when reparenting at launch. Rewrite rules were flushed once locally; flush them once on each target site after deploying this registration change. Nothing flushes on ordinary requests.
+
+Database backup: `/tmp/white-oaks-service-hierarchy/before.sql` (verified nonempty export with posts table). Database drafts and rewrite options are separate from Git delivery. Repeat approved setup on the target environment; code deployment alone does not create pillars.
+
+Validation: PHP lint, diff whitespace check, and transactional `tests/service-hierarchy.php` checks cover Gutenberg/parent support, preserved Services page ownership, nested permalink resolution, parent breadcrumbs, collection schema, native child Query rendering and anonymous draft REST denial. Test fixtures roll back. No layout or responsive styling changed.
+
+Implementation inventory: reused Group, Post Title, Paragraph, Heading, Query, Post Template, Post Excerpt and Query No Results blocks; existing shared service template/Post Content. New presets, close-token mappings, semantic classes, Tailwind utilities, arbitrary utilities, component stylesheets and plain CSS declarations: none. Native `wp-block-*`, `alignfull` and generated layout classes only. No theme.json or parent changes; no build needed.
+
+
+### Dental Cleaning hierarchy applied — 2026-10-08
+
+At the user's request, published Dental Cleaning 423 now has parent 499 (General & Family Dentistry). Its content, categories, publication status and metadata were preserved. Canonical path is `/services/general-and-family-dentistry/dental-cleaning/`. Updated its explicit link in saved Navigation 129 and the child header source. Four pillar records remain drafts pending approved content; no draft was published. Existing Services landing page remains unchanged.
+
+HTTP verification: nested treatment returns 200; old `/services/dental-cleaning/` returns 301 directly to the nested URL. Hierarchy integration tests pass. Backups of the treatment and saved navigation are in `/tmp/white-oaks-service-hierarchy/`. This is Local database state plus the header source change; nothing was committed, pushed or deployed. Presentation inventory unchanged: no new blocks, presets, close-token mappings, WordPress classes, semantic classes, Tailwind utilities, arbitrary utilities, component stylesheets or plain CSS declarations.
+
+
+## Taxonomy replaced by hierarchy — 2026-10-08
+
+The service category taxonomy is no longer registered or attached to Services. Removed the primary-category metadata registration, selector and save routine. Native Parent is the single grouping control. Old term records, relationships and primary-category metadata remain inert in the database for rollback; nothing deletes them automatically.
+
+Related-service fallback now selects published sibling treatments under the same parent, with self/draft exclusions and curated ordering preserved. Unparented Services receive no group fallback. Known pillar pages cannot be selected as related treatments. Service schema category comes from the parent title. The legacy directory shortcode also lists direct children under each pillar.
+
+All four footer Query blocks now use a portable `whiteOaksPillar` slug rather than taxonomy term IDs. Updated both child `parts/footer.html` and active saved footer 290; unrelated saved content was retained. Missing pillars produce an empty query and its editable fallback, never an unrestricted service list. Saved footer backup: `/tmp/white-oaks-service-hierarchy/before-footer-hierarchy.json`. No treatment bodies, parents, publication status, category records, or SEO metadata were changed by this cleanup. General & Family Dentistry was observed published during validation; this cleanup did not publish it.
+
+Tests: updated service integration suite passes, including sibling isolation, curated selection, pillar exclusion, parent schema category, saved footer rendering, missing-pillar behavior and private REST access. Hierarchy suite passes, including nested routes, 301 fallback, breadcrumbs and CollectionPage schema. Actual nested Dental Cleaning returns HTTP 200 and rendered footer includes its nested link. PHP lint and `git diff --check` pass. No remaining active taxonomy dependency in child PHP or footer block source. No fresh visual/browser QA was performed because layout and styling are unchanged.
+
+Inventory: existing native Query blocks and their Post Template/linked Post Title remain; query attributes and PHP filtering changed only. New blocks, presets, close-token mappings, WordPress classes, semantic classes, Tailwind utilities via `@apply`, arbitrary utilities, component stylesheets and plain CSS declarations: none. No theme.json or parent changes. No build, commit, push or deployment. Saved footer database changes must be transferred separately from theme source.

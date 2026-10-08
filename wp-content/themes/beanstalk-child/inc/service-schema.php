@@ -43,18 +43,23 @@ function white_oaks_service_schema( $post_id ) {
 	$service_id = $url . '#service';
 	$page_id = $url . '#webpage';
 	$description = trim( wp_strip_all_tags( $post->post_excerpt ) );
-	$service = array( '@type' => 'Service', '@id' => $service_id, 'name' => get_the_title( $post ), 'serviceType' => get_post_meta( $post_id, '_white_oaks_service_type', true ) ?: get_the_title( $post ), 'url' => $url, 'provider' => array( '@id' => $dentist['@id'] ), 'mainEntityOfPage' => array( '@id' => $page_id ) );
-	$page = array( '@type' => 'WebPage', '@id' => $page_id, 'url' => $url, 'name' => get_the_title( $post ), 'mainEntity' => array( '@id' => $service_id ), 'about' => array( '@id' => $service_id ), 'inLanguage' => get_bloginfo( 'language' ), 'breadcrumb' => array( '@id' => $url . '#breadcrumb' ) );
+	$service = array( '@type' => 'Service', '@id' => $service_id, 'name' => html_entity_decode( get_the_title( $post ), ENT_QUOTES, 'UTF-8' ), 'serviceType' => get_post_meta( $post_id, '_white_oaks_service_type', true ) ?: html_entity_decode( get_the_title( $post ), ENT_QUOTES, 'UTF-8' ), 'url' => $url, 'provider' => array( '@id' => $dentist['@id'] ), 'mainEntityOfPage' => array( '@id' => $page_id ) );
+	$page = array( '@type' => 'WebPage', '@id' => $page_id, 'url' => $url, 'name' => html_entity_decode( get_the_title( $post ), ENT_QUOTES, 'UTF-8' ), 'mainEntity' => array( '@id' => $service_id ), 'about' => array( '@id' => $service_id ), 'inLanguage' => get_bloginfo( 'language' ), 'breadcrumb' => array( '@id' => $url . '#breadcrumb' ) );
 	if ( $website_id ) { $page['isPartOf'] = array( '@id' => $website_id ); }
 	if ( $description ) { $service['description'] = $description; $page['description'] = $description; }
 	if ( isset( $dentist['areaServed'] ) ) { $service['areaServed'] = $dentist['areaServed']; }
-	$category = white_oaks_primary_service_category( $post_id );
-	if ( $category ) { $service['category'] = $category->name; }
+	$parent = white_oaks_service_parent( $post_id );
+	if ( $parent ) { $service['category'] = $parent->post_title; }
 	$image = get_the_post_thumbnail_url( $post, 'full' );
 	$graph = array( $page, $service );
+	if ( white_oaks_is_service_pillar( $post_id ) ) {
+		unset( $page['mainEntity'], $page['about'] );
+		$page['@type'] = 'CollectionPage';
+		$graph = array( $page );
+	}
 	if ( $image ) {
 		$graph[0]['primaryImageOfPage'] = array( '@id' => $url . '#primaryimage' );
-		$graph[1]['image'] = $image;
+		if ( ! white_oaks_is_service_pillar( $post_id ) ) { $graph[1]['image'] = $image; }
 		$graph[] = array( '@type' => 'ImageObject', '@id' => $url . '#primaryimage', 'url' => $image, 'contentUrl' => $image );
 	}
 	$faq = white_oaks_service_faqs( parse_blocks( $post->post_content ) );
@@ -65,7 +70,11 @@ function white_oaks_service_schema( $post_id ) {
 	$crumbs = array( array( '@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => home_url( '/' ) ) );
 	$directory = get_page_by_path( 'services' );
 	if ( $directory && 'publish' === $directory->post_status ) { $crumbs[] = array( '@type' => 'ListItem', 'position' => count( $crumbs ) + 1, 'name' => get_the_title( $directory ), 'item' => get_permalink( $directory ) ); }
-	$crumbs[] = array( '@type' => 'ListItem', 'position' => count( $crumbs ) + 1, 'name' => get_the_title( $post ), 'item' => $url );
+	foreach ( array_reverse( get_post_ancestors( $post ) ) as $ancestor_id ) {
+		if ( 'publish' !== get_post_status( $ancestor_id ) ) { continue; }
+		$crumbs[] = array( '@type' => 'ListItem', 'position' => count( $crumbs ) + 1, 'name' => html_entity_decode( get_the_title( $ancestor_id ), ENT_QUOTES, 'UTF-8' ), 'item' => get_permalink( $ancestor_id ) );
+	}
+	$crumbs[] = array( '@type' => 'ListItem', 'position' => count( $crumbs ) + 1, 'name' => html_entity_decode( get_the_title( $post ), ENT_QUOTES, 'UTF-8' ), 'item' => $url );
 	$graph[] = array( '@type' => 'BreadcrumbList', '@id' => $url . '#breadcrumb', 'itemListElement' => $crumbs );
 	return array( '@context' => 'https://schema.org', '@graph' => $graph );
 }

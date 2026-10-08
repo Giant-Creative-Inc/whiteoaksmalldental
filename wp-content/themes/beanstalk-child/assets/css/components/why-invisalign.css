@@ -1,4 +1,6 @@
-@reference "../tailwind.css";
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant desktop-compact (@media (min-width: 1025px) and (max-width: 1279px));
 
 /*
  * Why Patients Choose Invisalign — one-off section on the Invisalign page.
@@ -161,4 +163,52 @@
   .why-invisalign__number {
     font-style: italic;
   }
+}
+
+/* Approved reuse for the three-card section in pillar post content. */
+@theme inline {
+  --text-experience-heading: var(--wp--preset--font-size--experience-heading);
+  --text-service-about-copy-mobile: var(--wp--preset--font-size--service-about-copy-mobile);
+  --text-service-benefit-heading: var(--wp--preset--font-size--service-benefit-heading);
+  --text-pillar-related-mobile: var(--wp--custom--service-about--heading-mobile-size);
+  --leading-pillar-related-mobile: var(--wp--custom--service-about--heading-mobile-line-height);
+  --leading-pillar-related-intro: var(--wp--custom--service-about--copy-mobile-line-height);
+  --leading-pillar-related-desktop: var(--wp--custom--line-height--experience-heading);
+  --tracking-pillar-related-heading: var(--wp--custom--letter-spacing--location-reviews-heading);
+  --tracking-pillar-related-eyebrow: var(--wp--custom--service-about--eyebrow-tracking);
+  --tracking-pillar-related-eyebrow-mobile: var(--wp--custom--service-about--eyebrow-mobile-tracking);
+  --spacing-pillar-related-padding: var(--wp--custom--experience--desktop-padding-block);
+}
+.pillar-related-services.is-style-section { @apply py-wp-48 px-site-gutter; }
+.pillar-related-services .is-style-container { @apply w-full max-w-none mx-auto px-0; }
+.pillar-related-services :where(.is-style-container, .is-style-content-stack) > * { @apply m-0; }
+.pillar-related-services .why-invisalign__header-main.is-style-content-stack { @apply gap-wp-12; }
+.pillar-related-services .why-invisalign__eyebrow { @apply font-button font-bold text-b-5 leading-button uppercase tracking-pillar-related-eyebrow-mobile; }
+.pillar-related-services .why-invisalign__heading { @apply font-normal text-pillar-related-mobile leading-pillar-related-mobile tracking-normal; }
+.pillar-related-services .why-invisalign__heading em { @apply not-italic text-inherit; }
+.pillar-related-services .why-invisalign__lead { @apply text-service-about-copy-mobile leading-pillar-related-intro; }
+.pillar-related-services .why-invisalign__cards { @apply grid-cols-1 mt-wp-32; }
+.pillar-related-services .why-invisalign__head { @apply leading-tight; }
+.pillar-related-services .why-invisalign__number { @apply leading-service-benefit; }
+.pillar-related-services .why-invisalign__title { @apply font-bold tracking-normal leading-tight; }
+.pillar-related-services .why-invisalign__copy { @apply text-b-5 leading-service-benefit; }
+.pillar-related-services .why-invisalign__copy a { @apply text-primary underline; }
+.pillar-related-services .why-invisalign__copy a:focus-visible { @apply outline-2 outline-primary outline-offset-2; }
+@variant desktop {
+  .pillar-related-services.is-style-section { @apply py-pillar-related-padding; }
+  .pillar-related-services .why-invisalign__header { @apply grid-cols-5 gap-wp-128; }
+  .pillar-related-services .why-invisalign__header-main.is-style-content-stack { @apply col-span-3 gap-wp-32; }
+  .pillar-related-services .why-invisalign__eyebrow { @apply font-normal tracking-pillar-related-eyebrow; }
+  .pillar-related-services .why-invisalign__heading { @apply text-experience-heading leading-pillar-related-desktop tracking-pillar-related-heading; }
+  .pillar-related-services .why-invisalign__heading em { @apply italic text-primary; }
+  .pillar-related-services .why-invisalign__lead { @apply col-span-2 text-b-3 leading-b-3; }
+  .pillar-related-services .why-invisalign__cards { @apply grid-cols-3 mt-wp-72; }
+  .pillar-related-services .why-invisalign__card { @apply px-wp-32 pt-wp-40 pb-wp-36 min-w-0; }
+  .pillar-related-services .why-invisalign__icon { @apply mb-wp-64; }
+  .pillar-related-services .why-invisalign__title { @apply font-normal text-service-benefit-heading leading-normal; }
+  .pillar-related-services .why-invisalign__copy { @apply text-b-5 leading-service-benefit pt-wp-12; }
+}
+@variant desktop-compact {
+  .pillar-related-services .why-invisalign__header { @apply gap-wp-48; }
+  .pillar-related-services .why-invisalign__card { @apply px-wp-24; }
 }

@@ -1,0 +1,29 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant announcement-wide (@media (min-width: 1280px));
+@theme inline {
+  --leading-announcement-label: var(--wp--custom--footer-announcement--mobile-label-leading);
+  --tracking-announcement-title: var(--wp--custom--footer-announcement--desktop-title-tracking);
+  --tracking-announcement-link: var(--wp--custom--footer-announcement--desktop-link-tracking);
+  --tracking-announcement-mobile: var(--wp--custom--footer-announcement--mobile-tracking);
+  --text-announcement-copy: var(--wp--custom--footer-announcement--desktop-copy-size);
+  --leading-announcement-copy: var(--wp--custom--footer-announcement--desktop-copy-leading);
+  --leading-announcement-mobile: var(--wp--custom--footer-announcement--mobile-copy-leading);
+}
+.footer-announcement { @apply py-wp-20; }
+.footer-announcement .footer-announcement__inner { @apply flex flex-col items-start gap-wp-12; }
+.footer-announcement .footer-announcement__title { @apply m-0 min-w-0 font-bold leading-announcement-label tracking-announcement-mobile uppercase; }
+.footer-announcement .footer-announcement__copy { @apply m-0 min-w-0 leading-announcement-mobile; }
+.footer-announcement .footer-announcement__actions { @apply m-0 pt-wp-4; }
+.footer-announcement .footer-announcement__button { @apply flex min-h-0; }
+.footer-announcement .footer-announcement__button .wp-block-button__link { @apply p-0 min-h-0 gap-wp-16 font-bold leading-announcement-label tracking-announcement-mobile underline underline-offset-4; }
+.footer-announcement .footer-announcement__button .wp-block-button__link:hover { @apply text-wp-white; }
+.footer-announcement .footer-announcement__button .wp-block-button__link:focus-visible { @apply outline-2 outline-offset-4 outline-wp-white; }
+@variant announcement-wide {
+  .footer-announcement { @apply py-wp-32; }
+  .footer-announcement .footer-announcement__inner { @apply flex-row flex-nowrap items-center justify-between; }
+  .footer-announcement .footer-announcement__title { @apply shrink-0 font-extrabold leading-button tracking-announcement-title; }
+  .footer-announcement .footer-announcement__copy { @apply text-announcement-copy leading-announcement-copy; }
+  .footer-announcement .footer-announcement__actions { @apply shrink-0 pt-0; }
+  .footer-announcement .footer-announcement__button .wp-block-button__link { @apply py-wp-8 font-normal leading-button tracking-announcement-link no-underline border-b border-wp-white; }
+}

@@ -1,0 +1,83 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant pillar-tablet (@media (min-width: 600px) and (max-width: 1024px));
+@custom-variant cards-up (@media (min-width: 782px));
+@theme inline {
+ --leading-pillar-faq: var(--wp--custom--line-height--h-2);
+ --container-pillar-services-heading: var(--wp--custom--service-about--heading-desktop-width);
+ --text-pillar-services-heading: var(--wp--preset--font-size--location-reviews-heading);
+ --text-pillar-services-heading-mobile: var(--wp--custom--service-about--heading-mobile-size);
+ --leading-pillar-services-heading: var(--wp--custom--line-height--experience-heading);
+ --leading-pillar-services-heading-mobile: var(--wp--custom--service-about--heading-mobile-line-height);
+ --tracking-pillar-services-heading: var(--wp--custom--letter-spacing--location-reviews-heading);
+ --tracking-pillar-services-eyebrow: var(--wp--custom--related-services--eyebrow-tracking);
+ --tracking-pillar-services-link: var(--wp--custom--related-services--link-tracking);
+ --spacing-pillar-services-image: var(--wp--custom--related-services--image-height);
+ --text-pillar-service-title: var(--wp--preset--font-size--service-card-heading);
+ --color-pillar-services-card: var(--wp--preset--color--service-card-background);
+ --leading-pillar-services-copy: var(--wp--custom--related-services--copy-line-height);
+}
+.pillar-services.is-style-section { @apply py-wp-48 px-0 bg-wp-white; }
+.pillar-services .pillar-services__container { @apply grid gap-wp-32 w-full box-border max-w-none mx-auto; }
+.pillar-services :where(h2,h3,p,figure,.wp-block-buttons),
+.pillar-services .pillar-services__container > *,
+.pillar-services .pillar-services__card > *,
+.pillar-services .is-style-content-stack > * { @apply m-0; }
+.pillar-services .pillar-services__header { @apply flex flex-col gap-wp-12 items-start w-full max-w-none; }
+.pillar-services .pillar-services__heading-stack { @apply grid gap-wp-12 min-w-0; }
+.pillar-services .pillar-services__eyebrow { @apply font-button font-bold text-b-5 leading-button uppercase tracking-pillar-services-eyebrow text-primary; }
+.pillar-services .pillar-services__heading { @apply font-heading font-normal text-pillar-services-heading-mobile leading-pillar-services-heading-mobile tracking-normal text-primary-shade-600; }
+.pillar-services .pillar-services__heading em { @apply italic text-primary; }
+.pillar-services .pillar-services__header > .pillar-services__appointment { @apply flex; }
+.pillar-services .is-style-actions { @apply flex flex-wrap gap-wp-32; }
+.pillar-services .pillar-services__grid { @apply grid grid-cols-1 gap-wp-20; }
+.pillar-services .pillar-services__card { @apply flex flex-col min-w-0 overflow-hidden border border-pillar-services-card bg-pillar-services-card p-0; }
+.pillar-services .pillar-services__image { @apply h-pillar-services-image overflow-hidden shrink-0; }
+.pillar-services .pillar-services__image img { @apply block w-full h-full object-cover; }
+.pillar-services .pillar-services__content { @apply flex flex-1 flex-col gap-wp-16 p-wp-32; }
+.pillar-services .pillar-services__title { @apply text-pillar-service-title font-heading font-normal leading-pillar-services-copy tracking-normal text-primary-shade-600; }
+.pillar-services .pillar-services__copy { @apply font-body font-normal text-b-5 leading-pillar-services-copy text-primary-shade-600; }
+.pillar-services .pillar-services__action { @apply flex items-center gap-wp-8 pt-wp-8 mt-auto; }
+.pillar-services .pillar-services__action p { @apply font-button font-bold text-b-5 leading-pillar-services-copy tracking-pillar-services-link text-primary; }
+.pillar-services .pillar-services__action a { @apply text-primary no-underline; }
+.pillar-services .pillar-services__action a:hover { @apply underline; }
+.pillar-services .pillar-services__action a:focus-visible { @apply outline-2 outline-primary outline-offset-2; }
+.pillar-services .pillar-services__arrow { @apply size-wp-24 shrink-0; }
+.pillar-services .pillar-services__arrow img { @apply block size-full object-contain; }
+@variant cards-up {
+ .pillar-services.is-style-section { @apply py-wp-120; }
+ .pillar-services .pillar-services__container { @apply gap-wp-64; }
+ .pillar-services .pillar-services__header { @apply flex-row flex-wrap items-end justify-between gap-wp-32; }
+ .pillar-services .pillar-services__heading-stack { @apply gap-wp-32 max-w-pillar-services-heading; }
+ .pillar-services .pillar-services__eyebrow { @apply font-normal; }
+ .pillar-services .pillar-services__heading { @apply text-pillar-services-heading leading-pillar-services-heading tracking-pillar-services-heading; }
+ .pillar-services .pillar-services__header > .pillar-services__appointment { @apply flex; }
+ .pillar-services .pillar-services__grid { @apply grid-cols-3 gap-wp-40; }
+}
+
+.pillar-services .pillar-services__image a { @apply block w-full h-full overflow-hidden; }
+.pillar-services .pillar-services__image img { @apply transition-transform duration-300; }
+.pillar-services .pillar-services__image a:hover img,
+.pillar-services .pillar-services__image a:focus-visible img { @apply scale-105; }
+.pillar-services .pillar-services__image a:focus-visible { @apply outline-2 outline-primary -outline-offset-2; }
+.pillar-services .pillar-services__arrow { @apply transition-transform duration-200; }
+.pillar-services .pillar-services__action:hover .pillar-services__arrow,
+.pillar-services .pillar-services__action:focus-within .pillar-services__arrow { @apply translate-x-wp-4; }
+@media (prefers-reduced-motion: reduce) {
+ .pillar-services .pillar-services__image img,
+ .pillar-services .pillar-services__arrow { @apply transition-none scale-100 translate-x-0; }
+ .pillar-services .pillar-services__image a:hover img,
+ .pillar-services .pillar-services__image a:focus-visible img,
+ .pillar-services .pillar-services__action:hover .pillar-services__arrow,
+ .pillar-services .pillar-services__action:focus-within .pillar-services__arrow { @apply scale-100 translate-x-0; }
+}
+
+@variant pillar-tablet {
+ .pillar-services .pillar-services__grid { @apply grid-cols-2; }
+ .pillar-service-page .related-services .related-services__grid { @apply grid-cols-2; }
+}
+.pillar-service-page .site-footer__back-to-top { @apply block; }
+.pillar-service-page .home-faqs__heading { @apply leading-pillar-faq; }
+@variant max-tablet {
+ .pillar-service-page .home-faqs__item summary span { @apply font-bold leading-none; }
+}

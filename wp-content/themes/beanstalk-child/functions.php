@@ -20,6 +20,7 @@ require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
 require_once get_stylesheet_directory() . '/inc/llms-txt.php';
 require_once get_stylesheet_directory() . '/inc/schema.php';
 require_once get_stylesheet_directory() . '/inc/services.php';
+require_once get_stylesheet_directory() . '/inc/service-templates.php';
 require_once get_stylesheet_directory() . '/inc/related-services.php';
 require_once get_stylesheet_directory() . '/inc/service-about.php';
 require_once get_stylesheet_directory() . '/inc/service-schema.php';

@@ -1,0 +1,49 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant pillar-desktop (@media (min-width: 421px));
+
+@theme inline {
+  --text-service-hero-heading: var(--wp--preset--font-size--service-hero-heading);
+  --text-hero-lead: var(--wp--preset--font-size--hero-lead);
+  --text-pillar-heading-mobile: var(--wp--custom--service-pillar--heading-mobile-size);
+  --leading-pillar-heading-mobile: var(--wp--custom--service-pillar--heading-mobile-leading);
+  --leading-pillar-copy-mobile: var(--wp--custom--service-pillar--copy-mobile-leading);
+  --leading-pillar-copy-desktop: var(--wp--custom--service-pillar--copy-desktop-leading);
+  --tracking-pillar-breadcrumb-mobile: var(--wp--custom--service-pillar--breadcrumb-mobile-tracking);
+  --tracking-pillar-breadcrumb-desktop: var(--wp--custom--service-pillar--breadcrumb-desktop-tracking);
+  --container-pillar-heading: var(--wp--custom--service-pillar--heading-width);
+  --container-pillar-copy: var(--wp--custom--service-pillar--copy-width);
+  --spacing-pillar-art-width: var(--wp--custom--service-pillar--image-width);
+  --spacing-pillar-art-left: var(--wp--custom--service-pillar--image-left);
+}
+
+.service-pillar-hero.is-style-section { @apply p-0; }
+.service-pillar-hero .service-pillar-hero__cover { @apply p-0 min-h-0 bg-primary text-wp-white overflow-hidden; }
+.service-pillar-hero .wp-block-cover__inner-container { @apply w-full; }
+.service-pillar-hero .wp-block-cover__image-background { @apply hidden; }
+.service-pillar-hero .service-pillar-hero__container.is-style-container { @apply w-full max-w-none box-border mx-auto px-site-gutter py-wp-24 grid grid-cols-1 gap-wp-24; }
+.service-pillar-hero .service-pillar-hero__container > * { @apply m-0; }
+.service-pillar-hero .service-pillar-hero__breadcrumbs { @apply flex flex-wrap items-center gap-x-wp-8 gap-y-wp-8 font-button text-b-5 leading-button tracking-pillar-breadcrumb-mobile uppercase; }
+.service-pillar-hero .service-pillar-hero__breadcrumbs p { @apply m-0 font-button text-b-5 leading-button opacity-72; }
+.service-pillar-hero .service-pillar-hero__breadcrumbs a { @apply text-wp-white no-underline hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white; }
+.service-pillar-hero .service-pillar-hero__breadcrumbs .service-pillar-hero__current { @apply basis-full font-bold opacity-100; }
+.service-pillar-hero .service-pillar-hero__copy.is-style-content-stack { @apply grid gap-wp-16 w-full max-w-none; }
+.service-pillar-hero .service-pillar-hero__copy > * { @apply m-0; }
+.service-pillar-hero .service-pillar-hero__heading { @apply font-heading font-normal text-pillar-heading-mobile leading-pillar-heading-mobile tracking-normal text-left; }
+.service-pillar-hero .service-pillar-hero__lead { @apply font-body text-b-3 leading-pillar-copy-mobile text-left; }
+
+@variant pillar-desktop {
+  .service-pillar-hero .wp-block-cover__image-background { @apply block w-pillar-art-width h-auto max-w-none left-pillar-art-left -top-wp-32 right-auto bottom-auto object-contain; }
+  .service-pillar-hero .service-pillar-hero__container.is-style-container { @apply py-wp-64 gap-wp-48 justify-items-center; }
+  .service-pillar-hero .service-pillar-hero__breadcrumbs { @apply justify-center gap-x-wp-12 tracking-pillar-breadcrumb-desktop leading-button; }
+  .service-pillar-hero .service-pillar-hero__breadcrumbs p { @apply opacity-100; }
+  .service-pillar-hero .service-pillar-hero__breadcrumbs .service-pillar-hero__current { @apply basis-auto; }
+  .service-pillar-hero .service-pillar-hero__copy.is-style-content-stack { @apply w-full max-w-pillar-copy gap-wp-32 justify-items-center; }
+  .service-pillar-hero .service-pillar-hero__heading { @apply w-full text-center; }
+  .service-pillar-hero .service-pillar-hero__lead { @apply text-hero-lead leading-pillar-copy-desktop max-w-pillar-copy text-center; }
+}
+
+@media (min-width: 1025px) {
+ .service-pillar-hero .service-pillar-hero__copy.is-style-content-stack { @apply w-full max-w-pillar-heading; }
+ .service-pillar-hero .service-pillar-hero__heading { @apply text-service-hero-heading leading-service-hero tracking-service-hero; }
+}
