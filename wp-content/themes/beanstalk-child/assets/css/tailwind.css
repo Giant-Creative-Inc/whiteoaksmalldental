@@ -18,6 +18,7 @@
 @source "../../blocks";
 
 @import "./components/service-about.css";
+@import "./components/breadcrumbs.css";
 
 @import "./components/related-services.css";
 @import "./components/footer-services.css";

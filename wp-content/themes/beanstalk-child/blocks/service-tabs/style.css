@@ -158,7 +158,7 @@
 	}
 
 	.white-oaks-service-tabs__tab {
-		@apply box-border min-h-0 last:border-b-0;
+		@apply box-border min-h-0;
 	}
 }
 

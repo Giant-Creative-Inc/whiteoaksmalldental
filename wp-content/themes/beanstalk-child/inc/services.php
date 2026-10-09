@@ -164,9 +164,8 @@ function white_oaks_service_breadcrumb_items( $crumbs ) {
 		return $crumbs;
 	}
 	$current = array_pop( $crumbs );
-	$directory = get_page_by_path( 'services' );
 	$items = array( $crumbs[0] );
-	$items[] = array( 'Services', $directory && 'publish' === $directory->post_status ? get_permalink( $directory ) : '' );
+	$items[] = array( 'Services', '' );
 	foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor_id ) {
 		$items[] = array( get_the_title( $ancestor_id ), 'publish' === get_post_status( $ancestor_id ) ? get_permalink( $ancestor_id ) : '' );
 	}
@@ -175,11 +174,40 @@ function white_oaks_service_breadcrumb_items( $crumbs ) {
 }
 add_filter( 'rank_math/frontend/breadcrumb/items', 'white_oaks_service_breadcrumb_items', 20 );
 
-/** Rank Math marks all unlinked labels as last; reserve bold for the current page. */
-function white_oaks_service_breadcrumb_html( $html ) {
-	if ( ! is_singular( 'service' ) ) {
+/** Keep Services as a grouping label in every breadcrumb trail. */
+function white_oaks_is_services_breadcrumb_url( $url ) {
+	return untrailingslashit( home_url( '/services/' ) ) === untrailingslashit( $url );
+}
+
+function white_oaks_unlink_services_breadcrumb( $crumbs ) {
+	foreach ( $crumbs as &$crumb ) {
+		if ( white_oaks_is_services_breadcrumb_url( $crumb[1] ?? '' ) || 'services' === strtolower( trim( wp_strip_all_tags( $crumb[0] ) ) ) ) {
+			$crumb[1] = '';
+		}
+	}
+	unset( $crumb );
+	return $crumbs;
+}
+add_filter( 'rank_math/frontend/breadcrumb/items', 'white_oaks_unlink_services_breadcrumb', 30 );
+
+/** Apply the same grouping rule to editable core-block pillar breadcrumbs. */
+function white_oaks_unlink_pillar_services_breadcrumb( $html, $block ) {
+	$classes = preg_split( '/\s+/', $block['attrs']['className'] ?? '' );
+	if ( ! in_array( 'service-pillar-hero__breadcrumbs', $classes, true ) ) {
 		return $html;
 	}
+	return preg_replace_callback( '/<a\b[^>]*>.*?<\/a>/is', static function ( $match ) {
+		$processor = new WP_HTML_Tag_Processor( $match[0] );
+		if ( $processor->next_tag( 'A' ) && white_oaks_is_services_breadcrumb_url( $processor->get_attribute( 'href' ) ?? '' ) ) {
+			return preg_replace( '/^<a\b[^>]*>(.*?)<\/a>$/is', '$1', $match[0] );
+		}
+		return $match[0];
+	}, $html );
+}
+add_filter( 'render_block_core/group', 'white_oaks_unlink_pillar_services_breadcrumb', 20, 2 );
+
+/** Rank Math marks all unlinked labels as last; reserve bold for the current page. */
+function white_oaks_service_breadcrumb_html( $html ) {
 	$processor = new WP_HTML_Tag_Processor( $html );
 	$count     = 0;
 	while ( $processor->next_tag( array( 'tag_name' => 'SPAN', 'class_name' => 'last' ) ) ) {

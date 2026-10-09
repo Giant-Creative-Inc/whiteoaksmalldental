@@ -57,19 +57,19 @@
 
 .pillar-services .pillar-services__image a { @apply block w-full h-full overflow-hidden; }
 .pillar-services .pillar-services__image img { @apply transition-transform duration-300; }
-.pillar-services .pillar-services__image a:hover img,
-.pillar-services .pillar-services__image a:focus-visible img { @apply scale-105; }
+.pillar-services .pillar-services__card:hover .pillar-services__image img,
+.pillar-services .pillar-services__card:focus-within .pillar-services__image img { @apply scale-105; }
 .pillar-services .pillar-services__image a:focus-visible { @apply outline-2 outline-primary -outline-offset-2; }
 .pillar-services .pillar-services__arrow { @apply transition-transform duration-200; }
-.pillar-services .pillar-services__action:hover .pillar-services__arrow,
-.pillar-services .pillar-services__action:focus-within .pillar-services__arrow { @apply translate-x-wp-4; }
+.pillar-services .pillar-services__card:hover .pillar-services__arrow,
+.pillar-services .pillar-services__card:focus-within .pillar-services__arrow { @apply translate-x-wp-4; }
 @media (prefers-reduced-motion: reduce) {
  .pillar-services .pillar-services__image img,
  .pillar-services .pillar-services__arrow { @apply transition-none scale-100 translate-x-0; }
- .pillar-services .pillar-services__image a:hover img,
- .pillar-services .pillar-services__image a:focus-visible img,
- .pillar-services .pillar-services__action:hover .pillar-services__arrow,
- .pillar-services .pillar-services__action:focus-within .pillar-services__arrow { @apply scale-100 translate-x-0; }
+ .pillar-services .pillar-services__card:hover .pillar-services__image img,
+ .pillar-services .pillar-services__card:focus-within .pillar-services__image img,
+ .pillar-services .pillar-services__card:hover .pillar-services__arrow,
+ .pillar-services .pillar-services__card:focus-within .pillar-services__arrow { @apply scale-100 translate-x-0; }
 }
 
 @variant pillar-tablet {
@@ -81,3 +81,10 @@
 @variant max-tablet {
  .pillar-service-page .home-faqs__item summary span { @apply font-bold leading-none; }
 }
+
+/* Native Explore Now link covers its card without JavaScript or nested links. */
+.pillar-services .pillar-services__card { @apply relative; }
+.pillar-services .pillar-services__action a { @apply after:absolute after:inset-0 after:z-10; }
+.pillar-services .pillar-services__card:hover .pillar-services__action a,
+.pillar-services .pillar-services__card:focus-within .pillar-services__action a { @apply underline; }
+.pillar-services .pillar-services__action a:focus-visible { @apply outline-none after:outline-2 after:outline-primary after:-outline-offset-2; }

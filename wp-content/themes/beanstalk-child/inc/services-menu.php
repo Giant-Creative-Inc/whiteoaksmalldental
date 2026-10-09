@@ -2,6 +2,17 @@
 /** Scoped native service submenu accordion binding. @package BeanstalkChild */
 defined( 'ABSPATH' ) || exit;
 
+// Category headings navigate to pillars; core keeps a separate submenu toggle.
+add_filter( 'render_block_context', static function ( $context, $block ) {
+	$classes = preg_split( '/\s+/', $block['attrs']['className'] ?? '' );
+	if ( 'core/navigation-submenu' === $block['blockName'] && in_array( 'services-menu__group', $classes, true ) ) {
+		$context['submenuVisibility'] = 'hover';
+		$context['openSubmenusOnClick'] = false;
+		$context['showSubmenuIcon'] = true;
+	}
+	return $context;
+}, 10, 2 );
+
 add_filter( 'render_block_core/navigation', static function ( $html ) {
 	if ( ! str_contains( $html, 'services-menu' ) ) {
 		return $html;

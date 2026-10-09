@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+
+.rank-math-breadcrumb a,
+.service-pillar-hero .service-pillar-hero__breadcrumbs a {
+  @apply transition-opacity duration-200 ease-out hover:opacity-70 focus-visible:opacity-70 focus-visible:underline motion-reduce:transition-none;
+}

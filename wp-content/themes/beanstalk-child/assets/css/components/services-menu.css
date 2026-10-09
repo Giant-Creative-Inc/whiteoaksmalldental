@@ -15,6 +15,7 @@
 .services-menu .services-menu__category { @apply block; }
 .services-menu .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon { @apply pointer-events-none; }
 @variant desktop {
+  .site-header .services-menu .services-menu__all { @apply hidden; }
   .site-header .site-header__nav .services-menu.open-on-click > .wp-block-navigation-submenu__toggle { @apply pr-wp-24; }
   .site-header .site-header__nav .services-menu.open-on-click > .wp-block-navigation__submenu-icon { @apply -ml-wp-12 flex size-wp-12 shrink-0 items-center justify-center; }
   .site-header .site-header__nav .services-menu.open-on-click > .wp-block-navigation__submenu-icon svg { @apply block size-full; }
