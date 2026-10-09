@@ -20,7 +20,7 @@
 .service-pillar-hero.is-style-section { @apply p-0; }
 .service-pillar-hero .service-pillar-hero__cover { @apply p-0 min-h-0 bg-primary text-wp-white overflow-hidden; }
 .service-pillar-hero .wp-block-cover__inner-container { @apply w-full; }
-.service-pillar-hero .wp-block-cover__image-background { @apply hidden; }
+.service-pillar-hero .wp-block-cover__image-background { @apply block w-auto h-auto max-w-none left-1/4 -top-wp-24 right-auto bottom-auto object-contain; }
 .service-pillar-hero .service-pillar-hero__container.is-style-container { @apply w-full max-w-none box-border mx-auto px-site-gutter py-wp-24 grid grid-cols-1 gap-wp-24; }
 .service-pillar-hero .service-pillar-hero__container > * { @apply m-0; }
 .service-pillar-hero .service-pillar-hero__breadcrumbs { @apply flex flex-wrap items-center gap-x-wp-8 gap-y-wp-8 font-button text-b-5 leading-button tracking-pillar-breadcrumb-mobile uppercase; }
@@ -46,4 +46,8 @@
 @media (min-width: 1025px) {
  .service-pillar-hero .service-pillar-hero__copy.is-style-content-stack { @apply w-full max-w-pillar-heading; }
  .service-pillar-hero .service-pillar-hero__heading { @apply text-service-hero-heading leading-service-hero tracking-service-hero; }
+}
+
+@media (min-width: 421px) and (max-width: 1024px) {
+  .service-pillar-hero .service-pillar-hero__container.is-style-container { @apply gap-wp-24 py-wp-48; }
 }

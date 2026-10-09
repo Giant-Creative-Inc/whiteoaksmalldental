@@ -1,0 +1,101 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+@custom-variant related-desktop (@media (min-width: 1024px));
+@theme inline {
+ --text-related-link: var(--wp--preset--font-size--related-link);
+ --leading-related-link: var(--wp--custom--related-care--link-leading);
+ --spacing-related-section: var(--wp--custom--related-care--section-padding);
+ --spacing-related-heading-gap: var(--wp--custom--related-care--heading-gap);
+ --spacing-related-tab-pad: var(--wp--custom--related-care--tab-padding);
+ --spacing-related-intro-width: var(--wp--custom--related-care--intro-width);
+ --container-related-heading-width: var(--wp--custom--related-care--heading-width);
+ --spacing-related-xray-width: var(--wp--custom--related-care--xray-width);
+ --spacing-related-xray-height: var(--wp--custom--related-care--xray-height);
+ --spacing-related-xray-left: var(--wp--custom--related-care--xray-left);
+ --spacing-related-xray-top: var(--wp--custom--related-care--xray-top);
+ --text-b-2: var(--wp--preset--font-size--b-2);
+ --text-b-3: var(--wp--preset--font-size--b-3);
+ --text-b-4: var(--wp--preset--font-size--b-4);
+ --text-b-5: var(--wp--preset--font-size--b-5);
+ --color-care-heading: var(--wp--preset--color--care-heading);
+ --color-related-panel: var(--wp--preset--color--related-panel-text);
+ --color-related-inactive: var(--wp--preset--color--related-tab-text);
+ --color-related-border: var(--wp--preset--color--related-tab-border);
+ --text-related-heading: var(--wp--preset--font-size--related-heading);
+ --text-related-panel-heading: var(--wp--preset--font-size--related-panel-heading);
+ --text-related-tab: var(--wp--preset--font-size--related-tab-label);
+ --leading-related-heading: var(--wp--custom--related-care--heading-leading);
+ --leading-related-panel-heading: var(--wp--custom--related-care--panel-heading-leading);
+ --leading-related-tab: var(--wp--custom--related-care--tab-leading);
+ --leading-related-intro: var(--wp--custom--related-care--intro-leading);
+ --leading-related-copy: var(--wp--custom--related-care--copy-desktop-leading);
+ --leading-related-mobile-copy: var(--wp--custom--related-care--copy-mobile-leading);
+ --tracking-related-heading: var(--wp--custom--related-care--heading-tracking);
+ --tracking-related-panel-heading: var(--wp--custom--related-care--panel-heading-tracking);
+ --tracking-related-eyebrow: var(--wp--custom--related-care--eyebrow-tracking);
+ --spacing-related-inset: var(--wp--custom--related-care--panel-desktop-inset);
+ --spacing-related-image: var(--wp--custom--related-care--image-mobile-height);
+ --spacing-related-desktop-image: var(--wp--custom--related-care--image-desktop-height);
+ --spacing-related-image-width: var(--wp--custom--related-care--image-desktop-width);
+ --container-related-image-width: var(--wp--custom--related-care--image-desktop-width);
+}
+.pillar-related-services.is-style-section { @apply py-related-section px-0; }
+.pillar-related-services .pillar-related-services__container.is-style-container { @apply w-full max-w-none grid gap-wp-32 px-site-gutter box-border; }
+.pillar-related-services :where(h2,h3,p,figure,.wp-block-columns,.wp-block-buttons,.wp-block-tabs,.wp-block-tab-list,.wp-block-tab-panels,.wp-block-tab-panel) { @apply m-0; }
+.pillar-related-services .pillar-related-services__intro { @apply grid grid-cols-1 gap-wp-20 min-w-0 w-full max-w-none; }
+.pillar-related-services .pillar-related-services__heading-stack.is-style-content-stack { @apply grid gap-wp-20 min-w-0 w-full max-w-related-heading-width; }
+.pillar-related-services .pillar-related-services__eyebrow { @apply font-button text-b-5 font-bold leading-button tracking-related-eyebrow uppercase; }
+.pillar-related-services .pillar-related-services__heading { @apply text-related-heading leading-related-heading tracking-related-heading font-heading font-normal text-care-heading; }
+.pillar-related-services .pillar-related-services__heading em { @apply italic text-primary; }
+.pillar-related-services .pillar-related-services__description { @apply text-b-3 leading-related-mobile-copy text-primary-shade-600 opacity-(--wp--custom--related-care--intro-opacity); }
+.pillar-related-services .wp-block-tabs { @apply w-full min-w-0 gap-0; }
+.pillar-related-services .wp-block-tab-list { @apply flex flex-nowrap w-full basis-0 grow gap-0 border-b border-related-border; }
+.pillar-related-services .wp-block-tab-list button { @apply flex-1 min-w-0 w-auto whitespace-normal py-wp-12 px-wp-8 min-h-wp-72 font-heading text-related-tab leading-related-tab text-center; }
+.pillar-related-services .wp-block-tab-list button[aria-selected="true"] { @apply bg-primary text-white font-bold; }
+.pillar-related-services .wp-block-tab-list button[aria-selected="false"] { @apply bg-white text-related-inactive font-normal; }
+.pillar-related-services .wp-block-tab-list button + button { @apply border-l border-related-border; }
+.pillar-related-services .wp-block-tab-list button[aria-selected="true"]::before { content: none; }
+.pillar-related-services .wp-block-tab-list button:focus-visible { @apply outline-2 outline-primary -outline-offset-4; }
+.pillar-related-services .wp-block-tab-list button[aria-selected="true"]:focus-visible { @apply outline-white; }
+.pillar-related-services .wp-block-tab-panel { @apply p-wp-24 bg-white; }
+.pillar-related-services .pillar-related-services__panel-layout { @apply grid grid-cols-1 gap-wp-20 min-w-0; }
+.pillar-related-services .pillar-related-services__panel-copy.is-style-content-stack { @apply grid gap-wp-20 min-w-0; }
+.pillar-related-services .pillar-related-services__panel-title { @apply font-heading font-normal text-related-panel-heading leading-related-panel-heading tracking-related-panel-heading text-related-panel; }
+.pillar-related-services .pillar-related-services__panel-description { @apply text-b-3 leading-related-mobile-copy text-related-panel; }
+.pillar-related-services .pillar-related-services__actions.is-style-actions { @apply flex flex-wrap gap-x-wp-24 gap-y-0 items-start; }
+.pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply font-body text-related-link normal-case tracking-normal leading-related-link p-0 min-h-wp-48 rounded-none border-0 underline underline-offset-8 text-primary bg-transparent gap-0 whitespace-normal text-left; }
+.pillar-related-services .pillar-related-services__image { @apply w-full h-related-image min-w-0 max-w-related-image-width mx-auto justify-self-center overflow-hidden relative; }
+.pillar-related-services .pillar-related-services__image img { @apply w-full h-full object-cover; }
+.pillar-related-services .pillar-related-services__image--xray img { @apply absolute w-related-xray-width h-related-xray-height max-w-none -left-related-xray-left -top-related-xray-top; }
+@media (min-width: 782px) {
+ .pillar-related-services .pillar-related-services__panel-layout { @apply flex flex-nowrap gap-wp-32 items-center; }
+ .pillar-related-services .pillar-related-services__panel-layout > .wp-block-column:first-child { @apply flex-1 min-w-0; }
+ .pillar-related-services .pillar-related-services__panel-layout > .wp-block-column:last-child { @apply flex-none w-2/5 max-w-related-image-width; }
+ .pillar-related-services .pillar-related-services__image { @apply h-related-desktop-image; }
+}
+@variant related-desktop {
+ .pillar-related-services .pillar-related-services__container.is-style-container { @apply gap-wp-72; }
+ .pillar-related-services .pillar-related-services__intro { @apply flex flex-nowrap gap-wp-64 items-end justify-between; }
+ .pillar-related-services .pillar-related-services__heading-stack.is-style-content-stack { @apply gap-related-heading-gap; }
+ .pillar-related-services .pillar-related-services__eyebrow { @apply font-normal; }
+ .pillar-related-services .pillar-related-services__intro > .wp-block-column:first-child { @apply flex-1 min-w-0 max-w-related-heading-width; }
+ .pillar-related-services .pillar-related-services__description { @apply leading-related-intro; }
+ .pillar-related-services .pillar-related-services__intro > .wp-block-column:last-child { @apply self-end flex-none w-related-intro-width min-w-0; }
+ .pillar-related-services .wp-block-tab-list button { @apply py-related-tab-pad px-wp-16; }
+ .pillar-related-services .pillar-related-services__panel-layout { @apply flex flex-nowrap gap-wp-32 items-center; }
+ .pillar-related-services .pillar-related-services__panel-layout > .wp-block-column:first-child { @apply flex-1 min-w-0; }
+ .pillar-related-services .pillar-related-services__panel-layout > .wp-block-column:last-child { @apply flex-none w-related-image-width max-w-related-image-width; }
+ .pillar-related-services .pillar-related-services__panel-copy.is-style-content-stack { @apply gap-wp-24; }
+ .pillar-related-services .pillar-related-services__actions.is-style-actions { @apply mt-wp-4; }
+ .pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply text-b-4; }
+ .pillar-related-services .pillar-related-services__panel-description { @apply text-b-2 leading-related-copy; }
+ .pillar-related-services .pillar-related-services__image { @apply h-related-desktop-image max-w-related-image-width justify-self-end; }
+}
+@media (min-width: 1280px) {
+ .pillar-related-services .wp-block-tab-panel { @apply pl-related-inset; }
+ .pillar-related-services .pillar-related-services__panel-layout { @apply gap-related-inset; }
+}
+
+@media (max-width: 374px) {
+ .pillar-related-services .wp-block-tab-list button { @apply px-wp-4 text-b-4; }
+}

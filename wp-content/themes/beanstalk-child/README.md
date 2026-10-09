@@ -89,3 +89,24 @@ unless the approved design intentionally breaks the global alignment.
 Tailwind scans only this child theme's `parts`, `patterns`, `templates`, and
 PHP files. Preflight is intentionally disabled to preserve WordPress block
 defaults. Commit `assets/css/custom.css`; do not commit `node_modules`.
+
+## Comfortable care section
+
+The General & Family Dentistry pillar (post 499) stores this one-off section as
+editable core blocks in post content. Its scoped component is
+`assets/css/components/comfortable-care.css`, imported through `tailwind.css`.
+`assets/js/comfortable-care.js` shuffles and loops the five original attachment
+images, adds inert frontend duplicates, and supports pause, slider-only hover pause,
+keyboard-focus pause,
+visibility suspension, and reduced motion. The pause control is visually hidden until keyboard focus. No pattern or template stores it.
+
+Build CSS with `npx vite build` and frontend scripts with
+`npx vite build -c vite.scripts.config.mjs` from this child theme.
+The mobile/desktop switch is 768px; styling values come from child theme presets.
+
+Comfortable-care image `sizes` hints derive from the child tokens (207.45px below
+768px, 389px above), adjusted for each source ratio and cover crop. The five small originals load eagerly at normal priority,
+avoiding viewport-sized auto hints before CSS layout; loop copies strip the
+lazy-only auto prefix. Exact scoped Figma tokens provide 29.7px paragraph leading
+and photo heights of 292px / 155.721px. The General & Family Dentistry
+CollectionPage links to a Service entity and the existing clinic provider.

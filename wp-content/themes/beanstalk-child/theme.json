@@ -28,6 +28,7 @@
         }
       ],
       "palette": [
+        { "slug": "care-heading", "color": "#1B2E33", "name": "Care Heading" },
         { "slug": "black", "color": "#000000", "name": "Neutral-PureBlack" },
         { "slug": "white", "color": "#FFFFFF", "name": "Neutral-PureWhite" },
         { "slug": "dark", "color": "#2C2E2B", "name": "Neutral-Offblack" },
@@ -64,7 +65,10 @@
         { "slug": "doctor-copy-muted", "color": "rgba(22, 60, 61, 0.76)", "name": "Doctor Biography Muted" },
         { "slug": "doctor-primary-text", "color": "#163C3D", "name": "Doctor Primary Text" },
         { "slug": "oak-orange-shade-900", "color": "#160F07", "name": "Oak Orange Shade 900" },
-        { "slug": "service-directory-divider", "color": "rgba(31,120,132,0.2)", "name": "Service Directory Divider" }
+        { "slug": "service-directory-divider", "color": "rgba(31,120,132,0.2)", "name": "Service Directory Divider" },
+        {"slug": "related-panel-text", "name": "Related Care Panel Text", "color": "#193B40"},
+        {"slug": "related-tab-text", "name": "Related Care Inactive Tab Text", "color": "#36565B"},
+        {"slug": "related-tab-border", "name": "Related Care Tab Border", "color": "#BAD4DA"}
       ]
     },
     "typography": {
@@ -96,6 +100,7 @@
         }
       ],
       "fontSizes": [
+        { "slug": "care-heading", "size": "64px", "name": "Care Heading" },
         { "slug": "h-1", "size": "clamp(40px, 7.5vw, 64px)", "name": "H1" },
         { "slug": "h-2", "size": "clamp(34px, 5vw, 48px)", "name": "H2" },
         { "slug": "h-3", "size": "clamp(28px, 3vw, 32px)", "name": "H3" },
@@ -142,7 +147,11 @@
         { "slug": "service-card-heading", "size": "24px", "name": "Service Card Heading" },
         { "slug": "service-faq-heading", "size": "clamp(32px, 4.7495vw, 67.68px)", "name": "Service FAQ Heading" },
         { "slug": "service-benefit-heading", "size": "clamp(18px, 1.895vw, 27px)", "name": "Service Benefit Heading" },
-        { "slug": "service-hero-heading", "size": "clamp(40px, calc(14.197183px + 5.814085cqw), 97.92px)", "name": "Service Hero Heading" }
+        { "slug": "service-hero-heading", "size": "clamp(40px, calc(14.197183px + 5.814085cqw), 97.92px)", "name": "Service Hero Heading" },
+        {"slug": "related-link", "name": "Related Care Mobile Link", "size": "17px"},
+        {"slug": "related-heading", "name": "Related Care Heading", "size": "clamp(42px, calc(30.4203px + 3.08792vw), 74.88px)"},
+        {"slug": "related-panel-heading", "name": "Related Care Panel Heading", "size": "clamp(30px, calc(25.77465px + 1.12676vw), 42px)"},
+        {"slug": "related-tab-label", "name": "Related Care Tab Label", "size": "clamp(17px, calc(14.5352px + 0.65728vw), 24px)"}
       ]
     },
     "spacing": {
@@ -194,7 +203,21 @@
       }
     },
     "custom": {
-      "servicePillar": {"headingMobileSize": "44px", "headingMobileLeading": "48px", "copyDesktopLeading": "33.48px", "copyMobileLeading": "28px", "breadcrumbDesktopTracking": "1.44px", "breadcrumbMobileTracking": "1px", "headingWidth": "785px", "copyWidth": "437px", "imageWidth": "51.9298245614%", "imageLeft": "57.2631578947%"},
+      "relatedCare": {"headingLeading": "clamp(43px, calc(33.09155px + 2.64282vw), 71.136px)", "headingTracking": "clamp(-3.3696px, calc(-0.832286px - 0.178057vw), -1.5px)", "panelHeadingLeading": "clamp(35px, calc(30.3169px + 1.24883vw), 48.3px)", "panelHeadingTracking": "-0.03em", "tabLeading": "clamp(22px, calc(19.1831px + 0.75117vw), 30px)", "introLeading": "29.7px", "copyDesktopLeading": "32px", "copyMobileLeading": "28px", "eyebrowTracking": "2.64px", "panelDesktopInset": "84px", "imageMobileHeight": "clamp(220px, calc(128.623418px + 24.367089vw), 297px)", "imageDesktopHeight": "297px", "imageDesktopWidth": "408px", "sectionPadding": "clamp(48px, calc(18.714286px + 7.809524vw), 130px)", "headingWidth": "658px", "introWidth": "clamp(320px, calc(-172px + 48.046875vw), 443px)", "introOpacity": "0.82", "tabPadding": "26px", "headingGap": "28px", "linkLeading": "24px", "xrayWidth": "155.78%", "xrayHeight": "109.77%", "xrayLeft": "27.89%", "xrayTop": "4.89%"},
+      "comfortable-care": {
+        "heading-width": "713px",
+        "copy-width": "659px",
+        "heading-leading": "64px",
+        "heading-tracking": "-3.3696px",
+        "section-space": "60px",
+        "image-width": "389px",
+        "image-mobile-width": "207.45px",
+        "image-gap-mobile": "6.399px",
+        "copy-leading": "29.7px",
+        "image-height": "292px",
+        "image-mobile-height": "155.721px"
+      },
+      "servicePillar": {"headingMobileSize": "44px", "headingMobileLeading": "48px", "copyDesktopLeading": "33.48px", "copyMobileLeading": "28px", "breadcrumbDesktopTracking": "1.44px", "breadcrumbMobileTracking": "1px", "headingWidth": "687px", "copyWidth": "437px", "imageWidth": "51.9298245614%", "imageLeft": "57.2631578947%"},
       "serviceQa": {"heroLeading": "clamp(44px, 6.528vw, 93.024px)", "heroTracking": "-0.045em", "heroCopyWidth": "min(614.04px, 43.091vw)", "eyebrowTracking": "2.5px", "benefitLeading": "21px", "faqLeading": "clamp(36px, 4.512vw, 64.296px)", "faqTracking": "-0.045em"},
       "serviceAbout": {"headingDesktopWidth": "570.004px", "imageDesktopHeight": "734px", "imageMobileHeight": "240px", "imageScale": "111%", "imageOrigin": "50% 90%", "columns": "42.0350877193% minmax(0, 1fr)", "headingMobileSize": "32px", "headingMobileLineHeight": "36px", "copyMobileLineHeight": "22px", "eyebrowTracking": "2.64px", "eyebrowMobileTracking": "2.5px", "headingTracking": "-0.045em"},
       "relatedServices": {"imageHeight": "260px", "copyLineHeight": "normal", "linkTracking": "1px", "eyebrowTracking": "2.64px"},

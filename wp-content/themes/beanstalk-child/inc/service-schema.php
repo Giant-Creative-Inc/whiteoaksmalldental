@@ -52,10 +52,13 @@ function white_oaks_service_schema( $post_id ) {
 	if ( $parent ) { $service['category'] = $parent->post_title; }
 	$image = get_the_post_thumbnail_url( $post, 'full' );
 	$graph = array( $page, $service );
-	if ( white_oaks_is_service_pillar( $post_id ) ) {
+	if ( white_oaks_is_service_pillar( $post_id ) && 'general-and-family-dentistry' !== $post->post_name ) {
 		unset( $page['mainEntity'], $page['about'] );
 		$page['@type'] = 'CollectionPage';
 		$graph = array( $page );
+	}
+	if ( white_oaks_is_service_pillar( $post_id ) && 'general-and-family-dentistry' === $post->post_name ) {
+		$graph[0]['@type'] = 'CollectionPage';
 	}
 	if ( $image ) {
 		$graph[0]['primaryImageOfPage'] = array( '@id' => $url . '#primaryimage' );

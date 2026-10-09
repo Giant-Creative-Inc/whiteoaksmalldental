@@ -459,6 +459,22 @@ function white_oaks_image_loading_attributes( $block_content, $block ) {
 		$processor->set_attribute( 'sizes', '(max-width: 374px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 48px), 1238px' );
 	}
 
+	if ( in_array( 'comfortable-care__image', explode( ' ', $class_name ), true ) ) {
+		$care = wp_get_global_settings( array( 'custom', 'comfortable-care' ) );
+		$mobile_width = $care['image-mobile-width'] ?? '207.45px';
+		$desktop_width = $care['image-width'] ?? '389px';
+		$metadata = wp_get_attachment_metadata( $attachment_id );
+		if ( ! empty( $metadata['width'] ) && ! empty( $metadata['height'] ) ) {
+			// Account for object-cover cropping so wide photos retain sufficient vertical detail.
+			$ratio = $metadata['width'] / $metadata['height'];
+			$mobile_width = ceil( max( (float) $mobile_width, (float) ( $care['image-mobile-height'] ?? 155.721 ) * $ratio ) ) . 'px';
+			$desktop_width = ceil( max( (float) $desktop_width, (float) ( $care['image-height'] ?? 292 ) * $ratio ) ) . 'px';
+		}
+		$processor->set_attribute( 'sizes', '(max-width: 767px) ' . $mobile_width . ', ' . $desktop_width );
+		$processor->set_attribute( 'loading', 'eager' );
+		$processor->set_attribute( 'fetchpriority', 'auto' );
+	}
+
 	return $processor->get_updated_html();
 }
 add_filter( 'render_block_core/image', 'white_oaks_image_loading_attributes', 10, 2 );
