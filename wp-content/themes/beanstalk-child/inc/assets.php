@@ -357,6 +357,13 @@ function white_oaks_component_assets( $assets ) {
 		$assets[ $slug ]['script_handle'] = 'white-oaks-' . $slug;
 		$assets[ $slug ]['script_args']   = array( 'in_footer' => true, 'strategy' => 'defer' );
 	}
+	$assets['accordions'] = array(
+		'blocks'        => array( 'core/details' ),
+		'markers'       => array( 'home-faqs__list' ),
+		'script'        => 'assets/js/build/accordions.min.js',
+		'script_handle' => 'white-oaks-accordions',
+		'script_args'   => array( 'in_footer' => true, 'strategy' => 'defer' ),
+	);
 	$assets['services-menu']['markers'] = array( 'services-menu' );
 	$assets['services-menu']['module'] = 'assets/js/build/services-menu.min.js';
 	$assets['services-menu']['module_dependencies'] = array( '@wordpress/interactivity' );

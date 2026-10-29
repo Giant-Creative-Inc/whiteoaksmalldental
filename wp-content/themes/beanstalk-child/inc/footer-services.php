@@ -13,7 +13,7 @@ add_filter( 'query_loop_block_query_vars', static function ( $query, $block ) {
  $parent = isset( white_oaks_service_pillar_definitions()[ $slug ] ) ? get_page_by_path( $slug, OBJECT, 'service' ) : null;
  unset( $query['tax_query'] );
  $query['post_type'] = 'service';
- $query['post_status'] = 'publish';
+ $query['post_status'] = white_oaks_service_review_mode() ? array( 'publish', 'draft' ) : 'publish';
  if ( $parent ) { $query['post_parent'] = $parent->ID; }
  else { $query['post__in'] = array( 0 ); }
  return $query;

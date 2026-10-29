@@ -52,13 +52,16 @@ function white_oaks_service_schema( $post_id ) {
 	if ( $parent ) { $service['category'] = $parent->post_title; }
 	$image = get_the_post_thumbnail_url( $post, 'full' );
 	$graph = array( $page, $service );
-	if ( white_oaks_is_service_pillar( $post_id ) && 'general-and-family-dentistry' !== $post->post_name ) {
-		unset( $page['mainEntity'], $page['about'] );
+	if ( white_oaks_is_service_pillar( $post_id ) ) {
+		unset( $page['about'] );
 		$page['@type'] = 'CollectionPage';
-		$graph = array( $page );
-	}
-	if ( white_oaks_is_service_pillar( $post_id ) && 'general-and-family-dentistry' === $post->post_name ) {
-		$graph[0]['@type'] = 'CollectionPage';
+		$page['mainEntity'] = array( '@id' => $url . '#treatments' );
+		$children = get_posts( array( 'post_type' => 'service', 'post_status' => 'publish', 'post_parent' => $post_id, 'numberposts' => -1, 'orderby' => 'menu_order title', 'order' => 'ASC' ) );
+		$items = array();
+		foreach ( $children as $child ) {
+			$items[] = array( '@type' => 'ListItem', 'position' => count( $items ) + 1, 'name' => html_entity_decode( get_the_title( $child ), ENT_QUOTES, 'UTF-8' ), 'url' => get_permalink( $child ) );
+		}
+		$graph = array( $page, array( '@type' => 'ItemList', '@id' => $url . '#treatments', 'numberOfItems' => count( $items ), 'itemListElement' => $items ) );
 	}
 	if ( $image ) {
 		$graph[0]['primaryImageOfPage'] = array( '@id' => $url . '#primaryimage' );

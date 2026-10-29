@@ -1,5 +1,8 @@
 @reference "tailwindcss";
 @reference "../tailwind-theme.css";
+@theme inline {
+  --object-position-service-cleaning-hero: var(--wp--custom--service-qa--cleaning-hero-position);
+}
 @custom-variant service-tablet (@media (min-width: 421px) and (max-width: 1024px));
 
 /* Service audit corrections; site-wide mobile gutters remain theme.json-owned. */
@@ -10,8 +13,6 @@
 .single-service .home-faqs__heading { @apply leading-service-faq tracking-service-faq; }
 .single-service .why-invisalign__copy { @apply text-b-5 leading-service-benefit; }
 .single-service .experience-section__cards { @apply gap-wp-20; }
-.single-service .experience-card__cta .wp-block-button,
-.single-service .experience-card__cta .wp-block-button__link { @apply w-full justify-between; }
 .single-service .service-opening-banner .wp-block-column { @apply min-w-0; }
 .single-service .service-opening-banner .wp-block-button__link { @apply whitespace-normal; }
 .single-service .footer-cta { @apply px-site-gutter; }
@@ -40,6 +41,14 @@
   .single-service .service-opening-banner > .wp-block-column { @apply w-full basis-auto; }
 }
 @variant max-tablet {
+  .postid-499 .meet-dentists__grid { @apply grid-cols-2; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > * { @apply my-0; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > h1 { @apply mt-wp-24; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > .has-hero-lead-font-size { @apply mt-wp-16; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > .wp-block-buttons { @apply mt-wp-24; }
+  .single-service .footer-cta__phone { @apply w-fit; }
+  .single-service .footer-cta__phone .wp-block-button__link { @apply w-fit min-h-0 rounded-none border-0 border-b border-button-text bg-transparent text-button-text px-0 py-wp-8 gap-wp-16; }
+
   .site-header .site-header__inner { @apply gap-wp-4 px-wp-16; }
   .single-service .home-faqs__item summary { @apply py-wp-20; }
   .single-service .home-faqs__item summary span { @apply font-normal leading-normal; }
@@ -49,7 +58,11 @@
 @variant service-tablet {
   .single-service .first-visit__media { @apply h-auto aspect-3/2; }
 }
+@variant tablet {
+  .single-service .footer-cta__phone .wp-block-button__link { @apply bg-wp-white; }
+}
 @variant desktop {
+  .postid-423 .invisalign-hero__media img { @apply object-service-cleaning-hero; }
   .single-service .first-visit__header .wp-block-button,
   .single-service .first-visit__header .wp-block-button__link { @apply w-auto basis-auto; }
   .single-service .invisalign-hero h1 { @apply max-w-service-hero-copy; }

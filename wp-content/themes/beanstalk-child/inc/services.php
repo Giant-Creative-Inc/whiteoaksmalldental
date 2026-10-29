@@ -7,6 +7,76 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+/** Allow editors to review unpublished service journeys on Local only. */
+function white_oaks_service_review_mode() {
+	return 'local' === wp_get_environment_type() && current_user_can( 'edit_posts' );
+}
+
+/** Draft service links use core preview routing for authorized local editors. */
+add_filter( 'post_type_link', static function ( $url, $post, $leavename, $sample ) {
+	if ( ! $sample && 'service' === $post->post_type && 'draft' === $post->post_status && white_oaks_service_review_mode() && current_user_can( 'edit_post', $post->ID ) ) {
+		return add_query_arg( 'preview', 'true', set_url_scheme( $url, wp_parse_url( home_url(), PHP_URL_SCHEME ) ) );
+	}
+	return $url;
+}, 20, 4 );
+
+/** Resolve a saved service reference without exposing drafts to public visitors. */
+function white_oaks_service_reference_url( $url ) {
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	if ( $host && $host !== wp_parse_url( home_url(), PHP_URL_HOST ) ) {
+		return $url;
+	}
+	wp_parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $query );
+	$post = ! empty( $query['p'] ) ? get_post( absint( $query['p'] ) ) : null;
+	if ( $post && 'service' === $post->post_type ) {
+		if ( 'publish' === $post->post_status || ( white_oaks_service_review_mode() && current_user_can( 'edit_post', $post->ID ) ) ) {
+			return get_permalink( $post );
+		}
+		return '';
+	}
+	return '#' === $url ? '' : $url;
+}
+
+/** Resolve editable related/parent references as their publication status changes. */
+add_filter( 'render_block_core/group', static function ( $html, $block ) {
+	$classes = preg_split( '/\s+/', $block['attrs']['className'] ?? '' );
+	if ( ! array_intersect( $classes, array( 'related-services__grid', 'service-about__content' ) ) ) {
+		return $html;
+	}
+	$tags = new WP_HTML_Tag_Processor( $html );
+	while ( $tags->next_tag( 'a' ) ) {
+		$href = $tags->get_attribute( 'href' );
+		if ( ! is_string( $href ) ) {
+			continue;
+		}
+		$target = white_oaks_service_reference_url( $href );
+		if ( $target ) {
+			$tags->set_attribute( 'href', $target );
+		} else {
+			$tags->remove_attribute( 'href' );
+		}
+	}
+	return $tags->get_updated_html();
+}, 25, 2 );
+
+/** Keep core Navigation's status gate and link resolution in local review. */
+add_filter( 'render_block_core_navigation_link_allowed_post_status', static function ( $statuses, $attributes ) {
+	if ( 'service' === ( $attributes['type'] ?? '' ) && white_oaks_service_review_mode() && current_user_can( 'edit_post', $attributes['id'] ?? 0 ) ) {
+		$statuses[] = 'draft';
+	}
+	return array_unique( $statuses );
+}, 10, 2 );
+
+add_filter( 'render_block_data', static function ( $block ) {
+	if ( in_array( $block['blockName'], array( 'core/navigation-link', 'core/navigation-submenu' ), true ) && 'service' === ( $block['attrs']['type'] ?? '' ) && ! empty( $block['attrs']['id'] ) ) {
+		$post = get_post( $block['attrs']['id'] );
+		if ( $post && 'service' === $post->post_type ) {
+			$block['attrs']['url'] = get_permalink( $post );
+		}
+	}
+	return $block;
+} );
+
 function white_oaks_register_services() {
 	register_post_type( 'service', array(
 		'labels' => array( 'name' => __( 'Services', 'beanstalk-child' ), 'singular_name' => __( 'Service', 'beanstalk-child' ), 'add_new_item' => __( 'Add Service', 'beanstalk-child' ), 'edit_item' => __( 'Edit Service', 'beanstalk-child' ) ),
@@ -167,7 +237,8 @@ function white_oaks_service_breadcrumb_items( $crumbs ) {
 	$items = array( $crumbs[0] );
 	$items[] = array( 'Services', '' );
 	foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor_id ) {
-		$items[] = array( get_the_title( $ancestor_id ), 'publish' === get_post_status( $ancestor_id ) ? get_permalink( $ancestor_id ) : '' );
+		$can_link = 'publish' === get_post_status( $ancestor_id ) || ( white_oaks_service_review_mode() && current_user_can( 'edit_post', $ancestor_id ) );
+		$items[] = array( get_the_title( $ancestor_id ), $can_link ? get_permalink( $ancestor_id ) : '' );
 	}
 	$items[] = $current;
 	return $items;

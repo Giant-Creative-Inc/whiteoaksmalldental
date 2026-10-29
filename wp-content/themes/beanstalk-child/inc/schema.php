@@ -585,7 +585,8 @@ add_filter( 'rank_math/json_ld', 'white_oaks_add_rank_math_speakable', 90 );
  * @return void
  */
 function white_oaks_output_schema() {
-	if ( is_admin() || is_feed() || is_404() || is_search() || is_preview() ) {
+	$local_service_preview = is_singular( 'service' ) && white_oaks_service_review_mode();
+	if ( is_admin() || is_feed() || is_404() || is_search() || ( is_preview() && ! $local_service_preview ) ) {
 		return;
 	}
 

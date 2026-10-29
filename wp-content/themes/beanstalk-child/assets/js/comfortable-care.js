@@ -6,7 +6,7 @@ for (const section of document.querySelectorAll('.comfortable-care')) {
  for (const a of control.attributes) if (a.name !== 'href') button.setAttribute(a.name, a.value);
  button.type = 'button'; button.textContent = 'Pause images'; control.replaceWith(button);
  const images = [...track.children];
- for (let i = images.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [images[i], images[j]] = [images[j], images[i]]; }
+ // Preserve the editor/Figma image order when the strip starts.
  for (const image of images) track.append(image);
  // Set responsive hints before URLs so detached copies cannot request viewport-sized sources.
  for (const image of images) {
