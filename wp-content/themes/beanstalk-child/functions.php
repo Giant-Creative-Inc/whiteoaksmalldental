@@ -625,3 +625,5 @@ add_action( 'wp_head', 'white_oaks_add_browser_favicons', 100 );
 require_once get_stylesheet_directory() . '/inc/blocks.php';
 
 require_once get_stylesheet_directory() . '/inc/footer-services.php';
+
+require_once get_stylesheet_directory() . "/inc/location-appointment-links.php";
