@@ -40,3 +40,7 @@
   .services-menu .services-menu__number { @apply inline mr-wp-8 mb-0; }
   .services-menu .services-menu__category { @apply inline; }
 }
+
+/* Keep the current destination visible independently of hover or menu state. */
+.site-header .site-header__nav .services-menu > .wp-block-navigation__submenu-container > .services-menu__group > .wp-block-navigation-item__content[aria-current="page"],
+.site-header .site-header__nav .services-menu .services-menu__group > .wp-block-navigation__submenu-container .wp-block-navigation-item__content[aria-current="page"] { @apply text-primary font-bold underline underline-offset-4; }

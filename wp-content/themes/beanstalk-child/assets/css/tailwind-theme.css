@@ -17,6 +17,7 @@
   --color-why-oaks-divider: var(--wp--preset--color--why-oaks-divider);
   --color-wp-white: var(--wp--preset--color--white);
   --color-wp-black: var(--wp--preset--color--black);
+  --color-button-text: var(--wp--preset--color--button-text);
   --color-primary: var(--wp--preset--color--primary);
   --color-primary-hover: var(--wp--preset--color--primary-hover);
   --color-primary-subtle: var(--wp--preset--color--primary-subtle);
@@ -79,6 +80,7 @@
   --spacing-wp-16: var(--wp--preset--spacing--16);
   --spacing-wp-20: var(--wp--preset--spacing--20);
   --spacing-wp-24: var(--wp--preset--spacing--24);
+  --spacing-wp-28: var(--wp--preset--spacing--28);
   --spacing-wp-32: var(--wp--preset--spacing--32);
   --spacing-wp-36: var(--wp--preset--spacing--36);
   --spacing-wp-40: var(--wp--preset--spacing--40);

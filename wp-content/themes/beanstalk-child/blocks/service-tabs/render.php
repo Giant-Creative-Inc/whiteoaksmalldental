@@ -122,11 +122,20 @@ $wrapper_attributes = get_block_wrapper_attributes(
 
 				<ul class="white-oaks-service-tabs__treatments">
 					<?php foreach ( $item['treatments'] as $treatment ) : ?>
+						<?php $treatment_url = white_oaks_service_reference_url( $treatment['url'] ?? '' ); ?>
 						<li>
+							<?php if ( $treatment_url ) : ?>
+							<a href="<?php echo esc_url( $treatment_url ); ?>" class="white-oaks-service-tabs__treatment-label">
+							<?php else : ?>
 							<span class="white-oaks-service-tabs__treatment-label">
+							<?php endif; ?>
 								<span class="white-oaks-service-tabs__star" aria-hidden="true">✦</span>
 								<span><?php echo esc_html( $treatment['label'] ?? '' ); ?></span>
+							<?php if ( $treatment_url ) : ?>
+							</a>
+							<?php else : ?>
 							</span>
+							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>

@@ -39,18 +39,42 @@
 .service-about .service-about__media img { @apply block w-full h-full object-cover object-center; }
 @variant wp-columns-up {
   .service-about .service-about__container.is-style-container { @apply grid-cols-service-about gap-wp-64; }
-  .service-about .service-about__content { @apply col-start-2 row-start-1 self-center py-wp-48 pl-0 pr-wp-128 gap-wp-48; }
+  .service-about .service-about__content { @apply col-start-2 row-start-1 self-center py-wp-72 pl-0 pr-wp-128 gap-wp-48; }
   .service-about .service-about__intro { @apply gap-wp-24; }
-  .service-about .service-about__heading-stack { @apply gap-wp-32 max-w-service-about-heading; }
+  .service-about .service-about__heading-stack { @apply gap-wp-28 max-w-service-about-heading; }
   .service-about .service-about__copy { @apply gap-wp-32; }
   .service-about .service-about__eyebrow { @apply font-normal tracking-service-about-eyebrow; }
   .service-about .service-about__heading { @apply text-experience-heading leading-service-about-heading tracking-service-about-heading; }
   .service-about .service-about__heading em { @apply italic text-primary; }
   .service-about .service-about__copy p { @apply text-b-3 leading-service-about-copy; }
-  .service-about .service-about__media { @apply col-start-1 row-start-1 self-stretch h-service-about-desktop-image w-auto -ml-service-about-bleed; }
-  .service-about .service-about__media img { @apply object-right origin-service-about scale-service-about; }
+  .service-about .service-about__media { @apply col-start-1 row-start-1 self-stretch relative h-auto min-h-service-about-desktop-image w-auto -ml-service-about-bleed; }
+  .service-about .service-about__media img { @apply absolute inset-0 object-right origin-service-about scale-service-about; }
 }
 @variant medium-layout {
   .service-about .service-about__container.is-style-container { @apply gap-wp-32; }
   .service-about .service-about__content { @apply pr-site-gutter; }
+}
+
+/* Treatment-specific crops from the applied Figma image transforms. */
+@theme inline {
+  --object-position-service-bonding: var(--wp--custom--service-about--bonding-position);
+  --object-position-service-dentures: var(--wp--custom--service-about--dentures-position);
+  --object-position-service-pediatric: var(--wp--custom--service-about--pediatric-position);
+  --object-position-service-scaling: var(--wp--custom--service-about--scaling-position);
+  --object-position-service-filling: var(--wp--custom--service-about--filling-position);
+  --object-position-service-whitening: var(--wp--custom--service-about--whitening-position);
+  --scale-service-orthodontics: var(--wp--custom--service-about--orthodontics-scale);
+  --scale-service-orthodontics-mobile: var(--wp--custom--service-about--orthodontics-mobile-scale);
+  --transform-origin-service-orthodontics-mobile: var(--wp--custom--service-about--orthodontics-mobile-origin);
+}
+.service-about.service-about--orthodontics .service-about__media img { @apply scale-service-orthodontics-mobile origin-service-orthodontics-mobile; }
+@variant wp-columns-up {
+  .service-about.service-about--treatment .service-about__media img { @apply scale-100 object-center origin-center; }
+  .service-about.service-about--dental-bonding .service-about__media img { @apply object-service-bonding; }
+  .service-about.service-about--dentures .service-about__media img { @apply object-service-dentures; }
+  .service-about.service-about--pediatric-dentistry .service-about__media img { @apply object-service-pediatric; }
+  .service-about.service-about--scaling .service-about__media img { @apply object-service-scaling; }
+  .service-about.service-about--tooth-filling .service-about__media img { @apply object-service-filling; }
+  .service-about.service-about--zoom-whitening .service-about__media img { @apply object-service-whitening; }
+  .service-about.service-about--orthodontics .service-about__media img { @apply scale-service-orthodontics; }
 }

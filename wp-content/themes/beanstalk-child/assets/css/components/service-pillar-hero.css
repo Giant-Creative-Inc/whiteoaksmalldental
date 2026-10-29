@@ -11,6 +11,7 @@
   --leading-pillar-copy-desktop: var(--wp--custom--service-pillar--copy-desktop-leading);
   --tracking-pillar-breadcrumb-mobile: var(--wp--custom--service-pillar--breadcrumb-mobile-tracking);
   --tracking-pillar-breadcrumb-desktop: var(--wp--custom--service-pillar--breadcrumb-desktop-tracking);
+  --container-pillar-wide-heading: var(--wp--custom--service-pillar--wide-hero-heading-width);
   --container-pillar-heading: var(--wp--custom--service-pillar--heading-width);
   --container-pillar-copy: var(--wp--custom--service-pillar--copy-width);
   --spacing-pillar-art-width: var(--wp--custom--service-pillar--image-width);
@@ -50,4 +51,8 @@
 
 @media (min-width: 421px) and (max-width: 1024px) {
   .service-pillar-hero .service-pillar-hero__container.is-style-container { @apply gap-wp-24 py-wp-48; }
+}
+
+@media (min-width: 1025px) {
+ .service-pillar-hero--wide .service-pillar-hero__copy.is-style-content-stack { @apply max-w-pillar-wide-heading; }
 }

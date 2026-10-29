@@ -3,7 +3,10 @@
 @custom-variant pillar-tablet (@media (min-width: 600px) and (max-width: 1024px));
 @custom-variant cards-up (@media (min-width: 782px));
 @theme inline {
- --leading-pillar-faq: var(--wp--custom--line-height--h-2);
+ --leading-pillar-faq: var(--wp--custom--service-qa--faq-leading);
+ --tracking-pillar-faq: var(--wp--custom--service-qa--faq-tracking);
+ --container-pillar-call: var(--wp--custom--service-pillar--call-width);
+ --container-pillar-wide-heading: var(--wp--custom--service-pillar--wide-services-heading-width);
  --container-pillar-services-heading: var(--wp--custom--service-about--heading-desktop-width);
  --text-pillar-services-heading: var(--wp--preset--font-size--location-reviews-heading);
  --text-pillar-services-heading-mobile: var(--wp--custom--service-about--heading-mobile-size);
@@ -77,7 +80,7 @@
  .pillar-service-page .related-services .related-services__grid { @apply grid-cols-2; }
 }
 .pillar-service-page .site-footer__back-to-top { @apply block; }
-.pillar-service-page .home-faqs__heading { @apply leading-pillar-faq; }
+.pillar-service-page .home-faqs__heading { @apply leading-pillar-faq tracking-pillar-faq; }
 @variant max-tablet {
  .pillar-service-page .home-faqs__item summary span { @apply font-bold leading-none; }
 }
@@ -88,3 +91,12 @@
 .pillar-services .pillar-services__card:hover .pillar-services__action a,
 .pillar-services .pillar-services__card:focus-within .pillar-services__action a { @apply underline; }
 .pillar-services .pillar-services__action a:focus-visible { @apply outline-none after:outline-2 after:outline-primary after:-outline-offset-2; }
+
+@media (min-width: 1025px) {
+ .pillar-services--wide .pillar-services__heading-stack { @apply max-w-pillar-wide-heading flex-1; }
+}
+
+.pillar-emergency-call { @apply w-full max-w-pillar-call; }
+.pillar-emergency-call :where(p) { @apply m-0; }
+.pillar-emergency-call__phone { @apply leading-none; }
+.pillar-emergency-call__arrow { @apply size-wp-48 rounded-full border border-white flex items-center justify-center shrink-0; }
