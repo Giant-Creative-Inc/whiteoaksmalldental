@@ -3,7 +3,7 @@
 @custom-variant care-desktop (@media (min-width: 768px));
 @theme inline {
  --color-care-ink: var(--wp--preset--color--care-heading);
- --text-care-heading: var(--wp--preset--font-size--care-heading);
+ --text-comfortable-heading: var(--wp--preset--font-size--care-heading);
  --text-care-heading-mobile: var(--wp--custom--service-pillar--heading-mobile-size);
  --leading-care-copy: var(--wp--custom--comfortable-care--copy-leading);
  --spacing-care-image-height: var(--wp--custom--comfortable-care--image-height);
@@ -34,7 +34,7 @@
 @variant care-desktop {
  .comfortable-care.is-style-section { @apply py-care-section gap-care-section; }
  .comfortable-care .comfortable-care__copy.is-style-content-stack { @apply gap-wp-24 justify-items-center; }
- .comfortable-care .comfortable-care__heading { @apply text-care-heading leading-care-heading tracking-care-heading text-center max-w-care-heading; }
+ .comfortable-care .comfortable-care__heading { @apply text-comfortable-heading leading-care-heading tracking-care-heading text-center max-w-care-heading; }
  .comfortable-care .comfortable-care__description { @apply text-center max-w-care-copy; }
  .comfortable-care .comfortable-care__track { @apply gap-wp-24; }
  .comfortable-care .comfortable-care__image { @apply w-care-image; }

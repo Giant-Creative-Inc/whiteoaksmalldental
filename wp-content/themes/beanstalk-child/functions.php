@@ -480,6 +480,35 @@ function white_oaks_image_loading_attributes( $block_content, $block ) {
 add_filter( 'render_block_core/image', 'white_oaks_image_loading_attributes', 10, 2 );
 
 /**
+ * Defers images in lower-page service sections without delaying hero imagery.
+ *
+ * Apply to the containing Group so nested Image and Cover blocks, including
+ * carousel slides, receive the same policy regardless of WordPress's image
+ * count heuristic. Saved block markup and attachment data remain unchanged.
+ *
+ * @param string $block_content Rendered Group block markup.
+ * @param array  $block         Parsed Group block.
+ * @return string
+ */
+function white_oaks_service_section_image_loading( $block_content, $block ) {
+	$classes  = explode( ' ', $block['attrs']['className'] ?? '' );
+	$sections = array( 'service-about', 'first-visit', 'why-invisalign', 'pillar-services', 'pillar-related-services' );
+
+	if ( ! array_intersect( $classes, $sections ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $block_content;
+	}
+
+	$processor = new WP_HTML_Tag_Processor( $block_content );
+	while ( $processor->next_tag( 'IMG' ) ) {
+		$processor->set_attribute( 'loading', 'lazy' );
+		$processor->remove_attribute( 'fetchpriority' );
+	}
+
+	return $processor->get_updated_html();
+}
+add_filter( 'render_block_core/group', 'white_oaks_service_section_image_loading', 20, 2 );
+
+/**
  * Makes the homepage hero image's above-the-fold priority explicit.
  *
  * @param string $block_content Rendered Cover block markup.

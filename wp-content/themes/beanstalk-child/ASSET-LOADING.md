@@ -11,8 +11,15 @@ This is a child-only adaptation; the installed parent was not updated.
 - Existing frontend asset handles and dependency order are retained.
 - Global CSS stays synchronous. The old parent's blanket async stylesheet filter
   is removed through a child hook, without editing the parent.
-- Existing homepage-only below-fold styles use the starter's HTML Tag Processor
-  implementation with no-JavaScript fallback. Other routes stay synchronous.
+- Reviewed homepage below-fold styles and service-page first-visit, experience-section,
+  and home-sections styles use the HTML Tag Processor implementation with
+  no-JavaScript fallbacks. Global/header/hero/core styles remain synchronous.
+- Component styles already imported by `assets/css/tailwind.css` are omitted
+  from frontend requests after all registry filters run (priority 100). Their
+  scripts/modules and synchronous editor component styles are preserved.
+  Keep the bundled-style allowlist aligned with the entrypoint imports.
+- Component-specific Tailwind aliases avoid collisions between ordinary related
+  cards and pillar tabs, and between pillar hero and service-grid heading widths.
 - All editor component CSS stays synchronous and supports unsaved insertions.
 - Standalone child scripts are minified during the build: 13,167 to 7,136 bytes
   combined, before compression (46% smaller). These are not all loaded on one page.

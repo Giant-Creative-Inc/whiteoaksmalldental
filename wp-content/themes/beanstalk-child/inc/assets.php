@@ -379,6 +379,44 @@ function white_oaks_component_assets( $assets ) {
 add_filter( 'beanstalk_child_component_assets', 'white_oaks_component_assets' );
 
 /**
+ * Omits component requests already contained in the main compiled stylesheet.
+ *
+ * Runs after component-specific registrations while preserving editor assets
+ * and every script/module entry. Keep this list aligned with tailwind.css.
+ *
+ * @param array $assets Complete component registry.
+ * @return array
+ */
+function white_oaks_omit_bundled_component_styles( $assets ) {
+	if ( is_admin() ) {
+		return $assets;
+	}
+	// These components are already imported by assets/css/tailwind.css.
+	// Keep separate files available to the editor, but do not request them twice
+	// on the front end. Their scripts/modules still use the registry below.
+	$bundled_styles = array(
+		'breadcrumbs',
+		'comfortable-care',
+		'footer-announcement',
+		'footer-services',
+		'location-contact-layout',
+		'pillar-related-services',
+		'pillar-services',
+		'related-services',
+		'service-about',
+		'service-pillar-hero',
+		'service-qa',
+		'services-menu',
+		'why-invisalign',
+	);
+	foreach ( $bundled_styles as $slug ) {
+		unset( $assets[ $slug ]['style'] );
+	}
+	return $assets;
+}
+add_filter( 'beanstalk_child_component_assets', 'white_oaks_omit_bundled_component_styles', 100 );
+
+/**
  * Defers reviewed child scripts while leaving plugin dependencies to their owners.
  *
  * @param array $handles Existing deferred handles.
@@ -397,7 +435,7 @@ function white_oaks_deferred_script_handles( $handles ) {
 add_filter( 'beanstalk_child_deferred_script_handles', 'white_oaks_deferred_script_handles' );
 
 /**
- * Keeps the established below-fold choices on the homepage only.
+ * Defers reviewed lower-page styles on the homepage and service pages.
  *
  * @param array $handles Existing asynchronous style handles.
  * @return array
@@ -407,6 +445,13 @@ function white_oaks_below_fold_style_handles( $handles ) {
 		$handles = array_merge( $handles, array(
 			'white-oaks-service-tabs',
 			'white-oaks-component-clinic-gallery',
+			'white-oaks-component-experience-section',
+			'white-oaks-component-home-sections',
+		) );
+	}
+	if ( is_singular( 'service' ) ) {
+		$handles = array_merge( $handles, array(
+			'white-oaks-component-first-visit',
 			'white-oaks-component-experience-section',
 			'white-oaks-component-home-sections',
 		) );
