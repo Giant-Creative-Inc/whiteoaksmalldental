@@ -42,9 +42,14 @@ active template parts, synced patterns, and blocks rendered before the document
 head. Frontend pages load only matching component assets. Editor component CSS
 loads synchronously so newly inserted, unsaved sections are styled immediately.
 
-Global parent CSS, child CSS, and `shared.css` remain synchronous. Only the
-existing homepage below-fold stylesheet allowlist uses asynchronous links, with
-`noscript` fallbacks. `home-sections.css` retains its established
+Global parent CSS, child CSS, and `shared.css` remain synchronous. Reviewed
+homepage below-fold styles and the service-page first-visit, experience-section,
+and home-sections styles use asynchronous links with `noscript` fallbacks.
+Components already imported by `assets/css/tailwind.css` are omitted from the
+frontend component registry at priority 100 to avoid duplicate requests. Keep
+that allowlist in `white_oaks_omit_bundled_component_styles()` aligned with the
+entrypoint imports; editor component files remain available synchronously.
+`home-sections.css` retains its established
 `meet-dentists`, `home-faqs`, and `footer-cta` marker aliases.
 
 The build compiles every standalone `assets/js/*.js` file into
