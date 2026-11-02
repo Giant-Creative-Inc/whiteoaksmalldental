@@ -1,0 +1,79 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+
+/* Core Columns owns desktop proportions; stack before the columns get cramped. */
+.location-contact-layout {
+  @apply min-w-0 items-start mt-wp-32;
+
+  @variant desktop {
+    @apply mt-wp-72;
+  }
+
+  @variant max-desktop {
+    @apply flex-col;
+  }
+}
+
+.location-contact-layout > .wp-block-column {
+  @apply min-w-0 w-full;
+
+}
+
+.location-contact-layout__map {
+  @apply hidden w-full aspect-video;
+
+  @variant desktop {
+    @apply block;
+  }
+}
+
+.location-contact-layout__map .click-to-load-map__preview,
+.location-contact-layout__map .click-to-load-map__preview img {
+  @apply h-full min-h-0 aspect-video object-cover;
+}
+
+/* The two map actions need a vertical arrangement in the narrow desktop panel. */
+@custom-variant location-map-compact (@media (max-width: 1279px));
+
+.location-contact-layout__map .click-to-load-map__actions {
+  @variant location-map-compact {
+    @apply flex-col gap-wp-8;
+  }
+}
+
+/* Stretch the map, rather than the hours rows, to match the form column. */
+@variant desktop {
+  .location-contact-layout {
+    @apply items-stretch;
+  }
+
+  .location-contact-layout > .wp-block-column {
+    @apply flex flex-col;
+  }
+
+  .location-contact-layout > .wp-block-column > .contact-section__form-card {
+    @apply flex-1;
+  }
+
+  .location-contact-layout__map {
+    @apply flex-1 self-stretch aspect-auto min-h-wp-256;
+  }
+
+  .location-contact-layout__map .click-to-load-map__preview {
+    @apply absolute inset-0 aspect-auto;
+  }
+
+  .location-contact-layout__map .click-to-load-map__preview img {
+    @apply aspect-auto;
+  }
+
+  .location-contact-layout .location-info__hours {
+    @apply shrink-0;
+  }
+}
+
+.location-contact-layout .location-info__hours {
+  @variant max-desktop {
+    @apply mt-0;
+  }
+}

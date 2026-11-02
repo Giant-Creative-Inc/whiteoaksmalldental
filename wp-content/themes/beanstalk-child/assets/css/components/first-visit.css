@@ -111,3 +111,29 @@
     @apply order-2;
   }
 }
+
+/* Progressive enhancement leaves all editor cards and no-script content visible. */
+.first-visit__steps .first-visit__step--inactive {
+  @apply hidden;
+}
+
+.first-visit__controls {
+  @apply flex flex-wrap items-center justify-between gap-wp-12 mt-wp-24;
+}
+
+.first-visit__controls .wp-block-button__link {
+  @apply cursor-pointer;
+}
+
+.first-visit__status {
+  @apply m-0 text-primary font-button text-b-6;
+}
+
+.first-visit__steps--slider .first-visit__content {
+  @apply min-w-0 h-auto;
+}
+
+.first-visit__controls .wp-block-button__link:disabled,
+.first-visit__controls .wp-block-button__link:disabled:hover {
+  @apply bg-neutral-grey-850 border-neutral-grey-850 text-neutral-grey-400 cursor-not-allowed;
+}

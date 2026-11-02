@@ -16,3 +16,30 @@
 @source "../../templates";
 @source "../../functions.php";
 @source "../../blocks";
+
+@import "./components/service-about.css";
+@import "./components/breadcrumbs.css";
+
+@import "./components/related-services.css";
+@import "./components/footer-services.css";
+
+@import "./components/service-qa.css";
+
+@import "./components/services-menu.css";
+@import "./components/service-pillar-hero.css";
+
+@theme inline {
+  --color-neutral-grey-850: var(--wp--preset--color--neutral-grey-850);
+  --color-neutral-grey-400: var(--wp--preset--color--neutral-grey-400);
+}
+
+@import "./components/pillar-services.css";
+@import "./components/why-invisalign.css";
+
+@import "./components/footer-announcement.css";
+
+@import "./components/comfortable-care.css";
+
+@import "./components/pillar-related-services.css";
+
+@import "./components/location-contact-layout.css";
