@@ -1,9 +1,17 @@
 @reference "tailwindcss";
 @reference "../tailwind-theme.css";
 @theme inline {
+  --object-position-service-denture-hero: var(--wp--custom--service-qa--denture-hero-position);
+  --object-position-service-wisdom-hero-desktop: var(--wp--custom--service-qa--wisdom-hero-desktop-position);
+  --object-position-service-wisdom-hero-mobile: var(--wp--custom--service-qa--wisdom-hero-mobile-position);
+  --transform-origin-service-wisdom-hero-desktop: var(--wp--custom--service-qa--wisdom-hero-desktop-position);
+  --transform-origin-service-wisdom-hero-mobile: var(--wp--custom--service-qa--wisdom-hero-mobile-position);
   --object-position-service-cleaning-hero: var(--wp--custom--service-qa--cleaning-hero-position);
 }
 @custom-variant service-tablet (@media (min-width: 421px) and (max-width: 1024px));
+
+/* QA-004: retain editable Image blocks; crop only the two reviewed hero images. */
+.postid-750 .invisalign-hero__media figure { @apply overflow-hidden; }
 
 /* Service audit corrections; site-wide mobile gutters remain theme.json-owned. */
 .single-service .invisalign-hero h1 { @apply leading-service-hero tracking-service-hero; }
@@ -30,6 +38,7 @@
 }
 
 @variant max-desktop {
+  .postid-750 .invisalign-hero__media img { @apply object-service-wisdom-hero-mobile origin-service-wisdom-hero-mobile scale-(--wp--custom--service-qa--wisdom-hero-mobile-scale); }
 .site-header .site-header__nav { @apply min-w-wp-40; }
 .site-header .site-header__nav .wp-block-navigation__responsive-container-open { @apply flex size-wp-40 min-w-wp-40 shrink-0 items-center justify-center; }
 .site-header__nav .wp-block-navigation__responsive-container-open svg { @apply size-wp-24; }
@@ -41,7 +50,6 @@
   .single-service .service-opening-banner > .wp-block-column { @apply w-full basis-auto; }
 }
 @variant max-tablet {
-  .postid-499 .meet-dentists__grid { @apply grid-cols-2; }
   .single-service .invisalign-hero > .wp-block-column:first-child > * { @apply my-0; }
   .single-service .invisalign-hero > .wp-block-column:first-child > h1 { @apply mt-wp-24; }
   .single-service .invisalign-hero > .wp-block-column:first-child > .has-hero-lead-font-size { @apply mt-wp-16; }
@@ -59,9 +67,11 @@
   .single-service .first-visit__media { @apply h-auto aspect-3/2; }
 }
 @variant tablet {
+  .postid-733 .invisalign-hero__media img { @apply object-service-denture-hero; }
   .single-service .footer-cta__phone .wp-block-button__link { @apply bg-wp-white; }
 }
 @variant desktop {
+  .postid-750 .invisalign-hero__media img { @apply object-service-wisdom-hero-desktop origin-service-wisdom-hero-desktop scale-(--wp--custom--service-qa--wisdom-hero-desktop-scale); }
   .postid-423 .invisalign-hero__media img { @apply object-service-cleaning-hero; }
   .single-service .first-visit__header .wp-block-button,
   .single-service .first-visit__header .wp-block-button__link { @apply w-auto basis-auto; }

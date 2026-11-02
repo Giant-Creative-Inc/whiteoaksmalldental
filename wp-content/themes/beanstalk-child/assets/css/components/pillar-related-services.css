@@ -63,7 +63,7 @@
 .pillar-related-services .pillar-related-services__panel-title { @apply font-heading font-normal text-related-panel-heading leading-related-panel-heading tracking-related-panel-heading text-related-panel; }
 .pillar-related-services .pillar-related-services__panel-description { @apply text-b-3 leading-related-mobile-copy text-related-panel; }
 .pillar-related-services .pillar-related-services__actions.is-style-actions { @apply flex flex-wrap gap-x-wp-24 gap-y-0 items-start; }
-.pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply font-body text-related-link normal-case tracking-normal leading-related-link p-0 min-h-wp-48 rounded-none border-0 underline underline-offset-8 text-primary bg-transparent gap-0 whitespace-normal text-left; }
+.pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply font-body text-related-link normal-case tracking-normal leading-related-link p-0 min-h-wp-48 rounded-none border-0 no-underline text-primary bg-transparent gap-0 whitespace-normal text-left; }
 .pillar-related-services .pillar-related-services__image { @apply w-full h-related-image min-w-0 max-w-related-image-width mx-auto justify-self-center overflow-hidden relative; }
 .pillar-related-services .pillar-related-services__image img { @apply w-full h-full object-cover; }
 .pillar-related-services .pillar-related-services__image--xray img { @apply absolute w-related-xray-width h-related-xray-height max-w-none -left-related-xray-left -top-related-xray-top; }
@@ -107,7 +107,7 @@
 .pillar-related-services .wp-block-tab-list button[aria-selected="true"]:hover { @apply brightness-95; }
 .pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply transition-all duration-200 ease-out; }
 .pillar-related-services .pillar-related-services__actions .wp-block-button__link:hover,
-.pillar-related-services .pillar-related-services__actions .wp-block-button__link:focus-visible { @apply text-primary-hover underline-offset-4; }
+.pillar-related-services .pillar-related-services__actions .wp-block-button__link:focus-visible { @apply text-primary-hover; }
 @variant motion-reduce {
  .pillar-related-services .wp-block-tab-list button,
  .pillar-related-services .pillar-related-services__actions .wp-block-button__link { @apply transition-none; }
