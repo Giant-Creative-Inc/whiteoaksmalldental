@@ -301,9 +301,6 @@ function white_oaks_schema_current_graph() {
 	}
 
 	$post_id = (int) get_queried_object_id();
-	if ( is_singular( 'service' ) && function_exists( 'white_oaks_service_schema' ) ) {
-		return white_oaks_service_schema( $post_id );
-	}
 	$json    = $post_id ? (string) get_post_meta( $post_id, WHITE_OAKS_SCHEMA_META_KEY, true ) : '';
 
 	$graph = $json ? white_oaks_schema_decode( $json ) : null;
@@ -585,8 +582,7 @@ add_filter( 'rank_math/json_ld', 'white_oaks_add_rank_math_speakable', 90 );
  * @return void
  */
 function white_oaks_output_schema() {
-	$local_service_preview = is_singular( 'service' ) && white_oaks_service_review_mode();
-	if ( is_admin() || is_feed() || is_404() || is_search() || ( is_preview() && ! $local_service_preview ) ) {
+	if ( is_admin() || is_feed() || is_404() || is_search() || is_preview() ) {
 		return;
 	}
 
