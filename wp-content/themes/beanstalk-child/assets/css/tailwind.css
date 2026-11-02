@@ -16,3 +16,5 @@
 @source "../../templates";
 @source "../../functions.php";
 @source "../../blocks";
+
+@import "./components/location-contact-layout.css";
