@@ -76,6 +76,7 @@
   .single-service .first-visit__header .wp-block-button,
   .single-service .first-visit__header .wp-block-button__link { @apply w-auto basis-auto; }
   .single-service .invisalign-hero h1 { @apply max-w-service-hero-copy; }
+  .postid-744 .invisalign-hero h1 { @apply max-w-full; }
   .single-service .footer-cta .footer-cta__buttons { @apply inline-grid grid-cols-2 w-fit; }
   .single-service .footer-cta__primary,
   .single-service .footer-cta__primary .wp-block-button__link { @apply w-full; }
