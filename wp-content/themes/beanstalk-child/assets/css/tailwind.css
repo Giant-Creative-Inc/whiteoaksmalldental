@@ -18,3 +18,5 @@
 @source "../../blocks";
 
 @import "./components/location-contact-layout.css";
+
+@import "./components/footer-announcement-tablet.css";
