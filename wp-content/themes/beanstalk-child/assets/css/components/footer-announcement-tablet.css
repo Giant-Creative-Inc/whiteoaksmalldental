@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+@custom-variant announcement-tablet (@media (min-width: 782px) and (max-width: 1279px));
+
+@variant announcement-tablet {
+  .wp-block-columns.footer-announcement-columns { @apply grid grid-cols-1; }
+}

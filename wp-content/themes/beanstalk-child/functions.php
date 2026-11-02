@@ -882,3 +882,29 @@ add_action( 'wp_head', 'white_oaks_add_browser_favicons', 100 );
 require_once get_stylesheet_directory() . '/inc/blocks.php';
 
 require_once get_stylesheet_directory() . '/inc/location-appointment-links.php';
+
+/**
+ * Identifies the legacy opening announcement for its tablet column layout.
+ *
+ * Saved content and other Columns blocks remain unchanged. The staging footer
+ * already uses its separate responsive announcement component.
+ *
+ * @param string $block_content Rendered Columns block HTML.
+ * @param array  $block         Parsed Columns block.
+ * @return string
+ */
+function white_oaks_announcement_column_class( $block_content, $block ) {
+	if ( 3 !== count( $block['innerBlocks'] ?? array() ) ||
+		false === stripos( $block_content, 'Oaks Dental Wellness' ) ||
+		false === stripos( $block_content, 'Join the Opening List' ) ||
+		! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $block_content;
+	}
+
+	$processor = new WP_HTML_Tag_Processor( $block_content );
+	if ( $processor->next_tag( 'DIV' ) ) {
+		$processor->add_class( 'footer-announcement-columns' );
+	}
+	return $processor->get_updated_html();
+}
+add_filter( 'render_block_core/columns', 'white_oaks_announcement_column_class', 10, 2 );
