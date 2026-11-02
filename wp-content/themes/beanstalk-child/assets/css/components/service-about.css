@@ -1,9 +1,18 @@
 @reference "tailwindcss";
 @reference "../tailwind-theme.css";
+@custom-variant wide (@media (min-width: 1280px));
 @custom-variant wp-columns-up (@media (min-width: 782px));
 @custom-variant medium-layout (@media (min-width: 782px) and (max-width: 1200px));
 /* Approved exception: every selector is scoped to the one-off introduction. */
 @theme inline {
+  --container-service-about-title-safe: calc(100% + var(--wp--preset--spacing--128) - var(--wp--custom--layout--gutter));
+  --spacing-service-about-title-regular: var(--wp--custom--service-about--heading-measures--regular);
+  --spacing-service-about-title-restoration: var(--wp--custom--service-about--heading-measures--restoration);
+  --spacing-service-about-title-standard: var(--wp--custom--service-about--heading-measures--standard);
+  --spacing-service-about-title-veneers: var(--wp--custom--service-about--heading-measures--veneers);
+  --spacing-service-about-title-filling: var(--wp--custom--service-about--heading-measures--filling);
+  --spacing-service-about-title-wide: var(--wp--custom--service-about--heading-measures--wide);
+
   --spacing-service-about-bleed: max(0px, calc((100vw - var(--wp--style--global--wide-size)) / 2));
   --container-service-about-heading: var(--wp--custom--service-about--heading-desktop-width);
   --text-experience-heading: var(--wp--preset--font-size--experience-heading);
@@ -77,4 +86,15 @@
   .service-about.service-about--tooth-filling .service-about__media img { @apply object-service-filling; }
   .service-about.service-about--zoom-whitening .service-about__media img { @apply object-service-whitening; }
   .service-about.service-about--orthodontics .service-about__media img { @apply scale-service-orthodontics; }
+}
+
+/* QA-006: titles may use the designed inner inset; shared outer gutters stay intact. */
+@variant wide {
+  :is(.postid-734, .postid-737, .postid-740, .postid-744, .postid-745, .postid-728, .postid-731, .postid-735, .postid-747, .postid-749, .postid-748, .postid-729, .postid-733) .service-about .service-about__heading-stack { @apply min-w-0 max-w-none grid-cols-1; }
+  :is(.postid-734, .postid-737, .postid-740, .postid-744, .postid-745) .service-about .service-about__heading { @apply min-w-0 w-service-about-title-regular max-w-service-about-title-safe; }
+  .postid-728 .service-about .service-about__heading { @apply min-w-0 w-service-about-title-restoration max-w-service-about-title-safe; }
+  :is(.postid-731, .postid-735, .postid-747) .service-about .service-about__heading { @apply min-w-0 w-service-about-title-standard max-w-service-about-title-safe; }
+  .postid-749 .service-about .service-about__heading { @apply min-w-0 w-service-about-title-veneers max-w-service-about-title-safe; }
+  .postid-748 .service-about .service-about__heading { @apply min-w-0 w-service-about-title-filling max-w-service-about-title-safe; }
+  :is(.postid-729, .postid-733) .service-about .service-about__heading { @apply min-w-0 w-service-about-title-wide max-w-service-about-title-safe; }
 }
