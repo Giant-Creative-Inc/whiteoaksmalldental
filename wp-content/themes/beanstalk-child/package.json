@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite build --watch",
     "dev:map": "vite build -c vite.click-to-load-map.config.mjs --watch",
-    "build": "vite build && vite build -c vite.blocks.config.mjs && vite build -c vite.patient-stories.config.mjs && vite build -c vite.click-to-load-map.config.mjs",
-    "test:service-tabs": "node --test tests/service-tabs.test.mjs"
+    "build": "vite build && vite build -c vite.blocks.config.mjs && vite build -c vite.patient-stories.config.mjs && vite build -c vite.click-to-load-map.config.mjs && vite build -c vite.scripts.config.mjs",
+    "test:service-tabs": "node --test tests/service-tabs.test.mjs",
+    "dev:scripts": "vite build -c vite.scripts.config.mjs --watch"
   },
   "engines": {
     "node": ">=20.19.0",
