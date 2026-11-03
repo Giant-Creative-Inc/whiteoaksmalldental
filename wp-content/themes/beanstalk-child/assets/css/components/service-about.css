@@ -5,7 +5,7 @@
 @custom-variant medium-layout (@media (min-width: 782px) and (max-width: 1200px));
 /* Approved exception: every selector is scoped to the one-off introduction. */
 @theme inline {
-  --container-service-about-title-safe: calc(100% + var(--wp--preset--spacing--128) - var(--wp--custom--layout--gutter));
+  --container-service-about-title-safe: calc(100% + var(--wp--preset--spacing--128) - var(--wp--preset--spacing--24));
   --spacing-service-about-title-regular: var(--wp--custom--service-about--heading-measures--regular);
   --spacing-service-about-title-restoration: var(--wp--custom--service-about--heading-measures--restoration);
   --spacing-service-about-title-standard: var(--wp--custom--service-about--heading-measures--standard);
