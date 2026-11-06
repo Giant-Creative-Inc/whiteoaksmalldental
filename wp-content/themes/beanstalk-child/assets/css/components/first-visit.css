@@ -1,55 +1,55 @@
 @reference "../tailwind.css";
 
-.first-visit__steps,
-.first-visit__content {
+:is(.first-visit__steps, .landing-first-visit__steps),
+:is(.first-visit__content, .landing-first-visit__content) {
   @apply flex flex-col;
 }
 
-.first-visit {
+:is(.first-visit, .landing-first-visit) {
   @apply py-wp-48;
 }
 
-.first-visit__header {
+:is(.first-visit__header, .landing-first-visit__header) {
   @apply mb-wp-32;
 }
 
-.first-visit__steps {
+:is(.first-visit__steps, .landing-first-visit__steps) {
   @apply gap-wp-24;
 }
 
-.first-visit__heading {
+:is(.first-visit__heading, .landing-first-visit__heading) {
   @apply font-heading text-first-visit-heading leading-first-visit-heading tracking-first-visit-heading;
 }
 
-.first-visit__heading em {
+:is(.first-visit__heading, .landing-first-visit__heading) em {
   @apply text-primary;
 }
 
-.first-visit__step {
+:is(.first-visit__step, .landing-first-visit__step) {
   @apply grid grid-cols-1 mt-0;
 }
 
-.first-visit__media {
+:is(.first-visit__media, .landing-first-visit__media) {
   @apply order-1 mt-0 h-[200px] overflow-hidden;
 }
 
-.first-visit__media img {
+:is(.first-visit__media, .landing-first-visit__media) img {
   @apply size-full object-cover;
 }
 
-.first-visit__content {
+:is(.first-visit__content, .landing-first-visit__content) {
   @apply order-2 mt-0 gap-wp-12 bg-wp-white p-wp-24;
 }
 
-.first-visit__card-heading {
+:is(.first-visit__card-heading, .landing-first-visit__card-heading) {
   @apply mt-0 font-heading text-first-visit-card-heading leading-first-visit-card-heading tracking-first-visit-card-heading;
 }
 
-.first-visit__copy {
+:is(.first-visit__copy, .landing-first-visit__copy) {
   @apply leading-first-visit-copy mt-0 flex gap-wp-24;
 }
 
-.first-visit__copy:before {
+:is(.first-visit__copy, .landing-first-visit__copy):before {
   content: '↳';
   margin-top: 5px;
   display: inline-block;
@@ -57,83 +57,181 @@
   font-size: var(--wp--preset--font-size--b-3);
 }
 
-.first-visit__footer {
+:is(.first-visit__footer, .landing-first-visit__footer) {
   @apply mt-auto border-t border-primary/20 pt-wp-12;
 }
 
-.first-visit__content .is-style-eyebrow {
+:is(.first-visit__content, .landing-first-visit__content) .is-style-eyebrow {
   @apply font-bold leading-[1.5];
   font-family: var(--wp--preset--font-family--button) !important;
 
 }
 
-.first-visit__header .wp-block-button__link {
+:is(.first-visit__header, .landing-first-visit__header) .wp-block-button__link {
   @apply justify-start pb-wp-12;
 }
 
 @variant desktop {
-  .first-visit {
+  :is(.first-visit, .landing-first-visit) {
     @apply py-wp-128;
   }
 
-  .first-visit__header {
+  :is(.first-visit__header, .landing-first-visit__header) {
     @apply mb-wp-80;
   }
 
-  .first-visit__steps {
+  :is(.first-visit__steps, .landing-first-visit__steps) {
     @apply gap-wp-32;
   }
 
-  .first-visit__step {
+  :is(.first-visit__step, .landing-first-visit__step) {
     @apply grid-cols-[minmax(0,1.176fr)_minmax(0,1fr)];
   }
 
-  .first-visit__step--reverse {
+  :is(.first-visit__step--reverse, .landing-first-visit__step--reverse) {
     @apply grid-cols-[minmax(0,1fr)_minmax(0,1.176fr)];
   }
 
-  .first-visit__media,
-  .first-visit__content {
+  :is(.first-visit__media, .landing-first-visit__media),
+  :is(.first-visit__content, .landing-first-visit__content) {
     @apply h-[570px];
   }
 
-  .first-visit__content {
+  :is(.first-visit__content, .landing-first-visit__content) {
     @apply gap-wp-24 px-wp-64;
     padding-top: 66px;
     padding-bottom: 42px;
   }
 
-  .first-visit__step--reverse .first-visit__content {
+  :is(.first-visit__step--reverse, .landing-first-visit__step--reverse) :is(.first-visit__content, .landing-first-visit__content) {
     @apply order-1;
   }
 
-  .first-visit__step--reverse .first-visit__media {
+  :is(.first-visit__step--reverse, .landing-first-visit__step--reverse) :is(.first-visit__media, .landing-first-visit__media) {
     @apply order-2;
   }
 }
 
 /* Progressive enhancement leaves all editor cards and no-script content visible. */
-.first-visit__steps .first-visit__step--inactive {
+:is(.first-visit__steps, .landing-first-visit__steps) :is(.first-visit__step--inactive, .landing-first-visit__step--inactive) {
   @apply hidden;
 }
 
-.first-visit__controls {
+:is(.first-visit__controls, .landing-first-visit__controls) {
   @apply flex flex-wrap items-center justify-between gap-wp-12 mt-wp-24;
 }
 
-.first-visit__controls .wp-block-button__link {
+:is(.first-visit__controls, .landing-first-visit__controls) .wp-block-button__link {
   @apply cursor-pointer;
 }
 
-.first-visit__status {
+:is(.first-visit__status, .landing-first-visit__status) {
   @apply m-0 text-primary font-button text-b-6;
 }
 
-.first-visit__steps--slider .first-visit__content {
+:is(.first-visit__steps--slider, .landing-first-visit__steps--slider) :is(.first-visit__content, .landing-first-visit__content) {
   @apply min-w-0 h-auto;
 }
 
-.first-visit__controls .wp-block-button__link:disabled,
-.first-visit__controls .wp-block-button__link:disabled:hover {
+:is(.first-visit__controls, .landing-first-visit__controls) .wp-block-button__link:disabled,
+:is(.first-visit__controls, .landing-first-visit__controls) .wp-block-button__link:disabled:hover {
   @apply bg-neutral-grey-850 border-neutral-grey-850 text-neutral-grey-400 cursor-not-allowed;
+}
+
+/* Invisalign landing page. The existing slider controls sit inside the
+   desktop card and below the card on smaller screens. */
+#first-visit.landing-first-visit > .wp-block-group {
+  @apply relative mx-auto w-full max-w-[calc(100%-var(--wp--preset--spacing--8))];
+  @variant desktop {
+    @apply max-w-[1224px];
+  }
+}
+
+#first-visit.landing-first-visit .landing-first-visit__header {
+  @apply mb-wp-32 gap-wp-16;
+}
+
+#first-visit.landing-first-visit .landing-first-visit__header .is-style-eyebrow {
+  @apply mb-wp-12;
+}
+
+#first-visit.landing-first-visit .landing-first-visit__intro {
+  @apply m-0 text-b-4 leading-[26px];
+}
+
+#first-visit.landing-first-visit .landing-first-visit__header .wp-block-button__link {
+  @apply w-fit border-primary pb-wp-8 font-bold text-primary;
+}
+
+#first-visit.landing-first-visit .landing-first-visit__media {
+  @apply relative h-auto aspect-[327/200];
+}
+
+#first-visit.landing-first-visit .landing-first-visit__controls {
+  @apply mt-wp-16;
+}
+
+@variant desktop {
+  #first-visit.landing-first-visit {
+    @apply pb-[var(--wp--preset--spacing--160)];
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__header {
+    @apply mb-wp-80 gap-wp-24;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__intro {
+    @apply text-b-3 leading-[30px];
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__media,
+  #first-visit.landing-first-visit .landing-first-visit__content {
+    @apply aspect-auto min-h-[570px];
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__media img {
+    @apply absolute inset-0;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__media::after {
+    @apply pointer-events-none absolute inset-0 content-[''] bg-linear-to-b from-transparent from-[58%] to-primary-shade-600/60;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__footer {
+    @apply flex min-h-wp-80 items-end;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__controls {
+    @apply absolute right-wp-64 bottom-wp-40 m-0 flex-nowrap gap-0;
+  }
+
+  #first-visit.landing-first-visit:has(.landing-first-visit__step--reverse:not([hidden])) .landing-first-visit__controls {
+    @apply right-[calc(54.04%+var(--wp--preset--spacing--64))];
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__status {
+    @apply sr-only;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__controls .wp-block-button__link {
+    @apply grid size-[54px] place-items-center rounded-none border border-solid border-wp-black/20 bg-wp-white p-0 text-wp-black;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__controls .wp-block-button + .wp-block-button .wp-block-button__link {
+    @apply border-l-0;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__controls .wp-block-button__link:disabled {
+    @apply text-neutral-grey-400;
+  }
+}
+
+@variant max-desktop {
+  #first-visit.landing-first-visit .landing-first-visit__header .wp-block-buttons {
+    @apply pt-wp-16!;
+  }
+
+  #first-visit.landing-first-visit .landing-first-visit__footer > p {
+    @apply m-0 leading-[18px];
+  }
 }

@@ -1,21 +1,22 @@
 /** Enhance editable first-visit core blocks without changing saved content. */
-document.querySelectorAll('.first-visit__steps').forEach((track, instance) => {
-  const slides = Array.from(track.children).filter((el) => el.classList.contains('first-visit__step'));
+document.querySelectorAll('.first-visit__steps, .landing-first-visit__steps').forEach((track, instance) => {
+  const prefix = track.classList.contains('landing-first-visit__steps') ? 'landing-first-visit' : 'first-visit';
+  const slides = Array.from(track.children).filter((el) => el.classList.contains(`${prefix}__step`));
   if (slides.length < 2) return;
 
   let active = 0;
-  const section = track.closest('.first-visit');
-  const heading = section?.querySelector('.first-visit__heading');
-  track.id ||= `first-visit-slides-${instance + 1}`;
+  const section = track.closest(`.${prefix}`);
+  const heading = section?.querySelector(`.${prefix}__heading`);
+  track.id ||= `${prefix}-slides-${instance + 1}`;
   track.setAttribute('role', 'region');
   track.setAttribute('aria-roledescription', 'carousel');
   track.setAttribute('aria-label', heading?.textContent.trim() || 'Your first visit');
-  track.classList.add('first-visit__steps--slider');
+  track.classList.add(`${prefix}__steps--slider`);
 
   const controls = document.createElement('div');
-  controls.className = 'first-visit__controls';
+  controls.className = `${prefix}__controls`;
   const status = document.createElement('p');
-  status.className = 'first-visit__status';
+  status.className = `${prefix}__status`;
   status.setAttribute('role', 'status');
   status.setAttribute('aria-live', 'polite');
   status.setAttribute('aria-atomic', 'true');
@@ -36,11 +37,16 @@ document.querySelectorAll('.first-visit__steps').forEach((track, instance) => {
 
   const show = (index) => {
     active = Math.max(0, Math.min(index, slides.length - 1));
-    previous.querySelector('button').disabled = active === 0;
-    next.querySelector('button').disabled = active === slides.length - 1;
+    const previousButton = previous.querySelector('button');
+    const nextButton = next.querySelector('button');
+    const focusedButton = document.activeElement;
+    previousButton.disabled = active === 0;
+    nextButton.disabled = active === slides.length - 1;
+    if (focusedButton === previousButton && previousButton.disabled) nextButton.focus({ preventScroll: true });
+    if (focusedButton === nextButton && nextButton.disabled) previousButton.focus({ preventScroll: true });
     slides.forEach((slide, i) => {
       const inactive = i !== active;
-      slide.classList.toggle('first-visit__step--inactive', inactive);
+      slide.classList.toggle(`${prefix}__step--inactive`, inactive);
       slide.hidden = inactive;
       slide.inert = inactive;
     });
@@ -49,7 +55,7 @@ document.querySelectorAll('.first-visit__steps').forEach((track, instance) => {
 
   slides.forEach((slide, i) => {
     // Keep the image on the same side between slides to avoid visual jumping.
-    slide.classList.remove('first-visit__step--reverse');
+    if (prefix === "first-visit") slide.classList.remove(`${prefix}__step--reverse`);
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
     slide.setAttribute('aria-label', `${i + 1} of ${slides.length}`);

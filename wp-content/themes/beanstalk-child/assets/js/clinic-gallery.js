@@ -113,7 +113,7 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 		const incomingSlide = slides[ nextIndex ];
 		const shouldAnimate = animate && ! reducedMotion.matches && nextIndex !== activeIndex;
 
-		if ( shouldAnimate ) {
+		if ( nextIndex !== activeIndex ) {
 			isAnimating = true;
 			await hydrateSlide( incomingSlide );
 		}
@@ -128,6 +128,7 @@ document.querySelectorAll( '.clinic-gallery' ).forEach( ( gallery ) => {
 			} );
 			activeIndex = nextIndex;
 			current.textContent = String( activeIndex + 1 ).padStart( 2, '0' );
+			isAnimating = false;
 			return;
 		}
 

@@ -1,0 +1,153 @@
+@reference "../tailwind.css";
+
+.wp-block-group.landing-personalized-care {
+  @apply py-0 @container;
+}
+
+.landing-personalized-care .is-style-container {
+  @apply w-full max-w-site-wide mx-auto;
+}
+
+.landing-personalized-care .landing-care-layout {
+  @apply grid grid-cols-1 gap-0;
+  @variant desktop {
+    @apply grid-cols-[minmax(0,41fr)_minmax(0,46fr)] items-stretch gap-0;
+  }
+}
+
+.landing-personalized-care .landing-care-media {
+  @apply min-w-0 -mx-wp-24;
+  @variant desktop {
+    @apply grid mr-0 ml-[calc(min(0px,(var(--wp--style--global--wide-size)-100cqw)/2)-var(--wp--preset--spacing--24))];
+  }
+}
+
+.landing-personalized-care .landing-care-mobile {
+  @apply hidden;
+}
+
+.landing-personalized-care .clinic-gallery {
+  @apply grid min-w-0 my-0 bg-transparent p-0;
+}
+
+.landing-personalized-care .clinic-gallery__slider {
+  @apply relative flex flex-col gap-0;
+}
+
+.landing-personalized-care .clinic-gallery__slides {
+  @apply aspect-[375/387] max-h-[var(--wp--preset--spacing--640)] flex-1 min-h-0;
+  @variant desktop {
+    @apply aspect-auto max-h-none;
+  }
+}
+
+.landing-personalized-care .clinic-gallery__slides::after {
+  @apply pointer-events-none absolute inset-0 z-[2] content-[''] bg-linear-to-b from-transparent from-[47.038%] to-primary-shade-600/40 to-[88.252%];
+  @variant desktop {
+    @apply from-[60.593%] to-[94.573%];
+  }
+}
+
+.landing-personalized-care .clinic-gallery__slides::before {
+  @apply pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-wp-96 content-[''] bg-linear-to-t from-primary-shade-600/55 from-[28%] to-transparent;
+}
+
+.landing-personalized-care .clinic-gallery__slide:first-child:not([data-gallery-state]) {
+  @apply opacity-100;
+}
+
+.landing-personalized-care .clinic-gallery__controls {
+  @apply absolute inset-x-0 bottom-0 z-10 min-h-0 border-0 p-0;
+}
+
+.landing-personalized-care .clinic-gallery__fraction {
+  @apply ml-wp-16 px-wp-4 py-wp-4 bg-transparent text-wp-white text-shadow-sm text-shadow-wp-black/80 font-normal text-[17px] leading-[25.5px] gap-wp-8;
+}
+
+.landing-personalized-care .clinic-gallery__fraction-separator {
+  @apply text-wp-white;
+}
+
+.landing-personalized-care .is-style-content-stack {
+  @apply flex flex-col gap-wp-20 min-w-0 py-wp-48;
+  @variant desktop {
+    @apply gap-wp-32 py-wp-96 pl-wp-80 pr-wp-24;
+  }
+}
+
+.landing-personalized-care :is(.landing-care-layout, .is-style-content-stack, .landing-care-cards, .landing-care-card, .landing-care-card-copy) > * {
+  @apply my-0;
+}
+
+.landing-personalized-care .landing-care-heading {
+  @apply text-[32px] leading-[var(--wp--custom--why-oaks--mobile-heading-line-height)] tracking-[-1px];
+  @variant desktop {
+    @apply text-experience-heading leading-[0.95] tracking-[-0.045em];
+  }
+}
+
+.landing-personalized-care .landing-care-heading em {
+  @apply text-primary;
+  @variant desktop {
+    @apply block;
+  }
+}
+
+.landing-personalized-care .landing-care-cards {
+  @apply grid gap-wp-16;
+  @variant desktop {
+    @apply gap-0 border-0 border-t border-solid border-service-tabs-border;
+  }
+}
+
+.landing-personalized-care .landing-care-card {
+  @apply flex items-start gap-wp-16 bg-wp-white p-wp-16;
+  @variant desktop {
+    @apply min-h-[var(--wp--preset--spacing--120)] gap-wp-24 border-0 border-b border-solid border-service-tabs-border bg-transparent px-0 py-wp-24;
+  }
+}
+
+.landing-personalized-care .landing-care-card-copy {
+  @apply grid min-w-0 content-start gap-wp-4;
+  @variant desktop {
+    @apply gap-[var(--wp--custom--why-oaks--desktop-copy-gap)];
+  }
+}
+
+.landing-personalized-care .is-style-content-stack > p:not(.is-style-eyebrow) {
+  @apply text-b-4 leading-[26px];
+  @variant desktop {
+    @apply text-b-3 leading-[30px];
+  }
+}
+
+.landing-personalized-care .landing-care-card-copy h3 {
+  @apply text-b-4 leading-[20px] tracking-normal;
+  @variant desktop {
+    @apply text-[length:var(--wp--custom--why-oaks--desktop-title-size)] leading-[var(--wp--custom--why-oaks--desktop-title-line-height)] font-bold;
+  }
+}
+
+.landing-personalized-care .landing-care-card-copy p {
+  @apply text-[color:var(--wp--preset--color--service-tabs-muted-text)] text-[length:var(--wp--custom--why-oaks--mobile-copy-size)] leading-[var(--wp--custom--why-oaks--mobile-copy-line-height)];
+  @variant desktop {
+    @apply font-button text-b-6 text-primary-shade-600 leading-[var(--wp--custom--why-oaks--desktop-copy-line-height)];
+  }
+}
+
+.landing-personalized-care .landing-care-card > p {
+  @apply text-b-3;
+  @variant desktop {
+    @apply w-wp-48 shrink-0 italic text-[length:var(--wp--custom--why-oaks--desktop-number-size)] leading-[var(--wp--custom--why-oaks--desktop-number-line-height)];
+  }
+}
+
+.landing-personalized-care .clinic-gallery__control.wp-block-button__link:is(:hover, :focus-visible) {
+  @apply border-primary-hover bg-primary-hover text-wp-white;
+}
+
+@variant max-desktop {
+  .landing-personalized-care .clinic-gallery__control.wp-block-button__link {
+    @apply size-[54px];
+  }
+}

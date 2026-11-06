@@ -16,6 +16,7 @@ function beanstalk_child_asset_version( $relative_path ) {
 }
 
 require_once get_stylesheet_directory() . '/inc/assets.php';
+require_once get_stylesheet_directory() . '/inc/landing-review-rating.php';
 require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
 require_once get_stylesheet_directory() . '/inc/llms-txt.php';
 require_once get_stylesheet_directory() . '/inc/schema.php';
@@ -492,7 +493,7 @@ add_filter( 'render_block_core/image', 'white_oaks_image_loading_attributes', 10
  */
 function white_oaks_service_section_image_loading( $block_content, $block ) {
 	$classes  = explode( ' ', $block['attrs']['className'] ?? '' );
-	$sections = array( 'service-about', 'first-visit', 'why-invisalign', 'pillar-services', 'pillar-related-services' );
+	$sections = array( 'service-about', 'first-visit', 'landing-first-visit', 'why-invisalign', 'pillar-services', 'pillar-related-services' );
 
 	if ( ! array_intersect( $classes, $sections ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 		return $block_content;

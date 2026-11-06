@@ -1,0 +1,159 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+
+@theme inline {
+  --leading-landing-hero-heading: var(--wp--custom--landing-hero--heading-leading);
+  --leading-landing-hero-copy: var(--wp--custom--landing-hero--copy-leading);
+  --leading-landing-rating: var(--wp--custom--landing-hero--rating-leading);
+  --leading-landing-note: var(--wp--custom--landing-hero--note-leading);
+  --leading-landing-form-mobile: var(--wp--custom--landing-hero--form-heading-mobile-leading);
+  --tracking-landing-hero-heading: var(--wp--custom--landing-hero--heading-tracking);
+  --tracking-landing-eyebrow: var(--wp--custom--landing-hero--eyebrow-tracking);
+  --tracking-landing-form-heading: var(--wp--custom--landing-hero--form-heading-tracking);
+  --color-landing-muted: var(--wp--preset--color--service-tabs-muted-text);
+  --container-landing-form: var(--wp--custom--landing-hero--form-width);
+  --container-landing-form-heading: var(--wp--custom--landing-hero--form-heading-mobile-width);
+  --container-landing-note-mobile: var(--wp--custom--landing-hero--note-mobile-width);
+  --container-landing-note-desktop: var(--wp--custom--landing-hero--note-desktop-width);
+  --spacing-landing-background-width: var(--wp--custom--landing-hero--background-width);
+  --spacing-landing-background-height: var(--wp--custom--landing-hero--background-height);
+  --spacing-landing-background-left: var(--wp--custom--landing-hero--background-left);
+  --spacing-landing-background-top: var(--wp--custom--landing-hero--background-top);
+}
+
+.landing-hero.is-style-section {
+  @apply my-0 p-0;
+}
+
+.landing-hero .landing-hero__cover {
+  @apply m-0 min-h-0 px-0 pt-wp-40 pb-wp-48 text-primary-shade-600;
+  @apply desktop:py-wp-96;
+}
+
+.landing-hero .landing-hero__cover > .wp-block-cover__inner-container {
+  @apply w-full max-w-none;
+}
+
+.landing-hero .landing-hero__cover > .wp-block-cover__image-background {
+  @apply max-w-none object-fill w-landing-background-width h-landing-background-height left-landing-background-left top-landing-background-top;
+}
+
+.landing-hero .landing-hero__container.is-style-container {
+  @apply box-border w-full px-site-gutter;
+}
+
+.landing-hero .landing-hero__columns {
+  @apply m-0 gap-wp-32 xl:gap-wp-80;
+}
+
+.landing-hero .landing-hero__columns > .wp-block-column {
+  @apply min-w-0;
+}
+
+.landing-hero .landing-hero__copy.is-style-content-stack {
+  @apply items-stretch gap-wp-20 w-full max-w-none;
+  @apply desktop:gap-wp-32;
+}
+
+.landing-hero :where(.is-style-content-stack, .landing-hero__review, .landing-hero__rating-icons, .landing-hero__form-panel) > * {
+  @apply m-0;
+}
+
+.landing-hero .landing-hero__eyebrow.is-style-eyebrow {
+  @apply font-bold leading-button tracking-landing-eyebrow uppercase;
+}
+
+.landing-hero .landing-hero__heading {
+  @apply leading-landing-hero-heading tracking-landing-hero-heading;
+}
+
+.landing-hero .landing-hero__intro {
+  @apply leading-landing-hero-copy;
+}
+
+.landing-hero .landing-hero__review {
+  @apply self-start gap-wp-4 p-wp-12;
+}
+
+.landing-hero .landing-hero__rating-icons {
+  @apply items-center gap-wp-4;
+}
+
+.landing-hero .landing-hero__rating-icons img {
+  @apply block;
+}
+
+.landing-hero .landing-hero__rating-icons > .wp-block-image {
+  @apply w-auto shrink-0;
+}
+
+.landing-hero .landing-hero__rating {
+  @apply leading-landing-rating;
+}
+
+.landing-hero .landing-hero__form-panel {
+  @apply grid gap-wp-16 p-wp-24;
+  @apply desktop:gap-wp-20 desktop:p-wp-40;
+}
+
+.landing-hero .landing-hero__form-heading {
+  @apply max-w-landing-form-heading leading-landing-form-mobile tracking-normal;
+  @apply desktop:max-w-none desktop:leading-h-3 desktop:tracking-landing-form-heading;
+}
+
+.landing-hero .landing-hero__note {
+  @apply max-w-landing-note-mobile leading-landing-note text-landing-muted;
+  @apply desktop:max-w-landing-note-desktop;
+}
+
+.landing-hero .landing-hero__note a {
+  @apply font-medium text-primary underline;
+}
+
+.landing-hero .gform_wrapper .gform_fields {
+  @apply gap-wp-16;
+  @apply desktop:gap-wp-20;
+}
+
+.landing-hero .gform_wrapper :is(input[type="text"], input[type="tel"], input[type="email"], select):not(:focus, [aria-invalid="true"]) {
+  @apply border-[color:var(--wp--preset--color--landing-input-border)];
+}
+
+.landing-hero .gform_wrapper .gfield_required {
+  @apply sr-only;
+}
+
+.landing-hero .gform_wrapper select {
+  @apply appearance-none bg-[url('../../images/preferred-time-chevron.svg')] bg-no-repeat bg-position-[right_14px_center] bg-size-[24px_24px] pr-wp-48;
+}
+
+.landing-hero .gform_wrapper select:has(> option[value=""]:checked) {
+  @apply text-landing-muted;
+}
+
+.landing-hero .gform_wrapper select > option:not([value=""]) {
+  @apply text-primary-shade-600;
+}
+
+.landing-hero .gform_wrapper .gform_footer {
+  @apply mt-wp-16 p-0;
+  @apply desktop:mt-wp-20;
+}
+
+.landing-hero .gform_wrapper .gform_footer button[type="submit"] {
+  @apply justify-between text-b-5 font-normal text-wp-white;
+}
+
+.landing-hero .gform_wrapper .gform_footer button[type="submit"]:focus-visible {
+  @apply outline-primary transition-none;
+}
+
+.landing-hero .gform_wrapper .gform_footer button[type="submit"]::after {
+  @apply ml-0 -rotate-45 text-b-5;
+}
+
+@variant desktop {
+  .landing-hero .landing-hero__columns > .landing-hero__form-column {
+    @apply flex-none w-full max-w-landing-form;
+  }
+}

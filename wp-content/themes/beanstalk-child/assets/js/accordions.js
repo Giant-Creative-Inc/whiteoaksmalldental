@@ -5,7 +5,7 @@ const groups = new Map();
 for (const item of document.querySelectorAll('main details.wp-block-details')) {
  const summary = item.querySelector(':scope > summary');
  if (!summary) continue;
- const container = item.closest('.home-faqs__list') || item.parentElement;
+ const container = item.closest('.home-faqs__list, .landing-faqs__list') || item.parentElement;
  if (!groups.has(container)) groups.set(container, []);
  groups.get(container).push({ item, summary, animation: null });
 }
