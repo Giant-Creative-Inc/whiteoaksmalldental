@@ -28,6 +28,7 @@
         }
       ],
       "palette": [
+        { "slug": "landing-input-border", "color": "#5498A13D", "name": "Landing Form Input Border" },
         { "slug": "care-heading", "color": "#1B2E33", "name": "Care Heading" },
         { "slug": "black", "color": "#000000", "name": "Neutral-PureBlack" },
         { "slug": "white", "color": "#FFFFFF", "name": "Neutral-PureWhite" },
@@ -100,6 +101,13 @@
         }
       ],
       "fontSizes": [
+        { "slug": "pricing-section-heading", "size": "clamp(32px, calc(16.9014px + 4.02629vw), 74.88px)", "name": "Pricing Section Heading" },
+        { "slug": "pricing-card-heading", "size": "28px", "name": "Pricing Card Heading" },
+        { "slug": "pricing-amount", "size": "clamp(44px, calc(39.77465px + 1.12676vw), 56px)", "name": "Pricing Amount" },
+        { "slug": "pricing-insurance-heading", "size": "clamp(24px, calc(19.77465px + 1.12676vw), 36px)", "name": "Pricing Insurance Heading" },
+        { "slug": "landing-hero-heading", "size": "clamp(36px, calc(22.30986px + 3.650704vw), 74.88px)", "name": "Landing Hero Heading" },
+        { "slug": "landing-hero-copy", "size": "clamp(18px, calc(16.59155px + 0.375587vw), 22px)", "name": "Landing Hero Introduction" },
+        { "slug": "landing-form-heading", "size": "clamp(24px, calc(21.1831px + 0.751174vw), 32px)", "name": "Landing Form Heading" },
         { "slug": "care-heading", "size": "64px", "name": "Care Heading" },
         { "slug": "h-1", "size": "clamp(40px, 7.5vw, 64px)", "name": "H1" },
         { "slug": "h-2", "size": "clamp(34px, 5vw, 48px)", "name": "H2" },
@@ -204,6 +212,24 @@
       }
     },
     "custom": {
+      "landingHero": {
+        "headingLeading": "clamp(38px, calc(26.33099px + 3.111737vw), 71.14px)",
+        "headingTracking": "clamp(-3.37px, calc(-0.435915px - 0.203756vw), -1.2px)",
+        "copyLeading": "clamp(27px, calc(25.94366px + 0.28169vw), 30px)",
+        "eyebrowTracking": "clamp(1.5px, calc(1.098592px + 0.107042vw), 2.64px)",
+        "ratingLeading": "13.6616px",
+        "noteLeading": "20.4px",
+        "formWidth": "527px",
+        "formHeadingMobileLeading": "30px",
+        "formHeadingTracking": "-1px",
+        "formHeadingMobileWidth": "233px",
+        "noteMobileWidth": "232px",
+        "noteDesktopWidth": "359px",
+        "backgroundWidth": "133.6104%",
+        "backgroundHeight": "101.9525%",
+        "backgroundLeft": "-16.8052%",
+        "backgroundTop": "-0.9763%"
+      },
       "relatedCare": {"headingLeading": "clamp(43px, calc(33.09155px + 2.64282vw), 71.136px)", "headingTracking": "clamp(-3.3696px, calc(-0.832286px - 0.178057vw), -1.5px)", "panelHeadingLeading": "clamp(35px, calc(30.3169px + 1.24883vw), 48.3px)", "panelHeadingTracking": "-0.03em", "tabLeading": "clamp(22px, calc(19.1831px + 0.75117vw), 30px)", "introLeading": "29.7px", "copyDesktopLeading": "32px", "copyMobileLeading": "28px", "eyebrowTracking": "2.64px", "panelDesktopInset": "84px", "imageMobileHeight": "clamp(220px, calc(128.623418px + 24.367089vw), 297px)", "imageDesktopHeight": "297px", "imageDesktopWidth": "408px", "sectionPadding": "clamp(48px, calc(18.714286px + 7.809524vw), 130px)", "headingWidth": "658px", "introWidth": "clamp(320px, calc(-172px + 48.046875vw), 443px)", "introOpacity": "0.82", "tabPadding": "26px", "headingGap": "28px", "linkLeading": "24px", "xrayWidth": "155.78%", "xrayHeight": "109.77%", "xrayLeft": "27.89%", "xrayTop": "4.89%"},
       "comfortable-care": {
         "heading-width": "713px",
@@ -624,5 +650,26 @@
         }
       }
     }
-  }
+  },
+  "customTemplates": [
+    {
+      "name": "ad-landing",
+      "title": "Ad Landing Page",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ],
+  "templateParts": [
+    {
+      "name": "landing-header",
+      "title": "Landing Page Header",
+      "area": "header"
+    },
+    {
+      "name": "landing-footer",
+      "title": "Landing Page Footer",
+      "area": "footer"
+    }
+  ]
 }

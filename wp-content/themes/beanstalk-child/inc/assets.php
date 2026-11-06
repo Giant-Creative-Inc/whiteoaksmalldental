@@ -339,7 +339,8 @@ add_filter( 'render_block', 'white_oaks_record_rendered_asset_content', 20, 2 );
  */
 function white_oaks_component_assets( $assets ) {
 	$compatibility = array(
-		'home-sections' => array( 'meet-dentists', 'home-faqs', 'footer-cta' ),
+		'service-qa'    => array( 'service-qa', 'landing-first-visit', 'landing-faqs', 'landing-appointment-cta' ),
+		'home-sections' => array( 'meet-dentists', 'home-faqs', 'footer-cta', 'landing-faqs', 'landing-appointment-cta' ),
 		'forms'         => array( 'gravityforms/form', '[gravityform', 'contact-section__form-embed' ),
 	);
 	foreach ( glob( get_stylesheet_directory() . '/assets/css/build/components/*.min.css' ) ?: array() as $path ) {
@@ -352,14 +353,20 @@ function white_oaks_component_assets( $assets ) {
 		);
 	}
 	foreach ( array( 'doctors-section', 'clinic-gallery', 'contact-section', 'first-visit', 'comfortable-care' ) as $slug ) {
-		$assets[ $slug ]['markers']       = array( $slug );
+		$assets[ $slug ]['markers']       = 'first-visit' === $slug ? array( $slug, 'landing-first-visit' ) : array( $slug );
 		$assets[ $slug ]['script']        = 'assets/js/build/' . $slug . '.min.js';
 		$assets[ $slug ]['script_handle'] = 'white-oaks-' . $slug;
 		$assets[ $slug ]['script_args']   = array( 'in_footer' => true, 'strategy' => 'defer' );
 	}
+	$assets['landing-appointment'] = array(
+		'markers'       => array( 'landing-appointment-form' ),
+		'script'        => 'assets/js/build/landing-appointment.min.js',
+		'script_handle' => 'white-oaks-landing-appointment',
+		'script_args'   => array( 'in_footer' => true, 'strategy' => 'defer' ),
+	);
 	$assets['accordions'] = array(
 		'blocks'        => array( 'core/details' ),
-		'markers'       => array( 'home-faqs__list' ),
+		'markers'       => array( 'home-faqs__list', 'landing-faqs__list' ),
 		'script'        => 'assets/js/build/accordions.min.js',
 		'script_handle' => 'white-oaks-accordions',
 		'script_args'   => array( 'in_footer' => true, 'strategy' => 'defer' ),
@@ -369,7 +376,7 @@ function white_oaks_component_assets( $assets ) {
 	$assets['services-menu']['module_dependencies'] = array( '@wordpress/interactivity' );
 	$assets['home'] = array(
 		'callback'           => 'is_front_page',
-		'markers'            => array( 'why-oaks' ),
+		'markers'            => array( 'why-oaks', 'landing-statistics' ),
 		'style'              => 'assets/css/build/home.min.css',
 		'style_handle'       => 'white-oaks-home',
 		'style_dependencies' => array( 'white-oaks-shared' ),
@@ -399,6 +406,7 @@ function white_oaks_omit_bundled_component_styles( $assets ) {
 		'comfortable-care',
 		'footer-announcement',
 		'footer-services',
+		'landing-hero',
 		'location-contact-layout',
 		'pillar-related-services',
 		'pillar-services',

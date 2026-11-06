@@ -47,7 +47,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 			<h2 class="patient-stories__heading has-heading-font-family has-patient-stories-heading-font-size"><?php echo wp_kses_post( $normalize_rich_text( $attributes['heading'] ?? '' ) ); ?></h2>
 
 			<?php /* translators: 1: Numeric review rating. 2: Review summary, such as "Google reviews". */ ?>
-			<div class="patient-stories__rating" aria-label="<?php echo esc_attr( sprintf( __( 'Rated %1$s. %2$s', 'beanstalk-child' ), wp_strip_all_tags( $attributes['rating'] ?? '' ), wp_strip_all_tags( $attributes['reviewSummary'] ?? '' ) ) ); ?>">
+			<div class="patient-stories__rating" role="img" aria-label="<?php echo esc_attr( sprintf( __( 'Rated %1$s. %2$s', 'beanstalk-child' ), wp_strip_all_tags( $attributes['rating'] ?? '' ), wp_strip_all_tags( $attributes['reviewSummary'] ?? '' ) ) ); ?>">
 				<p class="patient-stories__rating-number has-heading-font-family has-patient-stories-rating-font-size"><?php echo wp_kses_post( $attributes['rating'] ?? '' ); ?></p>
 				<div class="patient-stories__rating-copy">
 					<p class="patient-stories__stars has-primary-color has-text-color has-button-font-family has-b-6-font-size" aria-hidden="true">★★★★★</p>

@@ -1,0 +1,273 @@
+@reference "tailwindcss";
+@reference "../tailwind-theme.css";
+
+@custom-variant wp-columns-up (@media (min-width: 782px));
+
+@theme inline {
+  --color-landing-header: var(--wp--preset--color--header-border);
+  --color-landing-tint: var(--wp--preset--color--primary-tint-900);
+  --color-landing-muted: var(--wp--preset--color--service-tabs-muted-text);
+  --text-pricing-note: 13px;
+  --text-pricing-note--line-height: 20px;
+  --text-pricing-feature: 15px;
+  --text-pricing-feature--line-height: 22px;
+  --spacing-pricing-card: 720px;
+  --spacing-pricing-monthly: 766px;
+  --spacing-pricing-card-desktop: 746px;
+  --leading-pricing-copy: 26px;
+  --leading-pricing-amount: 60px;
+  --leading-pricing-headline: clamp(34px, 4.94vw, 71.14px);
+  --color-landing-pricing-rule: var(--wp--preset--color--service-tabs-border);
+  --color-landing-ink: var(--wp--preset--color--oak-orange-shade-900);
+}
+
+.landing-header {
+  @apply border-b border-landing-header bg-white;
+  @apply desktop:border-0 desktop:bg-landing-tint;
+}
+
+.landing-header-row .landing-header-desktop {
+  @apply max-md:hidden;
+}
+
+.landing-header-desktop a[href^="tel:"] {
+  @apply relative whitespace-nowrap text-inherit no-underline;
+}
+
+.landing-header-row .landing-header-mobile {
+  @apply md:hidden;
+}
+
+.landing-header-row {
+  @apply items-center;
+}
+
+.landing-header-row .site-header__logo {
+  @apply m-0 flex items-center;
+}
+
+.landing-header-row .site-header__nav {
+  @apply m-0;
+}
+
+.landing-header-row .landing-header-mobile {
+  @apply min-h-wp-40 items-center;
+}
+
+.landing-header .landing-header-mobile .wp-block-button__link {
+  @apply flex justify-center;
+}
+
+.landing-footer {
+  @apply py-wp-40 md:py-wp-48;
+}
+
+.landing-footer .site-footer__heading {
+  @apply pb-0;
+}
+
+.landing-footer .site-footer__heading,
+.landing-footer-legal {
+  @apply uppercase;
+}
+
+.landing-footer .site-footer__logo img {
+  @apply max-w-full;
+}
+
+.landing-footer-details {
+  @apply gap-wp-32;
+}
+
+.landing-footer .landing-footer-legal {
+  @apply mt-wp-32 gap-wp-12 border-t border-landing-muted pt-wp-20;
+  @apply md:mt-wp-48 md:border-landing-ink;
+}
+
+.landing-footer-legal .wp-block-column {
+  @apply wp-columns-up:text-center;
+}
+
+.landing-footer-legal .wp-block-column:first-child {
+  @apply wp-columns-up:text-left;
+}
+
+.landing-footer-legal .wp-block-column:last-child {
+  @apply wp-columns-up:text-right;
+}
+
+.wp-block-template-part:has(> .landing-header) + main :is(#book-appointment, #landing-appointment-form) {
+  @apply scroll-mt-wp-96;
+}
+
+.admin-bar .wp-block-template-part:has(> .landing-header) + main :is(#book-appointment, #landing-appointment-form) {
+  @apply scroll-mt-wp-128;
+}
+
+.landing-footer a[href^="https://maps.app.goo.gl/"],
+.landing-footer a[href^="tel:"],
+.landing-footer-legal a[href="#"] {
+  @apply hover:underline focus-visible:underline;
+}
+
+.landing-footer .site-footer__privacy a {
+  @apply underline hover:text-primary focus-visible:text-primary max-desktop:font-body;
+}
+
+.landing-footer-legal a[href="#"] {
+  @apply font-button font-semibold leading-button;
+}
+
+.landing-pricing {
+  @apply py-wp-48 desktop:py-wp-128;
+}
+
+.landing-pricing > .is-style-container > * + * {
+  @apply mt-wp-32 desktop:mt-wp-64;
+}
+
+.landing-pricing .landing-pricing-intro {
+  @apply items-end gap-wp-12 desktop:gap-wp-48;
+}
+
+.landing-pricing .landing-pricing-card {
+  @apply flex h-full min-h-pricing-card min-w-0 flex-col border border-landing-pricing-rule p-wp-24 desktop:min-h-pricing-card-desktop desktop:p-wp-40;
+}
+
+.landing-pricing-card > * + * {
+  @apply mt-wp-12;
+}
+
+.landing-pricing-card > .wp-block-separator {
+  @apply w-full border-landing-pricing-rule;
+}
+
+.landing-pricing-card > .wp-block-list {
+  @apply list-none p-0;
+}
+
+.landing-pricing-card li {
+  @apply relative border-b border-primary py-wp-12 pl-wp-20 text-pricing-feature desktop:border-landing-pricing-rule;
+}
+
+.landing-pricing-card li::before {
+  @apply absolute left-0 text-primary;
+  content: "✦" / "";
+}
+
+.landing-pricing-card > .wp-block-buttons {
+  @apply mt-auto pt-wp-20 desktop:pt-wp-24;
+}
+
+.landing-pricing .landing-pricing-insurance {
+  @apply px-wp-24 py-wp-28 desktop:px-wp-48 desktop:py-wp-40;
+}
+
+.landing-pricing-insurance > .wp-block-columns {
+  @apply items-center gap-wp-20 desktop:gap-wp-48;
+}
+
+.landing-pricing-insurance .wp-block-column:last-child {
+  @apply desktop:grow-0 desktop:basis-auto;
+}
+
+.landing-pricing-insurance .wp-block-button,
+.landing-pricing-insurance .wp-block-button__link {
+  @apply w-full desktop:w-auto;
+}
+
+.landing-pricing .wp-block-button__link {
+  @apply max-w-full text-center desktop:justify-between;
+}
+
+.landing-pricing-insurance .is-style-primary > .wp-block-button__link {
+  @apply desktop:border-2 desktop:border-primary desktop:bg-transparent desktop:text-primary-hover;
+}
+
+.landing-pricing-card .wp-block-button__link::after {
+  @apply hidden desktop:inline;
+  content: "↗" / "";
+}
+
+.landing-pricing-insurance .wp-block-button__link::after {
+  @apply hidden desktop:inline;
+  content: "→" / "";
+}
+
+.landing-pricing :is(.landing-pricing-intro, .landing-pricing-insurance > .wp-block-columns) > .wp-block-column {
+  @apply desktop:self-end;
+}
+
+.landing-pricing .landing-pricing-card > * {
+  @apply w-full max-w-none text-left;
+}
+
+.landing-pricing-card .wp-block-button {
+  @apply w-full;
+}
+
+.landing-pricing-card .wp-block-button__link {
+  @apply flex w-full;
+}
+
+.landing-pricing :is(h2, h3) em {
+  @apply text-primary;
+}
+
+.landing-pricing .landing-pricing-insurance > .wp-block-columns > .wp-block-column {
+  @apply desktop:self-center;
+}
+
+.landing-pricing .landing-pricing-intro h2 {
+  @apply mt-wp-12 leading-pricing-headline;
+}
+
+.landing-pricing .landing-pricing-intro p:not(.is-style-eyebrow),
+.landing-pricing .landing-pricing-insurance p:not(.is-style-eyebrow) {
+  @apply leading-pricing-copy desktop:text-b-3;
+}
+
+.landing-pricing-card > p.has-primary-color:not(:first-child) {
+  @apply font-button text-pricing-note font-semibold;
+}
+
+.landing-pricing-card > p.has-pricing-amount-font-size {
+  @apply text-primary-shade-600 leading-pricing-amount;
+}
+
+.landing-pricing .landing-pricing-insurance h3 {
+  @apply mt-wp-8;
+}
+
+.landing-pricing .landing-pricing-insurance h3 + p {
+  @apply mt-wp-8;
+}
+
+.landing-pricing-insurance h3 em {
+  @apply max-desktop:block;
+}
+
+.landing-pricing-monthly .landing-pricing-mobile-inclusion {
+  @apply desktop:hidden;
+}
+
+
+.landing-pricing > .is-style-container {
+  @apply desktop:px-wp-24;
+}
+
+.landing-pricing .landing-pricing-monthly {
+  @apply max-desktop:min-h-pricing-monthly;
+}
+
+.landing-pricing-card > .wp-block-separator + .is-style-eyebrow {
+  @apply mt-wp-20;
+}
+
+.landing-pricing-card > .has-pricing-amount-font-size {
+  @apply mt-wp-4;
+}
+
+.landing-pricing-insurance .is-style-primary > .wp-block-button__link:is(:hover, :focus-visible) {
+  @apply border-primary-hover bg-primary-hover text-wp-white;
+}

@@ -86,10 +86,10 @@
   .site-footer,
   .why-oaks__inner,
   .services-section,
-  .practice-highlights,
+  :is(.practice-highlights, .landing-statistics),
   .meet-dentists,
-  .home-faqs,
-  .footer-cta,
+  :is(.home-faqs, .landing-faqs),
+  :is(.footer-cta, .landing-appointment-cta),
   .experience-section,
   .wp-block-white-oaks-patient-stories,
   .site-gutter
@@ -121,8 +121,13 @@
   @apply no-underline font-bold;
 }
 
-.footer-cta > .wp-block-cover__inner-container {
+:is(.footer-cta, .landing-appointment-cta) > .wp-block-cover__inner-container {
   @apply mx-auto w-full max-w-site-wide;
+}
+
+.wp-block-button__link,
+:where(button, input[type="submit"]) {
+  @apply transition-colors duration-200 ease-out motion-reduce:transition-none;
 }
 
 .wp-block-button__link {
@@ -137,13 +142,13 @@
   border-bottom: 1px solid currentColor;
 }
 
-.wp-block-template-part:has(> .site-header) {
+.wp-block-template-part:has(> :is(.site-header, .landing-header)) {
   @apply sticky top-0;
   isolation: isolate;
   z-index: 1000;
 }
 
-.admin-bar .wp-block-template-part:has(> .site-header) {
+.admin-bar .wp-block-template-part:has(> :is(.site-header, .landing-header)) {
   top: 32px;
 }
 
@@ -155,6 +160,9 @@
   .site-header__inner {
     column-gap: 29px;
     grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  :is(.site-header__inner, .landing-header-row) {
     padding-block: 15.5px;
   }
 
@@ -184,12 +192,14 @@
     @apply relative p-0;
   }
 
-  .site-header__nav .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+  .site-header__nav .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content::after,
+  .landing-header-desktop .site-header__nav a[href^="tel:"]::after {
     @apply absolute inset-x-0 -bottom-wp-8 h-px origin-left scale-x-0 bg-primary transition-transform duration-200;
     content: "";
   }
 
-  .site-header__nav .wp-block-navigation__container > .wp-block-navigation-item:is(:hover, :focus-within) > .wp-block-navigation-item__content::after {
+  .site-header__nav .wp-block-navigation__container > .wp-block-navigation-item:is(:hover, :focus-within) > .wp-block-navigation-item__content::after,
+  .landing-header-desktop .site-header__nav a[href^="tel:"]:is(:hover, :focus-visible)::after {
     @apply scale-x-100;
   }
 
@@ -234,6 +244,10 @@
     .site-header {
       background: var(--wp--preset--color--white);
       border-bottom: 1px solid var(--wp--preset--color--header-border);
+    }
+
+    .landing-header-row {
+      @apply py-wp-12;
     }
 
     .site-header__inner {
@@ -404,7 +418,7 @@
   }
 
   @variant wp-admin-bar-mobile {
-  .admin-bar .wp-block-template-part:has(> .site-header) {
+  .admin-bar .wp-block-template-part:has(> :is(.site-header, .landing-header)) {
     top: 46px;
   }
 }
@@ -485,29 +499,32 @@
   @apply inline-flex min-h-6 items-center;
 }
 
-.site-footer a {
+:is(.site-footer, .landing-footer) a {
   @apply no-underline;
   color: inherit;
 }
 
-.site-footer a:focus-visible {
+:is(.site-footer, .landing-footer) a:focus-visible {
   outline: 2px solid var(--wp--preset--color--primary);
   outline-offset: 4px;
 }
 
 .site-footer__legal {
   border-top: 1px solid var(--wp--preset--color--oak-orange-shade-900);
-  font-family: var(--wp--preset--font-family--button);
-  font-size: var(--wp--preset--font-size--b-6);
-  font-weight: var(--wp--custom--font-weight--footer-legal-desktop);
   grid-template-columns: repeat(3, 1fr);
-  letter-spacing: var(--wp--custom--letter-spacing--footer-legal-desktop);
-  line-height: var(--wp--custom--line-height--button);
   margin: var(--wp--custom--footer--legal-margin-top) auto 0;
   padding-top: var(--wp--custom--footer--legal-padding-top);
 }
 
-.site-footer__legal :where(p, a) {
+:is(.site-footer__legal, .landing-footer-legal) {
+  font-family: var(--wp--preset--font-family--button);
+  font-size: var(--wp--preset--font-size--b-6);
+  font-weight: var(--wp--custom--font-weight--footer-legal-desktop);
+  letter-spacing: var(--wp--custom--letter-spacing--footer-legal-desktop);
+  line-height: var(--wp--custom--line-height--button);
+}
+
+:is(.site-footer__legal, .landing-footer-legal) :where(p, a) {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -562,8 +579,8 @@
 
   .site-footer__links,
   .site-footer .site-footer__navigation,
-  .site-footer .site-footer__hours-copy,
-  .site-footer .site-footer__privacy {
+  :is(.site-footer, .landing-footer) .site-footer__hours-copy,
+  :is(.site-footer, .landing-footer) .site-footer__privacy {
     font-size: var(--wp--preset--font-size--footer-link-mobile);
     line-height: var(--wp--custom--line-height--footer-link-mobile);
   }
@@ -585,14 +602,17 @@
 
   .site-footer__legal {
     @apply max-w-none;
+    gap: var(--wp--preset--spacing--12);
+    margin-top: var(--wp--preset--spacing--32);
+    padding-top: var(--wp--custom--footer--legal-padding-top);
+  }
+
+  :is(.site-footer__legal, .landing-footer-legal) {
     font-family: var(--wp--preset--font-family--body);
     font-size: var(--wp--preset--font-size--footer-caption);
     font-weight: 400;
-    gap: var(--wp--preset--spacing--12);
     letter-spacing: var(--wp--custom--letter-spacing--footer-legal-mobile);
     line-height: normal;
-    margin-top: var(--wp--preset--spacing--32);
-    padding-top: var(--wp--custom--footer--legal-padding-top);
   }
 
   .site-footer__legal > :nth-child(2) {
