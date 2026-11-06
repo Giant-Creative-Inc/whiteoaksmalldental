@@ -1,0 +1,228 @@
+@reference "tailwindcss/theme.css";
+@reference "../tailwind-theme.css";
+
+@theme inline {
+  --spacing-comparison-section: var(--wp--custom--why-oaks--desktop-section-padding-block);
+}
+
+#invisalign-comparison .invisalign-comparison-label {
+  @apply hidden;
+}
+
+#invisalign-comparison h2,
+#invisalign-comparison .has-white-background-color h3 {
+  @apply font-normal;
+}
+
+#invisalign-comparison h2 em {
+  color: var(--wp--preset--color--primary);
+}
+
+@media (width < 1024px) {
+  #invisalign-comparison.is-style-section {
+    padding-block: 56px;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > * {
+    @apply m-0;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > * + * {
+    @apply mt-wp-12;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > h2 {
+    line-height: 1.125;
+    letter-spacing: -1.1px;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > p:last-child {
+    font-size: 17px !important;
+    line-height: 27px;
+  }
+
+  #invisalign-comparison .has-white-background-color {
+    @apply p-0 mt-wp-32;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack {
+    @apply m-0 px-wp-20 py-wp-24;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > * {
+    @apply m-0;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > * + * {
+    @apply mt-wp-12;
+  }
+
+  #invisalign-comparison .has-white-background-color .is-layout-flex {
+    @apply gap-wp-12 items-start;
+  }
+
+  #invisalign-comparison .has-white-background-color .is-layout-flex > figure {
+    @apply basis-auto;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child {
+    @apply py-wp-20;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child .is-layout-flex {
+    @apply mt-0 items-center;
+    column-gap: 10px;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child .is-layout-flex + .is-layout-flex {
+    margin-block-start: 10px;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child strong {
+    @apply font-bold;
+  }
+
+  #invisalign-comparison .has-white-background-color .is-layout-flex > p {
+    @apply font-normal;
+    font-size: 17px !important;
+    line-height: 25px;
+  }
+
+  #invisalign-comparison .has-white-background-color .is-layout-flex > .has-service-tabs-muted-text-color {
+    line-height: 22px;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > h3,
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child .is-layout-flex > p {
+    @apply font-bold uppercase;
+    font-family: var(--wp--preset--font-family--button);
+    font-size: 11px !important;
+    line-height: 18px;
+    letter-spacing: 1.5px;
+  }
+
+  #invisalign-comparison .has-white-background-color > hr {
+    @apply my-0;
+  }
+
+  #invisalign-comparison .has-white-background-color > hr:not(:nth-child(2)) {
+    @apply mx-wp-20;
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #invisalign-comparison.is-style-section {
+    @apply py-comparison-section;
+  }
+
+  #invisalign-comparison > .is-style-container {
+    @apply mx-auto w-full;
+    width: calc(100% - 2 * var(--wp--preset--spacing--24));
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack {
+    @apply grid items-end justify-items-stretch gap-x-wp-48 gap-y-wp-12 mb-wp-64;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 36.3%);
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > :is(h2, p) {
+    @apply m-0;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > h2 {
+    letter-spacing: var(--wp--custom--service-qa--hero-tracking);
+    line-height: 0.95;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack > p:last-child {
+    @apply col-start-2 row-start-1 row-span-2;
+    line-height: 1.65;
+  }
+
+  #invisalign-comparison .has-white-background-color {
+    @apply p-0;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack {
+    @apply grid gap-0 m-0 justify-items-stretch;
+    grid-template-columns: minmax(0, 4fr) repeat(2, minmax(0, 3fr));
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > * {
+    @apply m-0 px-wp-32 py-wp-24 min-w-0;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > h3 {
+    @apply self-center;
+    font-size: var(--wp--preset--font-size--b-3) !important;
+    letter-spacing: normal;
+    line-height: 30px;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > .wp-block-group {
+    @apply block;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > :nth-child(2) {
+    background: var(--wp--preset--color--primary-tint-900);
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > :nth-child(2) p {
+    @apply font-bold;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > .wp-block-group p {
+    @apply m-0;
+    color: var(--wp--preset--color--primary-shade-600) !important;
+    font-size: var(--wp--preset--font-size--b-4) !important;
+    line-height: 30px;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child {
+    @apply items-stretch;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child > :nth-child(2) {
+    background: var(--wp--preset--color--primary);
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child > :nth-child(2) p {
+    color: var(--wp--preset--color--white) !important;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child p {
+    @apply block uppercase font-bold;
+    line-height: 18px;
+    font-family: var(--wp--preset--font-family--button);
+    font-size: var(--wp--preset--font-size--b-6) !important;
+    letter-spacing: var(--wp--custom--landing-hero--eyebrow-tracking);
+  }
+
+  #invisalign-comparison .has-white-background-color figure {
+    @apply sr-only;
+  }
+
+  #invisalign-comparison .has-white-background-color > hr {
+    @apply m-0;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack:first-child figure {
+    @apply hidden;
+  }
+}
+
+@media (1024px <= width < 1200px) {
+  #invisalign-comparison.is-style-section {
+    @apply py-wp-80;
+  }
+
+  #invisalign-comparison > .is-style-container > .is-style-content-stack {
+    @apply mb-wp-48 gap-x-wp-24;
+    grid-template-rows: 1fr auto;
+  }
+
+  #invisalign-comparison .has-white-background-color > .is-style-content-stack > * {
+    @apply px-wp-20;
+  }
+}
