@@ -632,31 +632,31 @@
   @apply text-primary-shade-600;
 }
 
-#wisdom-teeth-faqs .wisdom-faq-break {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .wisdom-faq-break {
   @apply max-desktop:hidden;
 }
 
-#wisdom-teeth-faqs .landing-faqs__item {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item {
   @apply m-0;
 }
 
-#wisdom-teeth-faqs .landing-faqs__item summary {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item summary {
   @apply max-desktop:py-wp-16 desktop:items-start desktop:pt-wp-28 desktop:pb-wp-8;
 }
 
-#wisdom-teeth-faqs .landing-faqs__item:not([open]) summary {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item:not([open]) summary {
   @apply desktop:pb-wp-28;
 }
 
-#wisdom-teeth-faqs .landing-faqs__item summary strong {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item summary strong {
   @apply desktop:size-wp-40;
 }
 
-#wisdom-teeth-faqs .landing-faqs__item[open] summary strong {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item[open] summary strong {
   @apply max-desktop:rotate-0;
 }
 
-#wisdom-teeth-faqs .landing-faqs__answer {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__answer {
   @apply desktop:pb-wp-20;
 }
 
@@ -685,15 +685,15 @@
   @apply max-w-none object-fill w-landing-background-width h-landing-background-height left-landing-background-left top-landing-background-top;
 }
 
-#wisdom-teeth-faqs .landing-faqs__heading {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__heading {
   @apply desktop:text-wisdom-faq-heading;
 }
 
-#wisdom-teeth-faqs .landing-faqs__copy {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__copy {
   @apply mt-0;
 }
 
-#wisdom-teeth-faqs .landing-faqs__copy a {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__copy a {
   @apply inline-block whitespace-nowrap;
 }
 
@@ -717,11 +717,11 @@
   @apply mt-wp-4 font-body font-normal text-wisdom-card-copy-mobile text-landing-muted desktop:mt-wp-8 desktop:font-button desktop:text-b-6 desktop:leading-wisdom-card-copy-desktop desktop:text-primary-shade-600;
 }
 
-#wisdom-teeth-faqs .landing-faqs__inner {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__inner {
   @apply max-md:gap-wp-24;
 }
 
-#wisdom-teeth-faqs .landing-faqs__list {
+:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__list {
   @apply m-0;
 }
 
