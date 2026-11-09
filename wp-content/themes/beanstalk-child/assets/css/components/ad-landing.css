@@ -18,10 +18,56 @@
   --color-landing-header: var(--wp--preset--color--header-border);
   --color-landing-tint: var(--wp--preset--color--primary-tint-900);
   --color-landing-muted: var(--wp--preset--color--service-tabs-muted-text);
+  --spacing-landing-background-width: var(--wp--custom--landing-hero--background-width);
+  --spacing-landing-background-height: var(--wp--custom--landing-hero--background-height);
+  --spacing-landing-background-left: var(--wp--custom--landing-hero--background-left);
+  --spacing-landing-background-top: var(--wp--custom--landing-hero--background-top);
+  --leading-wisdom-feature: 22px;
+  --leading-wisdom-benefit-title: 20px;
+  --spacing-wisdom-signs-heading: 68px;
+  --text-wisdom-benefit-heading: 21px;
+  --leading-wisdom-benefit-heading: 31.5px;
+  --text-wisdom-card-number-desktop: 13px;
+  --leading-wisdom-card-number-desktop: 19.5px;
+  --text-wisdom-card-copy-mobile: 13px;
+  --text-wisdom-card-copy-mobile--line-height: 18px;
+  --leading-wisdom-card-copy-desktop: 20.4px;
+  --tracking-wisdom-eyebrow: 2.64px;
+  --tracking-wisdom-heading-mobile: -1px;
+  --tracking-wisdom-heading-desktop: -3.37px;
+  --container-wisdom-lead: 539px;
+  --container-wisdom-note: 343px;
+  --leading-wisdom-sedation: normal;
+  --text-sedation-card-title: 24px;
+  --leading-sedation-card-title: 33px;
+  --leading-sedation-card-copy: 19px;
+  --spacing-sedation-feature-indent: 23px;
+  --tracking-sedation-card-link: 1px;
+  --text-wisdom-faq-heading: var(--wp--preset--font-size--service-faq-heading);
   --text-pricing-note: 13px;
   --text-pricing-note--line-height: 20px;
+  --tracking-pricing-label: 2.64px;
+  --tracking-pricing-note: 0.48px;
+  --tracking-pricing-amount: -2px;
   --text-pricing-feature: 15px;
   --text-pricing-feature--line-height: 22px;
+  --text-wisdom-price-tier: 22px;
+  --leading-wisdom-price-tier: 33px;
+  --text-wisdom-price-unit: 36px;
+  --text-wisdom-price-mobile: 44px;
+  --text-wisdom-price-desktop: 56px;
+  --leading-wisdom-pricing-intro-desktop: 29.7px;
+  --spacing-wisdom-pricing-heading-mobile: 70px;
+  --spacing-wisdom-pricing-heading-desktop: 153px;
+  --spacing-wisdom-pricing-card-mobile: 662px;
+  --spacing-wisdom-pricing-featured-mobile: 710px;
+  --spacing-wisdom-pricing-card-desktop: 668px;
+  --spacing-wisdom-pricing-featured-desktop: 672px;
+  --spacing-wisdom-insurance-desktop: 218px;
+  --spacing-wisdom-insurance-button: 328px;
+  --leading-wisdom-insurance-heading-mobile: 28px;
+  --leading-wisdom-insurance-heading-desktop: 40px;
+  --tracking-wisdom-insurance-heading-mobile: -0.5px;
   --spacing-pricing-card: 720px;
   --spacing-pricing-monthly: 766px;
   --spacing-pricing-card-desktop: 746px;
@@ -95,7 +141,9 @@
 }
 
 .landing-statistics .landing-statistics__grid {
-  @apply max-desktop:px-wp-24;
+  @media (width <= 1280px) {
+    @apply px-wp-24;
+  }
 }
 
 .landing-pricing-monthly .landing-pricing-amount-mobile {
@@ -190,17 +238,23 @@
   @apply w-full border-landing-pricing-rule;
 }
 
-.landing-pricing-card > .wp-block-list {
+.landing-pricing-card > .wp-block-list,
+.landing-feature-list.wp-block-list {
   @apply list-none p-0;
 }
 
-.landing-pricing-card li {
-  @apply relative border-b border-primary py-wp-12 pl-wp-20 text-pricing-feature desktop:border-landing-pricing-rule;
+.landing-pricing-card li,
+.landing-feature-list li {
+  @apply relative border-b border-primary py-wp-12 pl-wp-20 desktop:border-landing-pricing-rule;
+}
+
+.landing-pricing-card li,
+.landing-feature-list:not(.wisdom-teeth-removal-signs) li {
+  @apply text-pricing-feature;
 }
 
 .landing-pricing-card li::before,
-.sedation-options-card li::before,
-.wisdom-teeth-removal-signs li::before {
+.landing-feature-list li::before {
   @apply absolute left-0 text-primary;
   content: "✦" / "";
 }
@@ -281,6 +335,26 @@
   @apply font-button text-pricing-note font-semibold;
 }
 
+.landing-price-stack {
+  @apply border-x-0 border-y border-solid border-landing-pricing-rule py-wp-24;
+}
+
+.landing-price-stack .landing-price-label {
+  @apply font-button font-bold leading-button tracking-pricing-label uppercase;
+}
+
+.landing-price-stack .has-pricing-amount-font-size {
+  @apply leading-pricing-amount tracking-pricing-amount;
+}
+
+.landing-price-stack .landing-price-note {
+  @apply font-button text-pricing-note font-semibold tracking-pricing-note;
+}
+
+#invisalign-pricing .landing-pricing-insurance .is-style-primary > .wp-block-button__link:not(:hover, :focus-visible) {
+  @apply desktop:text-primary;
+}
+
 .landing-pricing-card > p.has-pricing-amount-font-size {
   @apply text-primary-shade-600 leading-pricing-amount;
 }
@@ -347,18 +421,18 @@
 }
 
 .wisdom-teeth-pricing .wisdom-teeth-pricing-featured li {
-  @apply border-wp-white/25 before:text-wp-white;
+  @apply border-wp-white/25;
 }
 
 .wisdom-teeth-pricing .wisdom-teeth-pricing-featured .wp-block-separator {
-  @apply border-wp-white/25 bg-wp-white/25;
+  @apply border-0 border-t border-solid border-wp-white/25 bg-transparent;
 }
 
 .wisdom-teeth-pricing .landing-pricing-card .wp-block-button__link {
   @apply justify-center gap-wp-8 desktop:justify-between;
 }
 
-.sedation-options {
+.landing-section-spacing {
   @apply py-wp-48 desktop:py-wp-120;
 }
 
@@ -375,7 +449,7 @@
 }
 
 .sedation-options .sedation-options-card {
-  @apply flex h-full flex-col overflow-hidden border border-landing-tint;
+  @apply flex h-full flex-col overflow-hidden ring-1 ring-inset ring-landing-tint;
 }
 
 .sedation-options-card .wp-block-image,
@@ -391,24 +465,12 @@
   @apply m-0;
 }
 
-.sedation-options-card .wp-block-list {
-  @apply list-none p-0;
-}
-
-.sedation-options-card li {
-  @apply relative border-b border-primary py-wp-12 pl-wp-20 text-pricing-feature desktop:border-landing-pricing-rule;
-}
-
 .sedation-options-card .sedation-options-card-link {
   @apply mt-auto pt-wp-8 font-button font-bold uppercase text-primary;
 }
 
 .sedation-options-card-link a {
   @apply text-inherit no-underline hover:underline focus-visible:underline;
-}
-
-.wisdom-teeth-removal {
-  @apply py-wp-48 desktop:py-wp-120;
 }
 
 .wisdom-teeth-removal > .wp-block-group > * + * {
@@ -423,12 +485,8 @@
   @apply items-center gap-wp-32 desktop:gap-wp-80;
 }
 
-.wisdom-teeth-removal .wisdom-teeth-removal-signs {
-  @apply list-none p-0;
-}
-
 .wisdom-teeth-removal-signs li {
-  @apply relative m-0 border-b border-primary py-wp-12 pl-wp-20 desktop:border-landing-pricing-rule;
+  @apply m-0 leading-wisdom-feature max-md:text-pricing-feature;
 }
 
 .wisdom-teeth-removal-signs > li:nth-child(n+6) {
@@ -513,4 +571,344 @@
 
 .wisdom-teeth-removal-photo img {
   @apply aspect-327/240 w-full object-cover;
+}
+
+/* Responsive refinements for the Wisdom Teeth landing page. */
+.ad-landing-main:has(.wisdom-teeth-removal) :is(.sedation-options-header, .wisdom-teeth-removal-intro, .landing-pricing-intro) h2 {
+  @apply leading-pricing-headline;
+}
+
+.sedation-options-card-content > p:not(.sedation-options-card-link) {
+  @apply font-body font-normal tracking-normal leading-sedation-card-copy;
+}
+
+.wisdom-teeth-removal-card > h4 {
+  @apply mt-wp-12 font-heading font-normal tracking-normal text-b-4 leading-wisdom-benefit-title desktop:text-wisdom-benefit-heading desktop:leading-wisdom-benefit-heading desktop:font-bold;
+}
+
+.wisdom-teeth-removal .wisdom-signs-desktop,
+.wisdom-teeth-pricing .wisdom-pricing-break {
+  @apply max-desktop:hidden;
+}
+
+.wisdom-teeth-removal .wisdom-signs-mobile {
+  @apply desktop:hidden;
+}
+
+.wisdom-teeth-removal .wisdom-signs-mobile + .wp-block-list {
+  @apply desktop:mt-wp-24;
+}
+
+.wisdom-teeth-removal .wisdom-removal-break {
+  @apply max-desktop:hidden;
+}
+
+.wisdom-teeth-pricing .wisdom-price-unit {
+  @apply whitespace-nowrap desktop:text-wisdom-price-unit desktop:opacity-75;
+}
+
+.wisdom-teeth-pricing .wisdom-pricing-amount {
+  @apply mt-wp-4 font-body text-wisdom-price-mobile font-normal leading-pricing-amount tracking-pricing-amount desktop:text-wisdom-price-desktop;
+}
+
+.wisdom-teeth-pricing .wisdom-teeth-pricing-featured .is-style-eyebrow {
+  @apply text-wp-white;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) .landing-faqs__phone {
+  @apply desktop:hidden;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) .landing-faqs__phone :is(.wp-block-button, .wp-block-button__link),
+.wisdom-teeth-removal-row .wp-block-buttons :is(.wp-block-button, .wp-block-button__link) {
+  @apply max-desktop:w-full;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) .landing-appointment-cta__heading em {
+  @apply max-desktop:not-italic;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) .landing-hero .landing-hero__eyebrow.is-style-eyebrow {
+  @apply text-primary-shade-600;
+}
+
+#wisdom-teeth-faqs .wisdom-faq-break {
+  @apply max-desktop:hidden;
+}
+
+#wisdom-teeth-faqs .landing-faqs__item {
+  @apply m-0;
+}
+
+#wisdom-teeth-faqs .landing-faqs__item summary {
+  @apply max-desktop:py-wp-16 desktop:items-start desktop:pt-wp-28 desktop:pb-wp-8;
+}
+
+#wisdom-teeth-faqs .landing-faqs__item:not([open]) summary {
+  @apply desktop:pb-wp-28;
+}
+
+#wisdom-teeth-faqs .landing-faqs__item summary strong {
+  @apply desktop:size-wp-40;
+}
+
+#wisdom-teeth-faqs .landing-faqs__item[open] summary strong {
+  @apply max-desktop:rotate-0;
+}
+
+#wisdom-teeth-faqs .landing-faqs__answer {
+  @apply desktop:pb-wp-20;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) :is(.sedation-options, .wisdom-teeth-removal, .wisdom-teeth-pricing) > .landing-container-wide {
+  @apply landing-gutters:px-0;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) #gform_3 input[type="tel"] {
+  @apply placeholder:text-transparent;
+}
+
+.sedation-options-header .is-style-primary > .wp-block-button__link,
+.wisdom-teeth-removal-row .is-style-primary > .wp-block-button__link {
+  @apply flex items-center justify-between gap-wp-32 px-wp-24 font-normal;
+}
+
+.sedation-options-card-link .button-arrow-icon {
+  @apply ml-wp-4;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) .patient-stories__review-summary {
+  @apply desktop:uppercase;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) #appointment-cta > .wp-block-cover__image-background {
+  @apply max-w-none object-fill w-landing-background-width h-landing-background-height left-landing-background-left top-landing-background-top;
+}
+
+#wisdom-teeth-faqs .landing-faqs__heading {
+  @apply desktop:text-wisdom-faq-heading;
+}
+
+#wisdom-teeth-faqs .landing-faqs__copy {
+  @apply mt-0;
+}
+
+#wisdom-teeth-faqs .landing-faqs__copy a {
+  @apply inline-block whitespace-nowrap;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) :is(.landing-hero__container.is-style-container, #appointment-cta.landing-appointment-cta, #wisdom-teeth-faqs) {
+  @apply max-md:px-wp-24;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) :is(.sedation-options, .wisdom-teeth-removal, .wisdom-teeth-pricing) > .landing-container-wide {
+  @apply max-md:px-wp-24;
+}
+
+.wisdom-teeth-removal-intro .wp-block-group > h2 {
+  @apply max-md:mt-wp-12;
+}
+
+.wisdom-teeth-removal-row > .wp-block-column:last-child > .wp-block-group > :is(.wp-block-list, p, .wp-block-buttons) {
+  @apply mt-wp-16;
+}
+
+.wisdom-teeth-removal-card > p:last-child {
+  @apply mt-wp-4 font-body font-normal text-wisdom-card-copy-mobile text-landing-muted desktop:mt-wp-8 desktop:font-button desktop:text-b-6 desktop:leading-wisdom-card-copy-desktop desktop:text-primary-shade-600;
+}
+
+#wisdom-teeth-faqs .landing-faqs__inner {
+  @apply max-md:gap-wp-24;
+}
+
+#wisdom-teeth-faqs .landing-faqs__list {
+  @apply m-0;
+}
+
+.ad-landing-main:has(.wisdom-teeth-removal) #patient-testimonials .wp-block-white-oaks-patient-stories {
+  @apply max-md:px-wp-16;
+}
+
+.wisdom-teeth-removal-intro .wisdom-removal-lead {
+  @apply font-body font-normal text-b-4 leading-pricing-copy desktop:ml-auto desktop:max-w-wisdom-lead desktop:text-b-3 desktop:leading-b-3;
+}
+
+.wisdom-teeth-removal-intro .wp-block-group > h2 {
+  @apply max-md:pb-0.5;
+}
+
+.wisdom-teeth-removal .wisdom-signs-mobile {
+  @apply max-md:mt-0 max-md:min-h-wisdom-signs-heading;
+}
+
+.wisdom-teeth-removal-row > .wp-block-column:last-child > .wp-block-group > p {
+  @apply font-body font-normal leading-pricing-copy opacity-75 desktop:max-w-wisdom-note;
+}
+
+.wisdom-teeth-removal-row > .wp-block-column:last-child > .wp-block-group > .wp-block-buttons {
+  @apply max-md:pt-wp-16;
+}
+
+.wisdom-teeth-removal-benefits .wp-block-columns {
+  @apply max-md:mb-0;
+}
+
+.wisdom-teeth-removal-card > p:first-child {
+  @apply font-body font-normal text-b-3 leading-wisdom-feature text-primary desktop:text-wisdom-card-number-desktop desktop:leading-wisdom-card-number-desktop desktop:italic;
+}
+
+.wisdom-teeth-removal-row .wisdom-note-break {
+  @apply md:hidden;
+}
+
+.wisdom-teeth-removal-intro .is-style-eyebrow {
+  @apply font-button text-b-6 font-bold leading-button tracking-wisdom-eyebrow text-primary;
+}
+
+.wisdom-teeth-removal-intro h2 {
+  @apply font-heading font-normal tracking-wisdom-heading-mobile desktop:tracking-wisdom-heading-desktop;
+}
+
+.wisdom-teeth-removal :is(.wisdom-signs-mobile, .wisdom-signs-desktop, .wisdom-teeth-removal-benefits > h3) {
+  @apply font-heading font-normal tracking-normal;
+}
+
+.wisdom-teeth-removal-row .is-style-primary > .wp-block-button__link {
+  @apply gap-wp-8 font-button text-landing-header-action font-normal tracking-landing-header-action desktop:w-landing-header-booking;
+}
+
+.wisdom-teeth-removal-row .is-style-primary > .wp-block-button__link > span {
+  @apply font-normal;
+}
+
+.wisdom-teeth-pricing .landing-pricing-intro h2 {
+  @apply min-h-wisdom-pricing-heading-mobile font-heading font-normal tracking-wisdom-heading-mobile desktop:min-h-wisdom-pricing-heading-desktop desktop:tracking-wisdom-heading-desktop;
+}
+
+.wisdom-teeth-pricing .landing-pricing-intro p:not(.is-style-eyebrow) {
+  @apply font-body text-b-4 font-normal desktop:ml-auto desktop:max-w-wisdom-lead desktop:text-b-3 desktop:leading-wisdom-pricing-intro-desktop;
+}
+
+.wisdom-teeth-pricing .is-style-eyebrow {
+  @apply font-button text-b-6 font-bold leading-button tracking-pricing-label;
+}
+
+.wisdom-teeth-pricing .landing-pricing-intro .is-style-eyebrow {
+  @apply text-primary;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card > .is-style-eyebrow {
+  @apply mt-wp-24 text-current;
+}
+
+.wisdom-teeth-pricing .landing-pricing-intro + .wp-block-columns {
+  @apply mb-0 max-desktop:gap-wp-24 desktop:mt-wp-32;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card {
+  @apply max-md:min-h-wisdom-pricing-card-mobile desktop:min-h-wisdom-pricing-card-desktop;
+}
+
+.wisdom-teeth-pricing .wisdom-teeth-pricing-featured .landing-pricing-card {
+  @apply max-md:min-h-wisdom-pricing-featured-mobile desktop:min-h-wisdom-pricing-featured-desktop;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card > p:first-child {
+  @apply font-body text-wisdom-price-tier font-normal italic leading-wisdom-price-tier;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card:not(.wisdom-teeth-pricing-featured *) > p:first-child {
+  @apply text-primary;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card h3 {
+  @apply font-heading font-normal tracking-normal;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card h3 + p {
+  @apply font-body font-normal leading-pricing-copy;
+}
+
+.wisdom-teeth-pricing .wisdom-pricing-mobile-break {
+  @apply desktop:hidden;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card > :is(.wp-block-separator, .wp-block-list) {
+  @apply mt-wp-20 desktop:mt-wp-24;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card > .wisdom-pricing-amount + .wp-block-separator {
+  @apply mt-wp-24;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card li {
+  @apply font-body font-normal border-primary;
+}
+
+.wisdom-teeth-pricing-featured > .wp-block-group:first-child p {
+  @apply text-b-6 leading-tight tracking-pricing-label;
+}
+
+.wisdom-teeth-pricing .landing-pricing-insurance .is-style-eyebrow {
+  @apply text-primary-shade-300;
+}
+
+.wisdom-teeth-pricing .landing-pricing-insurance h3 {
+  @apply mt-2.5 font-heading font-normal leading-wisdom-insurance-heading-mobile tracking-wisdom-insurance-heading-mobile desktop:leading-wisdom-insurance-heading-desktop desktop:tracking-wisdom-heading-mobile;
+}
+
+.wisdom-teeth-pricing .landing-pricing-insurance h3 + p {
+  @apply mt-2.5 font-body font-normal desktop:leading-wisdom-pricing-intro-desktop;
+}
+
+.wisdom-teeth-pricing .wp-block-button__link {
+  @apply font-button text-landing-header-action font-normal tracking-landing-header-action;
+}
+
+.wisdom-teeth-pricing-featured .landing-pricing-card .wp-block-button__link {
+  @apply text-primary;
+}
+
+.wisdom-teeth-pricing .landing-pricing-insurance .wp-block-button__link {
+  @apply desktop:w-wisdom-insurance-button desktop:justify-between desktop:text-primary;
+}
+
+.wisdom-teeth-pricing .landing-pricing-card:not(.wisdom-teeth-pricing-featured *) {
+  @apply border-0;
+}
+
+.wisdom-teeth-pricing .wisdom-teeth-pricing-featured li::before {
+  @apply text-wp-white;
+}
+
+.wisdom-teeth-pricing .landing-pricing-insurance {
+  @apply desktop:flex desktop:min-h-wisdom-insurance-desktop desktop:items-center;
+}
+
+.wisdom-teeth-pricing .wisdom-teeth-pricing-featured .landing-pricing-card li {
+  @apply border-wp-white/25;
+}
+
+.sedation-options-header .is-style-eyebrow {
+  @apply font-button text-b-6 font-bold leading-button tracking-wisdom-eyebrow text-primary desktop:text-b-5 desktop:font-normal;
+}
+
+.sedation-options-header h2 {
+  @apply mt-wp-12 max-md:min-h-wisdom-pricing-heading-mobile font-heading font-normal tracking-wisdom-heading-mobile desktop:mt-wp-28 desktop:tracking-wisdom-heading-desktop;
+}
+
+.sedation-options-card-content h3 {
+  @apply font-heading text-sedation-card-title font-normal leading-sedation-card-title tracking-normal;
+}
+
+.sedation-options-card .landing-feature-list li {
+  @apply pl-sedation-feature-indent font-body font-normal tracking-normal;
+}
+
+.sedation-options-card .sedation-options-card-link {
+  @apply leading-wisdom-sedation tracking-sedation-card-link;
+}
+
+.sedation-options-header .is-style-primary > .wp-block-button__link {
+  @apply font-button text-landing-header-action font-normal tracking-landing-header-action;
 }
