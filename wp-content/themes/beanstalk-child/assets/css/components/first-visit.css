@@ -141,9 +141,9 @@
 /* Invisalign landing page. The existing slider controls sit inside the
    desktop card and below the card on smaller screens. */
 #first-visit.landing-first-visit > .wp-block-group {
-  @apply relative mx-auto w-full max-w-[calc(100%-var(--wp--preset--spacing--8))];
-  @variant desktop {
-    @apply max-w-[1224px];
+  @apply relative mx-auto w-full;
+  @media (width <= 1280px) {
+    @apply max-w-[calc(100%-var(--wp--preset--spacing--8))] desktop:max-w-[1224px];
   }
 }
 

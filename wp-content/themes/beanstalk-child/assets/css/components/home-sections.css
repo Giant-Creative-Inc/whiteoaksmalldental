@@ -255,7 +255,7 @@
 }
 
 #invisalign-faqs .landing-faqs__inner {
-  @apply mx-auto w-full max-w-site-wide gap-wp-24;
+  @apply mx-auto w-full gap-wp-24;
 }
 
 #invisalign-faqs .landing-faqs__heading {
@@ -360,10 +360,6 @@
   @apply px-site-gutter py-wp-24;
 }
 
-#appointment-cta .wp-block-cover__inner-container {
-  @apply mx-auto max-w-site-wide;
-}
-
 #appointment-cta .landing-appointment-cta__content {
   @apply max-w-none gap-wp-20;
 }
@@ -428,7 +424,7 @@
 }
 
 #patient-testimonials .patient-stories__inner {
-  @apply w-full max-w-site-wide;
+  @apply w-full;
 }
 
 #patient-testimonials .patient-stories__eyebrow strong {
