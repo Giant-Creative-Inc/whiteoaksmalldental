@@ -402,8 +402,8 @@
   }
 
   @variant max-tablet {
-    .site-header__logo,
-    .site-header__logo img {
+    .site-header__logo:not(:where(.landing-header .site-header__logo)),
+    .site-header__logo:not(:where(.landing-header .site-header__logo)) img {
       @apply h-auto! w-wp-96! max-w-wp-96!;
     }
 
