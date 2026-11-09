@@ -249,6 +249,10 @@
       "serviceAbout": {"headingDesktopWidth": "570.004px", "headingMeasures": {"regular": "632px", "restoration": "648px", "standard": "666px", "veneers": "678px", "filling": "691px", "wide": "708px"}, "imageDesktopHeight": "734px", "imageMobileHeight": "240px", "imageScale": "111%", "imageOrigin": "50% 90%", "bondingPosition": "86.9062% 50%", "denturesPosition": "27.9134% 50%", "pediatricPosition": "63.8339% 50%", "scalingPosition": "61.5899% 50%", "fillingPosition": "34.05399% 50%", "whiteningPosition": "69.2976% 50%", "orthodonticsScale": "101.09%", "orthodonticsMobileScale": "192.96%", "orthodonticsMobileOrigin": "48.2143% 34.3%", "columns": "42.0350877193% minmax(0, 1fr)", "headingMobileSize": "32px", "headingMobileLineHeight": "36px", "copyMobileLineHeight": "22px", "eyebrowTracking": "2.64px", "eyebrowMobileTracking": "2.5px", "headingTracking": "-0.045em"},
       "relatedServices": {"imageHeight": "260px", "copyLineHeight": "normal", "linkTracking": "1px", "eyebrowTracking": "2.64px"},
       "footerServices": {"titleDesktop": "33.84px", "titleMobile": "26px", "categoryDesktop": "18.72px", "categoryMobile": "17px", "categoryLeading": "1.25", "titleTracking": "-0.025em", "categoryTracking": "-0.015em", "linkLeading": "17.4px"},
+      "landingGutters": {
+        "wide": "max(clamp(var(--wp--preset--spacing--24), calc(15vw - 168px), var(--wp--preset--spacing--48)), calc((100vw - 1344px) / 2))",
+        "narrow": "max(clamp(var(--wp--preset--spacing--24), calc(47.5vw - 584px), 100px), calc((100vw - 1240px) / 2))"
+      },
       "layout": {
         "gutter": "max(clamp(20px, calc(100vw - 747px), 24px), calc((100vw - var(--wp--style--global--wide-size)) / 2))",
         "contentWidth": "1224px"

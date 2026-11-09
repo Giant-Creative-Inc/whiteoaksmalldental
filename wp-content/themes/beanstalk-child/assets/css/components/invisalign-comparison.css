@@ -118,7 +118,6 @@
 
   #invisalign-comparison > .is-style-container {
     @apply mx-auto w-full;
-    width: calc(100% - 2 * var(--wp--preset--spacing--24));
   }
 
   #invisalign-comparison > .is-style-container > .is-style-content-stack {
