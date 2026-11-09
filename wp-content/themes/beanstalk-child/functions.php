@@ -18,6 +18,7 @@ function beanstalk_child_asset_version( $relative_path ) {
 require_once get_stylesheet_directory() . '/inc/assets.php';
 require_once get_stylesheet_directory() . '/inc/landing-review-rating.php';
 require_once get_stylesheet_directory() . '/inc/landing-containers.php';
+require_once get_stylesheet_directory() . '/inc/emergency-landing.php';
 
 require_once get_stylesheet_directory() . '/inc/gravity-forms-attribution.php';
 require_once get_stylesheet_directory() . '/inc/llms-txt.php';
