@@ -26,3 +26,12 @@ if (formPanel) {
     observer.observe(formPanel);
   });
 }
+
+if (formPanel?.closest('.ad-landing-main')?.querySelector('.wisdom-teeth-removal')) {
+  formPanel.addEventListener('focusout', (event) => {
+    const field = event.target;
+    if (field.matches('#gform_3 input[type="tel"]') && !/\d/.test(field.value)) {
+      field.value = '';
+    }
+  });
+}

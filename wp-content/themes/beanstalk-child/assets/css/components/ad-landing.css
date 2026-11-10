@@ -656,8 +656,12 @@
   @apply landing-gutters:px-0;
 }
 
-.ad-landing-main:has(.wisdom-teeth-removal) #gform_3 input[type="tel"] {
-  @apply placeholder:text-transparent;
+.ad-landing-main :is(#gform_wrapper_2, #gform_wrapper_3) .gform_required_legend {
+  @apply hidden;
+}
+
+.ad-landing-main :is(#gform_2, #gform_3) .gfield_required {
+  @apply not-sr-only m-0 p-0 font-bold text-primary-shade-600;
 }
 
 .sedation-options-header .is-style-primary > .wp-block-button__link,
