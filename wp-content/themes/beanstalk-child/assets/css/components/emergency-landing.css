@@ -391,11 +391,15 @@ body:has(#emergency-hero) .landing-header-desktop .site-header__cta .wp-block-bu
 }
 
 #view-hours.emergency-location .click-to-load-map__actions {
-  @apply invisible;
+  @apply visible pointer-events-none z-10;
 }
 
-#view-hours.emergency-location .location-info__map:is(:hover, :focus-within) .click-to-load-map__actions {
-  @apply visible;
+#view-hours.emergency-location :is(.is-loading, .is-loaded) .click-to-load-map__actions {
+  @apply flex justify-start pt-wp-16 desktop:items-start desktop:justify-center;
+}
+
+#view-hours.emergency-location :is(.is-loading, .is-loaded) .click-to-load-map__actions > .is-style-primary {
+  @apply hidden;
 }
 
 #view-hours.emergency-location .location-info__hours {
