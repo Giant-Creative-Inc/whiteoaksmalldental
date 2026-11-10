@@ -6,6 +6,7 @@
 @custom-variant landing-gutters (@media (width > 1280px));
 
 @theme inline {
+  --text-b-2: var(--wp--preset--font-size--b-2);
   --spacing-landing-wide-inset: var(--wp--custom--landing-gutters--wide);
   --container-landing-wide: min(100%, calc(100vw - 2 * var(--wp--custom--landing-gutters--wide)));
   --container-landing-narrow: min(100%, calc(100vw - 2 * var(--wp--custom--landing-gutters--narrow)));
@@ -550,7 +551,7 @@
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__fraction {
-  @apply my-0 ml-wp-16 p-0 text-b-3 text-wp-white text-shadow-sm text-shadow-wp-black/80;
+  @apply my-0 ml-wp-16 p-0 text-b-3 text-wp-white text-shadow-sm text-shadow-wp-black/80 max-tablet:text-b-2;
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__fraction-separator {
@@ -563,6 +564,10 @@
 
 .wisdom-teeth-removal-gallery .clinic-gallery__control .wp-block-button__link {
   @apply size-wp-48 min-h-0 bg-wp-white p-0;
+}
+
+.wisdom-teeth-removal-gallery .clinic-gallery__control.wp-block-button__link {
+  @apply max-tablet:size-wp-64 max-tablet:min-w-wp-64 max-tablet:text-b-2;
 }
 
 .wisdom-teeth-removal .wisdom-teeth-removal-photo {
