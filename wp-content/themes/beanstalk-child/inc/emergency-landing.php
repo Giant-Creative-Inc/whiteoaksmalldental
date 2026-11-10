@@ -9,7 +9,7 @@ add_filter(
 	'beanstalk_child_component_assets',
 	static function ( $assets ) {
 		$assets['emergency-landing'] = array(
-			'markers'     => array( 'emergency-call-bar' ),
+			'markers'     => array( 'emergency-call-bar', 'emergency-location' ),
 			'style'       => 'assets/css/build/components/emergency-landing.min.css',
 			'script'      => 'assets/js/emergency-landing.js',
 			'script_args' => array( 'in_footer' => true, 'strategy' => 'defer' ),
