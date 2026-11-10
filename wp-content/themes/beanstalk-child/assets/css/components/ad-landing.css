@@ -534,7 +534,7 @@
 }
 
 .wisdom-teeth-removal .wisdom-teeth-removal-gallery {
-  @apply hidden bg-transparent p-0 desktop:block;
+  @apply bg-transparent p-0;
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__slider {
@@ -542,7 +542,7 @@
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__slides {
-  @apply aspect-632/661;
+  @apply aspect-327/240 desktop:aspect-632/661;
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__controls {
@@ -566,11 +566,7 @@
 }
 
 .wisdom-teeth-removal .wisdom-teeth-removal-photo {
-  @apply m-0 desktop:hidden;
-}
-
-.wisdom-teeth-removal-photo img {
-  @apply aspect-327/240 w-full object-cover;
+  @apply hidden;
 }
 
 /* Responsive refinements for the Wisdom Teeth landing page. */
@@ -650,10 +646,6 @@
 
 :is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item summary strong {
   @apply desktop:size-wp-40;
-}
-
-:is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__item[open] summary strong {
-  @apply max-desktop:rotate-0;
 }
 
 :is(#wisdom-teeth-faqs, #emergency-faqs) .landing-faqs__answer {
