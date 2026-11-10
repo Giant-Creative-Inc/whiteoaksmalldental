@@ -167,3 +167,24 @@ function white_oaks_render_contact_phone_input( $content, $field ) {
 	);
 }
 add_filter( 'gform_field_content_1_4', 'white_oaks_render_contact_phone_input', 10, 2 );
+
+/**
+ * Send the Wisdom Teeth form's default inline confirmation to the thank-you page.
+ *
+ * @param string|array $confirmation Current confirmation response.
+ * @param array        $form         Gravity Forms form and selected confirmation.
+ * @return string|array
+ */
+function white_oaks_wisdom_teeth_confirmation( $confirmation, $form ) {
+	if ( ! is_string( $confirmation ) || empty( $form['confirmation']['isDefault'] ) ) {
+		return $confirmation;
+	}
+
+	$page = get_page_by_path( 'thank-you' );
+	if ( ! $page || 'publish' !== $page->post_status ) {
+		return $confirmation;
+	}
+
+	return array( 'redirect' => get_permalink( $page ) );
+}
+add_filter( 'gform_confirmation_3', 'white_oaks_wisdom_teeth_confirmation', 10, 2 );
