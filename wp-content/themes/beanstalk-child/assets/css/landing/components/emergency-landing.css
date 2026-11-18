@@ -15,7 +15,7 @@ body:not(.has-emergency-call-bar) .emergency-call-bar,
   @apply flex-1;
 }
 
-.has-emergency-call-bar {
+body.has-emergency-call-bar {
   @apply pb-[calc(var(--wp--preset--spacing--120)+env(safe-area-inset-bottom))];
 }
 
@@ -393,7 +393,7 @@ body:has(#emergency-hero) .landing-header-desktop .site-header__cta .wp-block-bu
 }
 
 #view-hours.emergency-location :is(.is-loading, .is-loaded) .click-to-load-map__actions {
-  @apply flex justify-start pt-wp-16 desktop:items-start desktop:justify-center;
+  @apply flex justify-center pt-0 pb-wp-16 items-center top-auto bottom-0 desktop:inset-0 desktop:pb-0 desktop:pt-wp-16 desktop:items-start;
 }
 
 #view-hours.emergency-location :is(.is-loading, .is-loaded) .click-to-load-map__actions > .is-style-primary {
@@ -615,4 +615,16 @@ body:has(#emergency-hero) .landing-header-desktop .site-header__cta .wp-block-bu
 
 .ad-landing-main:has(#emergency-hero) #appointment-cta .wp-block-button__link .button-arrow-icon {
   @apply translate-x-0 transition-none;
+}
+
+#view-hours.emergency-location .location-info__hours-row > :first-child {
+  @apply shrink-0 whitespace-nowrap;
+}
+
+#view-hours.emergency-location .location-info__hours-row > :last-child {
+  @apply min-w-0 shrink whitespace-normal;
+}
+
+#view-hours.emergency-location :is(.is-loading, .is-loaded) .click-to-load-map__directions-menu {
+  @apply max-desktop:top-auto max-desktop:bottom-full max-desktop:mt-0 max-desktop:mb-wp-8;
 }
