@@ -1,0 +1,81 @@
+@theme inline {
+  --object-position-service-denture-hero: var(--wp--custom--service-qa--denture-hero-position);
+  --object-position-service-wisdom-hero-desktop: var(--wp--custom--service-qa--wisdom-hero-desktop-position);
+  --object-position-service-wisdom-hero-mobile: var(--wp--custom--service-qa--wisdom-hero-mobile-position);
+  --transform-origin-service-wisdom-hero-desktop: var(--wp--custom--service-qa--wisdom-hero-desktop-position);
+  --transform-origin-service-wisdom-hero-mobile: var(--wp--custom--service-qa--wisdom-hero-mobile-position);
+  --object-position-service-cleaning-hero: var(--wp--custom--service-qa--cleaning-hero-position);
+}
+@custom-variant service-tablet (@media (min-width: 421px) and (max-width: 1024px));
+
+/* QA-004: retain editable Image blocks; crop only the two reviewed hero images. */
+.postid-750 .invisalign-hero__media figure { @apply overflow-hidden; }
+
+/* Service audit corrections; site-wide mobile gutters remain theme.json-owned. */
+.single-service .invisalign-hero h1 { @apply leading-service-hero tracking-service-hero; }
+.single-service .why-invisalign__eyebrow,
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__header, .landing-first-visit__header) .is-style-eyebrow { @apply font-button text-b-5 font-bold tracking-service-eyebrow; }
+.single-service .why-invisalign__title { @apply font-normal leading-normal; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.home-faqs__heading, .landing-faqs__heading) { @apply leading-service-faq tracking-service-faq; }
+.single-service .why-invisalign__copy { @apply text-b-5 leading-service-benefit; }
+.single-service .experience-section__cards { @apply gap-wp-20; }
+.single-service .service-opening-banner .wp-block-column { @apply min-w-0; }
+.single-service .service-opening-banner .wp-block-button__link { @apply whitespace-normal; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta, .landing-appointment-cta) { @apply px-site-gutter; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__phone, .landing-appointment-cta__phone),
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__phone, .landing-appointment-cta__phone) .wp-block-button__link { @apply w-full; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link { @apply transition duration-200 hover:brightness-95 focus-visible:brightness-95; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .button-arrow-icon { @apply transition-transform duration-200; }
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link:hover .button-arrow-icon,
+:is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link:focus-visible .button-arrow-icon { @apply translate-x-wp-4; }
+@variant motion-reduce {
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link,
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .button-arrow-icon { @apply transition-none; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link:hover .button-arrow-icon,
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) .wp-block-button__link:focus-visible .button-arrow-icon { @apply translate-x-0; }
+}
+
+@variant max-desktop {
+  .postid-750 .invisalign-hero__media img { @apply object-service-wisdom-hero-mobile origin-service-wisdom-hero-mobile scale-(--wp--custom--service-qa--wisdom-hero-mobile-scale); }
+.site-header .site-header__nav { @apply min-w-wp-40; }
+.site-header .site-header__nav .wp-block-navigation__responsive-container-open { @apply flex size-wp-40 min-w-wp-40 shrink-0 items-center justify-center; }
+.site-header__nav .wp-block-navigation__responsive-container-open svg { @apply size-wp-24; }
+
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__header, .landing-first-visit__header) { @apply gap-wp-12; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__copy, .landing-first-visit__copy) { @apply block before:hidden; }
+  .single-service .experience-section__title { @apply max-w-none leading-first-visit-heading; }
+  .single-service .service-opening-banner { @apply flex-col items-start; }
+  .single-service .service-opening-banner > .wp-block-column { @apply w-full basis-auto; }
+}
+@variant max-tablet {
+  .single-service .invisalign-hero > .wp-block-column:first-child > * { @apply my-0; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > h1 { @apply mt-wp-24; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > .has-hero-lead-font-size { @apply mt-wp-16; }
+  .single-service .invisalign-hero > .wp-block-column:first-child > .wp-block-buttons { @apply mt-wp-24; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__phone, .landing-appointment-cta__phone) { @apply w-fit; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__phone, .landing-appointment-cta__phone) .wp-block-button__link { @apply w-fit min-h-0 rounded-none border-0 border-b border-button-text bg-transparent text-button-text px-0 py-wp-8 gap-wp-16; }
+
+  .site-header .site-header__inner { @apply gap-wp-4 px-wp-16; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.home-faqs__item, .landing-faqs__item) summary { @apply py-wp-20; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.home-faqs__item, .landing-faqs__item) summary span { @apply font-normal leading-normal; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.home-faqs__item, .landing-faqs__item) summary strong { @apply size-wp-24; }
+  .single-service .invisalign-hero__media img { @apply h-service-hero-image object-cover; }
+}
+@variant service-tablet {
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__media, .landing-first-visit__media) { @apply h-auto aspect-3/2; }
+}
+@variant tablet {
+  .postid-733 .invisalign-hero__media img { @apply object-service-denture-hero; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__phone, .landing-appointment-cta__phone) .wp-block-button__link { @apply bg-wp-white; }
+}
+@variant desktop {
+  .postid-750 .invisalign-hero__media img { @apply object-service-wisdom-hero-desktop origin-service-wisdom-hero-desktop scale-(--wp--custom--service-qa--wisdom-hero-desktop-scale); }
+  .postid-423 .invisalign-hero__media img { @apply object-service-cleaning-hero; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__header, .landing-first-visit__header) .wp-block-button,
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.first-visit__header, .landing-first-visit__header) .wp-block-button__link { @apply w-auto basis-auto; }
+  .single-service .invisalign-hero h1 { @apply max-w-service-hero-copy; }
+  .postid-744 .invisalign-hero h1 { @apply max-w-full; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta, .landing-appointment-cta) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) { @apply inline-grid grid-cols-2 w-fit; }
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__primary, .landing-appointment-cta__primary),
+  :is(.single-service, .wp-site-blocks:has(.landing-header)) :is(.footer-cta__primary, .landing-appointment-cta__primary) .wp-block-button__link { @apply w-full; }
+}

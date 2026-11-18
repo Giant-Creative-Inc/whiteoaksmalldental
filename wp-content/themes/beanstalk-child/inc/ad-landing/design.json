@@ -1,0 +1,1142 @@
+{
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1440px",
+      "wideSize": "1440px"
+    },
+    "color": {
+      "custom": true,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "gradients": [
+        {
+          "slug": "hero-desktop-overlay",
+          "name": "Hero Desktop Overlay",
+          "gradient": "linear-gradient(270deg, rgba(255, 255, 255, 0) 36.947%, rgba(255, 255, 255, 0.6) 72.386%)"
+        },
+        {
+          "slug": "hero-mobile-overlay",
+          "name": "Hero Mobile Overlay",
+          "gradient": "linear-gradient(180deg, rgba(255, 255, 255, 0) 15%, #FFFFFF 52.7%)"
+        }
+      ],
+      "palette": [
+        {
+          "slug": "landing-input-border",
+          "color": "#5498A13D",
+          "name": "Landing Form Input Border"
+        },
+        {
+          "slug": "care-heading",
+          "color": "#1B2E33",
+          "name": "Care Heading"
+        },
+        {
+          "slug": "black",
+          "color": "#000000",
+          "name": "Neutral-PureBlack"
+        },
+        {
+          "slug": "white",
+          "color": "#FFFFFF",
+          "name": "Neutral-PureWhite"
+        },
+        {
+          "slug": "dark",
+          "color": "#2C2E2B",
+          "name": "Neutral-Offblack"
+        },
+        {
+          "slug": "light",
+          "color": "#F5F5F5",
+          "name": "Neutral-Offwhite"
+        },
+        {
+          "slug": "neutral-grey-200",
+          "color": "#333333",
+          "name": "Neutral Grey 200"
+        },
+        {
+          "slug": "neutral-grey-400",
+          "color": "#666666",
+          "name": "Neutral Grey 400"
+        },
+        {
+          "slug": "neutral-grey-600",
+          "color": "#999999",
+          "name": "Neutral Grey 600"
+        },
+        {
+          "slug": "neutral-grey-850",
+          "color": "#D9D9D9",
+          "name": "Neutral Grey 850"
+        },
+        {
+          "slug": "neutral-grey-950",
+          "color": "#F2F2F2",
+          "name": "Neutral Grey 950"
+        },
+        {
+          "slug": "primary-shade-900",
+          "color": "#030C0D",
+          "name": "Primary Shade 900"
+        },
+        {
+          "slug": "primary-shade-600",
+          "color": "#0C3035",
+          "name": "Primary Shade 600"
+        },
+        {
+          "slug": "primary-shade-300",
+          "color": "#16545C",
+          "name": "Primary Shade 300"
+        },
+        {
+          "slug": "primary",
+          "color": "#1F7884",
+          "name": "Primary"
+        },
+        {
+          "slug": "primary-tint-300",
+          "color": "#62A0A9",
+          "name": "Primary Tint 300"
+        },
+        {
+          "slug": "primary-tint-600",
+          "color": "#A5C9CE",
+          "name": "Primary Tint 600"
+        },
+        {
+          "slug": "service-card-background",
+          "color": "#E1EDF0",
+          "name": "Service Card Background"
+        },
+        {
+          "slug": "primary-tint-900",
+          "color": "#E9F1F3",
+          "name": "Primary Tint 900"
+        },
+        {
+          "slug": "secondary-shade-900",
+          "color": "#0A1116",
+          "name": "Secondary Shade 900"
+        },
+        {
+          "slug": "secondary-shade-600",
+          "color": "#284357",
+          "name": "Secondary Shade 600"
+        },
+        {
+          "slug": "secondary-shade-300",
+          "color": "#477599",
+          "name": "Secondary Shade 300"
+        },
+        {
+          "slug": "secondary",
+          "color": "#65A7DA",
+          "name": "Secondary"
+        },
+        {
+          "slug": "secondary-tint-300",
+          "color": "#93C1E5",
+          "name": "Secondary Tint 300"
+        },
+        {
+          "slug": "secondary-tint-600",
+          "color": "#C1DCF0",
+          "name": "Secondary Tint 600"
+        },
+        {
+          "slug": "secondary-tint-900",
+          "color": "#F0F6FB",
+          "name": "Secondary Tint 900"
+        },
+        {
+          "slug": "primary-hover",
+          "color": "#165E69",
+          "name": "Primary Hover"
+        },
+        {
+          "slug": "primary-subtle",
+          "color": "#1F788412",
+          "name": "Primary Subtle"
+        },
+        {
+          "slug": "button-text",
+          "color": "#2B3839",
+          "name": "Button Text"
+        },
+        {
+          "slug": "header-border",
+          "color": "#DFE1E6",
+          "name": "Header Border"
+        },
+        {
+          "slug": "experience-background",
+          "color": "#F3F7F8",
+          "name": "Experience Section Background"
+        },
+        {
+          "slug": "service-tabs-border",
+          "color": "#C4DFE3",
+          "name": "Service Tabs Border"
+        },
+        {
+          "slug": "service-tabs-muted-text",
+          "color": "#667085",
+          "name": "Service Tabs Muted Text"
+        },
+        {
+          "slug": "practice-divider",
+          "color": "rgba(27, 46, 51, 0.1)",
+          "name": "Practice Highlight Divider"
+        },
+        {
+          "slug": "why-oaks-divider",
+          "color": "rgba(31, 120, 132, 0.2)",
+          "name": "Why Oaks Divider"
+        },
+        {
+          "slug": "doctor-copy-muted",
+          "color": "rgba(22, 60, 61, 0.76)",
+          "name": "Doctor Biography Muted"
+        },
+        {
+          "slug": "doctor-primary-text",
+          "color": "#163C3D",
+          "name": "Doctor Primary Text"
+        },
+        {
+          "slug": "oak-orange-shade-900",
+          "color": "#160F07",
+          "name": "Oak Orange Shade 900"
+        },
+        {
+          "slug": "service-directory-divider",
+          "color": "rgba(31,120,132,0.2)",
+          "name": "Service Directory Divider"
+        },
+        {
+          "slug": "related-panel-text",
+          "name": "Related Care Panel Text",
+          "color": "#193B40"
+        },
+        {
+          "slug": "related-tab-text",
+          "name": "Related Care Inactive Tab Text",
+          "color": "#36565B"
+        },
+        {
+          "slug": "related-tab-border",
+          "name": "Related Care Tab Border",
+          "color": "#BAD4DA"
+        }
+      ]
+    },
+    "typography": {
+      "customFontSize": true,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"iowan-old-style-bt\", Georgia, serif",
+          "name": "Iowan Old Style BT",
+          "slug": "heading"
+        },
+        {
+          "fontFamily": "\"iowan-old-style-bt\", Georgia, serif",
+          "name": "Iowan Old Style BT",
+          "slug": "body"
+        },
+        {
+          "fontFamily": "Inter, Arial, sans-serif",
+          "name": "Inter",
+          "slug": "button",
+          "fontFace": [
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "400 900",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/inter-variable-latin.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "pricing-section-heading",
+          "size": "clamp(32px, calc(16.9014px + 4.02629vw), 74.88px)",
+          "name": "Pricing Section Heading"
+        },
+        {
+          "slug": "comparison-heading",
+          "size": "clamp(34px, 5.2vw, 74.88px)",
+          "name": "Invisalign Comparison Heading"
+        },
+        {
+          "slug": "wisdom-price-mobile",
+          "size": "35px",
+          "name": "Wisdom Teeth Mobile Price"
+        },
+        {
+          "slug": "pricing-card-heading",
+          "size": "28px",
+          "name": "Pricing Card Heading"
+        },
+        {
+          "slug": "pricing-amount",
+          "size": "clamp(44px, calc(39.77465px + 1.12676vw), 56px)",
+          "name": "Pricing Amount"
+        },
+        {
+          "slug": "pricing-insurance-heading",
+          "size": "clamp(24px, calc(19.77465px + 1.12676vw), 36px)",
+          "name": "Pricing Insurance Heading"
+        },
+        {
+          "slug": "landing-hero-heading",
+          "size": "clamp(36px, calc(22.30986px + 3.650704vw), 74.88px)",
+          "name": "Landing Hero Heading"
+        },
+        {
+          "slug": "landing-hero-copy",
+          "size": "clamp(18px, calc(16.59155px + 0.375587vw), 22px)",
+          "name": "Landing Hero Introduction"
+        },
+        {
+          "slug": "landing-form-heading",
+          "size": "clamp(24px, calc(21.1831px + 0.751174vw), 32px)",
+          "name": "Landing Form Heading"
+        },
+        {
+          "slug": "care-heading",
+          "size": "64px",
+          "name": "Care Heading"
+        },
+        {
+          "slug": "h-1",
+          "size": "clamp(40px, 7.5vw, 64px)",
+          "name": "H1"
+        },
+        {
+          "slug": "h-2",
+          "size": "clamp(34px, 5vw, 48px)",
+          "name": "H2"
+        },
+        {
+          "slug": "h-3",
+          "size": "clamp(28px, 3vw, 32px)",
+          "name": "H3"
+        },
+        {
+          "slug": "h-4",
+          "size": "clamp(24px, 2.5vw, 28px)",
+          "name": "H4"
+        },
+        {
+          "slug": "h-5",
+          "size": "20px",
+          "name": "H5"
+        },
+        {
+          "slug": "h-6",
+          "size": "18px",
+          "name": "H6"
+        },
+        {
+          "slug": "b-1",
+          "size": "22px",
+          "name": "B1"
+        },
+        {
+          "slug": "b-2",
+          "size": "20px",
+          "name": "B2"
+        },
+        {
+          "slug": "b-3",
+          "size": "18px",
+          "name": "B3"
+        },
+        {
+          "slug": "b-4",
+          "size": "16px",
+          "name": "B4"
+        },
+        {
+          "slug": "b-5",
+          "size": "14px",
+          "name": "B5"
+        },
+        {
+          "slug": "b-6",
+          "size": "12px",
+          "name": "B6"
+        },
+        {
+          "slug": "practice-stat",
+          "size": "36px",
+          "name": "Practice Highlight Stat"
+        },
+        {
+          "slug": "experience-heading",
+          "size": "clamp(28px, 5.2vw, 74.88px)",
+          "name": "Experience Heading"
+        },
+        {
+          "slug": "experience-card-heading",
+          "size": "clamp(22px, 3.1vw, 44.64px)",
+          "name": "Experience Card Heading"
+        },
+        {
+          "slug": "experience-card-copy",
+          "size": "clamp(14px, 1.18vw, 17px)",
+          "name": "Experience Card Copy"
+        },
+        {
+          "slug": "service-panel-heading",
+          "size": "clamp(20px, 3.3vw, 47.52px)",
+          "name": "Service Panel Heading"
+        },
+        {
+          "slug": "hero-heading",
+          "size": "clamp(36px, calc(14.197183px + 5.814085cqw), 97.92px)",
+          "name": "Hero Heading"
+        },
+        {
+          "slug": "hero-lead",
+          "size": "clamp(18px, 1.95vw, 28px)",
+          "name": "Hero Lead"
+        },
+        {
+          "slug": "emergency-heading",
+          "size": "clamp(32px, calc(5.11vw + 12.84px), 86.4px)",
+          "name": "Emergency CTA Heading"
+        },
+        {
+          "slug": "emergency-copy",
+          "size": "clamp(15px, calc(0.47vw + 13.24px), 20px)",
+          "name": "Emergency CTA Copy"
+        },
+        {
+          "slug": "emergency-phone",
+          "size": "clamp(22px, calc(1.88vw + 14.96px), 42px)",
+          "name": "Emergency CTA Phone"
+        },
+        {
+          "slug": "emergency-caption",
+          "size": "clamp(11px, calc(0.094vw + 10.65px), 12px)",
+          "name": "Emergency CTA Caption"
+        },
+        {
+          "slug": "footer-caption",
+          "size": "11px",
+          "name": "Footer Caption"
+        },
+        {
+          "slug": "footer-link-mobile",
+          "size": "13px",
+          "name": "Footer Link Mobile"
+        },
+        {
+          "slug": "patient-stories-heading",
+          "size": "clamp(28px, 4.5vw, 64.8px)",
+          "name": "Patient Stories Heading"
+        },
+        {
+          "slug": "patient-stories-rating",
+          "size": "clamp(32px, 3.125vw, 45px)",
+          "name": "Patient Stories Rating"
+        },
+        {
+          "slug": "patient-stories-quote",
+          "size": "clamp(18px, 2.5vw, 36px)",
+          "name": "Patient Stories Quote"
+        },
+        {
+          "slug": "patient-stories-source",
+          "size": "clamp(11px, 0.84vw, 12px)",
+          "name": "Patient Stories Source"
+        },
+        {
+          "slug": "location-reviews-heading",
+          "size": "clamp(32px, 5.2vw, 74.88px)",
+          "name": "Location Reviews Heading"
+        },
+        {
+          "slug": "team-heading",
+          "size": "clamp(38px, 5.2vw, 74.88px)",
+          "name": "Meet the Team Heading"
+        },
+        {
+          "slug": "team-card-heading",
+          "size": "clamp(21px, 2.342vw, 24px)",
+          "name": "Meet the Team Card Heading"
+        },
+        {
+          "slug": "first-visit-heading",
+          "size": "clamp(32px, 4.8vw, 69.12px)",
+          "name": "First Visit Heading"
+        },
+        {
+          "slug": "first-visit-card-heading",
+          "size": "clamp(22px, 2.6vw, 37.44px)",
+          "name": "First Visit Card Heading"
+        },
+        {
+          "slug": "location-features-heading",
+          "size": "clamp(32px, 4vw, 57.6px)",
+          "name": "Location Features Heading"
+        },
+        {
+          "slug": "location-feature-card-heading",
+          "size": "clamp(20px, 1.53vw, 22px)",
+          "name": "Location Feature Card Heading"
+        },
+        {
+          "slug": "areas-served-heading",
+          "size": "clamp(32px, 3.96vw, 57px)",
+          "name": "Areas Served Heading"
+        },
+        {
+          "slug": "doctor-name",
+          "size": "clamp(28px, 7vw, 100.8px)",
+          "name": "Doctor Name"
+        },
+        {
+          "slug": "doctor-name-mobile",
+          "size": "28px",
+          "name": "Doctor Name Mobile"
+        },
+        {
+          "slug": "doctor-intro",
+          "size": "21px",
+          "name": "Doctor Introduction"
+        },
+        {
+          "slug": "doctor-copy",
+          "size": "13px",
+          "name": "Doctor Biography"
+        },
+        {
+          "slug": "doctor-index",
+          "size": "13px",
+          "name": "Doctor Index"
+        },
+        {
+          "slug": "service-about-copy-mobile",
+          "size": "15px",
+          "name": "Service Introduction Copy Mobile"
+        },
+        {
+          "slug": "service-card-heading",
+          "size": "24px",
+          "name": "Service Card Heading"
+        },
+        {
+          "slug": "service-faq-heading",
+          "size": "clamp(32px, 4.7495vw, 67.68px)",
+          "name": "Service FAQ Heading"
+        },
+        {
+          "slug": "service-benefit-heading",
+          "size": "clamp(18px, 1.895vw, 27px)",
+          "name": "Service Benefit Heading"
+        },
+        {
+          "slug": "service-hero-heading",
+          "size": "clamp(40px, calc(14.197183px + 5.814085cqw), 97.92px)",
+          "name": "Service Hero Heading"
+        },
+        {
+          "slug": "related-link",
+          "name": "Related Care Mobile Link",
+          "size": "17px"
+        },
+        {
+          "slug": "related-heading",
+          "name": "Related Care Heading",
+          "size": "clamp(42px, calc(30.4203px + 3.08792vw), 74.88px)"
+        },
+        {
+          "slug": "related-panel-heading",
+          "name": "Related Care Panel Heading",
+          "size": "clamp(30px, calc(25.77465px + 1.12676vw), 42px)"
+        },
+        {
+          "slug": "related-tab-label",
+          "name": "Related Care Tab Label",
+          "size": "clamp(17px, calc(14.5352px + 0.65728vw), 24px)"
+        }
+      ]
+    },
+    "spacing": {
+      "customSpacingSize": true,
+      "defaultSpacingSizes": false,
+      "spacingSizes": [
+        {
+          "slug": "0",
+          "size": "0",
+          "name": "Space 0 \u2014 0px"
+        },
+        {
+          "slug": "4",
+          "size": "4px",
+          "name": "Space 4 \u2014 4px"
+        },
+        {
+          "slug": "8",
+          "size": "8px",
+          "name": "Space 8 \u2014 8px"
+        },
+        {
+          "slug": "12",
+          "size": "12px",
+          "name": "Space 12 \u2014 12px"
+        },
+        {
+          "slug": "16",
+          "size": "16px",
+          "name": "Space 16 \u2014 16px"
+        },
+        {
+          "slug": "20",
+          "size": "20px",
+          "name": "Space 20 \u2014 20px"
+        },
+        {
+          "slug": "24",
+          "size": "24px",
+          "name": "Space 24 \u2014 24px"
+        },
+        {
+          "slug": "28",
+          "size": "28px",
+          "name": "Space 28 \u2014 28px"
+        },
+        {
+          "slug": "32",
+          "size": "32px",
+          "name": "Space 32 \u2014 32px"
+        },
+        {
+          "slug": "36",
+          "size": "36px",
+          "name": "Space 36 \u2014 36px"
+        },
+        {
+          "slug": "40",
+          "size": "40px",
+          "name": "Space 40 \u2014 40px"
+        },
+        {
+          "slug": "48",
+          "size": "48px",
+          "name": "Space 48 \u2014 48px"
+        },
+        {
+          "slug": "64",
+          "size": "64px",
+          "name": "Space 64 \u2014 64px"
+        },
+        {
+          "slug": "72",
+          "size": "72px",
+          "name": "Space 72 \u2014 72px"
+        },
+        {
+          "slug": "80",
+          "size": "80px",
+          "name": "Space 80 \u2014 80px"
+        },
+        {
+          "slug": "96",
+          "size": "96px",
+          "name": "Space 96 \u2014 96px"
+        },
+        {
+          "slug": "112",
+          "size": "112px",
+          "name": "Space 112 \u2014 112px"
+        },
+        {
+          "slug": "120",
+          "size": "120px",
+          "name": "Space 120 \u2014 Beanstalk compatibility"
+        },
+        {
+          "slug": "128",
+          "size": "128px",
+          "name": "Space 128 \u2014 128px"
+        },
+        {
+          "slug": "160",
+          "size": "160px",
+          "name": "Space 160 \u2014 160px"
+        },
+        {
+          "slug": "192",
+          "size": "192px",
+          "name": "Space 192 \u2014 192px"
+        },
+        {
+          "slug": "256",
+          "size": "256px",
+          "name": "Space 256 \u2014 256px"
+        },
+        {
+          "slug": "320",
+          "size": "320px",
+          "name": "Space 320 \u2014 320px"
+        },
+        {
+          "slug": "384",
+          "size": "384px",
+          "name": "Space 384 \u2014 384px"
+        },
+        {
+          "slug": "512",
+          "size": "512px",
+          "name": "Space 512 \u2014 512px"
+        },
+        {
+          "slug": "640",
+          "size": "640px",
+          "name": "Space 640 \u2014 640px"
+        },
+        {
+          "slug": "768",
+          "size": "768px",
+          "name": "Space 768 \u2014 768px"
+        },
+        {
+          "slug": "960",
+          "size": "960px",
+          "name": "Space 960 \u2014 960px"
+        },
+        {
+          "slug": "1280",
+          "size": "1280px",
+          "name": "Space 1280 \u2014 1280px"
+        },
+        {
+          "slug": "1536",
+          "size": "1536px",
+          "name": "Space 1536 \u2014 1536px"
+        },
+        {
+          "slug": "2048",
+          "size": "2048px",
+          "name": "Space 2048 \u2014 2048px"
+        },
+        {
+          "slug": "2560",
+          "size": "2560px",
+          "name": "Space 2560 \u2014 2560px"
+        },
+        {
+          "slug": "2880",
+          "size": "2880px",
+          "name": "Space 2880 \u2014 2880px"
+        },
+        {
+          "slug": "3840",
+          "size": "3840px",
+          "name": "Space 3840 \u2014 3840px"
+        }
+      ],
+      "units": [
+        "%",
+        "px",
+        "em",
+        "rem",
+        "vh",
+        "vw"
+      ]
+    },
+    "blocks": {
+      "core/button": {
+        "color": {
+          "background": true,
+          "text": true
+        }
+      }
+    },
+    "custom": {
+      "landingHero": {
+        "headingLeading": "clamp(38px, calc(26.33099px + 3.111737vw), 71.14px)",
+        "headingTracking": "clamp(-3.37px, calc(-0.435915px - 0.203756vw), -1.2px)",
+        "copyLeading": "clamp(27px, calc(25.94366px + 0.28169vw), 30px)",
+        "eyebrowTracking": "clamp(1.5px, calc(1.098592px + 0.107042vw), 2.64px)",
+        "ratingLeading": "13.6616px",
+        "noteLeading": "20.4px",
+        "formWidth": "527px",
+        "formHeadingMobileLeading": "30px",
+        "formHeadingTracking": "-1px",
+        "formHeadingMobileWidth": "233px",
+        "noteMobileWidth": "232px",
+        "noteDesktopWidth": "359px",
+        "backgroundWidth": "133.6104%",
+        "backgroundHeight": "101.9525%",
+        "backgroundLeft": "-16.8052%",
+        "backgroundTop": "-0.9763%"
+      },
+      "relatedCare": {
+        "headingLeading": "clamp(43px, calc(33.09155px + 2.64282vw), 71.136px)",
+        "headingTracking": "clamp(-3.3696px, calc(-0.832286px - 0.178057vw), -1.5px)",
+        "panelHeadingLeading": "clamp(35px, calc(30.3169px + 1.24883vw), 48.3px)",
+        "panelHeadingTracking": "-0.03em",
+        "tabLeading": "clamp(22px, calc(19.1831px + 0.75117vw), 30px)",
+        "introLeading": "29.7px",
+        "copyDesktopLeading": "32px",
+        "copyMobileLeading": "28px",
+        "eyebrowTracking": "2.64px",
+        "panelDesktopInset": "84px",
+        "imageMobileHeight": "clamp(220px, calc(128.623418px + 24.367089vw), 297px)",
+        "imageDesktopHeight": "297px",
+        "imageDesktopWidth": "408px",
+        "sectionPadding": "clamp(48px, calc(18.714286px + 7.809524vw), 130px)",
+        "headingWidth": "658px",
+        "introWidth": "clamp(320px, calc(-172px + 48.046875vw), 443px)",
+        "introOpacity": "0.82",
+        "tabPadding": "26px",
+        "headingGap": "28px",
+        "linkLeading": "24px",
+        "xrayWidth": "155.78%",
+        "xrayHeight": "109.77%",
+        "xrayLeft": "27.89%",
+        "xrayTop": "4.89%"
+      },
+      "comfortable-care": {
+        "heading-width": "713px",
+        "copy-width": "659px",
+        "heading-leading": "64px",
+        "heading-tracking": "-3.3696px",
+        "section-space": "60px",
+        "image-width": "389px",
+        "image-mobile-width": "207.45px",
+        "image-gap-mobile": "6.399px",
+        "copy-leading": "29.7px",
+        "image-height": "292px",
+        "image-mobile-height": "155.721px"
+      },
+      "servicePillar": {
+        "headingMobileSize": "44px",
+        "headingMobileLeading": "48px",
+        "copyDesktopLeading": "33.48px",
+        "copyMobileLeading": "28px",
+        "breadcrumbDesktopTracking": "1.44px",
+        "breadcrumbMobileTracking": "1px",
+        "headingWidth": "687px",
+        "wideServicesHeadingWidth": "845px",
+        "wideHeroHeadingWidth": "785px",
+        "callWidth": "600px",
+        "copyWidth": "437px",
+        "imageWidth": "51.9298245614%",
+        "imageLeft": "57.2631578947%"
+      },
+      "serviceQa": {
+        "heroLeading": "clamp(44px, 6.528vw, 93.024px)",
+        "heroTracking": "-0.045em",
+        "heroCopyWidth": "min(614.04px, 43.091vw)",
+        "eyebrowTracking": "2.5px",
+        "benefitLeading": "21px",
+        "faqLeading": "clamp(36px, 4.512vw, 64.296px)",
+        "faqTracking": "-0.045em",
+        "cleaningHeroPosition": "72.36% center",
+        "dentureHeroPosition": "79.2044% center",
+        "wisdomHeroDesktopPosition": "22.2516% center",
+        "wisdomHeroDesktopScale": "1.0995",
+        "wisdomHeroMobilePosition": "16.4061% 72.4813%",
+        "wisdomHeroMobileScale": "1.5905"
+      },
+      "serviceAbout": {
+        "headingDesktopWidth": "570.004px",
+        "headingMeasures": {
+          "regular": "632px",
+          "restoration": "648px",
+          "standard": "666px",
+          "veneers": "678px",
+          "filling": "691px",
+          "wide": "708px"
+        },
+        "imageDesktopHeight": "734px",
+        "imageMobileHeight": "240px",
+        "imageScale": "111%",
+        "imageOrigin": "50% 90%",
+        "bondingPosition": "86.9062% 50%",
+        "denturesPosition": "27.9134% 50%",
+        "pediatricPosition": "63.8339% 50%",
+        "scalingPosition": "61.5899% 50%",
+        "fillingPosition": "34.05399% 50%",
+        "whiteningPosition": "69.2976% 50%",
+        "orthodonticsScale": "101.09%",
+        "orthodonticsMobileScale": "192.96%",
+        "orthodonticsMobileOrigin": "48.2143% 34.3%",
+        "columns": "42.0350877193% minmax(0, 1fr)",
+        "headingMobileSize": "32px",
+        "headingMobileLineHeight": "36px",
+        "copyMobileLineHeight": "22px",
+        "eyebrowTracking": "2.64px",
+        "eyebrowMobileTracking": "2.5px",
+        "headingTracking": "-0.045em"
+      },
+      "relatedServices": {
+        "imageHeight": "260px",
+        "copyLineHeight": "normal",
+        "linkTracking": "1px",
+        "eyebrowTracking": "2.64px"
+      },
+      "footerServices": {
+        "titleDesktop": "33.84px",
+        "titleMobile": "26px",
+        "categoryDesktop": "18.72px",
+        "categoryMobile": "17px",
+        "categoryLeading": "1.25",
+        "titleTracking": "-0.025em",
+        "categoryTracking": "-0.015em",
+        "linkLeading": "17.4px"
+      },
+      "landingGutters": {
+        "wide": "max(clamp(var(--wp--preset--spacing--24), calc(15vw - 168px), var(--wp--preset--spacing--48)), calc((100vw - 1344px) / 2))",
+        "narrow": "max(clamp(var(--wp--preset--spacing--24), calc(47.5vw - 584px), 100px), calc((100vw - 1240px) / 2))"
+      },
+      "layout": {
+        "gutter": "max(clamp(20px, calc(100vw - 747px), 24px), calc((100vw - var(--wp--style--global--wide-size)) / 2))",
+        "contentWidth": "1224px"
+      },
+      "areasServed": {
+        "cardPaddingInline": "20px"
+      },
+      "fontWeight": {
+        "navigation": "600",
+        "practice-stat": "700",
+        "footer-heading-desktop": "800",
+        "footer-heading-mobile": "700",
+        "footer-legal-desktop": "650"
+      },
+      "letterSpacing": {
+        "h-1-mobile": "-1px",
+        "navigation": "0.08em",
+        "practice-label": "0.96px",
+        "footer-heading-desktop": "2.16px",
+        "footer-heading-mobile": "1.5px",
+        "footer-legal-desktop": "1.44px",
+        "footer-legal-mobile": "1px",
+        "patient-stories-eyebrow": "clamp(1.5px, 0.183vw, 2.64px)",
+        "patient-stories-heading": "clamp(-2.916px, -0.203vw, 0px)",
+        "patient-stories-quote": "clamp(-0.72px, -0.05vw, 0px)",
+        "patient-stories-source": "clamp(1px, 0.133vw, 1.92px)",
+        "location-reviews-heading": "clamp(-3.3696px, -0.234vw, 0px)",
+        "areas-served-heading": "clamp(-1.5px, -0.238vw, -3.43px)",
+        "team-heading": "clamp(-3.3696px, -0.234vw, -1.5px)",
+        "team-card-role": "clamp(1.2px, 0.1522vw, 1.56px)",
+        "team-card-heading": "clamp(-0.48px, -0.0468vw, -0.3px)",
+        "team-card-specialty": "clamp(0.3px, 0.0468vw, 0.48px)",
+        "team-cta": "0.96px",
+        "first-visit-heading": "clamp(0px, -0.216vw, -3.1104px)",
+        "first-visit-card-heading": "clamp(0px, -0.065vw, -0.936px)"
+      },
+      "lineHeight": {
+        "landing-price-mobile": "48px",
+        "landing-faq-heading-mobile": "clamp(34px, 4.512vw, 64.296px)",
+        "landing-faq-answer-desktop": "24.05px",
+        "h-1": "1.2",
+        "h-2": "1.2",
+        "h-3": "1.2",
+        "h-4": "1.2",
+        "h-5": "1.2",
+        "h-6": "1.2",
+        "b-1": "30px",
+        "b-2": "30px",
+        "b-3": "30px",
+        "b-4": "30px",
+        "b-5": "30px",
+        "b-6": "26px",
+        "button": "18px",
+        "practice-stat": "54px",
+        "practice-label": "18px",
+        "experience-heading": "clamp(34px, 4.94vw, 71.136px)",
+        "experience-card-heading": "clamp(27px, 3.1vw, 44.64px)",
+        "experience-card-copy": "clamp(22px, 1.95vw, 28.05px)",
+        "experience-meta": "clamp(16px, 1.42vw, 20.4px)",
+        "service-panel-heading": "clamp(26px, 3.465vw, 49.896px)",
+        "emergency-heading": "clamp(38px, calc(4.14vw + 22.48px), 82.08px)",
+        "emergency-copy": "clamp(24px, calc(0.66vw + 21.52px), 31px)",
+        "footer-intro-desktop": "27.2px",
+        "footer-intro-mobile": "22px",
+        "footer-link-desktop": "21px",
+        "footer-link-mobile": "20px",
+        "patient-stories-heading": "clamp(34px, 4.275vw, 61.56px)",
+        "patient-stories-rating": "clamp(38.4px, 4.69vw, 67.5px)",
+        "patient-stories-quote": "clamp(26px, 3.3vw, 47.52px)",
+        "patient-stories-reviewer": "clamp(24px, 1.77vw, 25.5px)",
+        "location-reviews-heading": "clamp(38px, 4.94vw, 71.136px)",
+        "team-heading": "clamp(44px, 4.94vw, 71.136px)",
+        "team-card-heading": "clamp(28px, 3.512vw, 36px)",
+        "first-visit-heading": "clamp(36px, 4.61vw, 66.355px)",
+        "first-visit-card-heading": "clamp(26px, 2.99vw, 43.056px)",
+        "first-visit-copy": "clamp(20px, 1.5vw, 21.6px)",
+        "location-features-heading": "clamp(38px, 4vw, 57.6px)",
+        "location-feature-card-heading": "clamp(24px, 2.292vw, 33px)",
+        "areas-served-heading": "clamp(38px, 5.09vw, 73.27px)"
+      },
+      "emergency": {
+        "heading-mobile-size": "32px",
+        "heading-mobile-line-height": "38px",
+        "copy-mobile-size": "15px",
+        "copy-mobile-line-height": "24px",
+        "phone-mobile-size": "22px",
+        "caption-mobile-size": "11px",
+        "gap-mobile": "20px"
+      },
+      "whyOaks": {
+        "desktop-section-padding-block": "150px",
+        "desktop-inner-min-height": "867px",
+        "desktop-media-offset": "-42px",
+        "desktop-media-margin-top": "96px",
+        "desktop-media-width": "548px",
+        "desktop-media-height": "670px",
+        "desktop-intro-size": "20px",
+        "desktop-intro-line-height": "31px",
+        "desktop-number-size": "13px",
+        "desktop-number-line-height": "19.5px",
+        "desktop-title-size": "21px",
+        "desktop-title-line-height": "31.5px",
+        "desktop-copy-size": "12px",
+        "desktop-copy-line-height": "20.4px",
+        "desktop-copy-gap": "7px",
+        "desktop-values-margin-top": "40px",
+        "mobile-intro-size": "16px",
+        "mobile-intro-line-height": "24px",
+        "mobile-heading-size": "28px",
+        "mobile-heading-line-height": "34px",
+        "mobile-number-size": "18px",
+        "mobile-title-size": "16px",
+        "mobile-copy-size": "13px",
+        "mobile-copy-line-height": "18px",
+        "mobile-gap": "20px"
+      },
+      "hero": {
+        "desktop-height": "937px",
+        "mobile-height": "576px",
+        "desktop-content-width": "734px",
+        "desktop-copy-width": "562px",
+        "desktop-padding-left": "100.8px",
+        "desktop-padding-right": "72px",
+        "desktop-padding-bottom": "159px",
+        "heading-line-height-desktop": "clamp(44px, calc(26.738028px + 4.603192cqw), 93.024px)",
+        "heading-line-height-mobile": "44px",
+        "heading-letter-spacing-desktop": "clamp(-4px, calc(-0.619718px - 0.234742cqw), -1.5px)",
+        "heading-letter-spacing-mobile": "-1.5px",
+        "lead-line-height-desktop": "clamp(26px, 2.325vw, 33.48px)",
+        "lead-line-height-mobile": "26px",
+        "content-gap-mobile": "20px",
+        "copy-gap-desktop": "36px",
+        "buttons-gap-desktop": "34px",
+        "buttons-margin-desktop": "38px"
+      },
+      "pageHero": {
+        "desktop-min-height": "700px",
+        "desktop-max-height": "844px",
+        "heading-gap-desktop": "48px",
+        "lead-gap-desktop": "36px",
+        "buttons-gap-desktop": "38px",
+        "lead-width-desktop": "560px",
+        "location-padding-block-desktop": "105px",
+        "location-contact-gap-desktop": "34px"
+      },
+      "practice-highlights": {
+        "mobile-padding-block": "40px"
+      },
+      "experience": {
+        "desktop-padding-block": "130px",
+        "desktop-padding-inline": "100.8px",
+        "desktop-header-gap": "70px",
+        "desktop-card-gap": "25.55px",
+        "desktop-image-height": "390px",
+        "desktop-card-padding": "44px",
+        "mobile-image-height": "180px"
+      },
+      "team": {
+        "image-height-mobile": "300px",
+        "image-height-desktop": "375px",
+        "grid-gap-desktop": "18.53px",
+        "grid-margin-desktop": "75px",
+        "card-stagger": "54px",
+        "cta-margin-desktop": "35px"
+      },
+      "faq": {
+        "desktop-column-width": "372px"
+      },
+      "footer-cta": {
+        "content-width": "1100px",
+        "copy-width": "640px",
+        "button-width-mobile": "256px",
+        "content-gap-mobile": "20px",
+        "content-gap-desktop": "40px"
+      },
+      "footer-announcement": {
+        "copy-size": "clamp(14px, calc(100vw - 1263px), 17px)",
+        "mobile-label-leading": "normal",
+        "desktop-title-tracking": "1.92px",
+        "desktop-link-tracking": "1.44px",
+        "mobile-tracking": "1px",
+        "desktop-copy-size": "17px",
+        "desktop-copy-leading": "25.5px",
+        "mobile-copy-leading": "20px"
+      },
+      "footer": {
+        "content-width": "1223.406px",
+        "desktop-padding-top": "85px",
+        "desktop-padding-inline": "100.8px",
+        "desktop-padding-bottom": "34px",
+        "brand-column-width": "453.328px",
+        "standard-column-width": "184.695px",
+        "column-gap": "72px",
+        "description-width": "360px",
+        "description-gap": "28px",
+        "legal-margin-top": "117px",
+        "legal-padding-top": "23px",
+        "mobile-legal-padding-top": "20px",
+        "mobile-padding-block": "40px"
+      },
+      "doctors": {
+        "name-line-height": "clamp(32px, 6.3vw, 90.72px)",
+        "name-letter-spacing": "clamp(-5.544px, -0.385vw, -1px)",
+        "name-line-height-mobile": "32px",
+        "name-letter-spacing-mobile": "0",
+        "number-line-height-desktop": "21px",
+        "number-line-height-mobile": "normal",
+        "specialty-line-height-desktop": "16.5px",
+        "specialty-line-height-mobile": "normal",
+        "specialty-letter-spacing-desktop": "1.4945px",
+        "specialty-letter-spacing-mobile": "1px",
+        "intro-line-height": "32.55px",
+        "intro-line-height-mobile": "24px",
+        "copy-line-height-desktop": "23.66px",
+        "copy-line-height-mobile": "20px",
+        "copy-gap": "19px",
+        "copy-letter-spacing-desktop": "-0.076px",
+        "copy-letter-spacing-mobile": "normal",
+        "image-basis-small-desktop": "45%",
+        "copy-basis-small-desktop": "55%",
+        "cta-line-height-mobile": "normal",
+        "cta-letter-spacing-mobile": "1px",
+        "profile-padding-mobile": "20px",
+        "sticky-offset-desktop": "85.305px",
+        "sticky-offset-phone": "64.172px",
+        "sticky-offset-mobile": "73.168px",
+        "portrait-height-desktop": "580px",
+        "portrait-height-mobile": "300px"
+      }
+    }
+  }
+}
