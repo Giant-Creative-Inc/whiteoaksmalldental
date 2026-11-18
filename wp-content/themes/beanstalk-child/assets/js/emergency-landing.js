@@ -50,15 +50,17 @@ if (hero && bar) {
   updateHours();
   window.setInterval(updateHours, 60000);
 
-  const mobile = window.matchMedia('(max-width: 781px)');
+  const mobile = window.matchMedia('(max-width: 1024px)');
+  const narrow = window.matchMedia('(max-width: 781px)');
   const updateBar = () => {
-    bar.hidden = !mobile.matches || hero.getBoundingClientRect().bottom > 0;
+    bar.hidden = !mobile.matches || (narrow.matches && hero.getBoundingClientRect().bottom > 0);
     document.body.classList.toggle('has-emergency-call-bar', !bar.hidden);
   };
 
   bar.hidden = true;
   new IntersectionObserver(updateBar).observe(hero);
   mobile.addEventListener('change', updateBar);
+  narrow.addEventListener('change', updateBar);
   window.addEventListener('pageshow', updateBar);
   updateBar();
 }
