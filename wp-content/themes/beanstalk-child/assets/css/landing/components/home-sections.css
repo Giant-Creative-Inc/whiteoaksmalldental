@@ -1,0 +1,523 @@
+
+.meet-dentists {
+  @apply py-wp-48;
+  background: var(--wp--preset--color--experience-background);
+}
+
+.meet-dentists__header {
+  @apply flex flex-col gap-wp-12;
+}
+
+.meet-dentists__heading-group {
+  @apply flex w-full flex-col gap-wp-12;
+}
+
+.meet-dentists__eyebrow,
+.meet-dentists__title,
+.meet-dentists__intro,
+.meet-dentists__role,
+.meet-dentists__name,
+.meet-dentists__specialty,
+.meet-dentists__number {
+  @apply m-0;
+}
+
+.meet-dentists__eyebrow { font-weight: 750; }
+
+.meet-dentists__title {
+  letter-spacing: var(--wp--custom--letter-spacing--team-heading);
+  line-height: var(--wp--custom--line-height--team-heading);
+}
+
+.meet-dentists__intro { @apply w-full; }
+
+.meet-dentists__grid {
+  @apply mt-wp-32 grid grid-cols-1 gap-wp-16;
+}
+
+.meet-dentists__grid > * { margin-block-start: 0; }
+
+.meet-dentists__card {
+  @apply flex min-w-0 flex-col overflow-hidden;
+}
+
+.meet-dentists__card > * { margin-block-start: 0; }
+
+.meet-dentists__media {
+  height: var(--wp--custom--team--image-height-mobile);
+  min-height: 0;
+}
+
+.meet-dentists__media .wp-block-cover__inner-container {
+  @apply absolute inset-0;
+}
+
+.meet-dentists__number {
+  @apply absolute bottom-wp-12 right-wp-12;
+}
+
+.meet-dentists__card-content {
+  @apply flex flex-col gap-wp-8 border-b border-why-oaks-divider p-wp-16;
+}
+
+.meet-dentists__card-content > * { margin-block-start: 0; }
+
+.meet-dentists__role { letter-spacing: var(--wp--custom--letter-spacing--team-card-role); }
+
+.meet-dentists__name {
+  letter-spacing: var(--wp--custom--letter-spacing--team-card-heading);
+  line-height: var(--wp--custom--line-height--team-card-heading);
+}
+
+.meet-dentists__specialty {
+  letter-spacing: var(--wp--custom--letter-spacing--team-card-specialty);
+  line-height: var(--wp--custom--line-height--button);
+}
+
+.meet-dentists__cta {
+  @apply mt-wp-32 flex w-full items-center justify-between gap-wp-16 border-0 p-0;
+}
+
+.meet-dentists__cta > * { margin-block-start: 0; }
+.meet-dentists__cta-button { @apply whitespace-nowrap; }
+
+.meet-dentists__cta-button .wp-block-button__link {
+  @apply text-b-6 font-bold tracking-[0.96px];
+}
+
+:is(.home-faqs, .landing-faqs) { @apply py-wp-48; }
+
+:is(.home-faqs__inner, .landing-faqs__inner) {
+  @apply grid grid-cols-1 gap-wp-32;
+}
+
+:is(.home-faqs__intro, .landing-faqs__intro) {
+  @apply flex flex-col gap-wp-12;
+}
+
+:is(.home-faqs__intro, .landing-faqs__intro) > * { margin-block-start: 0; }
+:is(.home-faqs__eyebrow, .landing-faqs__eyebrow),
+:is(.home-faqs__heading, .landing-faqs__heading),
+:is(.home-faqs__copy, .landing-faqs__copy) { @apply m-0; }
+:is(.home-faqs__eyebrow, .landing-faqs__eyebrow) { font-weight: 750; }
+
+:is(.home-faqs__copy, .landing-faqs__copy) {
+  @apply font-body text-b-5;
+}
+
+:is(.home-faqs__copy, .landing-faqs__copy) a {
+  @apply font-button font-[650] text-primary-shade-300;
+}
+
+:is(.home-faqs__eyebrow, .landing-faqs__eyebrow),
+.patient-stories__eyebrow {
+  @apply text-primary-shade-300;
+}
+
+:is(.home-faqs__list, .landing-faqs__list) { @apply border-t border-service-tabs-border; }
+
+:is(.home-faqs__item, .landing-faqs__item) {
+  @apply border-b border-service-tabs-border;
+}
+
+:is(.home-faqs__item, .landing-faqs__item) summary {
+  @apply flex cursor-pointer list-none items-center gap-wp-12 py-wp-24;
+}
+
+:is(.home-faqs__item, .landing-faqs__item) summary em {
+  @apply shrink-0 font-heading text-b-5 font-normal text-primary-shade-300;
+}
+
+:is(.home-faqs__item, .landing-faqs__item) summary span {
+  @apply min-w-0 flex-1 font-heading text-b-4 font-bold leading-none;
+}
+
+:is(.home-faqs__item, .landing-faqs__item) summary strong {
+  @apply flex size-wp-32 shrink-0 items-center justify-center font-heading text-h-6 font-normal transition-transform duration-150;
+}
+
+:is(.home-faqs__item, .landing-faqs__item)[open] summary strong { @apply rotate-45; }
+
+:is(.home-faqs__answer, .landing-faqs__answer) {
+  @apply m-0 pb-wp-24 pl-wp-32 pr-wp-32;
+}
+
+:is(.footer-cta, .landing-appointment-cta) {
+  @apply py-wp-24;
+}
+
+:is(.footer-cta, .landing-appointment-cta) :is(.footer-cta__content, .landing-appointment-cta__content) {
+  @apply flex flex-col;
+  max-width: var(--wp--custom--footer-cta--content-width);
+}
+
+.footer-cta .footer-cta__content { @apply gap-footer-cta-content-mobile!; }
+
+:is(.footer-cta__heading, .landing-appointment-cta__heading),
+:is(.footer-cta__copy, .landing-appointment-cta__copy) { @apply m-0; }
+
+:is(.footer-cta__copy, .landing-appointment-cta__copy) { max-width: var(--wp--custom--footer-cta--copy-width); }
+
+:is(.footer-cta, .landing-appointment-cta) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) {
+  @apply flex w-full flex-col items-start gap-wp-24;
+  gap: var(--wp--preset--spacing--24);
+  max-width: var(--wp--custom--footer-cta--button-width-mobile);
+}
+
+:is(.footer-cta__primary, .landing-appointment-cta__primary) {
+  @apply w-full;
+  max-width: var(--wp--custom--footer-cta--button-width-mobile);
+}
+
+:is(.footer-cta__primary, .landing-appointment-cta__primary) .wp-block-button__link { @apply w-full; }
+:is(.footer-cta__phone, .landing-appointment-cta__phone) { margin-left: 0; }
+
+
+@variant tablet {
+  .meet-dentists__grid { @apply grid-cols-2; }
+}
+
+@variant desktop {
+  .meet-dentists {
+    @apply py-wp-128;
+    background: var(--wp--preset--color--white);
+  }
+
+  .meet-dentists__header {
+    @apply flex-row items-end justify-between gap-wp-48;
+  }
+
+  .meet-dentists__heading-group {
+    @apply gap-wp-24;
+    max-width: 684px;
+  }
+
+  .meet-dentists__intro { max-width: 410px; }
+
+  .meet-dentists__grid {
+    @apply grid-cols-4;
+    gap: var(--wp--custom--team--grid-gap-desktop);
+    margin-top: var(--wp--custom--team--grid-margin-desktop);
+    padding-bottom: var(--wp--custom--team--card-stagger);
+  }
+
+  .meet-dentists__card--staggered { transform: translateY(var(--wp--custom--team--card-stagger)); }
+  .meet-dentists__media { height: var(--wp--custom--team--image-height-desktop); }
+  .meet-dentists__card-content { @apply px-wp-4 py-wp-24; }
+
+  .meet-dentists__cta {
+    @apply w-full justify-start;
+    margin-top: var(--wp--custom--team--cta-margin-desktop);
+  }
+
+  :is(.home-faqs, .landing-faqs) {
+    padding-block: var(--wp--preset--spacing--120);
+  }
+
+  :is(.home-faqs__inner, .landing-faqs__inner) {
+    grid-template-columns: var(--wp--custom--faq--desktop-column-width) minmax(0, 1fr);
+    gap: var(--wp--preset--spacing--128);
+  }
+
+  :is(.home-faqs__copy, .landing-faqs__copy) {
+    @apply mt-wp-32 font-button text-b-6;
+  }
+
+  :is(.home-faqs__item, .landing-faqs__item) summary { @apply py-wp-32; }
+  :is(.home-faqs__item, .landing-faqs__item) summary em { @apply text-b-6; }
+
+  :is(.home-faqs__item, .landing-faqs__item) summary span {
+    @apply text-h-3 font-normal;
+    line-height: var(--wp--custom--line-height--h-3);
+  }
+
+  :is(.home-faqs__item, .landing-faqs__item) summary strong {
+    @apply size-wp-48 rounded-full border border-service-tabs-border;
+  }
+
+  :is(.home-faqs__answer, .landing-faqs__answer) { @apply pb-wp-32 pl-wp-64 pr-wp-64; }
+
+  :is(.footer-cta, .landing-appointment-cta) {
+    @apply py-wp-128;
+  }
+  .footer-cta .footer-cta__content {
+    @apply gap-footer-cta-content-desktop!;
+  }
+  :is(.footer-cta__heading, .landing-appointment-cta__heading) { line-height: var(--wp--custom--hero--heading-line-height-desktop); }
+
+  :is(.footer-cta, .landing-appointment-cta) :is(.footer-cta__buttons, .landing-appointment-cta__buttons) {
+    @apply max-w-none flex-row items-center gap-wp-32;
+    gap: var(--wp--preset--spacing--32);
+  }
+
+  :is(.footer-cta__primary, .landing-appointment-cta__primary) { @apply w-auto max-w-none; }
+}
+
+#invisalign-faqs .landing-faqs__inner {
+  @apply mx-auto w-full gap-wp-24;
+}
+
+#invisalign-faqs .landing-faqs__heading {
+  @apply text-[32px] leading-[34px] font-normal;
+}
+
+#invisalign-faqs .landing-faqs__copy {
+  @apply mt-wp-12 font-body text-b-4 leading-[26px];
+}
+
+#invisalign-faqs .landing-faqs__copy a {
+  @apply font-normal text-primary underline underline-offset-2 transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  @variant desktop {
+    @apply font-medium text-primary-shade-600 underline hover:text-primary;
+  }
+}
+
+#invisalign-faqs .landing-faqs__copy a strong {
+  @apply font-[inherit] text-current;
+}
+
+#invisalign-faqs .landing-faqs__list,
+#invisalign-faqs .landing-faqs__item {
+  @apply m-0;
+}
+
+#invisalign-faqs .landing-faqs__item summary span {
+  @apply font-bold leading-[20px];
+}
+
+#invisalign-faqs .landing-faqs__answer {
+  @apply leading-[24px];
+}
+
+#invisalign-faqs .landing-faqs__phone {
+  @apply m-0;
+}
+
+#invisalign-faqs .landing-faqs__phone .wp-block-button,
+#invisalign-faqs .landing-faqs__phone .wp-block-button__link {
+  @apply w-full;
+}
+
+#invisalign-faqs .landing-faqs__phone .wp-block-button__link {
+  @apply rounded-none border-2 border-primary bg-transparent px-wp-16 py-wp-16 font-button text-b-5 font-normal text-primary transition-colors hover:bg-primary hover:text-wp-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+}
+
+@variant desktop {
+  #invisalign-faqs .landing-faqs__inner {
+    @apply grid-cols-[minmax(0,374fr)_minmax(0,722fr)] gap-wp-128;
+  }
+
+  #invisalign-faqs .landing-faqs__heading {
+    @apply max-w-[var(--wp--preset--spacing--320)] text-[length:var(--wp--preset--font-size--service-faq-heading)] leading-[0.95];
+  }
+
+  #invisalign-faqs .landing-faqs__copy {
+    @apply mt-wp-24 font-button text-b-5 leading-[20px];
+  }
+
+  #invisalign-faqs .landing-faqs__item summary {
+    @apply items-start gap-0 pt-wp-28 pb-wp-8;
+  }
+
+  #invisalign-faqs .landing-faqs__item:not([open]) summary {
+    @apply pb-wp-28;
+  }
+
+  #invisalign-faqs .landing-faqs__item summary em {
+    @apply w-wp-64 pt-wp-8 text-b-5;
+  }
+
+  #invisalign-faqs .landing-faqs__item summary span {
+    @apply pr-wp-24 text-[27px] font-normal leading-[40.5px] text-primary-shade-600;
+  }
+
+  #invisalign-faqs .landing-faqs__item summary strong {
+    @apply size-wp-40;
+  }
+
+  #invisalign-faqs .landing-faqs__answer {
+    @apply pb-wp-20 pl-wp-64 pr-wp-48;
+  }
+
+  #invisalign-faqs .landing-faqs__phone {
+    @apply hidden;
+  }
+}
+
+#invisalign-faqs .landing-faqs__item:first-child summary span {
+  @apply max-w-[248px];
+  @variant desktop {
+    @apply max-w-[460px] pr-0;
+  }
+}
+
+#invisalign-faqs .landing-faqs__item:first-child summary strong {
+  @apply ml-auto;
+}
+
+#appointment-cta.landing-appointment-cta {
+  @apply px-site-gutter py-wp-24;
+}
+
+#appointment-cta .landing-appointment-cta__content {
+  @apply max-w-none gap-wp-20;
+}
+
+#appointment-cta .landing-appointment-cta__heading {
+  @apply text-[32px] leading-[38px] font-normal tracking-normal;
+}
+
+#appointment-cta .landing-appointment-cta__copy {
+  @apply max-w-none text-[15px] leading-[24px];
+}
+
+#appointment-cta .landing-appointment-cta__buttons {
+  @apply flex w-fit max-w-full flex-col items-start gap-wp-24;
+}
+
+#appointment-cta .landing-appointment-cta__primary {
+  @apply w-[261px] max-w-full;
+}
+
+#appointment-cta .landing-appointment-cta__primary .wp-block-button__link {
+  @apply flex min-h-[54px] w-full justify-between gap-wp-12 px-wp-24 py-wp-8 font-normal;
+}
+
+#appointment-cta .landing-appointment-cta__phone,
+#appointment-cta .landing-appointment-cta__phone .wp-block-button__link {
+  @apply w-fit;
+}
+
+#appointment-cta .landing-appointment-cta__phone .wp-block-button__link {
+  @apply flex min-h-0 items-center gap-wp-16 rounded-none border-0 border-b border-solid border-button-text bg-transparent px-0 py-wp-8 font-normal text-button-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+}
+
+@variant desktop {
+  #appointment-cta.landing-appointment-cta {
+    @apply min-h-[659px] py-wp-128;
+  }
+
+  #appointment-cta .landing-appointment-cta__content {
+    @apply gap-[38px];
+  }
+
+  #appointment-cta .landing-appointment-cta__heading {
+    @apply max-w-[970px] text-[length:var(--wp--preset--font-size--hero-heading)] leading-[0.95] tracking-[-0.045em];
+  }
+
+  #appointment-cta .landing-appointment-cta__copy {
+    @apply max-w-[829px] text-b-2 leading-[32px];
+  }
+
+  #appointment-cta .landing-appointment-cta__buttons {
+    @apply flex-row items-center gap-wp-32;
+  }
+}
+
+#appointment-cta .landing-appointment-cta__phone .wp-block-button__link:is(:hover, :focus-visible) .button-arrow-icon {
+  @apply translate-x-0;
+}
+
+#patient-testimonials .wp-block-white-oaks-patient-stories {
+  @apply px-site-gutter;
+}
+
+#patient-testimonials .patient-stories__inner {
+  @apply w-full;
+}
+
+#patient-testimonials .patient-stories__eyebrow strong {
+  @apply text-primary-hover;
+}
+
+#patient-testimonials .patient-stories__heading em {
+  @apply text-current not-italic;
+}
+
+@variant desktop {
+  #patient-testimonials .wp-block-white-oaks-patient-stories {
+    @apply py-[100px];
+  }
+
+  #patient-testimonials .patient-stories__inner {
+    @apply grid-cols-[minmax(0,403fr)_minmax(0,709fr)];
+  }
+
+  #patient-testimonials .patient-stories__heading {
+    @apply max-w-[var(--wp--preset--spacing--384)];
+  }
+
+  #patient-testimonials .patient-stories__heading em {
+    @apply text-primary italic;
+  }
+}
+
+#invisalign-faqs .landing-faqs__copy a {
+  @apply whitespace-nowrap;
+}
+
+@variant max-desktop {
+  #invisalign-faqs .landing-faqs__item summary {
+    @apply min-h-wp-80 py-wp-24;
+  }
+
+  #invisalign-faqs .landing-faqs__item[open] .landing-faqs__answer {
+    @apply pt-wp-4;
+  }
+
+  #patient-testimonials .patient-stories__slide-footer {
+    @apply mt-wp-16;
+  }
+
+  #patient-testimonials .patient-stories__controls {
+    @apply mt-wp-12;
+  }
+
+  #patient-testimonials .patient-stories__rating-copy {
+    @apply gap-0;
+  }
+
+  #patient-testimonials .patient-stories__rating-copy > p,
+  #patient-testimonials .patient-stories__reviewer > p {
+    @apply m-0;
+  }
+
+  #patient-testimonials .patient-stories__rating-copy > p,
+  #patient-testimonials .patient-stories__review-source,
+  #patient-testimonials .patient-stories__counter {
+    @apply leading-[18px];
+  }
+
+  #patient-testimonials .patient-stories__reviewer-name strong {
+    @apply font-normal;
+  }
+}
+
+#invisalign-faqs .landing-faqs__eyebrow strong {
+  @apply font-bold;
+}
+
+#invisalign-faqs .landing-faqs__copy a {
+  @apply font-medium;
+}
+
+#patient-testimonials .patient-stories__eyebrow strong,
+#patient-testimonials .patient-stories__review-source strong {
+  @apply font-normal;
+}
+
+@variant max-desktop {
+  #patient-testimonials :is(.patient-stories__eyebrow, .patient-stories__review-source, .patient-stories__review-summary) strong {
+    @apply font-body;
+  }
+}
+
+@variant desktop {
+  #patient-testimonials .patient-stories__eyebrow strong {
+    @apply font-[750];
+  }
+
+  #patient-testimonials .patient-stories__review-source strong {
+    @apply font-bold;
+  }
+}

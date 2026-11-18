@@ -577,5 +577,26 @@
         }
       }
     }
-  }
+  },
+  "customTemplates": [
+    {
+      "name": "ad-landing",
+      "title": "Ad Landing Page",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ],
+  "templateParts": [
+    {
+      "name": "landing-header",
+      "title": "Landing Page Header",
+      "area": "header"
+    },
+    {
+      "name": "landing-footer",
+      "title": "Landing Page Footer",
+      "area": "footer"
+    }
+  ]
 }

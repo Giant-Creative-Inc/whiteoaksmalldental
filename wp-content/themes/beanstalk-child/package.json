@@ -7,7 +7,9 @@
     "dev": "vite build --watch",
     "dev:map": "vite build -c vite.click-to-load-map.config.mjs --watch",
     "build": "vite build && vite build -c vite.blocks.config.mjs && vite build -c vite.patient-stories.config.mjs && vite build -c vite.click-to-load-map.config.mjs",
-    "test:service-tabs": "node --test tests/service-tabs.test.mjs"
+    "test:service-tabs": "node --test tests/service-tabs.test.mjs",
+    "build:landing": "vite build -c vite.landing.config.mjs",
+    "test:landing": "node tests/ad-landing-scope.mjs && php tests/ad-landing-boundary.php"
   },
   "engines": {
     "node": ">=20.19.0",
@@ -16,6 +18,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "tailwindcss": "^4.1.11",
-    "vite": "^7.0.0"
+    "vite": "^7.0.0",
+    "postcss": "^8.5.25"
   }
 }
