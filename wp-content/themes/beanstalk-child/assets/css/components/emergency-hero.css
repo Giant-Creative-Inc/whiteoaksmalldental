@@ -51,7 +51,7 @@
 }
 
 .emergency-hero-v2__photo > .wp-block-cover__image-background {
-  @apply object-cover max-w-none w-full h-full desktop:object-fill desktop:w-eh-foreground-width desktop:h-eh-foreground-height desktop:left-eh-foreground-left desktop:top-eh-foreground-top;
+  @apply object-cover max-w-none w-full h-full desktop:w-eh-foreground-width desktop:h-eh-foreground-height desktop:left-eh-foreground-left desktop:top-eh-foreground-top;
 }
 
 .emergency-hero-v2__photo > .wp-block-cover__background {
