@@ -545,7 +545,7 @@
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__slides {
-  @apply aspect-327/387 desktop:aspect-632/661;
+  @apply aspect-327/240 desktop:aspect-632/661;
 }
 
 .wisdom-teeth-removal-gallery .clinic-gallery__controls {
