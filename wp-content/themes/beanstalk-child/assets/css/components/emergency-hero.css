@@ -33,10 +33,8 @@
   --spacing-eh-foreground-height: var(--wp--custom--emergency-hero--foreground-height);
   --spacing-eh-foreground-left: var(--wp--custom--emergency-hero--foreground-left);
   --spacing-eh-foreground-top: var(--wp--custom--emergency-hero--foreground-top);
-  --spacing-eh-background-width: var(--wp--custom--emergency-hero--background-width);
-  --spacing-eh-background-height: var(--wp--custom--emergency-hero--background-height);
-  --spacing-eh-background-left: var(--wp--custom--emergency-hero--background-left);
-  --spacing-eh-background-top: var(--wp--custom--emergency-hero--background-top);
+  --background-image-eh-desktop: var(--wp--preset--gradient--emergency-hero-desktop-fade);
+  --background-image-eh-mobile: var(--wp--preset--gradient--emergency-hero-mobile-fade);
   --spacing-eh-height-desktop: var(--wp--custom--emergency-hero--height-desktop);
 }
 
@@ -52,20 +50,12 @@
   @apply absolute inset-0 m-0 h-full min-h-0 p-0;
 }
 
-.emergency-hero-v2__backdrop {
-  @apply max-desktop:hidden;
-}
-
-.emergency-hero-v2__backdrop > .wp-block-cover__image-background {
-  @apply max-w-none object-fill w-eh-background-width h-eh-background-height left-eh-background-left top-eh-background-top;
-}
-
 .emergency-hero-v2__photo > .wp-block-cover__image-background {
   @apply object-cover max-w-none w-full h-full desktop:object-fill desktop:w-eh-foreground-width desktop:h-eh-foreground-height desktop:left-eh-foreground-left desktop:top-eh-foreground-top;
 }
 
 .emergency-hero-v2__photo > .wp-block-cover__background {
-  @apply opacity-100;
+  @apply opacity-100 bg-transparent bg-eh-desktop max-desktop:bg-eh-mobile;
 }
 
 .emergency-hero-v2__container {
@@ -162,13 +152,4 @@
 
 .emergency-hero-v2__rating {
   @apply font-button text-b-6 leading-eh-rating-leading;
-}
-
-
-.emergency-hero-v2__photo {
-  @apply max-desktop:hidden;
-}
-
-.emergency-hero-v2__mobile {
-  @apply desktop:hidden;
 }

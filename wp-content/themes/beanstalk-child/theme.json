@@ -18,7 +18,7 @@
       "gradients": [
         {"slug": "emergency-hero-desktop-fade", "name": "Emergency Hero Desktop Fade", "gradient": "linear-gradient(90deg, #FFFFFF 41.146%, rgba(255,255,255,0) 87.535%)"},
         {"slug": "emergency-hero-mobile-fade", "name": "Emergency Hero Mobile Fade", "gradient": "linear-gradient(180deg, rgba(255,255,255,0) 55%, #FFFFFF 100%)"},
-        {"slug": "emergency-hero-depth", "name": "Emergency Hero Depth", "gradient": "linear-gradient(180deg, rgba(16,42,36,0) 58%, rgba(16,42,36,0.58) 100%)"},
+
 
         {
           "slug": "hero-desktop-overlay",
@@ -364,11 +364,7 @@
         "foreground-width": "67.01%",
         "foreground-height": "102.78%",
         "foreground-left": "37.73%",
-        "foreground-top": "-1.39%",
-        "background-width": "111.6%",
-        "background-height": "139.52%",
-        "background-left": "12.36%",
-        "background-top": "-21.15%"
+        "foreground-top": "-1.39%"
       },
       "emergency": {
         "heading-mobile-size": "32px",
