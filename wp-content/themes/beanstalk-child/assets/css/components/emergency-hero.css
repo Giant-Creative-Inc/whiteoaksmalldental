@@ -55,7 +55,7 @@
 }
 
 .emergency-hero-v2__photo > .wp-block-cover__background {
-  @apply opacity-100 bg-transparent bg-eh-desktop max-desktop:bg-eh-mobile;
+  @apply opacity-100 bg-eh-desktop max-desktop:bg-eh-mobile;
 }
 
 .emergency-hero-v2__container {
