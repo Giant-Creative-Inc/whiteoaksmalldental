@@ -1,0 +1,153 @@
+
+@custom-variant landing-gutters (@media (width > 1280px));
+
+@theme inline {
+  --spacing-eh-section-padding-desktop: var(--wp--custom--emergency-hero--section-padding-desktop);
+  --spacing-eh-image-height-mobile: var(--wp--custom--emergency-hero--image-height-mobile);
+  --spacing-eh-content-start-mobile: var(--wp--custom--emergency-hero--content-start-mobile);
+  --spacing-eh-copy-width: var(--wp--custom--emergency-hero--copy-width);
+  --text-eh-heading-size-desktop: var(--wp--custom--emergency-hero--heading-size-desktop);
+  --text-eh-heading-size-mobile: var(--wp--custom--emergency-hero--heading-size-mobile);
+  --leading-eh-heading-leading-desktop: var(--wp--custom--emergency-hero--heading-leading-desktop);
+  --leading-eh-heading-leading-mobile: var(--wp--custom--emergency-hero--heading-leading-mobile);
+  --tracking-eh-heading-tracking-desktop: var(--wp--custom--emergency-hero--heading-tracking-desktop);
+  --tracking-eh-heading-tracking-mobile: var(--wp--custom--emergency-hero--heading-tracking-mobile);
+  --text-eh-hours-size-desktop: var(--wp--custom--emergency-hero--hours-size-desktop);
+  --text-eh-hours-size-mobile: var(--wp--custom--emergency-hero--hours-size-mobile);
+  --leading-eh-hours-leading-desktop: var(--wp--custom--emergency-hero--hours-leading-desktop);
+  --leading-eh-hours-leading-mobile: var(--wp--custom--emergency-hero--hours-leading-mobile);
+  --text-eh-phone-size-desktop: var(--wp--custom--emergency-hero--phone-size-desktop);
+  --text-eh-phone-size-mobile: var(--wp--custom--emergency-hero--phone-size-mobile);
+  --leading-eh-phone-leading-desktop: var(--wp--custom--emergency-hero--phone-leading-desktop);
+  --leading-eh-phone-leading-mobile: var(--wp--custom--emergency-hero--phone-leading-mobile);
+  --tracking-eh-phone-tracking: var(--wp--custom--emergency-hero--phone-tracking);
+  --tracking-eh-eyebrow-tracking: var(--wp--custom--emergency-hero--eyebrow-tracking);
+  --tracking-eh-weekly-tracking: var(--wp--custom--emergency-hero--weekly-tracking);
+  --spacing-eh-hours-gap: var(--wp--custom--emergency-hero--hours-gap);
+  --spacing-eh-phone-gap: var(--wp--custom--emergency-hero--phone-gap);
+  --spacing-eh-button-height: var(--wp--custom--emergency-hero--button-height);
+  --leading-eh-rating-leading: var(--wp--custom--emergency-hero--rating-leading);
+  --spacing-eh-foreground-width: var(--wp--custom--emergency-hero--foreground-width);
+  --spacing-eh-foreground-height: var(--wp--custom--emergency-hero--foreground-height);
+  --spacing-eh-foreground-left: var(--wp--custom--emergency-hero--foreground-left);
+  --spacing-eh-foreground-top: var(--wp--custom--emergency-hero--foreground-top);
+  --background-image-eh-desktop: var(--wp--preset--gradient--emergency-hero-desktop-fade);
+  --background-image-eh-mobile: var(--wp--preset--gradient--emergency-hero-mobile-fade);
+  --spacing-eh-height-desktop: var(--wp--custom--emergency-hero--height-desktop);
+}
+
+.emergency-hero-v2 {
+  @apply relative isolate overflow-hidden m-0 bg-wp-white text-primary-shade-600;
+}
+
+.emergency-hero-v2__art {
+  @apply absolute inset-0 -z-10 m-0 overflow-hidden max-desktop:h-eh-image-height-mobile;
+}
+
+.emergency-hero-v2__art > .wp-block-cover {
+  @apply absolute inset-0 m-0 h-full min-h-0 p-0;
+}
+
+.emergency-hero-v2__photo > .wp-block-cover__image-background {
+  @apply object-cover max-w-none w-full h-full desktop:w-eh-foreground-width desktop:h-eh-foreground-height desktop:left-eh-foreground-left desktop:top-eh-foreground-top;
+}
+
+.emergency-hero-v2__photo > .wp-block-cover__background {
+  @apply opacity-100 bg-eh-desktop max-desktop:bg-eh-mobile;
+}
+
+.emergency-hero-v2__container {
+  @apply relative box-border w-full px-site-gutter pt-eh-content-start-mobile pb-wp-32 desktop:py-eh-section-padding-desktop landing-gutters:px-0 desktop:flex desktop:items-center desktop:min-h-eh-height-desktop;
+}
+
+.emergency-hero-v2__copy {
+  @apply w-full max-w-eh-copy-width gap-wp-24 desktop:gap-wp-32;
+}
+
+.emergency-hero-v2__title {
+  @apply w-full gap-wp-12 desktop:gap-wp-16;
+}
+
+.emergency-hero-v2 :where(.wp-block-group, .wp-block-heading, p, .wp-block-buttons, figure) {
+  @apply my-0;
+}
+
+.emergency-hero-v2 .emergency-hero-v2__eyebrow {
+  @apply font-button text-b-6 font-bold uppercase leading-button tracking-eh-eyebrow-tracking;
+}
+
+.emergency-hero-v2__heading {
+  @apply font-heading font-normal text-eh-heading-size-mobile leading-eh-heading-leading-mobile tracking-eh-heading-tracking-mobile desktop:text-eh-heading-size-desktop desktop:leading-eh-heading-leading-desktop desktop:tracking-eh-heading-tracking-desktop;
+}
+
+.emergency-hero-v2__heading em {
+  @apply block text-primary;
+}
+
+.emergency-hero-v2__call {
+  @apply w-full gap-wp-20;
+}
+
+#emergency-hero.emergency-hero-v2 .emergency-card-hours {
+  @apply w-full gap-eh-hours-gap border-t-0 border-b border-service-tabs-border pt-0 pb-wp-20;
+}
+
+.emergency-hero-v2__hours {
+  @apply font-heading text-eh-hours-size-mobile leading-eh-hours-leading-mobile desktop:text-eh-hours-size-desktop desktop:leading-eh-hours-leading-desktop;
+}
+
+#emergency-hero.emergency-hero-v2 .emergency-card-hours .emergency-today-hours {
+  @apply text-eh-hours-size-mobile leading-eh-hours-leading-mobile desktop:text-eh-hours-size-desktop desktop:leading-eh-hours-leading-desktop;
+}
+
+.emergency-hero-v2__weekly {
+  @apply font-button text-b-6 font-semibold leading-wp-20 tracking-eh-weekly-tracking;
+}
+
+.emergency-hero-v2__phone {
+  @apply w-full gap-eh-phone-gap;
+}
+
+.emergency-hero-v2__number {
+  @apply font-heading text-eh-phone-size-mobile leading-eh-phone-leading-mobile tracking-eh-phone-tracking desktop:text-eh-phone-size-desktop desktop:leading-eh-phone-leading-desktop;
+}
+
+.emergency-hero-v2__number a {
+  @apply text-primary-shade-600 no-underline hover:underline;
+}
+
+.emergency-hero-v2__actions {
+  @apply w-full items-start gap-wp-16 desktop:flex-row desktop:items-center desktop:gap-wp-20;
+}
+
+.emergency-hero-v2__actions > .wp-block-buttons {
+  @apply w-full desktop:w-auto desktop:grow;
+}
+
+.emergency-hero-v2__actions .wp-block-button {
+  @apply w-full;
+}
+
+.emergency-hero-v2__actions .wp-block-button__link {
+  @apply w-full min-h-eh-button-height justify-center font-button text-b-5 font-normal;
+}
+
+.emergency-hero-v2__review {
+  @apply shrink-0 gap-wp-4;
+}
+
+.emergency-hero-v2__icons {
+  @apply items-center gap-wp-4;
+}
+
+.emergency-hero-v2__icons figure {
+  @apply w-auto shrink-0;
+}
+
+.emergency-hero-v2__icons img {
+  @apply block;
+}
+
+.emergency-hero-v2__rating {
+  @apply font-button text-b-6 leading-eh-rating-leading;
+}

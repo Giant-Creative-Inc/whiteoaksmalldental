@@ -24,6 +24,16 @@
           "slug": "hero-mobile-overlay",
           "name": "Hero Mobile Overlay",
           "gradient": "linear-gradient(180deg, rgba(255, 255, 255, 0) 15%, #FFFFFF 52.7%)"
+        },
+        {
+          "slug": "emergency-hero-desktop-fade",
+          "name": "Emergency Hero Desktop Fade",
+          "gradient": "linear-gradient(90deg, #FFFFFF 41.146%, rgba(255,255,255,0) 87.535%)"
+        },
+        {
+          "slug": "emergency-hero-mobile-fade",
+          "name": "Emergency Hero Mobile Fade",
+          "gradient": "linear-gradient(180deg, rgba(255,255,255,0) 55%, #FFFFFF 100%)"
         }
       ],
       "palette": [
@@ -236,6 +246,11 @@
           "slug": "related-tab-border",
           "name": "Related Care Tab Border",
           "color": "#BAD4DA"
+        },
+        {
+          "slug": "emergency-hero-transparent",
+          "color": "rgba(255,255,255,0)",
+          "name": "Emergency Hero Transparent Overlay"
         }
       ]
     },
@@ -1136,6 +1151,38 @@
         "sticky-offset-mobile": "73.168px",
         "portrait-height-desktop": "580px",
         "portrait-height-mobile": "300px"
+      },
+      "emergencyHero": {
+        "height-desktop": "626px",
+        "section-padding-desktop": "56px",
+        "image-height-mobile": "220px",
+        "content-start-mobile": "224px",
+        "copy-width": "527px",
+        "heading-size-desktop": "64px",
+        "heading-size-mobile": "32px",
+        "heading-leading-desktop": "66px",
+        "heading-leading-mobile": "34px",
+        "heading-tracking-desktop": "-2.6px",
+        "heading-tracking-mobile": "-1.3px",
+        "hours-size-desktop": "32px",
+        "hours-size-mobile": "26px",
+        "hours-leading-desktop": "38px",
+        "hours-leading-mobile": "32px",
+        "phone-size-desktop": "44px",
+        "phone-size-mobile": "36px",
+        "phone-leading-desktop": "52px",
+        "phone-leading-mobile": "44px",
+        "phone-tracking": "-1px",
+        "eyebrow-tracking": "2.64px",
+        "weekly-tracking": "0.48px",
+        "hours-gap": "6px",
+        "phone-gap": "2px",
+        "button-height": "54px",
+        "rating-leading": "13.662px",
+        "foreground-width": "67.01%",
+        "foreground-height": "102.78%",
+        "foreground-left": "37.73%",
+        "foreground-top": "-1.39%"
       }
     }
   }
